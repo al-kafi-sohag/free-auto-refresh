@@ -268,6 +268,30 @@
     html{scroll-behavior:auto}
     .btn{transition:none}
   }
+  /* ---------- cookie consent ---------- */
+  .cookie-banner{
+    position:fixed; left:16px; right:16px; bottom:16px; z-index:100;
+    max-width:560px; margin:0 auto;
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    box-shadow:0 20px 40px -15px rgba(15,23,41,.25);
+    padding:20px 22px;
+    display:none;
+    animation:cookie-in .35s ease both;
+  }
+  .cookie-banner.show{display:block}
+  @keyframes cookie-in{
+    from{opacity:0; transform:translateY(12px)}
+    to{opacity:1; transform:translateY(0)}
+  }
+  .cookie-banner p{
+    margin:0 0 14px; font-size:13.5px; line-height:1.55; color:var(--muted);
+  }
+  .cookie-banner p a{color:var(--blue-fg); font-weight:600; text-decoration:none}
+  .cookie-banner p a:hover{text-decoration:underline}
+  .cookie-actions{display:flex; gap:10px; flex-wrap:wrap}
+  @media (max-width:480px){
+    .cookie-banner{left:12px; right:12px; bottom:12px; padding:16px}
+  }
 </style>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0DTP2D307V"></script>
@@ -521,6 +545,15 @@
   </div>
 </footer>
 
+<!-- ================= COOKIE CONSENT ================= -->
+<div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie consent">
+  <p>We use a small, essential cookie to remember your preferences. No tracking, no ads, no third-party analytics. See our <a href="https://github.com/al-kafi-sohag/chrome-auto-refresh/blob/main/PRIVACY.md">Privacy policy</a>.</p>
+  <div class="cookie-actions">
+    <button class="btn btn-primary btn-sm" id="cookieAccept" type="button">Accept</button>
+    <button class="btn btn-ghost btn-sm" id="cookieReject" type="button">Reject</button>
+  </div>
+</div>
+
 <script>
   // Respect reduced-motion: don't autoplay the demo, show controls instead
   (function () {
@@ -530,6 +563,36 @@
       v.pause();
       v.controls = true;
     }
+  })();
+</script>
+
+<script>
+  (function () {
+    var KEY = 'cookie-consent';
+    var banner = document.getElementById('cookieBanner');
+    var accept = document.getElementById('cookieAccept');
+    var reject = document.getElementById('cookieReject');
+
+    function getChoice() {
+      try { return localStorage.getItem(KEY); } catch (e) { return null; }
+    }
+    function setChoice(value) {
+      try { localStorage.setItem(KEY, value); } catch (e) {}
+    }
+
+    if (!getChoice()) {
+      banner.classList.add('show');
+    }
+
+    accept.addEventListener('click', function () {
+      setChoice('accepted');
+      banner.classList.remove('show');
+    });
+
+    reject.addEventListener('click', function () {
+      setChoice('rejected');
+      banner.classList.remove('show');
+    });
   })();
 </script>
 
