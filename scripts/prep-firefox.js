@@ -12,5 +12,6 @@ for (const f of files) {
 }
 
 fs.copyFileSync("manifest.firefox.json", path.join(outDir, "manifest.json"));
+fs.cpSync("icons", path.join(outDir, "icons"), { recursive: true });
 
-console.log(`Staged ${files.length + 1} files in ${outDir}/`);
+console.log(`Staged ${files.length + 1} files and icons/ in ${outDir}/`);

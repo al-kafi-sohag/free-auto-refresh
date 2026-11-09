@@ -293,14 +293,25 @@
     .cookie-banner{left:12px; right:12px; bottom:12px; padding:16px}
   }
 </style>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0DTP2D307V"></script>
+  <!-- Google tag (gtag.js): loaded only after the visitor accepts the cookie banner -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
 
-    gtag('config', 'G-0DTP2D307V');
+    function loadAnalytics() {
+      if (window.analyticsLoaded) return;
+      window.analyticsLoaded = true;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-0DTP2D307V';
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', 'G-0DTP2D307V');
+    }
+
+    try {
+      if (localStorage.getItem('cookie-consent') === 'accepted') loadAnalytics();
+    } catch (e) {}
   </script>
 </head>
 <body>
@@ -547,7 +558,7 @@
 
 <!-- ================= COOKIE CONSENT ================= -->
 <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie consent">
-  <p>We use a small, essential cookie to remember your preferences. No tracking, no ads, no third-party analytics. See our <a href="https://github.com/al-kafi-sohag/chrome-auto-refresh/blob/main/PRIVACY.md">Privacy policy</a>.</p>
+  <p>This site uses Google Analytics to count visits, only if you accept. No ads. The extension itself has no analytics or trackers. See our <a href="https://github.com/al-kafi-sohag/chrome-auto-refresh/blob/main/PRIVACY.md">Privacy policy</a>.</p>
   <div class="cookie-actions">
     <button class="btn btn-primary btn-sm" id="cookieAccept" type="button">Accept</button>
     <button class="btn btn-ghost btn-sm" id="cookieReject" type="button">Reject</button>
@@ -586,6 +597,7 @@
 
     accept.addEventListener('click', function () {
       setChoice('accepted');
+      loadAnalytics();
       banner.classList.remove('show');
     });
 

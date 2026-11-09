@@ -1,10 +1,11 @@
 {
   "name": "chrome-auto-refresh",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "build:css": "tailwindcss -i ./src/input.css -o ./popup.css --minify",
     "watch:css": "tailwindcss -i ./src/input.css -o ./popup.css --watch",
+    "build:icons": "node scripts/make-icons.js",
     "prep:firefox": "node scripts/prep-firefox.js",
     "build:firefox": "npm run build:css && npm run prep:firefox && web-ext build --source-dir=dist-firefox --overwrite-dest",
     "run:firefox": "npm run build:css && npm run prep:firefox && web-ext run --source-dir=dist-firefox",

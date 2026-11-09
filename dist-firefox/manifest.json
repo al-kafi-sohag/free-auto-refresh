@@ -5,6 +5,12 @@
   "description": "Free auto refresh for any tab, with fixed or random intervals, a live on-page counter, and page watching. Built by Al Kafi Sohag.",
   "author": "Al Kafi Sohag (https://www.linkedin.com/in/al-kafi-sohag/)",
   "homepage_url": "https://www.linkedin.com/in/al-kafi-sohag/",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
   "permissions": ["storage", "notifications"],
   "background": {
     "service_worker": "background.js",

@@ -1,8 +1,8 @@
 # Free Auto Refresh Privacy Policy
 
-**Last updated: September 23, 2026**
+**Last updated: November 10, 2026**
 
-Free Auto Refresh is a Chrome extension designed to automatically refresh webpages and monitor webpage content according to user-configured settings.
+Free Auto Refresh is a browser extension for Chrome and Firefox designed to automatically refresh webpages and monitor webpage content according to user-configured settings.
 
 ## Data We Handle
 
@@ -10,7 +10,7 @@ The extension may locally process webpage content from the tab where the user ha
 
 The extension may also detect whether the user is actively typing in a form field so that Smart Pause can prevent an automatic refresh from interrupting the user's input. The extension does not record, store, or transmit the text entered by the user.
 
-The extension stores refresh settings and per-tab extension state using Chrome's storage functionality.
+The extension stores refresh settings and per-tab extension state using the browser's extension storage.
 
 ## How We Use Data
 
@@ -26,7 +26,7 @@ No user data is transferred to external servers for advertising, analytics, prof
 
 ## Data Storage
 
-Extension settings and related state may be stored locally using Chrome's extension storage APIs. The extension does not maintain a remote database containing users' webpage content or browsing information.
+Extension settings and related state may be stored locally using the browser's extension storage APIs. The extension does not maintain a remote database containing users' webpage content or browsing information.
 
 ## Network Requests
 
@@ -39,6 +39,10 @@ The **storage** permission is used to save extension settings and per-tab state.
 The **notifications** permission is used to display notifications when a configured page-monitoring condition is detected.
 
 Website access is used to run the extension's refresh timer, on-page controls, and page-monitoring functionality on webpages selected by the user.
+
+## Project Website
+
+The project's landing page is separate from the extension. It loads Google Analytics to count visits, and only after the visitor clicks **Accept** on the cookie banner. The choice is remembered in the browser's local storage. The extension itself contains no analytics.
 
 ## Changes to This Privacy Policy
 

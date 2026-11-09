@@ -59,7 +59,7 @@ npm run lint:firefox     # run AMO's validation checks locally
 npm run build:firefox    # produce the upload-ready zip in web-ext-artifacts/
 ```
 
-`dist-firefox/` only ever contains the runtime files the extension needs (`manifest.json` copied from `manifest.firefox.json`, `background.js`, `content.js`, `popup.html`, `popup.js`, `popup.css`, `LICENSE`) — never `node_modules`, `.git`, or build tooling. This avoids validation noise on the AMO uploader.
+`dist-firefox/` only ever contains the runtime files the extension needs (`manifest.json` copied from `manifest.firefox.json`, `background.js`, `content.js`, `popup.html`, `popup.js`, `popup.css`, `icons/`, `LICENSE`) — never `node_modules`, `.git`, or build tooling. This avoids validation noise on the AMO uploader.
 
 ## Usage
 
@@ -93,6 +93,7 @@ Tips:
 | `content.js` | Runs in the page: timer, page watching, on-page badge |
 | `src/input.css`, `tailwind.config.js` | Tailwind source and config; build output is `popup.css` |
 | `scripts/prep-firefox.js` | Stages a clean `dist-firefox/` folder for `web-ext` |
+| `icons/`, `scripts/make-icons.js` | Extension icons, and the script that renders them (`npm run build:icons`) |
 
 The timer runs in the content script rather than `chrome.alarms`, because alarms cannot fire more often than every 30 seconds.
 

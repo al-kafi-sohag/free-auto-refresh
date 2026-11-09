@@ -195,7 +195,7 @@ async function checkContent() {
   $("notice").classList.toggle("hidden", ok);
   if (!ok) {
     $("notice").textContent =
-      "This tab isn't ready. Reload the page once (it was opened before the extension was installed or updated). chrome:// pages and the Web Store can't be refreshed.";
+      "This tab isn't ready. Reload the page once (it was opened before the extension was installed or updated). Browser pages (chrome://, about:) and the extension store can't be refreshed.";
   }
 }
 
@@ -235,7 +235,12 @@ $("pause").addEventListener("click", async () => {
 });
 
 $("changeShortcut").addEventListener("click", () => {
-  chrome.tabs.create({ url: "chrome://extensions/shortcuts" });
+  // Firefox can't open chrome:// URLs; it has its own API for this page
+  if (typeof chrome.commands.openShortcutSettings === "function") {
+    chrome.commands.openShortcutSettings();
+  } else {
+    chrome.tabs.create({ url: "chrome://extensions/shortcuts" });
+  }
 });
 
 // Live updates from the page's content script and the background
