@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auto Reload for Web Development – No Build Setup</title>
+<meta name="description" content="Reload localhost or a staging page every few seconds while you code. A zero-config alternative to live reload, with cache bypass.">
+<meta name="keywords" content="auto reload for web development, live reload extension, auto refresh localhost, refresh page on save alternative">
+<link rel="canonical" href="https://al-kafi-sohag.github.io/free-auto-refresh/use-cases/web-development/">
+<meta property="og:site_name" content="Free Auto Refresh">
+<meta property="og:title" content="Auto Reload for Web Development – No Build Setup">
+<meta property="og:description" content="Reload localhost or a staging page every few seconds while you code. A zero-config alternative to live reload, with cache bypass.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://al-kafi-sohag.github.io/free-auto-refresh/use-cases/web-development/">
+<meta property="og:image" content="https://al-kafi-sohag.github.io/free-auto-refresh/assets/poster.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="google-site-verification" content="ww9t1NvE40Omq86n1bNGdVptryQJXYkv5f0-MjdqTqM">
+<meta name="msvalidate.01" content="3CB45458A679463A21F05BA747535729">
+<link rel="icon" href="../../assets/logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://al-kafi-sohag.github.io/free-auto-refresh/"},{"@type":"ListItem","position":2,"name":"Use cases","item":"https://al-kafi-sohag.github.io/free-auto-refresh/use-cases/"},{"@type":"ListItem","position":3,"name":"A zero-setup live reload","item":"https://al-kafi-sohag.github.io/free-auto-refresh/use-cases/web-development/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does it work with file:// pages?","acceptedAnswer":{"@type":"Answer","text":"Only if you allow the extension access to file URLs in the browser's extension settings."}}]}</script>
+</head>
+<body class="bg-page font-sans text-ink antialiased" data-ga="G-0DTP2D307V">
+
+<header class="sticky top-0 z-40 border-b border-line bg-page/90 backdrop-blur">
+  <div class="wrap flex h-16 items-center justify-between gap-4">
+    <a href="../../" class="flex items-center gap-2.5 font-display text-[17px] font-extrabold">
+      <img src="../../assets/logo.png" alt="" width="30" height="30">Free Auto Refresh
+    </a>
+    <nav id="nav" class="absolute left-0 top-16 hidden w-full flex-col gap-1 border-b border-line bg-page p-4 text-[15px] font-medium text-muted md:static md:flex md:w-auto md:flex-row md:gap-7 md:border-0 md:p-0" aria-label="Main">
+      <a href="../../features/" class="rounded px-2 py-2 hover:text-ink md:p-0">Features</a>
+      <a href="../../use-cases/" class="rounded px-2 py-2 hover:text-ink md:p-0 text-ink">Use cases</a>
+      <a href="../../chrome/" class="rounded px-2 py-2 hover:text-ink md:p-0">Chrome</a>
+      <a href="../../firefox/" class="rounded px-2 py-2 hover:text-ink md:p-0">Firefox</a>
+      <a href="../../faq/" class="rounded px-2 py-2 hover:text-ink md:p-0">FAQ</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <a href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Add to Chrome</a>
+      <button id="navToggle" type="button" class="btn btn-ghost btn-sm md:hidden" aria-controls="nav" aria-expanded="false">Menu</button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="wrap pt-10">
+    
+    <nav class="text-sm text-muted" aria-label="Breadcrumb">
+      <a href="../../" class="hover:text-ink">Home</a> <span aria-hidden="true">/</span> <a href="../../use-cases/" class="hover:text-ink">Use cases</a>
+    </nav>
+    <div class="mt-6 grid items-center gap-10 lg:grid-cols-2">
+      <div>
+        <p class="kicker">Use case</p>
+        <h1 class="h1">A zero-setup live reload</h1>
+        <p class="lede">No plugin, no dev-server config. Put the preview tab on a short timer and keep typing in your editor.</p>
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome</a>
+          <a class="btn btn-ghost" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a>
+        </div>
+      </div>
+      <img src="../../assets/placeholder.svg" alt="A zero-setup live reload" width="1200" height="750" loading="lazy" class="w-full rounded-2xl border border-line bg-white">
+    </div>
+  </section>
+
+  <section class="wrap mt-14">
+    <div class="grid gap-4 md:grid-cols-3">
+      <div class="card"><h2 class="font-display text-lg font-bold">Works with anything</h2><p class="mt-1.5 text-sm text-muted">Static HTML, PHP, WordPress themes, a remote staging site: if it loads in a tab, it reloads.</p></div>
+      <div class="card"><h2 class="font-display text-lg font-bold">Fresh assets</h2><p class="mt-1.5 text-sm text-muted">Hard reload skips the cache so new CSS and JavaScript show up.</p></div>
+      <div class="card"><h2 class="font-display text-lg font-bold">Stays where you were</h2><p class="mt-1.5 text-sm text-muted">Keep scroll position holds your place in a long page.</p></div>
+    </div>
+  </section>
+
+  <section class="wrap mt-14 grid gap-10 lg:grid-cols-2">
+    <div>
+      <h2 class="h2">How to set it up</h2>
+      <ol class="steps">
+        <li>Open your local or staging page.</li>
+        <li>Set Min and Max to 3.</li>
+        <li>Switch on Hard reload and Keep scroll position.</li>
+        <li>Press Alt+Shift+R to start and stop from the keyboard.</li>
+      </ol>
+    </div>
+    <div>
+      <h2 class="h2">Suggested settings</h2>
+      <table class="settings">
+        <tbody>
+          <tr><th scope="row">Min / Max</th><td>2 to 5 seconds</td></tr>
+          <tr><th scope="row">Hard reload</th><td>On</td></tr>
+          <tr><th scope="row">Keep scroll position</th><td>On</td></tr>
+          <tr><th scope="row">Pause while typing</th><td>On, for testing forms</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="wrap mt-14 max-w-3xl">
+    <h2 class="h2">When a real live-reload tool is better</h2>
+    <p class="mt-3 text-[17px] leading-relaxed text-muted">A timer reloads whether or not you saved. For large projects a file-watching tool is more efficient; this is for quick jobs and sites you cannot add tooling to.</p>
+  </section>
+  
+  <section class="wrap mt-14 max-w-3xl">
+    <h2 class="h2">Questions</h2>
+    <div class="mt-5 space-y-3">
+      <details class="faq"><summary>Does it work with file:// pages?</summary><p>Only if you allow the extension access to file URLs in the browser's extension settings.</p></details>
+    </div>
+  </section>
+
+  <section class="wrap mt-14">
+    <h2 class="h2">Related</h2>
+    <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <a href="../../use-cases/job-boards/" class="card block hover:border-blue"><h3 class="font-display text-lg font-bold">See new job posts as they appear</h3><p class="mt-1.5 text-sm text-muted">Early applicants get noticed.</p></a>
+      <a href="../../use-cases/freelance-marketplaces/" class="card block hover:border-blue"><h3 class="font-display text-lg font-bold">Freelance marketplaces: refresh with care</h3><p class="mt-1.5 text-sm text-muted">New projects go fast, so freelancers want a fresh feed.</p></a>
+      <a href="../../features/page-monitor-keyword-alert/" class="card block hover:border-blue"><h3 class="font-display text-lg font-bold">Page monitor with keyword alerts</h3><p class="mt-1.5 text-sm text-muted">Tell it what to look for.</p></a>
+    </div>
+  </section>
+  
+  <section class="wrap mt-16">
+    <div class="rounded-3xl bg-ink px-6 py-12 text-center text-white sm:px-12">
+      <h2 class="font-display text-3xl font-extrabold">Stop clicking reload</h2>
+      <p class="mx-auto mt-3 max-w-xl text-white/70">Free for Chrome and Firefox. No account, no ads, no tracking.</p>
+      <div class="mt-6 flex flex-wrap justify-center gap-3">
+        <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome</a>
+        <a class="btn btn-light" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="mt-20 border-t border-line bg-white">
+  <div class="wrap grid gap-8 py-12 text-sm sm:grid-cols-2 lg:grid-cols-4">
+    <div>
+      <a href="../../" class="flex items-center gap-2 font-display font-extrabold"><img src="../../assets/logo.png" alt="" width="26" height="26">Free Auto Refresh</a>
+      <p class="mt-3 text-muted">A free, private auto refresh and page monitor extension for Chrome and Firefox.</p>
+    </div>
+    <div>
+      <h2 class="foot-title">Features</h2>
+      <ul class="foot-list"><li><a href="../../features/auto-refresh-timer/">Auto refresh timer for any tab</a></li><li><a href="../../features/random-interval-refresh/">Refresh at random intervals</a></li><li><a href="../../features/page-monitor-keyword-alert/">Page monitor with keyword alerts</a></li><li><a href="../../features/on-page-countdown/">A live countdown on the page</a></li><li><a href="../../features/smart-pause/">Smart pause: it waits for you</a></li><li><a href="../../features/keep-scroll-position/">Keep your place after every refresh</a></li><li><a href="../../features/hard-reload-bypass-cache/">Hard reload on a timer</a></li><li><a href="../../features/refresh-limits/">Stop on its own, on your terms</a></li><li><a href="../../features/profiles-and-backup/">Profiles, export and import</a></li><li><a href="../../features/languages/">Speaks your language</a></li></ul>
+    </div>
+    <div>
+      <h2 class="foot-title">Use cases</h2>
+      <ul class="foot-list"><li><a href="../../use-cases/restock-alerts/">Restock alerts for any product page</a></li><li><a href="../../use-cases/price-tracking/">Alerted when a price changes</a></li><li><a href="../../use-cases/ticket-sales/">Ticket drops without the manual reload</a></li><li><a href="../../use-cases/appointment-slots/">An appointment slot without constant checking</a></li><li><a href="../../use-cases/online-auctions/">An auction to the last second</a></li><li><a href="../../use-cases/exam-results/">First to know when results are published</a></li><li><a href="../../use-cases/order-and-application-status/">Told when your status changes</a></li><li><a href="../../use-cases/live-dashboards/">Dashboards that stay up to date</a></li><li><a href="../../use-cases/server-and-status-pages/">Watch builds, queues and status pages</a></li><li><a href="../../use-cases/web-development/">Zero-setup live reload</a></li><li><a href="../../use-cases/job-boards/">New job posts as they appear</a></li><li><a href="../../use-cases/freelance-marketplaces/">Freelance marketplaces: refresh with care</a></li><li><a href="../../use-cases/wordpress/">WordPress, without a plugin</a></li><li><a href="../../use-cases/sports-scores/">Live scores that update themselves</a></li><li><a href="../../use-cases/stocks-and-crypto/">Price pages current</a></li></ul>
+    </div>
+    <div>
+      <h2 class="foot-title">Get it</h2>
+      <ul class="foot-list">
+        <li><a href="../../chrome/">Chrome extension</a></li>
+        <li><a href="../../firefox/">Firefox add-on</a></li>
+        <li><a href="../../faq/">FAQ</a></li>
+        <li><a href="../../changelog/">Changelog</a></li>
+        <li><a href="../../contact/">Contact</a></li>
+        <li><a href="../../privacy/">Privacy</a></li>
+        <li><a href="https://github.com/al-kafi-sohag/free-auto-refresh" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="border-t border-line py-5 text-center text-xs text-muted">Built by Al Kafi Sohag · MIT licensed · Not affiliated with Google or Mozilla</p>
+</footer>
+
+<div id="cookieBanner" class="fixed bottom-4 left-4 right-4 z-50 hidden rounded-2xl border border-line bg-white p-5 shadow-xl sm:left-auto sm:max-w-sm" role="dialog" aria-label="Cookie consent">
+  <p class="text-sm text-muted">This site uses Google Analytics to count visits, only if you accept. No ads. The extension itself has no analytics. <a class="font-semibold text-blue-deep" href="../../privacy/">Privacy</a></p>
+  <div class="mt-3 flex gap-2">
+    <button id="cookieAccept" type="button" class="btn btn-primary btn-sm">Accept</button>
+    <button id="cookieReject" type="button" class="btn btn-ghost btn-sm">Reject</button>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="../../assets/site.js"></script>
+</body>
+</html>
