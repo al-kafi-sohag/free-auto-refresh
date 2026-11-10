@@ -1,15 +1,21 @@
 {
   "name": "chrome-auto-refresh",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "scripts": {
     "build:css": "tailwindcss -i ./src/input.css -o ./popup.css --minify",
     "watch:css": "tailwindcss -i ./src/input.css -o ./popup.css --watch",
     "build:icons": "node scripts/make-icons.js",
-    "prep:firefox": "node scripts/prep-firefox.js",
-    "build:firefox": "npm run build:css && npm run prep:firefox && web-ext build --source-dir=dist-firefox --overwrite-dest",
+    "prep": "node scripts/build.js",
+    "prep:chrome": "node scripts/build.js chrome",
+    "prep:firefox": "node scripts/build.js firefox",
+    "build:chrome": "npm run build:css && npm run prep:chrome && web-ext build --source-dir=dist-chrome --overwrite-dest --filename=free-auto-refresh-chrome-{version}.zip",
+    "build:firefox": "npm run build:css && npm run prep:firefox && web-ext build --source-dir=dist-firefox --overwrite-dest --filename=free-auto-refresh-firefox-{version}.zip",
+    "build": "npm run build:chrome && npm run build:firefox",
     "run:firefox": "npm run build:css && npm run prep:firefox && web-ext run --source-dir=dist-firefox",
-    "lint:firefox": "web-ext lint --source-dir=dist-firefox"
+    "lint:firefox": "web-ext lint --source-dir=dist-firefox",
+    "preview": "node dev/serve.js",
+    "build:site": "tailwindcss -c tailwind.site.config.js -i ./site/input.css -o ./docs/assets/site.css --minify && node site/build.js"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.17",

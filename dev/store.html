@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Store image</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif; color: #0f1f4b; overflow: hidden;
+      background: radial-gradient(900px 600px at 85% 20%, #dbe8ff 0%, rgba(219,232,255,0) 70%), linear-gradient(135deg, #f3f7ff 0%, #e9f0ff 100%);
+    }
+    .canvas { height: 100%; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 40px; padding: 0 72px; }
+    h1 { font-size: 60px; line-height: 1.08; margin: 0 0 22px; font-weight: 800; letter-spacing: -1px; white-space: pre-line; }
+    p.sub { font-size: 25px; line-height: 1.45; margin: 0; color: #33416b; max-width: 520px; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 20px; margin-bottom: 34px; }
+    .brand img { width: 40px; height: 40px; }
+    .visual { display: flex; align-items: center; justify-content: center; height: 100%; position: relative; }
+    .pop { background: #fff; border-radius: 14px; box-shadow: 0 30px 70px rgba(20,40,110,.22), 0 0 0 1px rgba(20,40,110,.08); overflow: hidden; transform-origin: center; }
+    .pop iframe { display: block; border: 0; width: 350px; height: 600px; }
+
+    /* notification card */
+    .note { position: absolute; right: -10px; bottom: 70px; width: 330px; background: #fff; border-radius: 12px; padding: 14px 16px; display: flex; gap: 12px;
+            box-shadow: 0 18px 40px rgba(20,40,110,.25), 0 0 0 1px rgba(20,40,110,.08); font-size: 14px; line-height: 1.4; }
+    .note img { width: 36px; height: 36px; }
+    .note b { display: block; font-size: 15px; }
+
+    /* browser window with the on-page badge */
+    .win { width: 540px; height: 400px; background: #fff; border-radius: 14px; position: relative; overflow: hidden;
+           box-shadow: 0 30px 70px rgba(20,40,110,.22), 0 0 0 1px rgba(20,40,110,.08); }
+    .bar { height: 46px; background: #eef2fb; display: flex; align-items: center; padding: 0 14px; gap: 7px; }
+    .bar i { width: 11px; height: 11px; border-radius: 50%; background: #c9d3ea; }
+    .bar .url { flex: 1; height: 24px; border-radius: 12px; background: #fff; margin: 0 10px; }
+    .ext { position: relative; width: 26px; height: 26px; }
+    .ext img { width: 26px; height: 26px; }
+    .ext span { position: absolute; right: -9px; bottom: -6px; background: #16a34a; color: #fff; font-size: 11px; font-weight: 700; padding: 0 5px; border-radius: 5px; }
+    .sk { margin: 22px 26px; }
+    .sk div { height: 14px; border-radius: 7px; background: #e9eefa; margin-bottom: 14px; }
+    .pill { position: absolute; right: 18px; bottom: 18px; width: 300px; color: #fff; background: rgba(15,23,42,.95); border-radius: 16px; overflow: hidden;
+            box-shadow: 0 12px 30px rgba(0,0,0,.35); font-size: 14px; }
+    .pill .row { display: flex; align-items: center; gap: 12px; padding: 12px 12px 10px 16px; }
+    .pill .dot { width: 10px; height: 10px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 0 5px rgba(34,197,94,.25); }
+    .pill b { font-size: 21px; display: block; line-height: 1.1; }
+    .pill small { font-size: 10.5px; letter-spacing: .07em; text-transform: uppercase; opacity: .6; white-space: nowrap; }
+    .pill .r { margin-left: auto; text-align: right; }
+    .pill .r b { font-size: 17px; }
+    .pill .btn { width: 26px; text-align: center; font-size: 13px; opacity: .9; }
+    .pill .prog { height: 4px; background: rgba(255,255,255,.14); }
+    .pill .prog i { display: block; height: 100%; width: 62%; background: #818cf8; }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; max-width: 520px; }
+    .chips span { background: #fff; border-radius: 999px; padding: 8px 16px; font-size: 19px; font-weight: 600; box-shadow: 0 0 0 1px rgba(20,40,110,.1); }
+
+    /* promo tiles */
+    body.tile .canvas { grid-template-columns: 1fr; text-align: center; padding: 0 28px; gap: 0; align-content: center; }
+    body.tile .brand { justify-content: center; flex-direction: column; font-size: 34px; font-weight: 800; margin: 0 0 10px; gap: 14px; }
+    body.tile .brand img { width: 84px; height: 84px; }
+    body.tile p.sub { font-size: 19px; max-width: none; }
+    body.marquee .canvas { grid-template-columns: 1.15fr .85fr; padding: 0 90px; }
+    body.marquee h1 { font-size: 68px; }
+    body.marquee p.sub { font-size: 27px; max-width: 640px; }
+  </style>
+</head>
+<body>
+  <!-- Development only: lays out one Chrome Web Store image per ?shot= value.
+       scripts/make-store-images.js opens each one in headless Chrome and saves a PNG.
+       The popup shown is the real popup, running in the preview. -->
+  <div class="canvas" id="canvas"></div>
+
+  <script>
+    const LANGS = ["English", "Română", "Русский", "简体中文", "日本語", "বাংলা", "ไทย"];
+    const openGroups = (doc, ...n) => {
+      doc.getElementById("openAdvanced").click();
+      for (const i of n) doc.querySelector(`#groups details:nth-of-type(${i})`).open = true;
+    };
+
+    const SHOTS = {
+      1: { title: "Auto Refresh,\nYour Way", sub: "Reload any tab on a fixed or random timer. Simple by default, with advanced settings when you need them.",
+           local: { lang: "en", pinned: [] } },
+      2: { title: "Watch Pages\nfor Changes", sub: "Stops and notifies you when text appears, disappears, or the page content changes.",
+           local: { lang: "en", pinned: ["watchMode", "waitLoad", "notify"], defaults: { min: 15, max: 30, watchMode: "appears", watchText: "In stock" } },
+           note: true },
+      3: { title: "See Every\nRefresh Live", sub: "Refresh count, countdown, pause and stop, right on the page and on the toolbar icon.", badge: true },
+      4: { title: "Smart Pause.\nKeeps Your Place.", sub: "Holds the refresh while you type, click or scroll, and returns to the same scroll position.",
+           local: { lang: "en", pinned: ["smartPause"], defaults: { pauseOnClick: true, pauseOnScroll: true, keepScroll: true } },
+           after: (doc) => openGroups(doc, 4, 6) },
+      5: { title: "Speaks\n7 Languages", sub: "Follows your browser language, or choose one yourself.", chips: true,
+           local: { lang: "ro", pinned: ["durationMin", "maxRefreshes", "watchMode"] } },
+      small: { tile: "tile", sub: "Auto reload any tab. Get alerted when a page changes." },
+      marquee: { tile: "marquee", title: "Free Auto Refresh", sub: "Auto reload any tab on a fixed or random timer, and get alerted when a page changes. Free, private, in 7 languages.",
+                 local: { lang: "en", pinned: ["watchMode"], defaults: { watchMode: "appears", watchText: "In stock" } } },
+    };
+
+    const id = new URLSearchParams(location.search).get("shot") || "1";
+    const shot = SHOTS[id];
+    const canvas = document.getElementById("canvas");
+    const brand = `<div class="brand"><img src="../icons/icon-128.png" alt=""><span>Free Auto Refresh</span></div>`;
+    if (shot.tile) document.body.classList.add(shot.tile);
+
+    if (shot.tile === "tile") {
+      canvas.innerHTML = `<div>${brand}<p class="sub"></p></div>`;
+    } else {
+      canvas.innerHTML = `<div>${brand}<h1></h1><p class="sub"></p><div id="extra"></div></div><div class="visual" id="visual"></div>`;
+      canvas.querySelector("h1").textContent = shot.title;
+    }
+
+    canvas.querySelector(".sub").textContent = shot.sub;
+    if (shot.chips) {
+      document.getElementById("extra").innerHTML = `<div class="chips">${LANGS.map((l) => `<span>${l}</span>`).join("")}</div>`;
+    }
+
+    const visual = document.getElementById("visual");
+    if (shot.badge) {
+      visual.innerHTML = `
+        <div class="win">
+          <div class="bar"><i></i><i></i><i></i><div class="url"></div>
+            <div class="ext"><img src="../icons/icon-48.png" alt=""><span>8</span></div></div>
+          <div class="sk"><div style="width:55%"></div><div></div><div style="width:88%"></div><div style="width:70%"></div><div style="width:40%"></div></div>
+          <div class="pill">
+            <div class="row"><span class="dot"></span>
+              <div><b>12</b><small>refreshes</small></div>
+              <div class="r"><b>8.4s</b><small>next refresh</small></div>
+              <span class="btn">❚❚</span><span class="btn">■</span></div>
+            <div class="prog"><i></i></div>
+          </div>
+        </div>`;
+    } else if (visual) {
+      // The real popup, in the state this shot needs
+      localStorage.setItem("mock-chrome-local", JSON.stringify(shot.local));
+      visual.innerHTML = `<div class="pop"><iframe src="preview.html"></iframe></div>` + (shot.note
+        ? `<div class="note"><img src="../icons/icon-128.png" alt=""><div><b>Auto Refresh: match found</b>"In stock" appeared. Refreshes: 14.</div></div>` : "");
+      const frame = visual.querySelector("iframe");
+      frame.addEventListener("load", () => setTimeout(() => {
+        const doc = frame.contentDocument;
+        if (shot.after) shot.after(doc);
+        setTimeout(() => {
+          const h = doc.body.scrollHeight;
+          frame.style.height = h + "px";
+          const scale = Math.min(1.3, (innerHeight - 70) / h);
+          visual.querySelector(".pop").style.transform = `scale(${scale})`;
+          document.title = "ready";
+        }, 300);
+      }, 2500));
+    }
+  </script>
+</body>
+</html>

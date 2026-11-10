@@ -3,18 +3,46 @@ let st = null; // this tab's state from the background
 let runId = 0; // invalidates stale async work
 let timer = null;
 let ticker = null;
+let badgeTicker = null; // keeps the toolbar countdown moving
 let startAt = 0;
 let nextAt = 0;
 let willReload = true;
 let lastKeyAt = 0;
 let msgText = "";
 let dead = false; // true if the extension was reloaded under us
+let userScrolled = false; // the user moved the page since it loaded
+let scrollRestored = false;
+let lastRestartAt = 0;
 
 let host = null;
 let root = null;
 let lastMode = null;
 
-document.addEventListener("keydown", () => { lastKeyAt = Date.now(); }, true);
+const SCROLL_KEYS = new Set(["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End", " "]);
+
+function isEditable(node) {
+  return !!node && (node.isContentEditable || ["INPUT", "TEXTAREA", "SELECT"].includes(node.tagName));
+}
+
+document.addEventListener("keydown", (e) => {
+  lastKeyAt = Date.now();
+  if (SCROLL_KEYS.has(e.key) && !isEditable(document.activeElement)) onActivity("scroll", e);
+}, true);
+document.addEventListener("pointerdown", (e) => onActivity("click", e), true);
+// wheel/touch/keys rather than "scroll", so only the user's own scrolling counts
+document.addEventListener("wheel", (e) => onActivity("scroll", e), { capture: true, passive: true });
+document.addEventListener("touchmove", (e) => onActivity("scroll", e), { capture: true, passive: true });
+
+// Badge texts come from the background in the user's language (state.strings).
+// These English ones are only a fallback.
+const TEXT = {
+  refreshes: "refreshes", nextRefresh: "next refresh", endsIn: "ends in", checking: "checking page",
+  starting: "starting", paused: "Paused", resumeHint: "press play to resume", match: "Match found",
+  limit: "Limit reached", timeUp: "Time's up", stopped: "stopped", typing: "Waiting… you're typing",
+  refreshing: "Refreshing…", resume: "Resume", pause: "Pause", stop: "Stop", dismiss: "Dismiss",
+  titleFlash: "🔔 Match found!", restarted: "Countdown restarted", userStop: "You used the page",
+};
+const T = (key) => st?.strings?.[key] ?? TEXT[key];
 
 const rand = (a, b) => a + Math.random() * (b - a);
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -81,7 +109,7 @@ function ensureBadge() {
         <span class="dot"></span>
         <div class="col">
           <div class="count"><b id="cnt">0</b><small id="max"></small></div>
-          <div class="sub">refreshes</div>
+          <div class="sub" id="lbl"></div>
         </div>
         <div class="col right">
           <div class="time" id="time">--</div>
@@ -157,6 +185,7 @@ function renderBadge(v) {
   if (!host) return;
   const el = (id) => root.getElementById(id);
   el("pill").className = "pill " + v.mode + (v.match ? " match" : "");
+  el("lbl").textContent = T("refreshes");
   el("cnt").textContent = v.count;
   el("max").textContent = v.max > 0 ? "/" + v.max : "";
   el("time").textContent = v.text;
@@ -168,10 +197,10 @@ function renderBadge(v) {
     lastMode = v.mode;
     const finished = v.mode === "finished";
     el("pp").innerHTML = v.mode === "paused" ? ICON.play : ICON.pause;
-    el("pp").title = v.mode === "paused" ? "Resume" : "Pause";
+    el("pp").title = T(v.mode === "paused" ? "resume" : "pause");
     el("pp").style.display = finished ? "none" : "grid";
     el("stop").innerHTML = finished ? ICON.close : ICON.stop;
-    el("stop").title = finished ? "Dismiss" : "Stop";
+    el("stop").title = T(finished ? "dismiss" : "stop");
   }
 }
 
@@ -185,7 +214,22 @@ function fmtLeft(s) {
 function stopTimers() {
   clearTimeout(timer);
   clearInterval(ticker);
-  timer = ticker = null;
+  clearInterval(badgeTicker);
+  timer = ticker = badgeTicker = null;
+}
+
+// Resolves when the page has finished loading, or after maxMs if it never does
+function pageLoaded(maxMs) {
+  if (document.readyState === "complete") return Promise.resolve();
+  return new Promise((resolve) => {
+    const done = () => {
+      clearTimeout(id);
+      removeEventListener("load", done);
+      resolve();
+    };
+    const id = setTimeout(done, maxMs);
+    addEventListener("load", done);
+  });
 }
 
 function hash(s) {
@@ -208,10 +252,45 @@ function textOf(selector) {
 }
 
 function isTyping() {
-  const a = document.activeElement;
-  const editable =
-    a && (a.isContentEditable || ["INPUT", "TEXTAREA", "SELECT"].includes(a.tagName));
-  return !!editable && Date.now() - lastKeyAt < 5000;
+  return isEditable(document.activeElement) && Date.now() - lastKeyAt < 5000;
+}
+
+/* ================= smart pause: clicks and scrolling ================= */
+function onActivity(kind, e) {
+  if (kind === "scroll") userScrolled = true;
+  if (dead || !st?.running || st.paused) return;
+
+  const cfg = st.cfg || {};
+  if (!(kind === "click" ? cfg.pauseOnClick : cfg.pauseOnScroll)) return;
+  if (host && e.composedPath().includes(host)) return; // our own badge and its buttons
+
+  if (cfg.pauseAction === "stop") {
+    finish("interaction");
+    return;
+  }
+
+  // Restart the countdown. Only while one is running, and at most once a second
+  // (scrolling fires many events).
+  if (!timer || Date.now() - lastRestartAt < 1000) return;
+  lastRestartAt = Date.now();
+  stopTimers();
+  msgText = T("restarted");
+  const shown = msgText;
+  setTimeout(() => { if (msgText === shown) msgText = ""; }, 2000);
+  schedule();
+}
+
+/* ================= keep scroll position ================= */
+function restoreScroll(pos) {
+  if (scrollRestored || !pos) return;
+  scrollRestored = true;
+  const go = () => { if (!userScrolled) window.scrollTo(pos.x, pos.y); };
+  go();
+  // Again once the page has its full height, and once more for content that arrives late
+  pageLoaded(15000).then(() => {
+    go();
+    setTimeout(go, 400);
+  });
 }
 
 function flashTitle(text) {
@@ -231,7 +310,9 @@ function flashTitle(text) {
 async function checkWatch() {
   const w = st.watch;
   if (!w || w.mode === "none") return false;
-  await sleep(1000); // let dynamic content render
+  const cfg = st.cfg || {};
+  if (cfg.waitLoad) await pageLoaded(15000);
+  await sleep((cfg.waitDelay ?? 1) * 1000); // let dynamic content render
 
   if (w.mode === "changes") {
     const sig = hash(textOf((w.text || "").trim()));
@@ -266,6 +347,7 @@ async function init() {
     return st.finished ? showFinished() : removeBadge();
   }
 
+  if (st.cfg?.keepScroll) restoreScroll(st.scroll);
   if (!st.showBadge) removeBadge();
   if (st.paused) return showPaused();
 
@@ -276,7 +358,7 @@ async function init() {
       count: st.refreshCount,
       max: st.maxRefreshes,
       text: "…",
-      sub: st.watch.mode !== "none" ? "checking page" : "starting",
+      sub: T(st.watch.mode !== "none" ? "checking" : "starting"),
       pct: 0,
     });
   }
@@ -312,6 +394,10 @@ function schedule() {
     tick();
     ticker = setInterval(tick, 100);
   }
+
+  if (st.cfg?.toolbarBadge === "countdown") {
+    badgeTicker = setInterval(() => send({ type: "tickBadge" }), 1000);
+  }
 }
 
 function tick() {
@@ -323,7 +409,7 @@ function tick() {
     count: st.refreshCount,
     max: st.maxRefreshes,
     text: fmtLeft(left / 1000),
-    sub: willReload ? "next refresh" : "ends in",
+    sub: T(willReload ? "nextRefresh" : "endsIn"),
     pct: 1 - left / total,
     msg: msgText,
   });
@@ -338,20 +424,22 @@ async function fire() {
   if (st.smartPause && isTyping()) {
     startAt = Date.now();
     nextAt = startAt + 3000;
-    msgText = "Waiting… you're typing";
+    msgText = T("typing");
     send({ type: "schedule", startAt, nextAt, willReload: true });
     timer = setTimeout(fire, 3000);
     return;
   }
 
-  msgText = "Refreshing…";
+  msgText = T("refreshing");
   tick();
-  await send({ type: "reload" });
+  clearInterval(badgeTicker);
+  const scroll = st.cfg?.keepScroll ? { x: window.scrollX, y: window.scrollY } : null;
+  await send({ type: "reload", scroll });
 }
 
 async function finish(reason) {
   stopTimers();
-  if (reason === "match" && st.notify) flashTitle("🔔 Match found!");
+  if (reason === "match" && st.notify) flashTitle(T("titleFlash"));
   await send({ type: "finish", reason });
 }
 
@@ -362,8 +450,8 @@ function showPaused() {
     mode: "paused",
     count: st.refreshCount,
     max: st.maxRefreshes,
-    text: "Paused",
-    sub: "press play to resume",
+    text: T("paused"),
+    sub: T("resumeHint"),
     pct: 0,
   });
 }
@@ -377,8 +465,8 @@ function showFinished() {
     match: f.reason === "match",
     count: st.refreshCount,
     max: st.maxRefreshes,
-    text: f.reason === "match" ? "Match found" : f.reason === "count" ? "Limit reached" : "Time's up",
-    sub: "stopped",
+    text: T({ match: "match", count: "limit", interaction: "userStop" }[f.reason] || "timeUp"),
+    sub: T("stopped"),
     pct: 1,
   });
 }

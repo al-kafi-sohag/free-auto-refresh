@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Extension preview</title>
+  <link rel="stylesheet" href="../popup.css" />
+</head>
+<body>
+  <!-- Development only. Loads popup.html (default) or options.html (?page=options)
+       into this page with a fake chrome API, so the real markup and scripts run unchanged. -->
+  <script src="mock-chrome.js"></script>
+  <script>
+    (async () => {
+      const page = new URLSearchParams(location.search).get("page") === "options" ? "options" : "popup";
+      const html = await (await fetch(`../${page}.html`)).text();
+      const doc = new DOMParser().parseFromString(html, "text/html");
+
+      const scripts = [...doc.querySelectorAll("script[src]")].map((s) => s.getAttribute("src"));
+      doc.querySelectorAll("script").forEach((s) => s.remove());
+      // This page lives in dev/, one level below the real pages
+      doc.querySelectorAll("img[src]").forEach((img) => img.setAttribute("src", "../" + img.getAttribute("src")));
+
+      document.title = doc.title + " (preview)";
+      document.body.className = doc.body.className;
+      document.body.replaceChildren(...doc.body.childNodes);
+
+      for (const src of scripts) {
+        await new Promise((resolve, reject) => {
+          const s = document.createElement("script");
+          s.src = "../" + src;
+          s.onload = resolve;
+          s.onerror = reject;
+          document.body.appendChild(s);
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

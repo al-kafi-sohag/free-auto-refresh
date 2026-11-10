@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Auto Refresh test page</title>
+  <style>
+    body { font: 15px/1.5 system-ui, sans-serif; margin: 0; padding: 16px 16px 2600px; color: #18181b; background: #fafafa; }
+    #toolbar { position: fixed; top: 8px; right: 8px; padding: 4px 10px; border-radius: 6px; background: #18181b; color: #fff; font-size: 12px; }
+    #log { font: 12px/1.4 ui-monospace, monospace; white-space: pre-wrap; background: #f4f4f5; padding: 8px; border-radius: 6px; max-height: 180px; overflow: auto; }
+    .mark { margin-top: 900px; }
+  </style>
+</head>
+<body>
+  <!-- Development only. Runs the real background.js and content.js together on this page
+       against a fake chrome API, so timers, refreshes, page watching, scroll restore and
+       smart pause can be exercised without loading the extension. State survives the page
+       reloads the same way it does in the browser. Drive it from the console:
+         e2e.start({ min: 3, max: 3, keepScroll: true })   e2e.stop()   e2e.state() -->
+  <div id="toolbar">toolbar badge: <b id="badgeText">(empty)</b></div>
+
+  <h1>Auto Refresh test page</h1>
+  <p>Load number <b id="loads"></b>. Stock: <span id="stock"></span>. Price: <span id="price"></span></p>
+  <p><input id="field" placeholder="type here to test smart pause" /></p>
+  <div id="log"></div>
+  <p class="mark" id="mark1">Marker at 900px</p>
+  <p class="mark" id="mark2">Marker at 1800px</p>
+
+  <script>
+    // --- page content that changes between loads ---
+    const loads = Number(sessionStorage.getItem("e2e-loads") || 0) + 1;
+    sessionStorage.setItem("e2e-loads", loads);
+    document.getElementById("loads").textContent = loads;
+    const inStockFrom = Number(sessionStorage.getItem("e2e-instock-from") || 0);
+    // "Stock" text arrives late (600 ms after load), like content rendered by a script
+    setTimeout(() => {
+      document.getElementById("stock").textContent = inStockFrom && loads >= inStockFrom ? "In stock" : "Sold out";
+    }, 600);
+    document.getElementById("price").textContent = "$" + (sessionStorage.getItem("e2e-price") || "10");
+
+    const logLines = JSON.parse(sessionStorage.getItem("e2e-log") || "[]");
+    function log(text) {
+      logLines.push(`[load ${loads}] ${text}`);
+      sessionStorage.setItem("e2e-log", JSON.stringify(logLines.slice(-60)));
+      document.getElementById("log").textContent = logLines.slice(-12).join("\n");
+    }
+    document.getElementById("log").textContent = logLines.slice(-12).join("\n");
+
+    // --- fake chrome API ---
+    const TAB = 1;
+    const copy = (v) => (v === undefined ? v : JSON.parse(JSON.stringify(v)));
+    function area(store, key) {
+      const read = () => JSON.parse(store.getItem(key) || "{}");
+      return {
+        async get(keys) {
+          const data = read();
+          const list = keys == null ? Object.keys(data) : typeof keys === "string" ? [keys] : keys;
+          return Object.fromEntries(list.filter((k) => k in data).map((k) => [k, data[k]]));
+        },
+        async set(items) {
+          store.setItem(key, JSON.stringify({ ...read(), ...copy(items) }));
+        },
+      };
+    }
+
+    const background = [], page = [];
+    let loading = "background";
+    const noop = { addListener() {} };
+
+    window.chrome = {
+      storage: { local: area(localStorage, "e2e-local"), session: area(sessionStorage, "e2e-session"), onChanged: noop },
+      i18n: { getUILanguage: () => navigator.language },
+      runtime: {
+        getURL: (p) => "../" + p,
+        onInstalled: noop,
+        onMessage: { addListener: (fn) => (loading === "background" ? background : page).push(fn) },
+        sendMessage: (msg) => new Promise((resolve) => {
+          for (const fn of background) fn(msg, { tab: { id: TAB } }, resolve);
+        }),
+      },
+      tabs: {
+        onRemoved: noop,
+        onUpdated: noop,
+        query: async () => [{ id: TAB }],
+        sendMessage: (_id, msg) => new Promise((resolve, reject) => {
+          if (!page.length) return reject(new Error("no content script"));
+          let answered = false;
+          for (const fn of page) fn(msg, {}, (v) => { answered = true; resolve(v); });
+          if (!answered) setTimeout(resolve, 0);
+        }),
+        reload: async (_id, opts) => {
+          log("refresh" + (opts?.bypassCache ? " (hard)" : ""));
+          setTimeout(() => location.reload(), 30);
+        },
+        update: async (_id, props) => { log("tab update " + JSON.stringify(props)); return { windowId: 1 }; },
+      },
+      action: {
+        setBadgeText: async ({ text }) => { document.getElementById("badgeText").textContent = text || "(empty)"; },
+        setBadgeBackgroundColor: async () => {},
+        setBadgeTextColor: async () => {},
+      },
+      notifications: { onClicked: noop, clear() {}, create: (_id, o) => log("notification: " + o.title + " / " + o.message) },
+      commands: { onCommand: noop },
+    };
+
+    // --- load the real scripts ---
+    const loadScript = (src) => new Promise((resolve, reject) => {
+      const s = document.createElement("script");
+      s.src = src;
+      s.onload = resolve;
+      s.onerror = reject;
+      document.head.appendChild(s);
+    });
+    // background.js and content.js each expect their own global scope
+    const runIsolated = async (src) => new Function(await (await fetch(src)).text())();
+
+    window.e2e = {
+      ready: (async () => {
+        for (const f of ["i18n.js", "locales/ro.js", "locales/ru.js", "locales/zh.js", "locales/ja.js", "locales/bn.js", "locales/th.js", "settings.js"]) {
+          await loadScript("../" + f);
+        }
+        await runIsolated("../background.js");
+        loading = "page";
+        await runIsolated("../content.js");
+      })(),
+      start: (cfg) => chrome.runtime.sendMessage({ type: "start", tabId: TAB, cfg }),
+      stop: () => chrome.runtime.sendMessage({ type: "stop", tabId: TAB }),
+      pause: () => chrome.runtime.sendMessage({ type: "togglePause", tabId: TAB }),
+      state: () => chrome.runtime.sendMessage({ type: "getState", tabId: TAB }),
+      log: () => logLines.slice(),
+      // Clears everything this page stores, including the simulated extension state
+      reset() { sessionStorage.clear(); localStorage.removeItem("e2e-local"); },
+    };
+  </script>
+</body>
+</html>

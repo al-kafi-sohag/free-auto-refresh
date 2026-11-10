@@ -87,4 +87,149 @@
   .badge {
     @apply inline-flex items-center rounded-full border px-2 py-0.5 text-[11px] font-medium;
   }
+
+  .btn-sm {
+    @apply px-2.5 py-1 text-xs;
+  }
+
+  .hint {
+    @apply text-[11px] text-zinc-500 dark:text-zinc-400;
+  }
+
+  .section-title {
+    @apply mb-1 text-sm font-semibold;
+  }
+
+  /* Label with an optional pin button on the right */
+  .label-row {
+    @apply mb-1.5 flex min-h-[24px] items-center justify-between gap-2;
+  }
+
+  .label-row .label {
+    @apply mb-0;
+  }
+
+  .toggle-text {
+    @apply min-w-0 flex-1;
+  }
+
+  .toggle-title {
+    @apply flex items-center gap-1 font-medium;
+  }
+
+  .label-wrap {
+    @apply flex min-w-0 items-center gap-1;
+  }
+
+  /* Two number fields side by side. Subgrid keeps their inputs level even when one
+     label wraps onto two lines (longer translations) or one explanation is open. */
+  .field-grid {
+    @apply grid grid-cols-2 gap-x-2.5 gap-y-0;
+  }
+
+  .field-cell {
+    display: grid;
+    grid-row: span 3;
+    grid-template-rows: subgrid;
+    align-content: start;
+  }
+
+  .field-cell > .label-row {
+    align-self: end;
+  }
+
+  .field-cell:nth-child(n + 3) {
+    @apply mt-3;
+  }
+
+  .stat-label {
+    @apply text-[10px] font-medium uppercase tracking-wide text-zinc-500 dark:text-zinc-400;
+  }
+
+  /* The (i) icon next to a setting. Hover or focus shows the tooltip below. */
+  .info {
+    @apply inline-flex h-5 w-5 shrink-0 cursor-help items-center justify-center rounded-full text-zinc-400 transition-colors
+           hover:text-zinc-700
+           focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-900
+           dark:text-zinc-500 dark:hover:text-zinc-200 dark:focus-visible:ring-zinc-300;
+  }
+
+  /* Shared tooltip bubble, positioned by ui.js */
+  .tip {
+    @apply pointer-events-none fixed left-0 top-0 z-50 max-w-[260px] rounded-md bg-zinc-900 px-2.5 py-2 text-[11.5px] font-normal leading-snug text-zinc-50 shadow-lg
+           dark:bg-zinc-100 dark:text-zinc-900;
+  }
+
+  .lang-select {
+    @apply rounded border border-zinc-200 bg-white px-1.5 py-0.5 text-[11px] text-zinc-700 outline-none
+           focus-visible:border-zinc-900
+           dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200 dark:focus-visible:border-zinc-300;
+  }
+
+  .toggle-desc {
+    @apply block text-[11px] text-zinc-500 dark:text-zinc-400;
+  }
+
+  .icon-btn {
+    @apply inline-flex h-7 w-7 items-center justify-center rounded-md text-zinc-500 transition-colors
+           hover:bg-zinc-100 hover:text-zinc-900
+           focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-900
+           dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-50 dark:focus-visible:ring-zinc-300;
+  }
+
+  .pin {
+    @apply inline-flex h-6 w-6 shrink-0 items-center justify-center rounded text-zinc-400 transition-colors
+           hover:bg-zinc-100 hover:text-zinc-700
+           focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-900
+           dark:text-zinc-500 dark:hover:bg-zinc-800 dark:hover:text-zinc-200 dark:focus-visible:ring-zinc-300;
+  }
+
+  .pin[aria-pressed="true"] {
+    @apply bg-indigo-50 text-indigo-600 dark:bg-indigo-500/15 dark:text-indigo-300;
+  }
+
+  /* Row that opens the advanced view */
+  .nav-row {
+    @apply flex w-full items-center justify-between rounded-md border border-zinc-200 bg-white px-3 py-2 text-[13px] font-medium text-zinc-800 shadow-sm transition-colors
+           hover:bg-zinc-100
+           focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-900
+           dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:bg-zinc-800 dark:focus-visible:ring-zinc-300;
+  }
+
+  .back {
+    @apply -ml-1 inline-flex items-center gap-1 rounded-md px-1 py-1 text-[13px] font-semibold transition-colors
+           hover:bg-zinc-100
+           focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-900
+           dark:hover:bg-zinc-800 dark:focus-visible:ring-zinc-300;
+  }
+
+  /* Collapsible settings group (a <details> element) */
+  .acc {
+    @apply border-t border-zinc-100 dark:border-zinc-800;
+  }
+
+  .acc > summary {
+    @apply flex cursor-pointer list-none items-center justify-between rounded py-2.5 text-[13px] font-medium
+           focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-900 dark:focus-visible:ring-zinc-300;
+  }
+
+  .acc > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .acc-meta {
+    @apply flex items-center gap-1.5 text-[11px] font-normal text-zinc-500 dark:text-zinc-400;
+  }
+
+  .acc-meta svg {
+    @apply transition-transform;
+  }
+
+  .acc[open] .acc-meta svg {
+    @apply rotate-180;
+  }
+
+  .acc-body {
+    @apply space-y-3 pb-3;
+  }
 }

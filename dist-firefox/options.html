@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Free Auto Refresh settings</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<!-- Text marked data-i18n / data-i18n-attr is replaced by i18n.js; the English here is the fallback -->
+<body class="bg-zinc-50 font-sans text-[13px] text-zinc-900 antialiased dark:bg-zinc-950 dark:text-zinc-100">
+  <main class="mx-auto max-w-xl space-y-5 px-4 py-8">
+
+    <!-- Closes this settings tab, which returns to the page the user came from -->
+    <button id="back" type="button" class="back">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6l6 6" /></svg>
+      <span data-i18n="opt.back">Back</span>
+    </button>
+
+    <header class="flex items-start justify-between gap-3">
+      <div class="flex min-w-0 items-center gap-2.5">
+        <img src="icons/icon-48.png" alt="" width="32" height="32" class="h-8 w-8 shrink-0" />
+        <div class="min-w-0">
+          <h1 class="text-base font-semibold leading-tight" data-i18n="opt.title">Free Auto Refresh settings</h1>
+          <p class="text-[12px] text-zinc-500 dark:text-zinc-400" data-i18n="opt.subtitle">Stored only in this browser. No account, nothing sent anywhere.</p>
+        </div>
+      </div>
+      <div class="flex shrink-0 flex-col items-end gap-1">
+        <div class="flex items-center gap-1.5 text-[11px] text-zinc-500 dark:text-zinc-400">
+          <label for="lang" data-i18n="lang.label">Language</label>
+          <select id="lang" class="lang-select"></select>
+        </div>
+        <p id="status" class="min-h-[18px] text-[12px] font-medium text-emerald-700 dark:text-emerald-300" role="status" aria-live="polite"></p>
+      </div>
+    </header>
+
+    <!-- Default settings -->
+    <section class="panel p-4">
+      <h2 class="section-title" data-i18n="opt.settings.title">Settings</h2>
+      <p class="hint mb-3" data-i18n="opt.settings.hint">Used the next time you press Start. A tab that is already refreshing keeps the settings it started with. Pinned settings appear on the popup's main view.</p>
+      <div id="coreFields"></div>
+      <div id="groups" class="mt-3"></div>
+    </section>
+
+    <!-- Profiles -->
+    <section class="panel p-4">
+      <h2 class="section-title" data-i18n="opt.profiles.title">Profiles</h2>
+      <p class="hint mb-3" data-i18n="opt.profiles.hint">Save the settings above under a name, then switch between profiles from the popup.</p>
+      <div class="flex gap-2">
+        <input id="profileName" type="text" class="field" maxlength="40" placeholder="Profile name, e.g. Ticket watch" aria-label="Profile name" data-i18n-attr="placeholder:opt.profiles.placeholder;aria-label:opt.profiles.placeholder" />
+        <button id="saveProfile" type="button" class="btn btn-primary shrink-0" data-i18n="opt.profiles.save">Save profile</button>
+      </div>
+      <p id="profileError" class="mt-2 hidden text-[12px] font-medium text-red-600 dark:text-red-400"></p>
+      <ul id="profileList" class="mt-3 divide-y divide-zinc-100 dark:divide-zinc-800"></ul>
+      <p id="noProfiles" class="hint mt-3" data-i18n="opt.profiles.none">No saved profiles yet.</p>
+    </section>
+
+    <!-- Backup -->
+    <section class="panel p-4">
+      <h2 class="section-title" data-i18n="opt.backup.title">Backup</h2>
+      <p class="hint mb-3" data-i18n="opt.backup.hint">Export your settings, pins and profiles to a file, or import them on another browser.</p>
+      <div class="flex flex-wrap gap-2">
+        <button id="exportBtn" type="button" class="btn btn-ghost" data-i18n="opt.backup.export">Export to file</button>
+        <button id="importBtn" type="button" class="btn btn-ghost" data-i18n="opt.backup.import">Import from file</button>
+        <input id="importFile" type="file" accept="application/json,.json" class="hidden" />
+      </div>
+      <p id="backupError" class="mt-2 hidden text-[12px] font-medium text-red-600 dark:text-red-400"></p>
+    </section>
+
+  </main>
+
+  <script src="i18n.js"></script>
+  <script src="locales/ro.js"></script>
+  <script src="locales/ru.js"></script>
+  <script src="locales/zh.js"></script>
+  <script src="locales/ja.js"></script>
+  <script src="locales/bn.js"></script>
+  <script src="locales/th.js"></script>
+  <script src="settings.js"></script>
+  <script src="ui.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

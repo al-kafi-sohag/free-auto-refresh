@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Auto Refresh</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<!-- Text marked data-i18n / data-i18n-attr is replaced by i18n.js; the English here is the fallback -->
+<body class="w-[350px] bg-white font-sans text-[13px] text-zinc-900 antialiased dark:bg-zinc-950 dark:text-zinc-100">
+
+  <!-- Header -->
+  <header class="flex items-center justify-between gap-2 border-b border-zinc-100 px-4 py-3.5 dark:border-zinc-800">
+    <div class="flex min-w-0 items-center gap-2.5">
+      <img src="icons/icon-48.png" alt="" width="28" height="28" class="h-7 w-7 shrink-0" />
+      <div class="min-w-0">
+        <h1 class="text-[13.5px] font-semibold leading-tight" data-i18n="app.title">Auto Refresh</h1>
+        <p class="truncate text-[11px] text-zinc-500 dark:text-zinc-400" data-i18n="app.subtitle">Fixed or random intervals</p>
+      </div>
+    </div>
+    <div class="flex shrink-0 items-center gap-1.5">
+      <span id="pill" class="badge">Stopped</span>
+      <button id="openOptions" type="button" class="icon-btn" title="All settings" aria-label="All settings" data-i18n-attr="title:options.open;aria-label:options.open">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065" />
+          <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Live stats -->
+  <section class="grid grid-cols-3 gap-2 px-4 pt-3.5">
+    <div class="card">
+      <div id="statCount" class="text-lg font-semibold tabular-nums">0</div>
+      <div class="stat-label" data-i18n="stat.refreshes">Refreshes</div>
+    </div>
+    <div class="card">
+      <div id="statNext" class="text-lg font-semibold tabular-nums">–</div>
+      <div class="stat-label" data-i18n="stat.next">Next in</div>
+    </div>
+    <div class="card">
+      <div id="statTime" class="text-lg font-semibold tabular-nums">–</div>
+      <div id="statTimeLabel" class="stat-label">Elapsed</div>
+    </div>
+  </section>
+
+  <div class="px-4 pt-2.5">
+    <div class="h-1 overflow-hidden rounded-full bg-zinc-100 dark:bg-zinc-800">
+      <div id="bar" class="h-full w-0 rounded-full bg-zinc-900 transition-[width] duration-300 ease-linear dark:bg-zinc-100"></div>
+    </div>
+  </div>
+
+  <p id="result" class="hidden"></p>
+  <p id="notice" class="mx-4 mt-2.5 hidden rounded-md border border-amber-200 bg-amber-50 px-3 py-2 text-[11.5px] text-amber-800 dark:border-amber-500/30 dark:bg-amber-500/10 dark:text-amber-200"></p>
+
+  <!-- Settings (locked while running). Controls are rendered by ui.js from settings.js -->
+  <div id="settings" class="px-4 pt-3.5">
+
+    <!-- Main view: the essentials plus whatever the user pinned -->
+    <div id="viewMain" class="space-y-3.5">
+      <div id="profileRow" class="hidden transition-opacity">
+        <label class="label" for="profile" data-i18n="profile.label">Profile</label>
+        <select id="profile" class="field"></select>
+      </div>
+
+      <div id="core" class="space-y-3.5 transition-opacity">
+        <div>
+          <div class="label" data-i18n="presets.label">Quick presets</div>
+          <div class="flex flex-wrap gap-1.5">
+            <button type="button" class="chip" data-min="5" data-max="10">5–10s</button>
+            <button type="button" class="chip" data-min="15" data-max="30">15–30s</button>
+            <button type="button" class="chip" data-min="30" data-max="60">30–60s</button>
+            <button type="button" class="chip" data-min="60" data-max="120">1–2 min</button>
+            <button type="button" class="chip" data-min="300" data-max="300">5 min</button>
+          </div>
+        </div>
+
+        <div>
+          <div id="coreFields"></div>
+          <p class="hint mt-1.5" data-i18n="interval.hint">Same value = fixed interval. Different values = a new random wait every time.</p>
+        </div>
+      </div>
+
+      <div id="pinned" class="space-y-3.5 transition-opacity"></div>
+
+      <button id="openAdvanced" type="button" class="nav-row">
+        <span data-i18n="adv.open">Advanced settings</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-zinc-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6l-6 6" /></svg>
+      </button>
+    </div>
+
+    <!-- Advanced view: every other setting, grouped, each with a pin -->
+    <div id="viewAdvanced" class="hidden">
+      <button id="closeAdvanced" type="button" class="back">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6l6 6" /></svg>
+        <span data-i18n="adv.open">Advanced settings</span>
+      </button>
+      <p class="hint pb-2.5 pt-1" data-i18n="adv.hint">Pin a setting to keep it on the main view.</p>
+      <div id="groups" class="transition-opacity"></div>
+    </div>
+  </div>
+
+  <p id="error" class="mx-4 mt-2 hidden text-[12px] font-medium text-red-600 dark:text-red-400"></p>
+
+  <!-- Actions -->
+  <div class="flex gap-2 px-4 pb-2 pt-3.5">
+    <button id="toggle" type="button" class="flex-1 btn btn-primary">Start</button>
+    <button id="pause" type="button" class="hidden btn btn-ghost">Pause</button>
+  </div>
+
+  <p class="px-4 pb-2 text-center text-[11px] text-zinc-500 dark:text-zinc-400">
+    <span data-i18n="shortcut.toggle">Toggle with</span>
+    <kbd id="shortcut" class="rounded border border-zinc-200 bg-zinc-50 px-1.5 py-0.5 font-mono text-[10.5px] dark:border-zinc-700 dark:bg-zinc-900">…</kbd>
+    ·
+    <button id="changeShortcut" type="button" class="underline underline-offset-2 hover:text-zinc-900 dark:hover:text-zinc-200" data-i18n="shortcut.change">change</button>
+  </p>
+
+  <div class="flex items-center justify-center gap-1.5 px-4 pb-4 text-[11px] text-zinc-500 dark:text-zinc-400">
+    <label for="lang" data-i18n="lang.label">Language</label>
+    <select id="lang" class="lang-select"></select>
+  </div>
+
+  <script src="i18n.js"></script>
+  <script src="locales/ro.js"></script>
+  <script src="locales/ru.js"></script>
+  <script src="locales/zh.js"></script>
+  <script src="locales/ja.js"></script>
+  <script src="locales/bn.js"></script>
+  <script src="locales/th.js"></script>
+  <script src="settings.js"></script>
+  <script src="ui.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

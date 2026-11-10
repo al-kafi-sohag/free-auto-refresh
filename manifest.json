@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Free Auto Refresh",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Free auto refresh for any tab, with fixed or random intervals, a live on-page counter, and page watching. Built by Al Kafi Sohag.",
   "minimum_chrome_version": "111",
   "author": "Al Kafi Sohag (https://www.linkedin.com/in/al-kafi-sohag/)",
@@ -12,19 +12,43 @@
     "48": "icons/icon-48.png",
     "128": "icons/icon-128.png"
   },
-  "permissions": ["storage", "notifications"],
-  "background": { "service_worker": "background.js" },
-  "action": { "default_popup": "popup.html", "default_title": "Free Auto Refresh" },
+  "permissions": [
+    "storage",
+    "notifications"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Free Auto Refresh",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
   "commands": {
     "toggle-refresh": {
-      "suggested_key": { "default": "Alt+Shift+R" },
+      "suggested_key": {
+        "default": "Alt+Shift+R"
+      },
       "description": "Start / stop auto refresh on the current tab"
     }
   },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"],
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ],
       "run_at": "document_idle"
     }
   ]

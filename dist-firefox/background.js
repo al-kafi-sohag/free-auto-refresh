@@ -1,17 +1,16 @@
-const KEY = "tabs"; // { [tabId]: state }
+// Chrome runs this file as a service worker and loads the shared scripts here.
+// Firefox runs it as a background script and loads the same list from its manifest.
+if (typeof importScripts === "function") {
+  importScripts(
+    "i18n.js",
+    "locales/ro.js", "locales/ru.js", "locales/zh.js", "locales/ja.js", "locales/bn.js", "locales/th.js",
+    "settings.js"
+  );
+}
 
-const DEFAULTS = {
-  min: 30,
-  max: 60,
-  durationMin: 0,
-  maxRefreshes: 0,
-  watchMode: "none", // none | appears | disappears | changes
-  watchText: "",
-  showBadge: true,
-  bypassCache: false,
-  smartPause: true,
-  notify: true,
-};
+const S = globalThis.ARSettings;
+const I = globalThis.ARI18n;
+const KEY = "tabs"; // { [tabId]: state }
 
 /* ---------- serialized state access (avoids read/modify/write races) ---------- */
 let queue = Promise.resolve();
@@ -29,75 +28,32 @@ function withState(fn, write = true) {
 const syncTab = (tabId) =>
   chrome.tabs.sendMessage(tabId, { type: "sync" }).catch(() => {});
 
-/* ---------- toolbar icon (drawn at runtime, no image files needed) ---------- */
-function drawIcon(size) {
-  const c = new OffscreenCanvas(size, size);
-  const g = c.getContext("2d");
-  g.fillStyle = "#4f46e5";
-  g.beginPath();
-  g.roundRect(0, 0, size, size, size * 0.24);
-  g.fill();
+// The toolbar icon and notification icon are the logo files in icons/, declared in the manifest.
 
-  const cx = size / 2, cy = size / 2, R = size * 0.27;
-  const a1 = Math.PI * 1.65;
-  g.strokeStyle = "#ffffff";
-  g.lineWidth = size * 0.11;
-  g.lineCap = "round";
-  g.beginPath();
-  g.arc(cx, cy, R, Math.PI * 0.15, a1);
-  g.stroke();
-
-  const px = cx + R * Math.cos(a1), py = cy + R * Math.sin(a1);
-  const tx = -Math.sin(a1), ty = Math.cos(a1);
-  const nx = Math.cos(a1), ny = Math.sin(a1);
-  const h = size * 0.2, w = size * 0.17;
-  g.fillStyle = "#ffffff";
-  g.beginPath();
-  g.moveTo(px + tx * h, py + ty * h);
-  g.lineTo(px + nx * w, py + ny * w);
-  g.lineTo(px - nx * w, py - ny * w);
-  g.closePath();
-  g.fill();
-  return c;
-}
-
-async function setupIcon() {
-  try {
-    const imageData = {};
-    for (const s of [16, 32, 48, 128]) {
-      imageData[s] = drawIcon(s).getContext("2d").getImageData(0, 0, s, s);
-    }
-
-    await chrome.action.setIcon({ imageData });
-  } catch (e) {
-    console.warn("Icon setup failed", e);
-  }
-}
-
-async function iconDataUrl(size = 128) {
-  const blob = await drawIcon(size).convertToBlob({ type: "image/png" });
-  const bytes = new Uint8Array(await blob.arrayBuffer());
-  let bin = "";
-  for (const b of bytes) bin += String.fromCharCode(b);
-  return "data:image/png;base64," + btoa(bin);
-}
-
-setupIcon();
-
-/* ---------- toolbar badge (shows refresh count per tab) ---------- */
+/* ---------- toolbar badge (refresh count or countdown, per tab) ---------- */
 const shortNum = (n) =>
   n >= 1000 ? (n / 1000).toFixed(n >= 10000 ? 0 : 1) + "k" : String(n);
 
+// Time until the next refresh, short enough for the badge: "45", "3m", "2h"
+function countdownText(st) {
+  if (!st.nextAt) return "…";
+  const s = Math.max(0, Math.ceil((st.nextAt - Date.now()) / 1000));
+  if (s < 100) return String(s);
+  if (s < 6000) return Math.ceil(s / 60) + "m";
+  return Math.round(s / 3600) + "h";
+}
+
 async function applyBadge(tabId, st) {
   try {
-    if (!st) {
+    const mode = st?.cfg?.toolbarBadge || "count"; // count | countdown | off
+    if (!st || mode === "off") {
       await chrome.action.setBadgeText({ tabId, text: "" });
       return;
     }
 
     let text, color;
     if (st.running) {
-      text = shortNum(st.refreshCount);
+      text = mode === "countdown" && !st.paused ? countdownText(st) : shortNum(st.refreshCount);
       color = st.paused ? "#d97706" : "#16a34a";
     } else if (st.finished?.reason === "match") {
       text = "!";
@@ -119,65 +75,98 @@ async function applyBadge(tabId, st) {
 
 /* ---------- start / stop ---------- */
 async function startTab(tabId, cfg = {}) {
-  const c = { ...DEFAULTS, ...cfg };
-  let min = Math.max(1, Number(c.min) || DEFAULTS.min);
-  let max = Math.max(1, Number(c.max) || min);
-  if (max < min) [min, max] = [max, min];
-  const durationMin = Math.max(0, Number(c.durationMin) || 0);
+  const c = S.normalize(cfg);
+  if (c.max < c.min) [c.min, c.max] = [c.max, c.min];
+  const { min, max, durationMin } = c;
+  await I.init(); // pick up the user's current language
   const now = Date.now();
 
   const st = {
     running: true,
     paused: false,
     finished: null,
+    cfg: c, // the full settings this run started with
+    strings: I.pick("b."), // on-page badge texts, so the content script needs no translations
     min,
     max,
     durationMin,
-    maxRefreshes: Math.max(0, parseInt(c.maxRefreshes, 10) || 0),
+    maxRefreshes: c.maxRefreshes,
     endTime: durationMin > 0 ? now + durationMin * 60000 : null,
     startedAt: now,
     refreshCount: 0,
     scheduledAt: null,
     nextAt: null,
     willReload: true,
-    showBadge: !!c.showBadge,
-    bypassCache: !!c.bypassCache,
-    smartPause: !!c.smartPause,
-    notify: !!c.notify,
-    watch: { mode: c.watchMode || "none", text: c.watchText || "", baseline: null },
+    showBadge: c.showBadge,
+    bypassCache: c.bypassCache,
+    smartPause: c.smartPause,
+    notify: c.notify,
+    watch: { mode: c.watchMode, text: c.watchText, baseline: null },
   };
 
   await withState((d) => {
     d[tabId] = st;
   });
   applyBadge(tabId, st);
-  syncTab(tabId);
-  return st;
+  if (c.keepAlive) setDiscardable(tabId, false);
+
+  // A tab opened before the extension was installed or updated has no content script.
+  // Starting always begins with a refresh anyway, so do that refresh from here: the
+  // reloaded page gets the content script and carries on.
+  const alive = await chrome.tabs.sendMessage(tabId, { type: "ping" }).then(() => true, () => false);
+  if (alive) {
+    syncTab(tabId);
+    return st;
+  }
+
+  const counted = await withState((d) => {
+    const s = d[tabId];
+    if (!s?.running) return null;
+    s.refreshCount += 1;
+    return s;
+  });
+  if (!counted) return st;
+  applyBadge(tabId, counted);
+  chrome.tabs.reload(tabId, { bypassCache: !!counted.bypassCache }).catch(() => {});
+  return counted;
 }
 
 async function stopTab(tabId) {
-  await withState((d) => {
+  const prev = await withState((d) => {
+    const s = d[tabId] || null;
     delete d[tabId];
+    return s;
   });
+  if (prev?.cfg?.keepAlive) setDiscardable(tabId, true);
   applyBadge(tabId, null);
   syncTab(tabId);
   return null;
 }
 
+// Asks the browser not to put the tab to sleep (Memory Saver and similar) while it is
+// refreshing. Best effort: the browser may still discard it when memory is critically low.
+function setDiscardable(tabId, allowed) {
+  try {
+    Promise.resolve(chrome.tabs.update(tabId, { autoDiscardable: allowed })).catch(() => {});
+  } catch (e) {
+    /* not supported by this browser */
+  }
+}
+
 /* ---------- notifications ---------- */
 async function notifyMatch(tabId, st) {
   try {
+    await I.init();
     const w = st.watch;
     const what =
-      w.mode === "appears" ? `"${w.text}" appeared`
-      : w.mode === "disappears" ? `"${w.text}" disappeared`
-      : "the watched content changed";
-    const n = st.refreshCount;
+      w.mode === "appears" ? I.t("n.appeared", { text: w.text })
+      : w.mode === "disappears" ? I.t("n.disappeared", { text: w.text })
+      : I.t("n.changed");
     chrome.notifications.create(`ar-${tabId}-${Date.now()}`, {
       type: "basic",
-      iconUrl: await iconDataUrl(128),
-      title: "Auto Refresh: match found",
-      message: `${what} after ${n} refresh${n === 1 ? "" : "es"}. Click to jump to the tab.`,
+      iconUrl: chrome.runtime.getURL("icons/icon-128.png"),
+      title: I.t("n.title"),
+      message: `${what} ${I.t("n.after", { n: st.refreshCount })}`,
       priority: 2,
     });
   } catch (e) {
@@ -223,16 +212,25 @@ async function handle(msg, tabId) {
       return st;
     }
 
-    case "schedule":
-      await withState((d) => {
+    case "schedule": {
+      const st = await withState((d) => {
         const s = d[tabId];
-        if (s?.running) {
-          s.scheduledAt = msg.startAt;
-          s.nextAt = msg.nextAt;
-          s.willReload = msg.willReload;
-        }
+        if (!s?.running) return null;
+        s.scheduledAt = msg.startAt;
+        s.nextAt = msg.nextAt;
+        s.willReload = msg.willReload;
+        return s;
       });
+      if (st?.cfg?.toolbarBadge === "countdown") applyBadge(tabId, st);
       return true;
+    }
+
+    // Sent once a second by the page while the toolbar shows a countdown
+    case "tickBadge": {
+      const st = await withState((d) => d[tabId] || null, false);
+      if (st?.running) applyBadge(tabId, st);
+      return true;
+    }
 
     case "setBaseline":
       await withState((d) => {
@@ -247,6 +245,7 @@ async function handle(msg, tabId) {
         if (s?.running && !s.paused) {
           s.refreshCount += 1;
           s.nextAt = null;
+          s.scroll = msg.scroll || null; // where the page was, for "keep scroll position"
           return s;
         }
 
@@ -270,6 +269,7 @@ async function handle(msg, tabId) {
       });
       if (!st) return false;
       applyBadge(tabId, st);
+      if (st.cfg?.keepAlive) setDiscardable(tabId, true);
       if (msg.reason === "match" && st.notify) notifyMatch(tabId, st);
       syncTab(tabId);
       return true;
@@ -286,6 +286,15 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     sendResponse(null);
   });
   return true; // async response
+});
+
+/* ---------- install / update ---------- */
+chrome.runtime.onInstalled.addListener(async ({ reason }) => {
+  const { pinned } = await chrome.storage.local.get("pinned");
+  if (Array.isArray(pinned)) return;
+  // Updating from a version without pinning: keep every setting the old popup showed
+  // on the main view. New installs start with the simple view.
+  await chrome.storage.local.set({ pinned: reason === "update" ? S.LEGACY_PINS : [] });
 });
 
 /* ---------- housekeeping ---------- */

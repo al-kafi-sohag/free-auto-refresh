@@ -1,18 +1,9 @@
 const $ = (id) => document.getElementById(id);
 const set = (id, text) => { $(id).textContent = text; };
 
-const DEFAULTS = {
-  min: 30,
-  max: 60,
-  durationMin: 0,
-  maxRefreshes: 0,
-  watchMode: "none",
-  watchText: "",
-  showBadge: true,
-  bypassCache: false,
-  smartPause: true,
-  notify: true,
-};
+const S = globalThis.ARSettings;
+const UI = globalThis.ARUI;
+const I = globalThis.ARI18n;
 
 const PILL_BASE = "badge";
 const PILL = {
@@ -21,7 +12,6 @@ const PILL = {
   paused: "border-amber-200 bg-amber-50 text-amber-700 dark:border-amber-500/30 dark:bg-amber-500/10 dark:text-amber-300",
   finished: "border-zinc-300 bg-zinc-900 text-zinc-50 dark:border-zinc-300 dark:bg-zinc-100 dark:text-zinc-900",
 };
-const PILL_TEXT = { stopped: "Stopped", running: "Running", paused: "Paused", finished: "Finished" };
 
 const RESULT_BASE = "mx-4 mt-2.5 rounded-md border px-3 py-2 text-[12px] font-medium";
 const RESULT = {
@@ -31,6 +21,11 @@ const RESULT = {
 
 let tabId = null;
 let state = null;
+
+let cfg = S.defaults(); // settings shown in the form
+let pinned = [];        // advanced settings shown on the main view
+let profiles = {};
+const openGroups = new Set(); // advanced groups currently expanded
 
 /* ---------- helpers ---------- */
 function fmt(ms) {
@@ -43,61 +38,10 @@ function fmt(ms) {
   return `${sec}s`;
 }
 
-function readForm() {
-  return {
-    min: parseFloat($("min").value),
-    max: parseFloat($("max").value),
-    durationMin: parseFloat($("duration").value) || 0,
-    maxRefreshes: parseInt($("maxRefreshes").value, 10) || 0,
-    watchMode: $("watchMode").value,
-    watchText: $("watchText").value.trim(),
-    showBadge: $("showBadge").checked,
-    bypassCache: $("bypassCache").checked,
-    smartPause: $("smartPause").checked,
-    notify: $("notify").checked,
-  };
-}
-
-function writeForm(c) {
-  $("min").value = c.min;
-  $("max").value = c.max;
-  $("duration").value = c.durationMin;
-  $("maxRefreshes").value = c.maxRefreshes;
-  $("watchMode").value = c.watchMode;
-  $("watchText").value = c.watchText;
-  $("showBadge").checked = !!c.showBadge;
-  $("bypassCache").checked = !!c.bypassCache;
-  $("smartPause").checked = !!c.smartPause;
-  $("notify").checked = !!c.notify;
-  updateWatchUi();
-}
-
-function cfgFromState(s) {
-  return {
-    min: s.min,
-    max: s.max,
-    durationMin: s.durationMin,
-    maxRefreshes: s.maxRefreshes,
-    watchMode: s.watch.mode,
-    watchText: s.watch.text,
-    showBadge: s.showBadge,
-    bypassCache: s.bypassCache,
-    smartPause: s.smartPause,
-    notify: s.notify,
-  };
-}
-
-function updateWatchUi() {
-  const mode = $("watchMode").value;
-  $("watchText").classList.toggle("hidden", mode === "none");
-  $("watchText").placeholder =
-    mode === "changes" ? "CSS selector (optional), e.g. #price" : "Text to look for";
-}
-
 function validate(c) {
-  if (!(c.min > 0) || !(c.max > 0)) return "Enter valid interval times.";
-  if ((c.watchMode === "appears" || c.watchMode === "disappears") && !c.watchText) {
-    return "Enter the text you want to watch for.";
+  if (!(c.min > 0) || !(c.max > 0)) return I.t("error.interval");
+  if ((c.watchMode === "appears" || c.watchMode === "disappears") && !String(c.watchText || "").trim()) {
+    return I.t("error.watchText");
   }
 
   return "";
@@ -108,6 +52,57 @@ function showError(msg) {
   $("error").classList.toggle("hidden", !msg);
 }
 
+/* ---------- settings form ---------- */
+function onChange(key, value) {
+  cfg[key] = value;
+  S.saveDefaults(cfg);
+  $("profile").value = ""; // the form no longer matches a saved profile
+  showError("");
+}
+
+function onPin(key) {
+  pinned = pinned.includes(key) ? pinned.filter((k) => k !== key) : [...pinned, key];
+  S.savePinned(pinned);
+  buildForm();
+}
+
+function buildProfiles() {
+  const names = Object.keys(profiles);
+  const select = $("profile");
+  const current = select.value;
+  select.replaceChildren(new Option(I.t("profile.current"), ""), ...names.map((n) => new Option(n, n)));
+  select.value = names.includes(current) ? current : "";
+  $("profileRow").classList.toggle("hidden", names.length === 0);
+}
+
+function buildForm() {
+  const base = { cfg, pinned, onChange, onPin };
+  UI.renderList($("coreFields"), S.SETTINGS.filter((d) => d.core), { ...base, idPrefix: "core", showPins: false });
+  UI.renderPinned($("pinned"), { ...base, idPrefix: "pin", showPins: false });
+  $("pinned").classList.toggle("hidden", pinned.length === 0);
+  UI.renderGroups($("groups"), { ...base, idPrefix: "adv", showPins: true }, openGroups);
+  buildProfiles();
+  applyLock();
+}
+
+// Settings can't be changed while a refresh is running on this tab
+function applyLock() {
+  const running = !!state?.running;
+  for (const node of document.querySelectorAll("#settings input, #settings select, #settings .chip")) {
+    node.disabled = running;
+  }
+
+  for (const id of ["profileRow", "core", "pinned", "groups"]) {
+    $(id).classList.toggle("opacity-60", running);
+  }
+}
+
+function showView(advanced) {
+  $("viewMain").classList.toggle("hidden", advanced);
+  $("viewAdvanced").classList.toggle("hidden", !advanced);
+  buildForm(); // a value changed in one view must show in the other
+}
+
 /* ---------- rendering ---------- */
 function render() {
   const s = state;
@@ -115,27 +110,27 @@ function render() {
   const paused = running && s.paused;
   const finished = !running && s?.finished;
 
-  $("form").disabled = running;
-  $("form").classList.toggle("opacity-60", running);
+  applyLock();
 
   const key = paused ? "paused" : running ? "running" : finished ? "finished" : "stopped";
   $("pill").className = PILL_BASE + " " + PILL[key];
-  $("pill").textContent = PILL_TEXT[key];
+  $("pill").textContent = I.t("status." + key);
 
-  $("toggle").textContent = running ? "Stop" : finished ? "Start again" : "Start";
+  $("toggle").textContent = I.t(running ? "btn.stop" : finished ? "btn.startAgain" : "btn.start");
   $("toggle").className = "flex-1 btn " + (running ? "btn-danger" : "btn-primary");
   $("pause").classList.toggle("hidden", !running);
-  $("pause").textContent = paused ? "Resume" : "Pause";
+  $("pause").textContent = I.t(paused ? "btn.resume" : "btn.pause");
 
   if (finished) {
     const f = s.finished;
-    const n = s.refreshCount;
     $("result").textContent =
       f.reason === "match"
-        ? `Match found after ${n} refresh${n === 1 ? "" : "es"}.`
+        ? I.t("result.match", { n: s.refreshCount })
         : f.reason === "count"
-        ? `Reached the limit of ${s.maxRefreshes} refreshes.`
-        : "Time limit reached.";
+        ? I.t("result.count", { n: s.maxRefreshes })
+        : f.reason === "interaction"
+        ? I.t("result.interaction")
+        : I.t("result.time");
     $("result").className = RESULT_BASE + " " + RESULT[f.reason === "match" ? "match" : "done"];
   } else {
     $("result").className = "hidden";
@@ -153,7 +148,7 @@ function tick() {
     set("statCount", "0");
     set("statNext", "–");
     set("statTime", "–");
-    set("statTimeLabel", "Elapsed");
+    set("statTimeLabel", I.t("stat.elapsed"));
     $("bar").style.width = "0%";
     return;
   }
@@ -163,7 +158,7 @@ function tick() {
   const live = s.running && !s.paused && s.nextAt;
   set(
     "statNext",
-    s.running && s.paused ? "Paused" : live ? (Math.max(0, s.nextAt - now) / 1000).toFixed(1) + "s" : "–"
+    s.running && s.paused ? I.t("status.paused") : live ? (Math.max(0, s.nextAt - now) / 1000).toFixed(1) + "s" : "–"
   );
 
   let pct = 0;
@@ -174,39 +169,65 @@ function tick() {
   $("bar").style.width = (pct * 100).toFixed(1) + "%";
 
   if (s.running && s.endTime) {
-    set("statTimeLabel", "Time left");
+    set("statTimeLabel", I.t("stat.timeLeft"));
     set("statTime", fmt(s.endTime - now));
   } else {
-    set("statTimeLabel", "Elapsed");
+    set("statTimeLabel", I.t("stat.elapsed"));
     set("statTime", fmt((s.finished?.at ?? now) - s.startedAt));
   }
 }
 
-/* ---------- is the content script alive on this tab? ---------- */
+/* ---------- can auto refresh run on this tab? ---------- */
+// Start reloads a tab that has no content script yet, so a tab that still doesn't answer
+// is a page extensions can't run on. Asks twice, because a page that is in the middle of
+// a refresh doesn't answer either.
+const ping = () => chrome.tabs.sendMessage(tabId, { type: "ping" }).then(() => true, () => false);
+
 async function checkContent() {
-  if (tabId == null) return;
-  let ok = true;
-  try {
-    await chrome.tabs.sendMessage(tabId, { type: "ping" });
-  } catch (e) {
-    ok = false;
+  if (tabId == null || !state?.running) {
+    $("notice").classList.add("hidden");
+    return;
+  }
+
+  let ok = await ping();
+  if (!ok) {
+    await new Promise((r) => setTimeout(r, 2500));
+    ok = !state?.running || (await ping());
   }
 
   $("notice").classList.toggle("hidden", ok);
-  if (!ok) {
-    $("notice").textContent =
-      "This tab isn't ready. Reload the page once (it was opened before the extension was installed or updated). Browser pages (chrome://, about:) and the extension store can't be refreshed.";
-  }
+  if (!ok) $("notice").textContent = I.t("notice.notReady");
 }
 
 /* ---------- events ---------- */
-$("watchMode").addEventListener("change", updateWatchUi);
-
 document.querySelectorAll("[data-min]").forEach((btn) => {
   btn.addEventListener("click", () => {
-    $("min").value = btn.dataset.min;
-    $("max").value = btn.dataset.max;
+    cfg.min = Number(btn.dataset.min);
+    cfg.max = Number(btn.dataset.max);
+    S.saveDefaults(cfg);
+    $("profile").value = "";
+    buildForm();
   });
+});
+
+$("profile").addEventListener("change", () => {
+  const saved = profiles[$("profile").value];
+  if (!saved) return;
+  cfg = S.normalize(saved);
+  S.saveDefaults(cfg);
+  buildForm();
+});
+
+$("openAdvanced").addEventListener("click", () => showView(true));
+$("closeAdvanced").addEventListener("click", () => showView(false));
+$("openOptions").addEventListener("click", () => chrome.runtime.openOptionsPage());
+
+$("lang").addEventListener("change", async () => {
+  await I.setLang($("lang").value);
+  translate();
+  buildForm();
+  render();
+  checkContent();
 });
 
 $("toggle").addEventListener("click", async () => {
@@ -218,15 +239,16 @@ $("toggle").addEventListener("click", async () => {
     return;
   }
 
-  const cfg = readForm();
   const err = validate(cfg);
   if (err) return showError(err);
   if (cfg.max < cfg.min) [cfg.min, cfg.max] = [cfg.max, cfg.min];
+  cfg = S.normalize(cfg);
 
-  await chrome.storage.local.set({ defaults: cfg });
+  await S.saveDefaults(cfg);
   state = await chrome.runtime.sendMessage({ type: "start", tabId, cfg });
+  buildForm();
   render();
-  setTimeout(checkContent, 400);
+  setTimeout(checkContent, 500);
 });
 
 $("pause").addEventListener("click", async () => {
@@ -250,26 +272,38 @@ chrome.storage.onChanged.addListener((changes, area) => {
   render();
 });
 
+/* ---------- language ---------- */
+let shortcutKey = "";
+
+function translate() {
+  I.apply(document);
+  I.fillSelect($("lang"));
+  set("shortcut", shortcutKey || I.t("shortcut.notSet"));
+}
+
 /* ---------- init ---------- */
 async function load() {
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
   tabId = tab?.id ?? null;
 
-  const { defaults } = await chrome.storage.local.get("defaults");
-  writeForm({ ...DEFAULTS, ...defaults });
+  await I.init();
+  ({ cfg, pinned, profiles } = await S.loadPrefs());
 
   if (tabId != null) {
     state = await chrome.runtime.sendMessage({ type: "getState", tabId });
-    if (state) writeForm(cfgFromState(state));
+    if (state?.cfg) cfg = S.normalize(state.cfg); // show what this tab is actually running with
   } else {
     $("toggle").disabled = true;
   }
 
   try {
     const cmds = await chrome.commands.getAll();
-    set("shortcut", cmds.find((c) => c.name === "toggle-refresh")?.shortcut || "not set");
+    shortcutKey = cmds.find((c) => c.name === "toggle-refresh")?.shortcut || "";
   } catch (e) {}
 
+  translate();
+
+  buildForm();
   render();
   checkContent();
   setInterval(tick, 250);

@@ -6,13 +6,19 @@ A Manifest V3 browser extension (Chrome and Firefox) that reloads a tab at a fix
 
 - **Fixed or random intervals**: set Min and Max to the same value for fixed, or different values for a new random wait on every refresh
 - **Live on-page badge**: a draggable pill with the refresh count, countdown, progress bar, and pause/stop buttons (rendered in a Shadow DOM, so it never clashes with the page)
-- **Toolbar counter**: the extension icon shows the refresh count for the current tab
+- **Toolbar counter**: the extension icon shows the refresh count for the current tab, or a countdown to the next refresh, or nothing
 - **Limits**: stop after N minutes, after N refreshes, or both
-- **Page watching**: stop and notify when text appears, when text disappears, or when the page (or a CSS selector) changes
-- **Smart pause**: skips a refresh while you are typing in a form field
+- **Page watching**: stop and notify when text appears, when text disappears, or when the page (or a CSS selector) changes. It waits for the page to finish loading, plus an adjustable extra delay, before checking
+- **Smart pause**: holds back a refresh while you are typing in a form field and, optionally, when you click or scroll. A click or scroll can either restart the countdown or stop refreshing
 - **Hard reload**: optional cache bypass
+- **Keep scroll position**: returns to the same place on the page after each refresh
+- **Keep the tab awake**: asks the browser not to put the tab to sleep while it is refreshing
 - **Pause / resume**, quick presets, and a keyboard shortcut (`Alt+Shift+R`, changeable in your browser's shortcut settings)
 - **Desktop notification** and tab-title flash when a watch matches
+- **Simple or advanced**: the popup shows only the essentials; everything else lives under Advanced settings, and any setting can be pinned to the main view
+- **Profiles and backup**: save named sets of settings, switch between them from the popup, and export or import everything as a file
+- **Plain-language help**: every setting has an (i) button that explains what it does
+- **7 languages**: English, Romanian, Russian, Chinese (Simplified), Japanese, Bengali and Thai. It follows the browser language, or pick one in the popup
 - Per-tab settings, dark mode, no data collection, no network requests
 
 ## Installation
@@ -32,7 +38,7 @@ The compiled `popup.css` is committed, so no build step is needed just to use it
 
 ### Firefox
 
-Firefox uses a separate manifest (`manifest.firefox.json`) staged into `dist-firefox/` at build time. See [Firefox build](#firefox-build) below.
+Firefox uses a separate manifest (`manifest.firefox.json`) staged into `dist-firefox/` at build time. See [Chrome and Firefox builds](#chrome-and-firefox-builds) below.
 
 ## Development
 
@@ -46,20 +52,33 @@ npm run watch:css    # rebuild on change
 
 After editing any file, click the reload icon on the extension card at `chrome://extensions`, then reload the tab you are testing.
 
-### Firefox build
+To work on the popup or the settings page without reloading the extension, run `npm run preview` and open `http://localhost:4173/dev/preview.html` (add `?page=options` for the settings page). It runs the real markup and scripts against a small fake `chrome` API in `dev/`, which is never shipped.
 
-Uses Mozilla's official [`web-ext`](https://github.com/mozilla/web-ext) CLI, installed as a dev dependency.
+`http://localhost:4173/dev/e2e.html` goes further: it runs the real `background.js` and `content.js` together on a test page, so refreshing, page watching, scroll restore and smart pause can be tried without loading the extension. Drive it from the console with `e2e.start({ min: 3, max: 3 })`, `e2e.stop()` and `e2e.state()`.
+
+Two checks run in Node, with no browser:
+
+```bash
+node dev/check-i18n.js         # every language has every string
+node dev/check-background.js   # background logic against a fake chrome API
+```
+
+### Chrome and Firefox builds
+
+Both browsers are built from the same source files; only the manifest differs. `scripts/build.js` stages one clean, loadable folder per browser, and Mozilla's official [`web-ext`](https://github.com/mozilla/web-ext) CLI (a dev dependency) zips them.
 
 ```bash
 npm install
-npm install -D web-ext   # one-time
+
+npm run build            # both upload-ready zips in web-ext-artifacts/
+npm run build:chrome     # dist-chrome/  + free-auto-refresh-chrome-<version>.zip
+npm run build:firefox    # dist-firefox/ + free-auto-refresh-firefox-<version>.zip
 
 npm run run:firefox      # build CSS, stage dist-firefox/, launch Firefox with the extension loaded
 npm run lint:firefox     # run AMO's validation checks locally
-npm run build:firefox    # produce the upload-ready zip in web-ext-artifacts/
 ```
 
-`dist-firefox/` only ever contains the runtime files the extension needs (`manifest.json` copied from `manifest.firefox.json`, `background.js`, `content.js`, `popup.html`, `popup.js`, `popup.css`, `icons/`, `LICENSE`) — never `node_modules`, `.git`, or build tooling. This avoids validation noise on the AMO uploader.
+`dist-chrome/` and `dist-firefox/` only ever contain the runtime files listed in `scripts/build.js`, the icons and the right `manifest.json` — never `node_modules`, `.git`, `dev/` or build tooling. When you add a source file, add it to the `FILES` list there.
 
 ## Usage
 
@@ -88,14 +107,29 @@ Tips:
 | --- | --- |
 | `manifest.json` | Chrome (MV3) manifest |
 | `manifest.firefox.json` | Firefox manifest — adds `background.scripts` fallback and `browser_specific_settings.gecko` |
-| `popup.html` / `popup.js` | Settings UI and live stats (Tailwind) |
+| `settings.js` | The single list of settings (type, default, label, group). Shared by the popup, the settings page and the background |
+| `ui.js` | Renders settings controls from that list, including the pin buttons |
+| `popup.html` / `popup.js` | Popup: live stats, main view, Advanced settings (Tailwind) |
+| `options.html` / `options.js` | Full settings page: all settings, profiles, export and import |
 | `background.js` | Service worker: per-tab state, toolbar badge, notifications, shortcut |
 | `content.js` | Runs in the page: timer, page watching, on-page badge |
 | `src/input.css`, `tailwind.config.js` | Tailwind source and config; build output is `popup.css` |
-| `scripts/prep-firefox.js` | Stages a clean `dist-firefox/` folder for `web-ext` |
+| `scripts/build.js` | Stages clean `dist-chrome/` and `dist-firefox/` folders for `web-ext` |
+| `i18n.js`, `locales/` | All user-facing text. English is in `i18n.js`; each other language is one file in `locales/` |
+| `dev/` | Browser previews, an end-to-end test page and Node checks (development only) |
 | `icons/`, `scripts/make-icons.js` | Extension icons, and the script that renders them (`npm run build:icons`) |
 
 The timer runs in the content script rather than `chrome.alarms`, because alarms cannot fire more often than every 30 seconds.
+
+### Languages
+
+The extension has its own small translation layer instead of the browser's `_locales`, because that one cannot switch language at runtime. The choice is stored as `lang` (`auto` follows the browser). The background resolves the on-page badge texts when a run starts and passes them to the tab in `state.strings`, so the content script that runs on every page carries no translations.
+
+To add a language, copy a file in `locales/`, translate the values, and add it to `LANGS` in `i18n.js`, to the script lists in `popup.html`, `options.html` and `background.js`, and to `background.scripts` in `manifest.firefox.json`.
+
+### Adding a setting
+
+Add one entry to `SETTINGS` in `settings.js`, and its label and explanation to `i18n.js` and each file in `locales/` (`node dev/check-i18n.js` reports anything missing). It then shows up under its group in Advanced settings and on the settings page, can be pinned, is saved, and is included in profiles and exports. The background passes the full settings object to the tab as `state.cfg`. Settings saved by older versions stay valid: any key they lack falls back to its default.
 
 ## Permissions
 
@@ -106,10 +140,9 @@ The timer runs in the content script rather than `chrome.alarms`, because alarms
 ## Limitations
 
 - Does not work on `chrome://`/`about:` pages, extension stores, or the built-in PDF viewer.
-- Tabs opened before the extension was installed or updated need one manual reload.
-- Chrome's Memory Saver can discard inactive tabs, which stops refreshing. Exempt the tab in Chrome's performance settings.
+- "Keep the tab awake" is a request to the browser. It can still put the tab to sleep when memory is critically low.
 - Background tabs may have timers delayed by about a second.
-- Watching checks the page about one second after load, so content that renders later may be missed.
+- Watching checks the page once it has loaded plus the extra wait you set (one second by default). Content that appears later than that is missed; raise the extra wait for such pages.
 - Firefox build requires Firefox 140+ (desktop) due to `data_collection_permissions` support.
 
 ## Roadmap
@@ -117,9 +150,12 @@ The timer runs in the content script rather than `chrome.alarms`, because alarms
 - [x] Refresh counter
 - [x] Stop or notify when page text changes
 - [x] Firefox build
-- [ ] Saved profiles / presets
+- [x] Saved profiles, export and import
+- [x] Languages and per-setting help
+- [x] Wait for load, keep scroll position, click and scroll pause, toolbar countdown, keep tab awake
 - [ ] Sound alert on match
-- [ ] Per-site rules
+- [ ] Per-site rules (auto-start) and resume after browser restart
+- [ ] Local history page
 
 ## License
 
