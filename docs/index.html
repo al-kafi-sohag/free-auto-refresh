@@ -1,184 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Free Auto Refresh – Auto Reload Tabs &amp; Page Monitor Extension</title>
-<meta name="description" content="Free auto refresh extension for Chrome and Firefox. Reload any tab on a timer or random interval and get alerted when a page changes. No tracking.">
-<meta name="keywords" content="auto refresh, auto refresh extension, auto refresh chrome, auto reload page, page monitor, keyword alert, free auto refresh">
+<meta name="theme-color" content="#eef4ff">
+<title>Free Auto Refresh – Auto Refresh Chrome Extension &amp; Page Monitor</title>
+<meta name="description" content="Free auto refresh extension for Chrome and Firefox. Auto reload any tab on a timer or random interval and get alerted when a page changes. No tracking.">
+<meta name="keywords" content="auto refresh, auto refresh chrome, auto refresh extension, auto reload chrome, auto refresher, page refresher, auto refresh page, free auto refresh extension">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://al-kafi-sohag.github.io/free-auto-refresh/">
 <meta property="og:site_name" content="Free Auto Refresh">
-<meta property="og:title" content="Free Auto Refresh – Auto Reload Tabs &amp; Page Monitor Extension">
-<meta property="og:description" content="Free auto refresh extension for Chrome and Firefox. Reload any tab on a timer or random interval and get alerted when a page changes. No tracking.">
 <meta property="og:type" content="website">
+<meta property="og:title" content="Free Auto Refresh – Auto Refresh Chrome Extension &amp; Page Monitor">
+<meta property="og:description" content="Free auto refresh extension for Chrome and Firefox. Auto reload any tab on a timer or random interval and get alerted when a page changes. No tracking.">
 <meta property="og:url" content="https://al-kafi-sohag.github.io/free-auto-refresh/">
 <meta property="og:image" content="https://al-kafi-sohag.github.io/free-auto-refresh/assets/poster.png">
+<meta property="og:image:alt" content="Free Auto Refresh: auto refresh and page monitor browser extension">
+<meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free Auto Refresh – Auto Refresh Chrome Extension &amp; Page Monitor">
+<meta name="twitter:description" content="Free auto refresh extension for Chrome and Firefox. Auto reload any tab on a timer or random interval and get alerted when a page changes. No tracking.">
+<meta name="twitter:image" content="https://al-kafi-sohag.github.io/free-auto-refresh/assets/poster.png">
 <meta name="google-site-verification" content="ww9t1NvE40Omq86n1bNGdVptryQJXYkv5f0-MjdqTqM">
 <meta name="msvalidate.01" content="3CB45458A679463A21F05BA747535729">
 <link rel="icon" href="assets/logo.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Free Auto Refresh","applicationCategory":"BrowserApplication","operatingSystem":"Chrome, Firefox","softwareVersion":"1.1.0","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Free auto refresh and page monitor browser extension with keyword alerts.","url":"https://al-kafi-sohag.github.io/free-auto-refresh/","author":{"@type":"Person","name":"Al Kafi Sohag"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Free Auto Refresh","applicationCategory":"BrowserApplication","operatingSystem":"Chrome, Firefox","softwareVersion":"1.1.0","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Free auto refresh and page monitor browser extension with website change alerts.","url":"https://al-kafi-sohag.github.io/free-auto-refresh/","downloadUrl":"https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp","author":{"@type":"Person","name":"Al Kafi Sohag"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Free Auto Refresh","url":"https://al-kafi-sohag.github.io/free-auto-refresh/"}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is Free Auto Refresh really free?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every feature is free, with no ads, account or paid tier."}},{"@type":"Question","name":"Does it collect any data?","acceptedAnswer":{"@type":"Answer","text":"No. It makes no network requests and stores settings only in your browser."}},{"@type":"Question","name":"Can it tell me when a page changes?","acceptedAnswer":{"@type":"Answer","text":"Yes. It can stop and notify you when text appears, disappears, or the page content changes."}},{"@type":"Question","name":"Which browsers does it support?","acceptedAnswer":{"@type":"Answer","text":"Chrome and other Chromium browsers, and desktop Firefox."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Free Auto Refresh","url":"https://al-kafi-sohag.github.io/free-auto-refresh/","logo":"https://al-kafi-sohag.github.io/free-auto-refresh/assets/logo.png","sameAs":["https://github.com/al-kafi-sohag/free-auto-refresh"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is Free Auto Refresh?","acceptedAnswer":{"@type":"Answer","text":"It is a free browser extension that automatically reloads a tab on a timer or at random intervals, and can alert you when the page changes. It works in Chrome, Firefox and Chromium browsers such as Edge and Brave."}},{"@type":"Question","name":"Is Free Auto Refresh really free?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every feature is free, including random intervals and page watching. There are no ads, no account and no paid tier."}},{"@type":"Question","name":"Does it collect any data?","acceptedAnswer":{"@type":"Answer","text":"No. It makes no network requests and stores your settings only in your browser."}},{"@type":"Question","name":"How do I auto refresh a page in Chrome?","acceptedAnswer":{"@type":"Answer","text":"Install the extension, open the page, click the icon, choose an interval and press Start. The full walkthrough is in how to auto refresh a page."}},{"@type":"Question","name":"Can it tell me when a page changes?","acceptedAnswer":{"@type":"Answer","text":"Yes. It can stop and send a desktop notification when text appears, when text disappears, or when the page content changes."}},{"@type":"Question","name":"Can I refresh at random intervals?","acceptedAnswer":{"@type":"Answer","text":"Yes. Set a minimum and a maximum, and each refresh waits a new random time in between."}},{"@type":"Question","name":"Which browsers does it support?","acceptedAnswer":{"@type":"Answer","text":"Chrome 111 or newer, other Chromium browsers such as Edge, Brave and Opera, and desktop Firefox 140 or newer."}},{"@type":"Question","name":"Will it interrupt me while I am typing?","acceptedAnswer":{"@type":"Answer","text":"No. Smart pause holds the refresh while you type in a form field, and optionally when you click or scroll."}}]}</script>
 </head>
-<body class="bg-page font-sans text-ink antialiased" data-ga="G-0DTP2D307V">
+<body data-ga="G-0DTP2D307V">
 
-<header class="sticky top-0 z-40 border-b border-line bg-page/90 backdrop-blur">
-  <div class="wrap flex h-16 items-center justify-between gap-4">
-    <a href="" class="flex items-center gap-2.5 font-display text-[17px] font-extrabold">
-      <img src="assets/logo.png" alt="" width="30" height="30">Free Auto Refresh
-    </a>
-    <nav id="nav" class="absolute left-0 top-16 hidden w-full flex-col gap-1 border-b border-line bg-page p-4 text-[15px] font-medium text-muted md:static md:flex md:w-auto md:flex-row md:gap-7 md:border-0 md:p-0" aria-label="Main">
-      <a href="features/" class="rounded px-2 py-2 hover:text-ink md:p-0">Features</a>
-      <a href="use-cases/" class="rounded px-2 py-2 hover:text-ink md:p-0">Use cases</a>
-      <a href="chrome/" class="rounded px-2 py-2 hover:text-ink md:p-0">Chrome</a>
-      <a href="firefox/" class="rounded px-2 py-2 hover:text-ink md:p-0">Firefox</a>
-      <a href="faq/" class="rounded px-2 py-2 hover:text-ink md:p-0">FAQ</a>
-    </nav>
-    <div class="flex items-center gap-2">
-      <a href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Add to Chrome</a>
-      <button id="navToggle" type="button" class="btn btn-ghost btn-sm md:hidden" aria-controls="nav" aria-expanded="false">Menu</button>
-    </div>
+<header class="site-header">
+  <div class="page-width nav-shell">
+    <a class="brand" href=""><img src="assets/logo.png" alt="" width="31" height="31">Free Auto Refresh</a>
+    <nav class="desktop-nav" aria-label="Main"><a href="" aria-current="page">Home</a><a href="features/">Features</a><a href="use-cases/">Use cases</a><a href="guides/">Guides</a><a href="faq/">FAQ</a></nav>
+    <a class="nav-cta" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg aria-hidden="true" class="lucide lucide-arrow-up-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M7 7h10v10" /> <path d="M7 17 17 7" /> </svg></a>
+    <button class="mobile-nav-toggle" id="navToggle" type="button" aria-controls="mobileNav" aria-expanded="false" aria-label="Menu"><svg aria-hidden="true" class="lucide lucide-menu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M4 5h16" /> <path d="M4 12h16" /> <path d="M4 19h16" /> </svg></button>
   </div>
+  <nav class="mobile-nav-menu" id="mobileNav" aria-label="Mobile"><a href="" aria-current="page">Home</a><a href="features/">Features</a><a href="use-cases/">Use cases</a><a href="guides/">Guides</a><a href="faq/">FAQ</a><a href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome</a><a href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></nav>
 </header>
 
 <main>
 
-  <section class="wrap grid items-center gap-10 pt-14 lg:grid-cols-2">
-    <div>
-      <p class="kicker">Free · Chrome &amp; Firefox · 7 languages</p>
-      <h1 class="h1">Auto refresh any tab.<br>Know when the page changes.</h1>
-      <p class="lede">Free Auto Refresh reloads a page on a fixed or random timer, stops the moment your text appears or the content changes, and waits while you are typing. No account, no ads, no tracking.</p>
-      <div class="mt-7 flex flex-wrap gap-3">
-        <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome</a>
-        <a class="btn btn-ghost" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a>
+  <section class="hero-section home">
+    <div class="page-width hero-grid">
+      <div class="hero-copy">
+        
+        <span class="eyebrow">Chrome + Firefox / 7 languages</span>
+        <h1>Auto refresh any tab. <span>Know when the page changes.</span></h1>
+        <p class="hero-description">Free Auto Refresh reloads a page on a fixed or random timer, stops when your text appears or the content changes, and waits while you type. No account, no ads, no tracking.</p>
+        <div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg aria-hidden="true" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div>
+        <div class="trust-row"><span><svg aria-hidden="true" class="lucide lucide-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg>0 trackers</span><span><svg aria-hidden="true" class="lucide lucide-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg>0 network requests</span><span><svg aria-hidden="true" class="lucide lucide-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg>100% free</span><span><svg aria-hidden="true" class="lucide lucide-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg>Open source</span></div>
       </div>
-      <p class="mt-5 text-sm text-muted"><b class="text-ink">0</b> trackers · <b class="text-ink">0</b> network requests · <b class="text-ink">100%</b> free · Open source</p>
+      <figure class="shot ">
+        <div class="shot-bar"><span class="shot-dots"><i></i><i></i><i></i></span><span class="shot-title">Free Auto Refresh</span></div>
+        <img src="assets/placeholder.svg" alt="Free Auto Refresh popup showing a refresh counter, interval presets and a Start button" width="960" height="720">
+        <figcaption><svg aria-hidden="true" class="lucide lucide-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg>Simple controls, right where you need them</figcaption>
+      </figure>
     </div>
-    <img src="assets/placeholder.svg" alt="Free Auto Refresh popup open over a browser tab" width="1200" height="900" loading="lazy" class="w-full rounded-2xl border border-line bg-white">
   </section>
 
-  <section class="wrap mt-20">
-    <p class="kicker">Features</p>
-    <h2 class="h2">Not just a timer</h2>
-    <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      <a href="features/auto-refresh-timer/" class="card block hover:border-blue"><h3 class="font-display text-lg font-bold">Auto refresh timer for any tab</h3><p class="mt-1.5 text-sm text-muted">Pick an interval, press Start, and the page reloads itself until you stop it.</p></a>
-      <a href="features/random-interval-refresh/" class="card block hover:border-blue"><h3 class="font-display text-lg font-bold">Refresh at random intervals</h3><p class="mt-1.5 text-sm text-muted">Give a minimum and a maximum, and every refresh picks a new wait somewhere in between.</p></a>
-      <a href="features/page-monitor-keyword-alert/" class="card block hover:border-blue"><h3 class="font-display text-lg font-bold">Page monitor with keyword alerts</h3><p class="mt-1.5 text-sm text-muted">Tell it what to look for.</p></a>
-      <a href="features/on-page-countdown/" class="card block hover:border-blue"><h3 class="font-display text-lg font-bold">A live countdown on the page</h3><p class="mt-1.5 text-sm text-muted">A small pill sits in the corner of the page with the refresh count, the time left, and pause and stop buttons.</p></a>
-      <a href="features/smart-pause/" class="card block hover:border-blue"><h3 class="font-display text-lg font-bold">Smart pause: it waits for you</h3><p class="mt-1.5 text-sm text-muted">A refresh that fires while you are typing wipes out your work.</p></a>
-      <a href="features/keep-scroll-position/" class="card block hover:border-blue"><h3 class="font-display text-lg font-bold">Keep your place after every refresh</h3><p class="mt-1.5 text-sm text-muted">Reading halfway down a long page? Turn on Keep scroll position and each refresh brings you back to the same spot..</p></a>
-      <a href="features/hard-reload-bypass-cache/" class="card block hover:border-blue"><h3 class="font-display text-lg font-bold">Hard reload on a timer</h3><p class="mt-1.5 text-sm text-muted">A normal refresh can show saved copies of a page.</p></a>
-      <a href="features/refresh-limits/" class="card block hover:border-blue"><h3 class="font-display text-lg font-bold">Stop on its own, on your terms</h3><p class="mt-1.5 text-sm text-muted">Set a time limit, a refresh limit, or both.</p></a>
-      <a href="features/profiles-and-backup/" class="card block hover:border-blue"><h3 class="font-display text-lg font-bold">Profiles, export and import</h3><p class="mt-1.5 text-sm text-muted">Different pages need different settings.</p></a>
+  <section class="page-width content-section">
+    <div class="section-heading"><span class="eyebrow">Made for the way you browse</span><h2 class="h2">Not just a timer</h2><p>An auto refresh extension that also watches the page, protects what you are typing and knows when to stop.</p></div>
+    <div class="card-grid">
+      <a class="info-card" href="features/auto-refresh-timer/"><span class="card-icon"><svg aria-hidden="true" class="lucide lucide-timer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <line x1="10" x2="14" y1="2" y2="2" /> <line x1="12" x2="15" y1="14" y2="11" /> <circle cx="12" cy="14" r="8" /> </svg></span><h3>Auto refresh timer</h3><p>Pick an interval, press Start, and the page reloads itself until you stop it.</p><span class="text-link">See how it works <svg aria-hidden="true" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
+      <a class="info-card" href="features/random-interval-refresh/"><span class="card-icon"><svg aria-hidden="true" class="lucide lucide-shuffle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m18 14 4 4-4 4" /> <path d="m18 2 4 4-4 4" /> <path d="M2 18h1.973a4 4 0 0 0 3.3-1.7l5.454-8.6a4 4 0 0 1 3.3-1.7H22" /> <path d="M2 6h1.972a4 4 0 0 1 3.6 2.2" /> <path d="M22 18h-6.041a4 4 0 0 1-3.3-1.8l-.359-.45" /> </svg></span><h3>Random intervals</h3><p>Give a minimum and a maximum, and every refresh picks a new wait somewhere in between.</p><span class="text-link">See how it works <svg aria-hidden="true" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
+      <a class="info-card" href="features/page-monitor-keyword-alert/"><span class="card-icon"><svg aria-hidden="true" class="lucide lucide-scan-eye" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M3 7V5a2 2 0 0 1 2-2h2" /> <path d="M17 3h2a2 2 0 0 1 2 2v2" /> <path d="M21 17v2a2 2 0 0 1-2 2h-2" /> <path d="M7 21H5a2 2 0 0 1-2-2v-2" /> <circle cx="12" cy="12" r="1" /> <path d="M18.944 12.33a1 1 0 0 0 0-.66 7.5 7.5 0 0 0-13.888 0 1 1 0 0 0 0 .66 7.5 7.5 0 0 0 13.888 0" /> </svg></span><h3>Page change monitor</h3><p>Tell it what to look for.</p><span class="text-link">See how it works <svg aria-hidden="true" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
+      <a class="info-card" href="features/on-page-countdown/"><span class="card-icon"><svg aria-hidden="true" class="lucide lucide-gauge" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m12 14 4-4" /> <path d="M3.34 19a10 10 0 1 1 17.32 0" /> </svg></span><h3>Live countdown</h3><p>A small pill sits in the corner of the page with the refresh count, the time left, and pause and stop buttons.</p><span class="text-link">See how it works <svg aria-hidden="true" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
+      <a class="info-card" href="features/smart-pause/"><span class="card-icon"><svg aria-hidden="true" class="lucide lucide-keyboard" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M10 8h.01" /> <path d="M12 12h.01" /> <path d="M14 8h.01" /> <path d="M16 12h.01" /> <path d="M18 8h.01" /> <path d="M6 8h.01" /> <path d="M7 16h10" /> <path d="M8 12h.01" /> <rect width="20" height="16" x="2" y="4" rx="2" /> </svg></span><h3>Pause while typing</h3><p>A refresh that fires while you are typing wipes out your work.</p><span class="text-link">See how it works <svg aria-hidden="true" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
+      <a class="info-card" href="features/keep-scroll-position/"><span class="card-icon"><svg aria-hidden="true" class="lucide lucide-arrow-down-up" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m3 16 4 4 4-4" /> <path d="M7 20V4" /> <path d="m21 8-4-4-4 4" /> <path d="M17 4v16" /> </svg></span><h3>Restore scroll position</h3><p>Reading halfway down a long page? Turn on Keep scroll position and each refresh brings you back to the same spot..</p><span class="text-link">See how it works <svg aria-hidden="true" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
+      <a class="info-card" href="features/hard-reload-bypass-cache/"><span class="card-icon"><svg aria-hidden="true" class="lucide lucide-rotate-cw" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8" /> <path d="M21 3v5h-5" /> </svg></span><h3>Hard refresh</h3><p>A normal refresh can show saved copies of a page.</p><span class="text-link">See how it works <svg aria-hidden="true" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
+      <a class="info-card" href="features/refresh-limits/"><span class="card-icon"><svg aria-hidden="true" class="lucide lucide-circle-stop" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="12" r="10" /> <rect x="9" y="9" width="6" height="6" rx="1" /> </svg></span><h3>Refresh limits</h3><p>Set a time limit, a refresh limit, or both.</p><span class="text-link">See how it works <svg aria-hidden="true" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
+      <a class="info-card" href="features/profiles-and-backup/"><span class="card-icon"><svg aria-hidden="true" class="lucide lucide-bookmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M17 3a2 2 0 0 1 2 2v15a1 1 0 0 1-1.496.868l-4.512-2.578a2 2 0 0 0-1.984 0l-4.512 2.578A1 1 0 0 1 5 20V5a2 2 0 0 1 2-2z" /> </svg></span><h3>Saved profiles</h3><p>Different pages need different settings.</p><span class="text-link">See how it works <svg aria-hidden="true" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
     </div>
-    <p class="mt-6"><a class="font-semibold text-blue-deep" href="features/">All features →</a></p>
   </section>
 
-  <section class="wrap mt-20">
-    <p class="kicker">How it works</p>
-    <h2 class="h2">Three steps, ten seconds</h2>
-    <ol class="steps max-w-2xl">
-      <li>Open the page you want refreshed and click the Free Auto Refresh icon.</li>
-      <li>Pick a preset or set your own minimum and maximum seconds. Add a limit or a watch rule if you like.</li>
-      <li>Press Start. Pause or stop from the popup, the on-page counter, or with Alt+Shift+R.</li>
-    </ol>
-  </section>
-
-  <section class="wrap mt-20">
-    <p class="kicker">Use cases</p>
-    <h2 class="h2">What people use it for</h2>
-    <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      <a href="use-cases/restock-alerts/" class="card block hover:border-blue"><h3 class="font-display text-lg font-bold">Restock alerts for any product page</h3><p class="mt-1.5 text-sm text-muted">Leave the product page open.</p></a>
-      <a href="use-cases/price-tracking/" class="card block hover:border-blue"><h3 class="font-display text-lg font-bold">Get alerted when a price changes</h3><p class="mt-1.5 text-sm text-muted">Point it at the price on the page.</p></a>
-      <a href="use-cases/ticket-sales/" class="card block hover:border-blue"><h3 class="font-display text-lg font-bold">Catch ticket drops without the manual reload</h3><p class="mt-1.5 text-sm text-muted">Returned and resale tickets appear without warning.</p></a>
-      <a href="use-cases/appointment-slots/" class="card block hover:border-blue"><h3 class="font-display text-lg font-bold">Find an appointment slot without constant checking</h3><p class="mt-1.5 text-sm text-muted">Cancellations free up slots at random times.</p></a>
-      <a href="use-cases/online-auctions/" class="card block hover:border-blue"><h3 class="font-display text-lg font-bold">Follow an auction to the last second</h3><p class="mt-1.5 text-sm text-muted">Not every auction page updates itself.</p></a>
-      <a href="use-cases/exam-results/" class="card block hover:border-blue"><h3 class="font-display text-lg font-bold">Be first to know when results are published</h3><p class="mt-1.5 text-sm text-muted">Results day means hitting reload for hours.</p></a>
-      <a href="use-cases/order-and-application-status/" class="card block hover:border-blue"><h3 class="font-display text-lg font-bold">Get told when your status changes</h3><p class="mt-1.5 text-sm text-muted">Parcel, refund, visa or job application: when the status line changes, you will know without checking again and again..</p></a>
-      <a href="use-cases/live-dashboards/" class="card block hover:border-blue"><h3 class="font-display text-lg font-bold">Dashboards that stay up to date</h3><p class="mt-1.5 text-sm text-muted">Reports and BI dashboards often show stale numbers until someone reloads.</p></a>
-      <a href="use-cases/server-and-status-pages/" class="card block hover:border-blue"><h3 class="font-display text-lg font-bold">Watch builds, queues and status pages</h3><p class="mt-1.5 text-sm text-muted">Waiting on a deploy or a long job? Get a notification when the page says what you are waiting for..</p></a>
+  <section class="band">
+    <div class="page-width split">
+      <div><span class="eyebrow">Easy from the first click</span><h2 class="h2">Three steps, ten seconds.</h2><p class="lead">No account or setup wizard. Open a tab, pick a rhythm, and get back to what you were doing.</p></div>
+      <div class="steps-list"><div class="step-item"><span class="step-number">01</span><div><h3>Open the page</h3><p>Go to the page you want to refresh and click the Free Auto Refresh icon in the toolbar.</p></div></div><div class="step-item"><span class="step-number">02</span><div><h3>Choose your rules</h3><p>Pick a preset or set your own interval. Add a limit or a watch rule if you like.</p></div></div><div class="step-item"><span class="step-number">03</span><div><h3>Press Start</h3><p>Pause or stop from the popup, the on-page counter, or with Alt+Shift+R.</p></div></div></div>
     </div>
-    <p class="mt-6"><a class="font-semibold text-blue-deep" href="use-cases/">All use cases →</a></p>
   </section>
 
-  <section class="wrap mt-20 grid items-center gap-10 lg:grid-cols-2">
-    <img src="assets/placeholder.svg" alt="Page watching settings with a match notification" width="1200" height="750" loading="lazy" class="w-full rounded-2xl border border-line bg-white">
+  <section class="page-width content-section">
+    <div class="section-heading"><span class="eyebrow">A handy tab to have around</span><h2 class="h2">What people use it for</h2><p>From waiting on a product drop to watching a dashboard, let a tab check itself.</p></div>
+    <div class="card-grid">
+      <a class="info-card" href="use-cases/restock-alerts/"><span class="card-icon"><svg aria-hidden="true" class="lucide lucide-package-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M12 22V12" /> <path d="m16 17 2 2 4-4" /> <path d="M21 11.127V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.729l7 4a2 2 0 0 0 2 .001l1.32-.753" /> <path d="M3.29 7 12 12l8.71-5" /> <path d="m7.5 4.27 8.997 5.148" /> </svg></span><h3>Restock alerts</h3><p>Leave the product page open.</p><span class="text-link">See the setup <svg aria-hidden="true" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
+      <a class="info-card" href="use-cases/price-tracking/"><span class="card-icon"><svg aria-hidden="true" class="lucide lucide-tag" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z" /> <circle cx="7.5" cy="7.5" r=".5" fill="currentColor" /> </svg></span><h3>Price changes</h3><p>Point it at the price on the page.</p><span class="text-link">See the setup <svg aria-hidden="true" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
+      <a class="info-card" href="use-cases/ticket-sales/"><span class="card-icon"><svg aria-hidden="true" class="lucide lucide-ticket" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" /> <path d="M13 5v2" /> <path d="M13 17v2" /> <path d="M13 11v2" /> </svg></span><h3>Ticket drops</h3><p>Returned and resale tickets appear without warning.</p><span class="text-link">See the setup <svg aria-hidden="true" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
+      <a class="info-card" href="use-cases/appointment-slots/"><span class="card-icon"><svg aria-hidden="true" class="lucide lucide-calendar-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M8 2v3" /> <path d="M16 2v3" /> <rect x="3" y="3" width="18" height="18" rx="2" /> <path d="M3 9h18" /> <path d="m9 15 2 2 4-4" /> </svg></span><h3>Appointment availability</h3><p>Cancellations free up slots at random times.</p><span class="text-link">See the setup <svg aria-hidden="true" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
+      <a class="info-card" href="use-cases/online-auctions/"><span class="card-icon"><svg aria-hidden="true" class="lucide lucide-gavel" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m14 13-8.381 8.38a1 1 0 0 1-3.001-3l8.384-8.381" /> <path d="m16 16 6-6" /> <path d="m21.5 10.5-8-8" /> <path d="m8 8 6-6" /> <path d="m8.5 7.5 8 8" /> </svg></span><h3>Auctions and launches</h3><p>Not every auction page updates itself.</p><span class="text-link">See the setup <svg aria-hidden="true" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
+      <a class="info-card" href="use-cases/exam-results/"><span class="card-icon"><svg aria-hidden="true" class="lucide lucide-graduation-cap" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" /> <path d="M22 10v6" /> <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" /> </svg></span><h3>Results pages</h3><p>Results day means hitting reload for hours.</p><span class="text-link">See the setup <svg aria-hidden="true" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
+      <a class="info-card" href="use-cases/order-and-application-status/"><span class="card-icon"><svg aria-hidden="true" class="lucide lucide-clipboard-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <rect width="8" height="4" x="8" y="2" rx="1" ry="1" /> <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" /> <path d="m9 14 2 2 4-4" /> </svg></span><h3>Status pages</h3><p>Parcel, refund, visa or job application: when the status line changes, you will know without checking again and again..</p><span class="text-link">See the setup <svg aria-hidden="true" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
+      <a class="info-card" href="use-cases/live-dashboards/"><span class="card-icon"><svg aria-hidden="true" class="lucide lucide-layout-dashboard" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <rect width="7" height="9" x="3" y="3" rx="1" /> <rect width="7" height="5" x="14" y="3" rx="1" /> <rect width="7" height="9" x="14" y="12" rx="1" /> <rect width="7" height="5" x="3" y="16" rx="1" /> </svg></span><h3>Dashboards</h3><p>Reports and BI dashboards often show stale numbers until someone reloads.</p><span class="text-link">See the setup <svg aria-hidden="true" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
+      <a class="info-card" href="use-cases/server-and-status-pages/"><span class="card-icon"><svg aria-hidden="true" class="lucide lucide-server" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <rect width="20" height="8" x="2" y="2" rx="2" ry="2" /> <rect width="20" height="8" x="2" y="14" rx="2" ry="2" /> <line x1="6" x2="6.01" y1="6" y2="6" /> <line x1="6" x2="6.01" y1="18" y2="18" /> </svg></span><h3>Builds and queues</h3><p>Waiting on a deploy or a long job? Get a notification when the page says what you are waiting for..</p><span class="text-link">See the setup <svg aria-hidden="true" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
+    </div>
+  </section>
+
+  <section class="page-width content-section">
+    <div class="split even">
+      <figure class="shot left">
+        <div class="shot-bar"><span class="shot-dots"><i></i><i></i><i></i></span><span class="shot-title">Page watch</span></div>
+        <img src="assets/placeholder.svg" alt="Web page being watched for changes, with a match notification from Free Auto Refresh" width="960" height="720">
+        <figcaption><svg aria-hidden="true" class="lucide lucide-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg>Stops and tells you on a match</figcaption>
+      </figure>
+      <div class="prose"><span class="eyebrow">Page watching</span><h2 class="h2">It tells you when something changes.</h2><p>Set a simple watch rule and let the extension keep checking. When it finds what you are looking for, it stops refreshing and sends a desktop notification. See <a href="features/page-monitor-keyword-alert/">how page monitoring works</a>.</p>
+        <table class="settings"><tbody><tr><th scope="row">Text appears</th><td>Stops when a phrase shows up on the page</td></tr><tr><th scope="row">Text disappears</th><td>Stops when the text is gone</td></tr><tr><th scope="row">Content changes</th><td>Stops when the page, or one element, changes</td></tr></tbody></table>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-width content-section">
+    <div class="panel prose"><span class="eyebrow">Why Free Auto Refresh</span>
+      <h2>A free auto refresh extension for Chrome and Firefox</h2>
+      <p>Browsers have no built-in way to reload a tab on a schedule. Free Auto Refresh adds one: an <strong>auto refresher</strong> that reloads the page you choose every few seconds or minutes, for as long as you need. It works as an <a href="chrome/">auto refresh Chrome extension</a> and as a <a href="firefox/">Firefox add-on</a>, and the Chrome version also runs in Edge, Brave and Opera.</p>
+      <p>Every tab keeps its own timer, so a fast auto reload on one page never affects another. Start it from the popup or with a keyboard shortcut, and stop it the same way.</p>
+      
+      
+
+      <h2>More than a page refresher</h2>
+      <p>Most tab reloader tools stop at the timer. This one adds the parts people usually pay for elsewhere, and keeps them free:</p>
+      <ul><li><strong>Random intervals.</strong> Give a minimum and a maximum and every refresh waits a different time. <a href="features/random-interval-refresh/">Random interval refresh</a></li><li><strong>Website change detection.</strong> Stop and notify when text appears, disappears, or the page changes. <a href="features/page-monitor-keyword-alert/">Page change monitor</a></li><li><strong>Smart pause.</strong> It holds the reload while you type, click or scroll. <a href="features/smart-pause/">Smart pause</a></li><li><strong>Hard refresh on a timer.</strong> Bypass the cache on every reload. <a href="features/hard-reload-bypass-cache/">Automatic hard reload</a></li><li><strong>Limits.</strong> Stop after a set time or a number of refreshes. <a href="features/refresh-limits/">Refresh limits</a></li></ul>
+      
+
+      <h2>Private by design</h2>
+      <p>Free Auto Refresh collects no data and makes no network requests. The timer, the page watching and your settings all stay inside your browser. There is no account to create and nothing to pay for. The code is open source, so anyone can check these claims.</p>
+      
+      
+
+      <h2>New to auto refresh?</h2>
+      <p>Start with the guide on <a href="guides/how-to-auto-refresh-a-page/">how to auto refresh a page</a>, or see <a href="guides/how-to-hard-refresh/">how to hard refresh</a> when a page will not show its latest version.</p>
+      
+      </div>
+  </section>
+  
+  <section class="page-width faq-section" id="faq">
     <div>
-      <p class="kicker">Page watching</p>
-      <h2 class="h2">It tells you when something changes</h2>
-      <table class="settings">
-        <tbody>
-          <tr><th scope="row">Text appears</th><td>Stops when the text shows up on the page</td></tr>
-          <tr><th scope="row">Text disappears</th><td>Stops when the text is gone</td></tr>
-          <tr><th scope="row">Content changes</th><td>Stops when the page, or one element, differs from the first load</td></tr>
-        </tbody>
-      </table>
-      <p class="mt-5"><a class="font-semibold text-blue-deep" href="features/page-monitor-keyword-alert/">How page watching works →</a></p>
+      <span class="eyebrow">Good to know</span>
+      <h2 class="h2">Questions, answered.</h2>
+      <p class="lead">A few quick details about the extension and how it works.</p>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item" open><summary><h3>What is Free Auto Refresh?</h3><svg aria-hidden="true" class="lucide lucide-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>It is a free browser extension that automatically reloads a tab on a timer or at random intervals, and can alert you when the page changes. It works in Chrome, Firefox and Chromium browsers such as Edge and Brave.</p></details>
+      <details class="faq-item"><summary><h3>Is Free Auto Refresh really free?</h3><svg aria-hidden="true" class="lucide lucide-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>Yes. Every feature is free, including random intervals and page watching. There are no ads, no account and no paid tier.</p></details>
+      <details class="faq-item"><summary><h3>Does it collect any data?</h3><svg aria-hidden="true" class="lucide lucide-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>No. It makes no network requests and stores your settings only in your browser.</p></details>
+      <details class="faq-item"><summary><h3>How do I auto refresh a page in Chrome?</h3><svg aria-hidden="true" class="lucide lucide-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>Install the extension, open the page, click the icon, choose an interval and press Start. The full walkthrough is in <a href="guides/how-to-auto-refresh-a-page/">how to auto refresh a page</a>.</p></details>
+      <details class="faq-item"><summary><h3>Can it tell me when a page changes?</h3><svg aria-hidden="true" class="lucide lucide-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>Yes. It can stop and send a desktop notification when text appears, when text disappears, or when the page content changes.</p></details>
+      <details class="faq-item"><summary><h3>Can I refresh at random intervals?</h3><svg aria-hidden="true" class="lucide lucide-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>Yes. Set a minimum and a maximum, and each refresh waits a new random time in between.</p></details>
+      <details class="faq-item"><summary><h3>Which browsers does it support?</h3><svg aria-hidden="true" class="lucide lucide-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>Chrome 111 or newer, other Chromium browsers such as Edge, Brave and Opera, and desktop Firefox 140 or newer.</p></details>
+      <details class="faq-item"><summary><h3>Will it interrupt me while I am typing?</h3><svg aria-hidden="true" class="lucide lucide-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>No. Smart pause holds the refresh while you type in a form field, and optionally when you click or scroll.</p></details>
     </div>
   </section>
   
-  <section class="wrap mt-14 max-w-3xl">
-    <h2 class="h2">Questions</h2>
-    <div class="mt-5 space-y-3">
-      <details class="faq"><summary>Is Free Auto Refresh really free?</summary><p>Yes. Every feature is free, with no ads, account or paid tier.</p></details>
-      <details class="faq"><summary>Does it collect any data?</summary><p>No. It makes no network requests and stores settings only in your browser.</p></details>
-      <details class="faq"><summary>Can it tell me when a page changes?</summary><p>Yes. It can stop and notify you when text appears, disappears, or the page content changes.</p></details>
-      <details class="faq"><summary>Which browsers does it support?</summary><p>Chrome and other Chromium browsers, and desktop Firefox.</p></details>
-    </div>
-  </section>
-  
-  <section class="wrap mt-16">
-    <div class="rounded-3xl bg-ink px-6 py-12 text-center text-white sm:px-12">
-      <h2 class="font-display text-3xl font-extrabold">Install it in ten seconds</h2>
-      <p class="mx-auto mt-3 max-w-xl text-white/70">Free for Chrome and Firefox. No account, no ads, no tracking.</p>
-      <div class="mt-6 flex flex-wrap justify-center gap-3">
-        <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome</a>
-        <a class="btn btn-light" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a>
-      </div>
+  <section class="page-width">
+    <div class="cta-card">
+      <span class="eyebrow">Less checking. More doing.</span>
+      <h2>Install it in ten seconds.</h2>
+      <p>Free for Chrome and Firefox. No account, no ads, no tracking.</p>
+      <div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg aria-hidden="true" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div>
+      <div class="assurance"><span><svg aria-hidden="true" class="lucide lucide-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg>Free forever</span><span><svg aria-hidden="true" class="lucide lucide-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg>Private by design</span><span><svg aria-hidden="true" class="lucide lucide-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg>Open source</span></div>
     </div>
   </section>
 </main>
 
-<footer class="mt-20 border-t border-line bg-white">
-  <div class="wrap grid gap-8 py-12 text-sm sm:grid-cols-2 lg:grid-cols-4">
+<footer class="site-footer">
+  <div class="page-width footer-main">
     <div>
-      <a href="" class="flex items-center gap-2 font-display font-extrabold"><img src="assets/logo.png" alt="" width="26" height="26">Free Auto Refresh</a>
-      <p class="mt-3 text-muted">A free, private auto refresh and page monitor extension for Chrome and Firefox.</p>
+      <a class="brand" href=""><img src="assets/logo.png" alt="" width="31" height="31">Free Auto Refresh</a>
+      <p>A free, private auto refresh and page monitor extension for Chrome and Firefox.</p>
+      <p>Available in 7 languages.</p>
     </div>
-    <div>
-      <h2 class="foot-title">Features</h2>
-      <ul class="foot-list"><li><a href="features/auto-refresh-timer/">Auto refresh timer for any tab</a></li><li><a href="features/random-interval-refresh/">Refresh at random intervals</a></li><li><a href="features/page-monitor-keyword-alert/">Page monitor with keyword alerts</a></li><li><a href="features/on-page-countdown/">A live countdown on the page</a></li><li><a href="features/smart-pause/">Smart pause: it waits for you</a></li><li><a href="features/keep-scroll-position/">Keep your place after every refresh</a></li><li><a href="features/hard-reload-bypass-cache/">Hard reload on a timer</a></li><li><a href="features/refresh-limits/">Stop on its own, on your terms</a></li><li><a href="features/profiles-and-backup/">Profiles, export and import</a></li><li><a href="features/languages/">Speaks your language</a></li></ul>
+    <div class="footer-links">
+      <h2>Explore</h2>
+      <a href="features/">Features</a><a href="use-cases/">Use cases</a><a href="guides/">Guides</a><a href="faq/">FAQ</a>
     </div>
-    <div>
-      <h2 class="foot-title">Use cases</h2>
-      <ul class="foot-list"><li><a href="use-cases/restock-alerts/">Restock alerts for any product page</a></li><li><a href="use-cases/price-tracking/">Alerted when a price changes</a></li><li><a href="use-cases/ticket-sales/">Ticket drops without the manual reload</a></li><li><a href="use-cases/appointment-slots/">An appointment slot without constant checking</a></li><li><a href="use-cases/online-auctions/">An auction to the last second</a></li><li><a href="use-cases/exam-results/">First to know when results are published</a></li><li><a href="use-cases/order-and-application-status/">Told when your status changes</a></li><li><a href="use-cases/live-dashboards/">Dashboards that stay up to date</a></li><li><a href="use-cases/server-and-status-pages/">Watch builds, queues and status pages</a></li><li><a href="use-cases/web-development/">Zero-setup live reload</a></li><li><a href="use-cases/job-boards/">New job posts as they appear</a></li><li><a href="use-cases/freelance-marketplaces/">Freelance marketplaces: refresh with care</a></li><li><a href="use-cases/wordpress/">WordPress, without a plugin</a></li><li><a href="use-cases/sports-scores/">Live scores that update themselves</a></li><li><a href="use-cases/stocks-and-crypto/">Price pages current</a></li></ul>
+    <div class="footer-links">
+      <h2>Get the extension</h2>
+      <a href="chrome/">Chrome extension</a><a href="firefox/">Firefox add-on</a><a href="changelog/">Changelog</a>
     </div>
-    <div>
-      <h2 class="foot-title">Get it</h2>
-      <ul class="foot-list">
-        <li><a href="chrome/">Chrome extension</a></li>
-        <li><a href="firefox/">Firefox add-on</a></li>
-        <li><a href="faq/">FAQ</a></li>
-        <li><a href="changelog/">Changelog</a></li>
-        <li><a href="contact/">Contact</a></li>
-        <li><a href="privacy/">Privacy</a></li>
-        <li><a href="https://github.com/al-kafi-sohag/free-auto-refresh" target="_blank" rel="noopener">GitHub</a></li>
-      </ul>
+    <div class="footer-links">
+      <h2>About</h2>
+      <a href="https://github.com/al-kafi-sohag/free-auto-refresh" target="_blank" rel="noopener">GitHub</a><a href="privacy/">Privacy</a><a href="contact/">Contact</a>
     </div>
   </div>
-  <p class="border-t border-line py-5 text-center text-xs text-muted">Built by Al Kafi Sohag · MIT licensed · Not affiliated with Google or Mozilla</p>
+  <div class="footer-bottom"><div class="page-width"><span>© 2026 Al Kafi Sohag · MIT licensed</span><span>Not affiliated with Google or Mozilla</span></div></div>
 </footer>
 
-<div id="cookieBanner" class="fixed bottom-4 left-4 right-4 z-50 hidden rounded-2xl border border-line bg-white p-5 shadow-xl sm:left-auto sm:max-w-sm" role="dialog" aria-label="Cookie consent">
-  <p class="text-sm text-muted">This site uses Google Analytics to count visits, only if you accept. No ads. The extension itself has no analytics. <a class="font-semibold text-blue-deep" href="privacy/">Privacy</a></p>
-  <div class="mt-3 flex gap-2">
-    <button id="cookieAccept" type="button" class="btn btn-primary btn-sm">Accept</button>
-    <button id="cookieReject" type="button" class="btn btn-ghost btn-sm">Reject</button>
+<div class="cookie" id="cookieBanner" role="dialog" aria-label="Cookie consent">
+  This site uses Google Analytics to count visits, only if you accept. No ads. The extension itself has no analytics. <a href="privacy/"><strong>Privacy</strong></a>
+  <div class="install-links">
+    <button class="button-primary" id="cookieAccept" type="button">Accept</button>
+    <button class="button-secondary" id="cookieReject" type="button">Reject</button>
   </div>
 </div>
 

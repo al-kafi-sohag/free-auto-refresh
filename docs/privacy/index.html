@@ -1,101 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#eef4ff">
 <title>Privacy – Free Auto Refresh</title>
 <meta name="description" content="Free Auto Refresh collects no data and makes no network requests. What the extension and this website do with information.">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://al-kafi-sohag.github.io/free-auto-refresh/privacy/">
 <meta property="og:site_name" content="Free Auto Refresh">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Privacy – Free Auto Refresh">
 <meta property="og:description" content="Free Auto Refresh collects no data and makes no network requests. What the extension and this website do with information.">
-<meta property="og:type" content="website">
 <meta property="og:url" content="https://al-kafi-sohag.github.io/free-auto-refresh/privacy/">
 <meta property="og:image" content="https://al-kafi-sohag.github.io/free-auto-refresh/assets/poster.png">
+<meta property="og:image:alt" content="Free Auto Refresh: auto refresh and page monitor browser extension">
+<meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Privacy – Free Auto Refresh">
+<meta name="twitter:description" content="Free Auto Refresh collects no data and makes no network requests. What the extension and this website do with information.">
+<meta name="twitter:image" content="https://al-kafi-sohag.github.io/free-auto-refresh/assets/poster.png">
 <meta name="google-site-verification" content="ww9t1NvE40Omq86n1bNGdVptryQJXYkv5f0-MjdqTqM">
 <meta name="msvalidate.01" content="3CB45458A679463A21F05BA747535729">
 <link rel="icon" href="../assets/logo.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/site.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://al-kafi-sohag.github.io/free-auto-refresh/"},{"@type":"ListItem","position":2,"name":"Privacy","item":"https://al-kafi-sohag.github.io/free-auto-refresh/privacy/"}]}</script>
 </head>
-<body class="bg-page font-sans text-ink antialiased" data-ga="G-0DTP2D307V">
+<body data-ga="G-0DTP2D307V">
 
-<header class="sticky top-0 z-40 border-b border-line bg-page/90 backdrop-blur">
-  <div class="wrap flex h-16 items-center justify-between gap-4">
-    <a href="../" class="flex items-center gap-2.5 font-display text-[17px] font-extrabold">
-      <img src="../assets/logo.png" alt="" width="30" height="30">Free Auto Refresh
-    </a>
-    <nav id="nav" class="absolute left-0 top-16 hidden w-full flex-col gap-1 border-b border-line bg-page p-4 text-[15px] font-medium text-muted md:static md:flex md:w-auto md:flex-row md:gap-7 md:border-0 md:p-0" aria-label="Main">
-      <a href="../features/" class="rounded px-2 py-2 hover:text-ink md:p-0">Features</a>
-      <a href="../use-cases/" class="rounded px-2 py-2 hover:text-ink md:p-0">Use cases</a>
-      <a href="../chrome/" class="rounded px-2 py-2 hover:text-ink md:p-0">Chrome</a>
-      <a href="../firefox/" class="rounded px-2 py-2 hover:text-ink md:p-0">Firefox</a>
-      <a href="../faq/" class="rounded px-2 py-2 hover:text-ink md:p-0">FAQ</a>
-    </nav>
-    <div class="flex items-center gap-2">
-      <a href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Add to Chrome</a>
-      <button id="navToggle" type="button" class="btn btn-ghost btn-sm md:hidden" aria-controls="nav" aria-expanded="false">Menu</button>
-    </div>
+<header class="site-header">
+  <div class="page-width nav-shell">
+    <a class="brand" href="../"><img src="../assets/logo.png" alt="" width="31" height="31">Free Auto Refresh</a>
+    <nav class="desktop-nav" aria-label="Main"><a href="../">Home</a><a href="../features/">Features</a><a href="../use-cases/">Use cases</a><a href="../guides/">Guides</a><a href="../faq/">FAQ</a></nav>
+    <a class="nav-cta" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg aria-hidden="true" class="lucide lucide-arrow-up-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M7 7h10v10" /> <path d="M7 17 17 7" /> </svg></a>
+    <button class="mobile-nav-toggle" id="navToggle" type="button" aria-controls="mobileNav" aria-expanded="false" aria-label="Menu"><svg aria-hidden="true" class="lucide lucide-menu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M4 5h16" /> <path d="M4 12h16" /> <path d="M4 19h16" /> </svg></button>
   </div>
+  <nav class="mobile-nav-menu" id="mobileNav" aria-label="Mobile"><a href="../">Home</a><a href="../features/">Features</a><a href="../use-cases/">Use cases</a><a href="../guides/">Guides</a><a href="../faq/">FAQ</a><a href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome</a><a href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></nav>
 </header>
 
 <main>
 
-  <section class="wrap max-w-3xl pt-10">
-    
-    <nav class="text-sm text-muted" aria-label="Breadcrumb">
-      <a href="../" class="hover:text-ink">Home</a>
-    </nav>
-    <h1 class="h1 mt-6">Privacy</h1>
-    <h2 class="h2 mt-10">The extension</h2>
-    <p class="mt-3 text-[17px] leading-relaxed text-muted">It reads the visible text of a page only in the tab where you turned on page watching, and only inside your browser. It never records what you type. Settings, profiles and your language choice are stored locally. Nothing is sent to the developer or anyone else.</p>
-    <h2 class="h2 mt-10">Permissions</h2>
-    <p class="mt-3 text-[17px] leading-relaxed text-muted">Storage saves your settings. Notifications show an alert when a watch rule matches. Website access lets the timer and counter run on the page you choose.</p>
-    <h2 class="h2 mt-10">This website</h2>
-    <p class="mt-3 text-[17px] leading-relaxed text-muted">It loads Google Analytics to count visits, and only after you click Accept on the cookie banner. Your choice is remembered in your browser.</p>
-    <p class="mt-8 text-muted">The full policy is in <a class="font-semibold text-blue-deep" href="https://github.com/al-kafi-sohag/free-auto-refresh/blob/main/PRIVACY.md" target="_blank" rel="noopener">PRIVACY.md</a> on GitHub.</p>
-  </section>
+  <section class="hero-section"><div class="page-width hero-copy"><nav class="crumbs" aria-label="Breadcrumb"><a href="../">Home</a><span>/</span><span>Privacy</span></nav><span class="eyebrow">No data collected</span><h1>Privacy</h1><p class="hero-description">The short version: the extension collects nothing and sends nothing.</p></div></section>
+  <section class="page-width content-section" style="padding-top:48px"><div class="panel prose" style="max-width:820px">
+      <h2>The extension</h2>
+      <p>It reads the visible text of a page only in the tab where you turned on page watching, and only inside your browser. It never records what you type. Settings, profiles and your language choice are stored locally. Nothing is sent to the developer or anyone else.</p>
+      
+      
+
+      <h2>Permissions</h2>
+      
+      <ul><li><strong>Storage</strong> saves your settings.</li><li><strong>Notifications</strong> shows an alert when a watch rule matches.</li><li><strong>Website access</strong> lets the timer and counter run on the page you choose.</li></ul>
+      
+
+      <h2>This website</h2>
+      <p>It loads Google Analytics to count visits, and only after you click Accept on the cookie banner. Your choice is remembered in your browser.</p>
+      
+      <p>The full policy is in <a href="https://github.com/al-kafi-sohag/free-auto-refresh/blob/main/PRIVACY.md" target="_blank" rel="noopener">PRIVACY.md</a> on GitHub.</p></div></section>
 </main>
 
-<footer class="mt-20 border-t border-line bg-white">
-  <div class="wrap grid gap-8 py-12 text-sm sm:grid-cols-2 lg:grid-cols-4">
+<footer class="site-footer">
+  <div class="page-width footer-main">
     <div>
-      <a href="../" class="flex items-center gap-2 font-display font-extrabold"><img src="../assets/logo.png" alt="" width="26" height="26">Free Auto Refresh</a>
-      <p class="mt-3 text-muted">A free, private auto refresh and page monitor extension for Chrome and Firefox.</p>
+      <a class="brand" href="../"><img src="../assets/logo.png" alt="" width="31" height="31">Free Auto Refresh</a>
+      <p>A free, private auto refresh and page monitor extension for Chrome and Firefox.</p>
+      <p>Available in 7 languages.</p>
     </div>
-    <div>
-      <h2 class="foot-title">Features</h2>
-      <ul class="foot-list"><li><a href="../features/auto-refresh-timer/">Auto refresh timer for any tab</a></li><li><a href="../features/random-interval-refresh/">Refresh at random intervals</a></li><li><a href="../features/page-monitor-keyword-alert/">Page monitor with keyword alerts</a></li><li><a href="../features/on-page-countdown/">A live countdown on the page</a></li><li><a href="../features/smart-pause/">Smart pause: it waits for you</a></li><li><a href="../features/keep-scroll-position/">Keep your place after every refresh</a></li><li><a href="../features/hard-reload-bypass-cache/">Hard reload on a timer</a></li><li><a href="../features/refresh-limits/">Stop on its own, on your terms</a></li><li><a href="../features/profiles-and-backup/">Profiles, export and import</a></li><li><a href="../features/languages/">Speaks your language</a></li></ul>
+    <div class="footer-links">
+      <h2>Explore</h2>
+      <a href="../features/">Features</a><a href="../use-cases/">Use cases</a><a href="../guides/">Guides</a><a href="../faq/">FAQ</a>
     </div>
-    <div>
-      <h2 class="foot-title">Use cases</h2>
-      <ul class="foot-list"><li><a href="../use-cases/restock-alerts/">Restock alerts for any product page</a></li><li><a href="../use-cases/price-tracking/">Alerted when a price changes</a></li><li><a href="../use-cases/ticket-sales/">Ticket drops without the manual reload</a></li><li><a href="../use-cases/appointment-slots/">An appointment slot without constant checking</a></li><li><a href="../use-cases/online-auctions/">An auction to the last second</a></li><li><a href="../use-cases/exam-results/">First to know when results are published</a></li><li><a href="../use-cases/order-and-application-status/">Told when your status changes</a></li><li><a href="../use-cases/live-dashboards/">Dashboards that stay up to date</a></li><li><a href="../use-cases/server-and-status-pages/">Watch builds, queues and status pages</a></li><li><a href="../use-cases/web-development/">Zero-setup live reload</a></li><li><a href="../use-cases/job-boards/">New job posts as they appear</a></li><li><a href="../use-cases/freelance-marketplaces/">Freelance marketplaces: refresh with care</a></li><li><a href="../use-cases/wordpress/">WordPress, without a plugin</a></li><li><a href="../use-cases/sports-scores/">Live scores that update themselves</a></li><li><a href="../use-cases/stocks-and-crypto/">Price pages current</a></li></ul>
+    <div class="footer-links">
+      <h2>Get the extension</h2>
+      <a href="../chrome/">Chrome extension</a><a href="../firefox/">Firefox add-on</a><a href="../changelog/">Changelog</a>
     </div>
-    <div>
-      <h2 class="foot-title">Get it</h2>
-      <ul class="foot-list">
-        <li><a href="../chrome/">Chrome extension</a></li>
-        <li><a href="../firefox/">Firefox add-on</a></li>
-        <li><a href="../faq/">FAQ</a></li>
-        <li><a href="../changelog/">Changelog</a></li>
-        <li><a href="../contact/">Contact</a></li>
-        <li><a href="../privacy/">Privacy</a></li>
-        <li><a href="https://github.com/al-kafi-sohag/free-auto-refresh" target="_blank" rel="noopener">GitHub</a></li>
-      </ul>
+    <div class="footer-links">
+      <h2>About</h2>
+      <a href="https://github.com/al-kafi-sohag/free-auto-refresh" target="_blank" rel="noopener">GitHub</a><a href="../privacy/">Privacy</a><a href="../contact/">Contact</a>
     </div>
   </div>
-  <p class="border-t border-line py-5 text-center text-xs text-muted">Built by Al Kafi Sohag · MIT licensed · Not affiliated with Google or Mozilla</p>
+  <div class="footer-bottom"><div class="page-width"><span>© 2026 Al Kafi Sohag · MIT licensed</span><span>Not affiliated with Google or Mozilla</span></div></div>
 </footer>
 
-<div id="cookieBanner" class="fixed bottom-4 left-4 right-4 z-50 hidden rounded-2xl border border-line bg-white p-5 shadow-xl sm:left-auto sm:max-w-sm" role="dialog" aria-label="Cookie consent">
-  <p class="text-sm text-muted">This site uses Google Analytics to count visits, only if you accept. No ads. The extension itself has no analytics. <a class="font-semibold text-blue-deep" href="../privacy/">Privacy</a></p>
-  <div class="mt-3 flex gap-2">
-    <button id="cookieAccept" type="button" class="btn btn-primary btn-sm">Accept</button>
-    <button id="cookieReject" type="button" class="btn btn-ghost btn-sm">Reject</button>
+<div class="cookie" id="cookieBanner" role="dialog" aria-label="Cookie consent">
+  This site uses Google Analytics to count visits, only if you accept. No ads. The extension itself has no analytics. <a href="../privacy/"><strong>Privacy</strong></a>
+  <div class="install-links">
+    <button class="button-primary" id="cookieAccept" type="button">Accept</button>
+    <button class="button-secondary" id="cookieReject" type="button">Reject</button>
   </div>
 </div>
 

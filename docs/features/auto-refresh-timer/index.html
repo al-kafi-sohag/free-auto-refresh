@@ -1,170 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#eef4ff">
 <title>Auto Refresh Timer – Reload a Page Every Few Seconds</title>
 <meta name="description" content="Set a timer and let the tab reload itself every 5 seconds, 30 seconds or 5 minutes. Free auto refresh for Chrome and Firefox, no account needed.">
 <meta name="keywords" content="auto refresh, auto refresh page, refresh page every x seconds, auto reload tab, page refresh timer">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://al-kafi-sohag.github.io/free-auto-refresh/features/auto-refresh-timer/">
 <meta property="og:site_name" content="Free Auto Refresh">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Auto Refresh Timer – Reload a Page Every Few Seconds">
 <meta property="og:description" content="Set a timer and let the tab reload itself every 5 seconds, 30 seconds or 5 minutes. Free auto refresh for Chrome and Firefox, no account needed.">
-<meta property="og:type" content="website">
 <meta property="og:url" content="https://al-kafi-sohag.github.io/free-auto-refresh/features/auto-refresh-timer/">
 <meta property="og:image" content="https://al-kafi-sohag.github.io/free-auto-refresh/assets/poster.png">
+<meta property="og:image:alt" content="Free Auto Refresh: auto refresh and page monitor browser extension">
+<meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Auto Refresh Timer – Reload a Page Every Few Seconds">
+<meta name="twitter:description" content="Set a timer and let the tab reload itself every 5 seconds, 30 seconds or 5 minutes. Free auto refresh for Chrome and Firefox, no account needed.">
+<meta name="twitter:image" content="https://al-kafi-sohag.github.io/free-auto-refresh/assets/poster.png">
 <meta name="google-site-verification" content="ww9t1NvE40Omq86n1bNGdVptryQJXYkv5f0-MjdqTqM">
 <meta name="msvalidate.01" content="3CB45458A679463A21F05BA747535729">
 <link rel="icon" href="../../assets/logo.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/site.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://al-kafi-sohag.github.io/free-auto-refresh/"},{"@type":"ListItem","position":2,"name":"Features","item":"https://al-kafi-sohag.github.io/free-auto-refresh/features/"},{"@type":"ListItem","position":3,"name":"Auto refresh timer for any tab","item":"https://al-kafi-sohag.github.io/free-auto-refresh/features/auto-refresh-timer/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can I refresh every second?","acceptedAnswer":{"@type":"Answer","text":"Yes, one second is the minimum. Many sites dislike it, so use short intervals only for brief periods."}},{"@type":"Question","name":"Does it keep refreshing in a background tab?","acceptedAnswer":{"@type":"Answer","text":"Yes. Browsers slow timers in hidden tabs slightly, so the wait can run about a second long."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://al-kafi-sohag.github.io/free-auto-refresh/"},{"@type":"ListItem","position":2,"name":"Features","item":"https://al-kafi-sohag.github.io/free-auto-refresh/features/"},{"@type":"ListItem","position":3,"name":"Auto refresh timer","item":"https://al-kafi-sohag.github.io/free-auto-refresh/features/auto-refresh-timer/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I use the auto refresh timer?","acceptedAnswer":{"@type":"Answer","text":"Open the page, click the extension icon, choose a preset or type an interval, and press Start."}},{"@type":"Question","name":"Can I pause the timer?","acceptedAnswer":{"@type":"Answer","text":"Yes. Use Pause in the popup or on the page counter, and Resume to carry on with the same settings."}},{"@type":"Question","name":"Is the timer included for free?","acceptedAnswer":{"@type":"Answer","text":"Yes, along with every other feature."}},{"@type":"Question","name":"Can different tabs have different timers?","acceptedAnswer":{"@type":"Answer","text":"Yes. Each tab has its own interval, counter and limits."}},{"@type":"Question","name":"Does it remember my interval?","acceptedAnswer":{"@type":"Answer","text":"Yes. Your last settings are used next time, and Alt+Shift+R starts with them straight away."}},{"@type":"Question","name":"Can I refresh every second?","acceptedAnswer":{"@type":"Answer","text":"Yes, one second is the minimum. Many sites dislike it, so use short intervals only for brief periods."}},{"@type":"Question","name":"Does it keep refreshing in a background tab?","acceptedAnswer":{"@type":"Answer","text":"Yes. Browsers slow timers in hidden tabs slightly, so the wait can run about a second long."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"How to set up auto refresh timer with Free Auto Refresh","step":[{"@type":"HowToStep","position":1,"text":"Open the page you want to reload."},{"@type":"HowToStep","position":2,"text":"Click the Free Auto Refresh icon in the toolbar."},{"@type":"HowToStep","position":3,"text":"Choose a preset or type the same number into Min and Max."},{"@type":"HowToStep","position":4,"text":"Press Start. Press Stop, or use the on-page counter, when you are done."}]}</script>
 </head>
-<body class="bg-page font-sans text-ink antialiased" data-ga="G-0DTP2D307V">
+<body data-ga="G-0DTP2D307V">
 
-<header class="sticky top-0 z-40 border-b border-line bg-page/90 backdrop-blur">
-  <div class="wrap flex h-16 items-center justify-between gap-4">
-    <a href="../../" class="flex items-center gap-2.5 font-display text-[17px] font-extrabold">
-      <img src="../../assets/logo.png" alt="" width="30" height="30">Free Auto Refresh
-    </a>
-    <nav id="nav" class="absolute left-0 top-16 hidden w-full flex-col gap-1 border-b border-line bg-page p-4 text-[15px] font-medium text-muted md:static md:flex md:w-auto md:flex-row md:gap-7 md:border-0 md:p-0" aria-label="Main">
-      <a href="../../features/" class="rounded px-2 py-2 hover:text-ink md:p-0 text-ink">Features</a>
-      <a href="../../use-cases/" class="rounded px-2 py-2 hover:text-ink md:p-0">Use cases</a>
-      <a href="../../chrome/" class="rounded px-2 py-2 hover:text-ink md:p-0">Chrome</a>
-      <a href="../../firefox/" class="rounded px-2 py-2 hover:text-ink md:p-0">Firefox</a>
-      <a href="../../faq/" class="rounded px-2 py-2 hover:text-ink md:p-0">FAQ</a>
-    </nav>
-    <div class="flex items-center gap-2">
-      <a href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Add to Chrome</a>
-      <button id="navToggle" type="button" class="btn btn-ghost btn-sm md:hidden" aria-controls="nav" aria-expanded="false">Menu</button>
-    </div>
+<header class="site-header">
+  <div class="page-width nav-shell">
+    <a class="brand" href="../../"><img src="../../assets/logo.png" alt="" width="31" height="31">Free Auto Refresh</a>
+    <nav class="desktop-nav" aria-label="Main"><a href="../../">Home</a><a href="../../features/" aria-current="page">Features</a><a href="../../use-cases/">Use cases</a><a href="../../guides/">Guides</a><a href="../../faq/">FAQ</a></nav>
+    <a class="nav-cta" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg aria-hidden="true" class="lucide lucide-arrow-up-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M7 7h10v10" /> <path d="M7 17 17 7" /> </svg></a>
+    <button class="mobile-nav-toggle" id="navToggle" type="button" aria-controls="mobileNav" aria-expanded="false" aria-label="Menu"><svg aria-hidden="true" class="lucide lucide-menu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M4 5h16" /> <path d="M4 12h16" /> <path d="M4 19h16" /> </svg></button>
   </div>
+  <nav class="mobile-nav-menu" id="mobileNav" aria-label="Mobile"><a href="../../">Home</a><a href="../../features/" aria-current="page">Features</a><a href="../../use-cases/">Use cases</a><a href="../../guides/">Guides</a><a href="../../faq/">FAQ</a><a href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome</a><a href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></nav>
 </header>
 
 <main>
 
-  <section class="wrap pt-10">
-    
-    <nav class="text-sm text-muted" aria-label="Breadcrumb">
-      <a href="../../" class="hover:text-ink">Home</a> <span aria-hidden="true">/</span> <a href="../../features/" class="hover:text-ink">Features</a>
-    </nav>
-    <div class="mt-6 grid items-center gap-10 lg:grid-cols-2">
-      <div>
-        <p class="kicker">Feature</p>
-        <h1 class="h1">Auto refresh timer for any tab</h1>
-        <p class="lede">Pick an interval, press Start, and the page reloads itself until you stop it. Works on any normal web page, with a separate timer for every tab.</p>
-        <div class="mt-7 flex flex-wrap gap-3">
-          <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome</a>
-          <a class="btn btn-ghost" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a>
+  <section class="hero-section">
+    <div class="page-width hero-grid">
+      <div class="hero-copy">
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="../../">Home</a><span>/</span><a href="../../features/">Features</a><span>/</span><span>Auto refresh timer</span></nav>
+        <span class="eyebrow">Feature 01</span>
+        <h1>Set a timer. <span>Get on with your day.</span></h1>
+        <p class="hero-description">Pick an interval, press Start, and the page reloads itself until you stop it. Works on any normal web page, with a separate timer for every tab.</p>
+        <div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg aria-hidden="true" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div>
+      </div>
+      <figure class="shot ">
+        <div class="shot-bar"><span class="shot-dots"><i></i><i></i><i></i></span><span class="shot-title">Auto refresh timer</span></div>
+        <img src="../../assets/placeholder.svg" alt="Auto refresh timer: Free Auto Refresh browser extension illustration" width="960" height="720" loading="lazy">
+        <figcaption><svg aria-hidden="true" class="lucide lucide-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg>Next refresh in 30 seconds</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="page-width content-section" style="padding-top:48px">
+    <div class="detail-grid">
+      <div class="panel prose">
+        <h2>How auto refresh timer works</h2>
+        <p>Pick an interval, press Start, and the page reloads itself until you stop it. Works on any normal web page, with a separate timer for every tab.</p>
+        <p>For most pages 30 to 60 seconds is enough and is gentle on the website. Go below 10 seconds only when timing really matters, because very fast reloading can get you rate-limited or temporarily blocked by some sites.</p>
+        <h3>Quick setup</h3>
+        <div class="steps-list">
+          <div class="step-item"><span class="step-number">01</span><div><p style="margin:0;padding-top:8px">Open the page you want to reload.</p></div></div>
+          <div class="step-item"><span class="step-number">02</span><div><p style="margin:0;padding-top:8px">Click the Free Auto Refresh icon in the toolbar.</p></div></div>
+          <div class="step-item"><span class="step-number">03</span><div><p style="margin:0;padding-top:8px">Choose a preset or type the same number into Min and Max.</p></div></div>
+          <div class="step-item"><span class="step-number">04</span><div><p style="margin:0;padding-top:8px">Press Start. Press Stop, or use the on-page counter, when you are done.</p></div></div>
         </div>
       </div>
-      <img src="../../assets/placeholder.svg" alt="Auto refresh timer for any tab" width="1200" height="750" loading="lazy" class="w-full rounded-2xl border border-line bg-white">
+      <aside class="panel side">
+        <span class="eyebrow">A good fit for</span>
+        <h2>Routine page checks</h2>
+        <p>Combine this with the other controls to match the page you are watching.</p>
+        <div class="side-links"><a href="../../features/random-interval-refresh/">Random intervals <svg aria-hidden="true" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../features/page-monitor-keyword-alert/">Page change monitor <svg aria-hidden="true" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../use-cases/restock-alerts/">Restock alerts <svg aria-hidden="true" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a></div>
+        <h2 style="margin-top:28px">Suggested settings</h2>
+        <table class="settings"><tbody><tr><th scope="row">Min / Max</th><td>Same value, for example 30 and 30</td></tr><tr><th scope="row">Stop after</th><td>0 to run until you stop it</td></tr><tr><th scope="row">Toolbar icon shows</th><td>Time until the next refresh</td></tr></tbody></table>
+      </aside>
     </div>
   </section>
 
-  <section class="wrap mt-14">
-    <div class="grid gap-4 md:grid-cols-3">
-      <div class="card"><h2 class="font-display text-lg font-bold">Any interval you want</h2><p class="mt-1.5 text-sm text-muted">Type the seconds yourself, down to one second, or tap a preset from 5 seconds to 5 minutes.</p></div>
-      <div class="card"><h2 class="font-display text-lg font-bold">One timer per tab</h2><p class="mt-1.5 text-sm text-muted">Each tab keeps its own interval and counter, so a fast refresh on one page never touches another.</p></div>
-      <div class="card"><h2 class="font-display text-lg font-bold">Starts in one click</h2><p class="mt-1.5 text-sm text-muted">The first refresh happens straight away, then the timer takes over. Alt+Shift+R starts and stops it from the keyboard.</p></div>
-    </div>
-  </section>
+  <section class="page-width content-section" style="padding-top:22px">
+    <div class="panel prose">
+      <span class="eyebrow">Practical guide</span>
+      <h2>Auto refresh a page, tab or site on your schedule</h2>
+      <p>An auto refresh timer reloads the current tab at the interval you choose and keeps going until you pause it, stop it, or it reaches a limit. Use a short interval for pages that update often and a longer one when you only need an occasional check.</p>
+      <p>Free Auto Refresh gives each tab its own timer. You can auto reload a news page every minute, a dashboard every five, and leave every other tab alone.</p>
+      
+      
 
-  <section class="wrap mt-14 grid gap-10 lg:grid-cols-2">
-    <div>
-      <h2 class="h2">How to set it up</h2>
-      <ol class="steps">
-        <li>Open the page you want to reload.</li>
-        <li>Click the Free Auto Refresh icon in the toolbar.</li>
-        <li>Choose a preset or type the same number into Min and Max.</li>
-        <li>Press Start. Press Stop, or use the on-page counter, when you are done.</li>
-      </ol>
-    </div>
-    <div>
-      <h2 class="h2">Suggested settings</h2>
-      <table class="settings">
-        <tbody>
-          <tr><th scope="row">Min / Max</th><td>Same value, for example 30 and 30</td></tr>
-          <tr><th scope="row">Stop after</th><td>0 to run until you stop it</td></tr>
-          <tr><th scope="row">Toolbar icon shows</th><td>Time until the next refresh</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
+      <h2>Refresh a page every 5 seconds, 30 seconds or 5 minutes</h2>
+      <p>The presets cover the common cases: 5–10 seconds, 15–30, 30–60, 1–2 minutes and 5 minutes. For anything else, type the seconds yourself. Setting the minimum and maximum to the same number gives a fixed interval; different numbers give a <a href="../../features/random-interval-refresh/">random interval</a>.</p>
+      
+      <h3>Which interval should I use?</h3>
+      <p>Match it to how fast the page really changes. Auctions and build pages: 5 to 10 seconds, briefly. Stock and ticket pages: 30 to 60 seconds. Dashboards and status pages: 2 to 5 minutes.</p>
+      <h3>Why not just use the shortest?</h3>
+      <p>Each refresh is a full request to the website. Very fast reloading wastes bandwidth and can get you rate-limited or temporarily blocked.</p>
 
-  <section class="wrap mt-14 max-w-3xl">
-    <h2 class="h2">How often should a page refresh?</h2>
-    <p class="mt-3 text-[17px] leading-relaxed text-muted">For most pages 30 to 60 seconds is enough and is gentle on the website. Go below 10 seconds only when timing really matters, because very fast reloading can get you rate-limited or temporarily blocked by some sites.</p>
+      <h2>Stay in control while it runs</h2>
+      <p>The popup shows the refresh count, the time until the next reload and the time elapsed. The same information appears in a small <a href="../../features/on-page-countdown/">counter on the page</a>, with pause and stop buttons, and the keyboard shortcut Alt+Shift+R toggles the timer without opening anything.</p>
+      <p>For longer runs, add a <a href="../../features/refresh-limits/">time or count limit</a> so the tab stops on its own.</p>
+      
+      
+
+      <h2>A worked example: refresh a page every 30 seconds</h2>
+      <p>Say you are waiting for a courier's tracking page to update. Open the page, click the Free Auto Refresh icon and tap the 30–60s preset. To make it exactly 30 seconds, type 30 into both Min and Max. Press Start.</p>
+      <p>The page reloads at once, the toolbar icon shows a green number, and a small counter appears in the corner of the page counting down from 30. Carry on working in another tab. When you are done, press Alt+Shift+R or the stop button on the counter.</p>
+      
+      
+
+      <h2>Common mistakes with an auto refresh timer</h2>
+      
+      <ul><li><strong>Choosing the shortest interval by habit.</strong> A page that changes once an hour does not need a reload every five seconds.</li><li><strong>Forgetting it is running.</strong> Add a time limit, or check the number on the toolbar icon.</li><li><strong>Refreshing a page with an unsaved form.</strong> Pause while typing protects you while you type, not after you stop.</li><li><strong>Expecting it on browser pages.</strong> Extensions cannot run on chrome:// or about: pages, or in the extension stores.</li></ul>
+      
+
+      <h2>How the timer fits with the other features</h2>
+      <p>On its own the timer is an auto reload for one tab. Add a <a href="../../features/page-monitor-keyword-alert/">watch rule</a> and it becomes a page monitor that stops on a change. Add <a href="../../features/refresh-limits/">limits</a> and it ends by itself. Add <a href="../../features/hard-reload-bypass-cache/">hard reload</a> and each refresh fetches fresh files. Save the combination as a <a href="../../features/profiles-and-backup/">profile</a> and it is one click away next time.</p>
+      
+      <h3>Auto refresh a website, a tab or the whole browser?</h3>
+      <p>The extension works per tab, which is what most people mean by auto refresh a website. To refresh several pages, start it in each tab; they run independently.</p>
+
+      <h2>At a glance</h2>
+      
+      <ul><li><strong>Any interval you want.</strong> Type the seconds yourself, down to one second, or tap a preset from 5 seconds to 5 minutes.</li><li><strong>One timer per tab.</strong> Each tab keeps its own interval and counter, so a fast refresh on one page never touches another.</li><li><strong>Starts in one click.</strong> The first refresh happens straight away, then the timer takes over. Alt+Shift+R starts and stops it from the keyboard.</li></ul>
+      
+    </div>
   </section>
   
-  <section class="wrap mt-14 max-w-3xl">
-    <h2 class="h2">Questions</h2>
-    <div class="mt-5 space-y-3">
-      <details class="faq"><summary>Can I refresh every second?</summary><p>Yes, one second is the minimum. Many sites dislike it, so use short intervals only for brief periods.</p></details>
-      <details class="faq"><summary>Does it keep refreshing in a background tab?</summary><p>Yes. Browsers slow timers in hidden tabs slightly, so the wait can run about a second long.</p></details>
+  <section class="page-width faq-section" id="faq">
+    <div>
+      <span class="eyebrow">Good to know</span>
+      <h2 class="h2">Questions, answered.</h2>
+      
     </div>
-  </section>
-
-  <section class="wrap mt-14">
-    <h2 class="h2">Related</h2>
-    <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      <a href="../../features/random-interval-refresh/" class="card block hover:border-blue"><h3 class="font-display text-lg font-bold">Refresh at random intervals</h3><p class="mt-1.5 text-sm text-muted">Give a minimum and a maximum, and every refresh picks a new wait somewhere in between.</p></a>
-      <a href="../../features/page-monitor-keyword-alert/" class="card block hover:border-blue"><h3 class="font-display text-lg font-bold">Page monitor with keyword alerts</h3><p class="mt-1.5 text-sm text-muted">Tell it what to look for.</p></a>
-      <a href="../../use-cases/restock-alerts/" class="card block hover:border-blue"><h3 class="font-display text-lg font-bold">Restock alerts for any product page</h3><p class="mt-1.5 text-sm text-muted">Leave the product page open.</p></a>
+    <div class="faq-list">
+      <details class="faq-item" open><summary><h3>How do I use the auto refresh timer?</h3><svg aria-hidden="true" class="lucide lucide-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>Open the page, click the extension icon, choose a preset or type an interval, and press Start.</p></details>
+      <details class="faq-item"><summary><h3>Can I pause the timer?</h3><svg aria-hidden="true" class="lucide lucide-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>Yes. Use Pause in the popup or on the page counter, and Resume to carry on with the same settings.</p></details>
+      <details class="faq-item"><summary><h3>Is the timer included for free?</h3><svg aria-hidden="true" class="lucide lucide-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>Yes, along with every other feature.</p></details>
+      <details class="faq-item"><summary><h3>Can different tabs have different timers?</h3><svg aria-hidden="true" class="lucide lucide-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>Yes. Each tab has its own interval, counter and limits.</p></details>
+      <details class="faq-item"><summary><h3>Does it remember my interval?</h3><svg aria-hidden="true" class="lucide lucide-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>Yes. Your last settings are used next time, and Alt+Shift+R starts with them straight away.</p></details>
+      <details class="faq-item"><summary><h3>Can I refresh every second?</h3><svg aria-hidden="true" class="lucide lucide-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>Yes, one second is the minimum. Many sites dislike it, so use short intervals only for brief periods.</p></details>
+      <details class="faq-item"><summary><h3>Does it keep refreshing in a background tab?</h3><svg aria-hidden="true" class="lucide lucide-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>Yes. Browsers slow timers in hidden tabs slightly, so the wait can run about a second long.</p></details>
     </div>
   </section>
   
-  <section class="wrap mt-16">
-    <div class="rounded-3xl bg-ink px-6 py-12 text-center text-white sm:px-12">
-      <h2 class="font-display text-3xl font-extrabold">Stop clicking reload</h2>
-      <p class="mx-auto mt-3 max-w-xl text-white/70">Free for Chrome and Firefox. No account, no ads, no tracking.</p>
-      <div class="mt-6 flex flex-wrap justify-center gap-3">
-        <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome</a>
-        <a class="btn btn-light" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a>
-      </div>
+  <section class="page-width">
+    <div class="cta-card">
+      <span class="eyebrow">Less checking. More doing.</span>
+      <h2>Try it on your next open tab.</h2>
+      <p>Free for Chrome and Firefox, with no account required.</p>
+      <div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg aria-hidden="true" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div>
+      <div class="assurance"><span><svg aria-hidden="true" class="lucide lucide-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg>Free forever</span><span><svg aria-hidden="true" class="lucide lucide-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg>Private by design</span><span><svg aria-hidden="true" class="lucide lucide-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg>Open source</span></div>
+    </div>
+  </section>
+  
+  <section class="page-width">
+    <div class="idea-card">
+      <div><span class="eyebrow">Your idea matters</span><h2>Not seeing the feature you need?</h2><p>Share the browser task you would like to make easier. Your idea helps guide what gets built next.</p></div>
+      <a class="button-primary" href="https://github.com/al-kafi-sohag/free-auto-refresh/issues" target="_blank" rel="noopener">Request a feature <svg aria-hidden="true" class="lucide lucide-arrow-up-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M7 7h10v10" /> <path d="M7 17 17 7" /> </svg></a>
     </div>
   </section>
 </main>
 
-<footer class="mt-20 border-t border-line bg-white">
-  <div class="wrap grid gap-8 py-12 text-sm sm:grid-cols-2 lg:grid-cols-4">
+<footer class="site-footer">
+  <div class="page-width footer-main">
     <div>
-      <a href="../../" class="flex items-center gap-2 font-display font-extrabold"><img src="../../assets/logo.png" alt="" width="26" height="26">Free Auto Refresh</a>
-      <p class="mt-3 text-muted">A free, private auto refresh and page monitor extension for Chrome and Firefox.</p>
+      <a class="brand" href="../../"><img src="../../assets/logo.png" alt="" width="31" height="31">Free Auto Refresh</a>
+      <p>A free, private auto refresh and page monitor extension for Chrome and Firefox.</p>
+      <p>Available in 7 languages.</p>
     </div>
-    <div>
-      <h2 class="foot-title">Features</h2>
-      <ul class="foot-list"><li><a href="../../features/auto-refresh-timer/">Auto refresh timer for any tab</a></li><li><a href="../../features/random-interval-refresh/">Refresh at random intervals</a></li><li><a href="../../features/page-monitor-keyword-alert/">Page monitor with keyword alerts</a></li><li><a href="../../features/on-page-countdown/">A live countdown on the page</a></li><li><a href="../../features/smart-pause/">Smart pause: it waits for you</a></li><li><a href="../../features/keep-scroll-position/">Keep your place after every refresh</a></li><li><a href="../../features/hard-reload-bypass-cache/">Hard reload on a timer</a></li><li><a href="../../features/refresh-limits/">Stop on its own, on your terms</a></li><li><a href="../../features/profiles-and-backup/">Profiles, export and import</a></li><li><a href="../../features/languages/">Speaks your language</a></li></ul>
+    <div class="footer-links">
+      <h2>Explore</h2>
+      <a href="../../features/">Features</a><a href="../../use-cases/">Use cases</a><a href="../../guides/">Guides</a><a href="../../faq/">FAQ</a>
     </div>
-    <div>
-      <h2 class="foot-title">Use cases</h2>
-      <ul class="foot-list"><li><a href="../../use-cases/restock-alerts/">Restock alerts for any product page</a></li><li><a href="../../use-cases/price-tracking/">Alerted when a price changes</a></li><li><a href="../../use-cases/ticket-sales/">Ticket drops without the manual reload</a></li><li><a href="../../use-cases/appointment-slots/">An appointment slot without constant checking</a></li><li><a href="../../use-cases/online-auctions/">An auction to the last second</a></li><li><a href="../../use-cases/exam-results/">First to know when results are published</a></li><li><a href="../../use-cases/order-and-application-status/">Told when your status changes</a></li><li><a href="../../use-cases/live-dashboards/">Dashboards that stay up to date</a></li><li><a href="../../use-cases/server-and-status-pages/">Watch builds, queues and status pages</a></li><li><a href="../../use-cases/web-development/">Zero-setup live reload</a></li><li><a href="../../use-cases/job-boards/">New job posts as they appear</a></li><li><a href="../../use-cases/freelance-marketplaces/">Freelance marketplaces: refresh with care</a></li><li><a href="../../use-cases/wordpress/">WordPress, without a plugin</a></li><li><a href="../../use-cases/sports-scores/">Live scores that update themselves</a></li><li><a href="../../use-cases/stocks-and-crypto/">Price pages current</a></li></ul>
+    <div class="footer-links">
+      <h2>Get the extension</h2>
+      <a href="../../chrome/">Chrome extension</a><a href="../../firefox/">Firefox add-on</a><a href="../../changelog/">Changelog</a>
     </div>
-    <div>
-      <h2 class="foot-title">Get it</h2>
-      <ul class="foot-list">
-        <li><a href="../../chrome/">Chrome extension</a></li>
-        <li><a href="../../firefox/">Firefox add-on</a></li>
-        <li><a href="../../faq/">FAQ</a></li>
-        <li><a href="../../changelog/">Changelog</a></li>
-        <li><a href="../../contact/">Contact</a></li>
-        <li><a href="../../privacy/">Privacy</a></li>
-        <li><a href="https://github.com/al-kafi-sohag/free-auto-refresh" target="_blank" rel="noopener">GitHub</a></li>
-      </ul>
+    <div class="footer-links">
+      <h2>About</h2>
+      <a href="https://github.com/al-kafi-sohag/free-auto-refresh" target="_blank" rel="noopener">GitHub</a><a href="../../privacy/">Privacy</a><a href="../../contact/">Contact</a>
     </div>
   </div>
-  <p class="border-t border-line py-5 text-center text-xs text-muted">Built by Al Kafi Sohag · MIT licensed · Not affiliated with Google or Mozilla</p>
+  <div class="footer-bottom"><div class="page-width"><span>© 2026 Al Kafi Sohag · MIT licensed</span><span>Not affiliated with Google or Mozilla</span></div></div>
 </footer>
 
-<div id="cookieBanner" class="fixed bottom-4 left-4 right-4 z-50 hidden rounded-2xl border border-line bg-white p-5 shadow-xl sm:left-auto sm:max-w-sm" role="dialog" aria-label="Cookie consent">
-  <p class="text-sm text-muted">This site uses Google Analytics to count visits, only if you accept. No ads. The extension itself has no analytics. <a class="font-semibold text-blue-deep" href="../../privacy/">Privacy</a></p>
-  <div class="mt-3 flex gap-2">
-    <button id="cookieAccept" type="button" class="btn btn-primary btn-sm">Accept</button>
-    <button id="cookieReject" type="button" class="btn btn-ghost btn-sm">Reject</button>
+<div class="cookie" id="cookieBanner" role="dialog" aria-label="Cookie consent">
+  This site uses Google Analytics to count visits, only if you accept. No ads. The extension itself has no analytics. <a href="../../privacy/"><strong>Privacy</strong></a>
+  <div class="install-links">
+    <button class="button-primary" id="cookieAccept" type="button">Accept</button>
+    <button class="button-secondary" id="cookieReject" type="button">Reject</button>
   </div>
 </div>
 

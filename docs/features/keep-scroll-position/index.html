@@ -1,167 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#eef4ff">
 <title>Auto Refresh That Keeps Your Scroll Position</title>
 <meta name="description" content="Reload a long page and stay exactly where you were. Free Auto Refresh restores the scroll position after every refresh.">
 <meta name="keywords" content="auto refresh keep scroll position, refresh page stay in same place, reload without scrolling to top">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://al-kafi-sohag.github.io/free-auto-refresh/features/keep-scroll-position/">
 <meta property="og:site_name" content="Free Auto Refresh">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Auto Refresh That Keeps Your Scroll Position">
 <meta property="og:description" content="Reload a long page and stay exactly where you were. Free Auto Refresh restores the scroll position after every refresh.">
-<meta property="og:type" content="website">
 <meta property="og:url" content="https://al-kafi-sohag.github.io/free-auto-refresh/features/keep-scroll-position/">
 <meta property="og:image" content="https://al-kafi-sohag.github.io/free-auto-refresh/assets/poster.png">
+<meta property="og:image:alt" content="Free Auto Refresh: auto refresh and page monitor browser extension">
+<meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Auto Refresh That Keeps Your Scroll Position">
+<meta name="twitter:description" content="Reload a long page and stay exactly where you were. Free Auto Refresh restores the scroll position after every refresh.">
+<meta name="twitter:image" content="https://al-kafi-sohag.github.io/free-auto-refresh/assets/poster.png">
 <meta name="google-site-verification" content="ww9t1NvE40Omq86n1bNGdVptryQJXYkv5f0-MjdqTqM">
 <meta name="msvalidate.01" content="3CB45458A679463A21F05BA747535729">
 <link rel="icon" href="../../assets/logo.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/site.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://al-kafi-sohag.github.io/free-auto-refresh/"},{"@type":"ListItem","position":2,"name":"Features","item":"https://al-kafi-sohag.github.io/free-auto-refresh/features/"},{"@type":"ListItem","position":3,"name":"Keep your place after every refresh","item":"https://al-kafi-sohag.github.io/free-auto-refresh/features/keep-scroll-position/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does it work on infinite-scroll pages?","acceptedAnswer":{"@type":"Answer","text":"Only for content that is present after the reload. Items that load as you scroll may not be there yet."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://al-kafi-sohag.github.io/free-auto-refresh/"},{"@type":"ListItem","position":2,"name":"Features","item":"https://al-kafi-sohag.github.io/free-auto-refresh/features/"},{"@type":"ListItem","position":3,"name":"Restore scroll position","item":"https://al-kafi-sohag.github.io/free-auto-refresh/features/keep-scroll-position/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why does my page jump to the top after a refresh?","acceptedAnswer":{"@type":"Answer","text":"Many sites reset the view on load. Turn on Keep scroll position to return to where you were."}},{"@type":"Question","name":"Does it remember horizontal scrolling?","acceptedAnswer":{"@type":"Answer","text":"Yes, both directions."}},{"@type":"Question","name":"Will it work on very long or lazy-loading pages?","acceptedAnswer":{"@type":"Answer","text":"It works for content present after the reload. Items that only load as you scroll may not be there to return to."}},{"@type":"Question","name":"Is it on by default?","acceptedAnswer":{"@type":"Answer","text":"No. Switch it on under Advanced settings, Reloading."}},{"@type":"Question","name":"Does it work with hard reload?","acceptedAnswer":{"@type":"Answer","text":"Yes. The two settings are independent."}},{"@type":"Question","name":"Does it work on infinite-scroll pages?","acceptedAnswer":{"@type":"Answer","text":"Only for content that is present after the reload. Items that load as you scroll may not be there yet."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"How to set up restore scroll position with Free Auto Refresh","step":[{"@type":"HowToStep","position":1,"text":"Open Advanced settings, Reloading."},{"@type":"HowToStep","position":2,"text":"Switch on Keep scroll position."},{"@type":"HowToStep","position":3,"text":"Scroll to the part you want to watch and press Start."}]}</script>
 </head>
-<body class="bg-page font-sans text-ink antialiased" data-ga="G-0DTP2D307V">
+<body data-ga="G-0DTP2D307V">
 
-<header class="sticky top-0 z-40 border-b border-line bg-page/90 backdrop-blur">
-  <div class="wrap flex h-16 items-center justify-between gap-4">
-    <a href="../../" class="flex items-center gap-2.5 font-display text-[17px] font-extrabold">
-      <img src="../../assets/logo.png" alt="" width="30" height="30">Free Auto Refresh
-    </a>
-    <nav id="nav" class="absolute left-0 top-16 hidden w-full flex-col gap-1 border-b border-line bg-page p-4 text-[15px] font-medium text-muted md:static md:flex md:w-auto md:flex-row md:gap-7 md:border-0 md:p-0" aria-label="Main">
-      <a href="../../features/" class="rounded px-2 py-2 hover:text-ink md:p-0 text-ink">Features</a>
-      <a href="../../use-cases/" class="rounded px-2 py-2 hover:text-ink md:p-0">Use cases</a>
-      <a href="../../chrome/" class="rounded px-2 py-2 hover:text-ink md:p-0">Chrome</a>
-      <a href="../../firefox/" class="rounded px-2 py-2 hover:text-ink md:p-0">Firefox</a>
-      <a href="../../faq/" class="rounded px-2 py-2 hover:text-ink md:p-0">FAQ</a>
-    </nav>
-    <div class="flex items-center gap-2">
-      <a href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Add to Chrome</a>
-      <button id="navToggle" type="button" class="btn btn-ghost btn-sm md:hidden" aria-controls="nav" aria-expanded="false">Menu</button>
-    </div>
+<header class="site-header">
+  <div class="page-width nav-shell">
+    <a class="brand" href="../../"><img src="../../assets/logo.png" alt="" width="31" height="31">Free Auto Refresh</a>
+    <nav class="desktop-nav" aria-label="Main"><a href="../../">Home</a><a href="../../features/" aria-current="page">Features</a><a href="../../use-cases/">Use cases</a><a href="../../guides/">Guides</a><a href="../../faq/">FAQ</a></nav>
+    <a class="nav-cta" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg aria-hidden="true" class="lucide lucide-arrow-up-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M7 7h10v10" /> <path d="M7 17 17 7" /> </svg></a>
+    <button class="mobile-nav-toggle" id="navToggle" type="button" aria-controls="mobileNav" aria-expanded="false" aria-label="Menu"><svg aria-hidden="true" class="lucide lucide-menu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M4 5h16" /> <path d="M4 12h16" /> <path d="M4 19h16" /> </svg></button>
   </div>
+  <nav class="mobile-nav-menu" id="mobileNav" aria-label="Mobile"><a href="../../">Home</a><a href="../../features/" aria-current="page">Features</a><a href="../../use-cases/">Use cases</a><a href="../../guides/">Guides</a><a href="../../faq/">FAQ</a><a href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome</a><a href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></nav>
 </header>
 
 <main>
 
-  <section class="wrap pt-10">
-    
-    <nav class="text-sm text-muted" aria-label="Breadcrumb">
-      <a href="../../" class="hover:text-ink">Home</a> <span aria-hidden="true">/</span> <a href="../../features/" class="hover:text-ink">Features</a>
-    </nav>
-    <div class="mt-6 grid items-center gap-10 lg:grid-cols-2">
-      <div>
-        <p class="kicker">Feature</p>
-        <h1 class="h1">Keep your place after every refresh</h1>
-        <p class="lede">Reading halfway down a long page? Turn on Keep scroll position and each refresh brings you back to the same spot.</p>
-        <div class="mt-7 flex flex-wrap gap-3">
-          <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome</a>
-          <a class="btn btn-ghost" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a>
+  <section class="hero-section">
+    <div class="page-width hero-grid">
+      <div class="hero-copy">
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="../../">Home</a><span>/</span><a href="../../features/">Features</a><span>/</span><span>Restore scroll position</span></nav>
+        <span class="eyebrow">Feature 06</span>
+        <h1>Reload the page. <span>Keep your place.</span></h1>
+        <p class="hero-description">Reading halfway down a long page? Turn on Keep scroll position and each refresh brings you back to the same spot.</p>
+        <div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg aria-hidden="true" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div>
+      </div>
+      <figure class="shot ">
+        <div class="shot-bar"><span class="shot-dots"><i></i><i></i><i></i></span><span class="shot-title">Scroll restore</span></div>
+        <img src="../../assets/placeholder.svg" alt="Restore scroll position: Free Auto Refresh browser extension illustration" width="960" height="720" loading="lazy">
+        <figcaption><svg aria-hidden="true" class="lucide lucide-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg>Back where you were</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="page-width content-section" style="padding-top:48px">
+    <div class="detail-grid">
+      <div class="panel prose">
+        <h2>How restore scroll position works</h2>
+        <p>Reading halfway down a long page? Turn on Keep scroll position and each refresh brings you back to the same spot.</p>
+        <p>Pair it with a watch rule on a table or list further down the page. You see the row you care about every time, without scrolling back.</p>
+        <h3>Quick setup</h3>
+        <div class="steps-list">
+          <div class="step-item"><span class="step-number">01</span><div><p style="margin:0;padding-top:8px">Open Advanced settings, Reloading.</p></div></div>
+          <div class="step-item"><span class="step-number">02</span><div><p style="margin:0;padding-top:8px">Switch on Keep scroll position.</p></div></div>
+          <div class="step-item"><span class="step-number">03</span><div><p style="margin:0;padding-top:8px">Scroll to the part you want to watch and press Start.</p></div></div>
         </div>
       </div>
-      <img src="../../assets/placeholder.svg" alt="Keep your place after every refresh" width="1200" height="750" loading="lazy" class="w-full rounded-2xl border border-line bg-white">
+      <aside class="panel side">
+        <span class="eyebrow">A good fit for</span>
+        <h2>Routine page checks</h2>
+        <p>Combine this with the other controls to match the page you are watching.</p>
+        <div class="side-links"><a href="../../features/hard-reload-bypass-cache/">Hard refresh <svg aria-hidden="true" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../features/refresh-limits/">Refresh limits <svg aria-hidden="true" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../use-cases/exam-results/">Results pages <svg aria-hidden="true" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a></div>
+        <h2 style="margin-top:28px">Suggested settings</h2>
+        <table class="settings"><tbody><tr><th scope="row">Keep scroll position</th><td>On</td></tr><tr><th scope="row">Pause when you scroll</th><td>Optional, to read without interruption</td></tr></tbody></table>
+      </aside>
     </div>
   </section>
 
-  <section class="wrap mt-14">
-    <div class="grid gap-4 md:grid-cols-3">
-      <div class="card"><h2 class="font-display text-lg font-bold">No more jumping to the top</h2><p class="mt-1.5 text-sm text-muted">The page returns to where you were, even on sites that normally reset the view.</p></div>
-      <div class="card"><h2 class="font-display text-lg font-bold">Handles late-loading pages</h2><p class="mt-1.5 text-sm text-muted">The position is restored again once the page has its full height, so long lists land correctly.</p></div>
-      <div class="card"><h2 class="font-display text-lg font-bold">Does not fight you</h2><p class="mt-1.5 text-sm text-muted">If you scroll during loading, your movement wins.</p></div>
-    </div>
-  </section>
+  <section class="page-width content-section" style="padding-top:22px">
+    <div class="panel prose">
+      <span class="eyebrow">Practical guide</span>
+      <h2>Refresh a page and stay in the same place</h2>
+      <p>On a long page, every reload can throw you back to the top. With Keep scroll position on, the extension notes where you were just before the refresh and returns you there afterwards.</p>
+      <p>It restores the position again once the page has reached its full height, which matters for pages that add content as they load.</p>
+      
+      
 
-  <section class="wrap mt-14 grid gap-10 lg:grid-cols-2">
-    <div>
-      <h2 class="h2">How to set it up</h2>
-      <ol class="steps">
-        <li>Open Advanced settings, Reloading.</li>
-        <li>Switch on Keep scroll position.</li>
-        <li>Scroll to the part you want to watch and press Start.</li>
-      </ol>
-    </div>
-    <div>
-      <h2 class="h2">Suggested settings</h2>
-      <table class="settings">
-        <tbody>
-          <tr><th scope="row">Keep scroll position</th><td>On</td></tr>
-          <tr><th scope="row">Pause when you scroll</th><td>Optional, to read without interruption</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
+      <h2>Made for long pages</h2>
+      
+      <ul><li><strong>Tables and lists</strong> where the row you care about is far down.</li><li><strong>Live text commentary</strong> and score pages.</li><li><strong>Search results and listings</strong> you are part-way through.</li><li><strong>Documentation or a page you are building</strong>, alongside <a href="../../features/hard-reload-bypass-cache/">hard reload</a>.</li></ul>
+      
 
-  <section class="wrap mt-14 max-w-3xl">
-    <h2 class="h2">Useful with page watching</h2>
-    <p class="mt-3 text-[17px] leading-relaxed text-muted">Pair it with a watch rule on a table or list further down the page. You see the row you care about every time, without scrolling back.</p>
+      <h2>It gives way to you</h2>
+      <p>If you scroll while the page is still loading, your movement wins and the saved position is dropped. Pair it with <a href="../../features/smart-pause/">pause when you scroll</a> to read without the page reloading under you.</p>
+      
+      
+
+      <h2>A worked example: a long league table</h2>
+      <p>You are following a team in 14th place on a page that reloads to the top. Scroll to the row, switch on Keep scroll position, and start a 30-second refresh. Each reload, the page briefly loads and then returns to 14th place without you touching anything.</p>
+      
+      
+
+      <h2>How it decides where to return</h2>
+      <p>Just before each reload the extension notes how far down and across the page you are. After the reload it scrolls there straight away, again when the page has finished loading, and once more a moment later for content that arrives late.</p>
+      <p>If the page is now shorter than before, you land as close as the new length allows.</p>
+      
+      
+
+      <h2>Common mistakes</h2>
+      
+      <ul><li><strong>Expecting it on endless feeds.</strong> Posts loaded by scrolling are not there after a reload.</li><li><strong>Scrolling during the reload.</strong> Your movement cancels the restore for that load.</li><li><strong>Leaving it off.</strong> It is off by default; turn it on under Reloading.</li></ul>
+      
+
+      <h2>Best together with</h2>
+      <p><a href="../../features/smart-pause/">Pause when you scroll</a>, so reading is not interrupted, and a <a href="../../features/page-monitor-keyword-alert/">content change rule</a> on the part of the page you are watching.</p>
+      
+      
+
+      <h2>At a glance</h2>
+      
+      <ul><li><strong>No more jumping to the top.</strong> The page returns to where you were, even on sites that normally reset the view.</li><li><strong>Handles late-loading pages.</strong> The position is restored again once the page has its full height, so long lists land correctly.</li><li><strong>Does not fight you.</strong> If you scroll during loading, your movement wins.</li></ul>
+      
+    </div>
   </section>
   
-  <section class="wrap mt-14 max-w-3xl">
-    <h2 class="h2">Questions</h2>
-    <div class="mt-5 space-y-3">
-      <details class="faq"><summary>Does it work on infinite-scroll pages?</summary><p>Only for content that is present after the reload. Items that load as you scroll may not be there yet.</p></details>
+  <section class="page-width faq-section" id="faq">
+    <div>
+      <span class="eyebrow">Good to know</span>
+      <h2 class="h2">Questions, answered.</h2>
+      
     </div>
-  </section>
-
-  <section class="wrap mt-14">
-    <h2 class="h2">Related</h2>
-    <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      <a href="../../features/hard-reload-bypass-cache/" class="card block hover:border-blue"><h3 class="font-display text-lg font-bold">Hard reload on a timer</h3><p class="mt-1.5 text-sm text-muted">A normal refresh can show saved copies of a page.</p></a>
-      <a href="../../features/refresh-limits/" class="card block hover:border-blue"><h3 class="font-display text-lg font-bold">Stop on its own, on your terms</h3><p class="mt-1.5 text-sm text-muted">Set a time limit, a refresh limit, or both.</p></a>
-      <a href="../../use-cases/exam-results/" class="card block hover:border-blue"><h3 class="font-display text-lg font-bold">Be first to know when results are published</h3><p class="mt-1.5 text-sm text-muted">Results day means hitting reload for hours.</p></a>
+    <div class="faq-list">
+      <details class="faq-item" open><summary><h3>Why does my page jump to the top after a refresh?</h3><svg aria-hidden="true" class="lucide lucide-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>Many sites reset the view on load. Turn on Keep scroll position to return to where you were.</p></details>
+      <details class="faq-item"><summary><h3>Does it remember horizontal scrolling?</h3><svg aria-hidden="true" class="lucide lucide-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>Yes, both directions.</p></details>
+      <details class="faq-item"><summary><h3>Will it work on very long or lazy-loading pages?</h3><svg aria-hidden="true" class="lucide lucide-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>It works for content present after the reload. Items that only load as you scroll may not be there to return to.</p></details>
+      <details class="faq-item"><summary><h3>Is it on by default?</h3><svg aria-hidden="true" class="lucide lucide-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>No. Switch it on under Advanced settings, Reloading.</p></details>
+      <details class="faq-item"><summary><h3>Does it work with hard reload?</h3><svg aria-hidden="true" class="lucide lucide-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>Yes. The two settings are independent.</p></details>
+      <details class="faq-item"><summary><h3>Does it work on infinite-scroll pages?</h3><svg aria-hidden="true" class="lucide lucide-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>Only for content that is present after the reload. Items that load as you scroll may not be there yet.</p></details>
     </div>
   </section>
   
-  <section class="wrap mt-16">
-    <div class="rounded-3xl bg-ink px-6 py-12 text-center text-white sm:px-12">
-      <h2 class="font-display text-3xl font-extrabold">Stop clicking reload</h2>
-      <p class="mx-auto mt-3 max-w-xl text-white/70">Free for Chrome and Firefox. No account, no ads, no tracking.</p>
-      <div class="mt-6 flex flex-wrap justify-center gap-3">
-        <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome</a>
-        <a class="btn btn-light" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a>
-      </div>
+  <section class="page-width">
+    <div class="cta-card">
+      <span class="eyebrow">Less checking. More doing.</span>
+      <h2>Try it on your next open tab.</h2>
+      <p>Free for Chrome and Firefox, with no account required.</p>
+      <div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg aria-hidden="true" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div>
+      <div class="assurance"><span><svg aria-hidden="true" class="lucide lucide-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg>Free forever</span><span><svg aria-hidden="true" class="lucide lucide-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg>Private by design</span><span><svg aria-hidden="true" class="lucide lucide-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg>Open source</span></div>
+    </div>
+  </section>
+  
+  <section class="page-width">
+    <div class="idea-card">
+      <div><span class="eyebrow">Your idea matters</span><h2>Not seeing the feature you need?</h2><p>Share the browser task you would like to make easier. Your idea helps guide what gets built next.</p></div>
+      <a class="button-primary" href="https://github.com/al-kafi-sohag/free-auto-refresh/issues" target="_blank" rel="noopener">Request a feature <svg aria-hidden="true" class="lucide lucide-arrow-up-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M7 7h10v10" /> <path d="M7 17 17 7" /> </svg></a>
     </div>
   </section>
 </main>
 
-<footer class="mt-20 border-t border-line bg-white">
-  <div class="wrap grid gap-8 py-12 text-sm sm:grid-cols-2 lg:grid-cols-4">
+<footer class="site-footer">
+  <div class="page-width footer-main">
     <div>
-      <a href="../../" class="flex items-center gap-2 font-display font-extrabold"><img src="../../assets/logo.png" alt="" width="26" height="26">Free Auto Refresh</a>
-      <p class="mt-3 text-muted">A free, private auto refresh and page monitor extension for Chrome and Firefox.</p>
+      <a class="brand" href="../../"><img src="../../assets/logo.png" alt="" width="31" height="31">Free Auto Refresh</a>
+      <p>A free, private auto refresh and page monitor extension for Chrome and Firefox.</p>
+      <p>Available in 7 languages.</p>
     </div>
-    <div>
-      <h2 class="foot-title">Features</h2>
-      <ul class="foot-list"><li><a href="../../features/auto-refresh-timer/">Auto refresh timer for any tab</a></li><li><a href="../../features/random-interval-refresh/">Refresh at random intervals</a></li><li><a href="../../features/page-monitor-keyword-alert/">Page monitor with keyword alerts</a></li><li><a href="../../features/on-page-countdown/">A live countdown on the page</a></li><li><a href="../../features/smart-pause/">Smart pause: it waits for you</a></li><li><a href="../../features/keep-scroll-position/">Keep your place after every refresh</a></li><li><a href="../../features/hard-reload-bypass-cache/">Hard reload on a timer</a></li><li><a href="../../features/refresh-limits/">Stop on its own, on your terms</a></li><li><a href="../../features/profiles-and-backup/">Profiles, export and import</a></li><li><a href="../../features/languages/">Speaks your language</a></li></ul>
+    <div class="footer-links">
+      <h2>Explore</h2>
+      <a href="../../features/">Features</a><a href="../../use-cases/">Use cases</a><a href="../../guides/">Guides</a><a href="../../faq/">FAQ</a>
     </div>
-    <div>
-      <h2 class="foot-title">Use cases</h2>
-      <ul class="foot-list"><li><a href="../../use-cases/restock-alerts/">Restock alerts for any product page</a></li><li><a href="../../use-cases/price-tracking/">Alerted when a price changes</a></li><li><a href="../../use-cases/ticket-sales/">Ticket drops without the manual reload</a></li><li><a href="../../use-cases/appointment-slots/">An appointment slot without constant checking</a></li><li><a href="../../use-cases/online-auctions/">An auction to the last second</a></li><li><a href="../../use-cases/exam-results/">First to know when results are published</a></li><li><a href="../../use-cases/order-and-application-status/">Told when your status changes</a></li><li><a href="../../use-cases/live-dashboards/">Dashboards that stay up to date</a></li><li><a href="../../use-cases/server-and-status-pages/">Watch builds, queues and status pages</a></li><li><a href="../../use-cases/web-development/">Zero-setup live reload</a></li><li><a href="../../use-cases/job-boards/">New job posts as they appear</a></li><li><a href="../../use-cases/freelance-marketplaces/">Freelance marketplaces: refresh with care</a></li><li><a href="../../use-cases/wordpress/">WordPress, without a plugin</a></li><li><a href="../../use-cases/sports-scores/">Live scores that update themselves</a></li><li><a href="../../use-cases/stocks-and-crypto/">Price pages current</a></li></ul>
+    <div class="footer-links">
+      <h2>Get the extension</h2>
+      <a href="../../chrome/">Chrome extension</a><a href="../../firefox/">Firefox add-on</a><a href="../../changelog/">Changelog</a>
     </div>
-    <div>
-      <h2 class="foot-title">Get it</h2>
-      <ul class="foot-list">
-        <li><a href="../../chrome/">Chrome extension</a></li>
-        <li><a href="../../firefox/">Firefox add-on</a></li>
-        <li><a href="../../faq/">FAQ</a></li>
-        <li><a href="../../changelog/">Changelog</a></li>
-        <li><a href="../../contact/">Contact</a></li>
-        <li><a href="../../privacy/">Privacy</a></li>
-        <li><a href="https://github.com/al-kafi-sohag/free-auto-refresh" target="_blank" rel="noopener">GitHub</a></li>
-      </ul>
+    <div class="footer-links">
+      <h2>About</h2>
+      <a href="https://github.com/al-kafi-sohag/free-auto-refresh" target="_blank" rel="noopener">GitHub</a><a href="../../privacy/">Privacy</a><a href="../../contact/">Contact</a>
     </div>
   </div>
-  <p class="border-t border-line py-5 text-center text-xs text-muted">Built by Al Kafi Sohag · MIT licensed · Not affiliated with Google or Mozilla</p>
+  <div class="footer-bottom"><div class="page-width"><span>© 2026 Al Kafi Sohag · MIT licensed</span><span>Not affiliated with Google or Mozilla</span></div></div>
 </footer>
 
-<div id="cookieBanner" class="fixed bottom-4 left-4 right-4 z-50 hidden rounded-2xl border border-line bg-white p-5 shadow-xl sm:left-auto sm:max-w-sm" role="dialog" aria-label="Cookie consent">
-  <p class="text-sm text-muted">This site uses Google Analytics to count visits, only if you accept. No ads. The extension itself has no analytics. <a class="font-semibold text-blue-deep" href="../../privacy/">Privacy</a></p>
-  <div class="mt-3 flex gap-2">
-    <button id="cookieAccept" type="button" class="btn btn-primary btn-sm">Accept</button>
-    <button id="cookieReject" type="button" class="btn btn-ghost btn-sm">Reject</button>
+<div class="cookie" id="cookieBanner" role="dialog" aria-label="Cookie consent">
+  This site uses Google Analytics to count visits, only if you accept. No ads. The extension itself has no analytics. <a href="../../privacy/"><strong>Privacy</strong></a>
+  <div class="install-links">
+    <button class="button-primary" id="cookieAccept" type="button">Accept</button>
+    <button class="button-secondary" id="cookieReject" type="button">Reject</button>
   </div>
 </div>
 

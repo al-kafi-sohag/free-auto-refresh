@@ -30,22 +30,22 @@ $(function () {
   }
 
   if (getChoice() === "accepted") loadAnalytics();
-  if (!getChoice()) $("#cookieBanner").removeClass("hidden");
+  if (!getChoice()) $("#cookieBanner").addClass("show");
 
   $("#cookieAccept").on("click", function () {
     setChoice("accepted");
     loadAnalytics();
-    $("#cookieBanner").addClass("hidden");
+    $("#cookieBanner").removeClass("show");
   });
 
   $("#cookieReject").on("click", function () {
     setChoice("rejected");
-    $("#cookieBanner").addClass("hidden");
+    $("#cookieBanner").removeClass("show");
   });
 
   /* ---------- contact form: no backend yet ---------- */
   $("#contactForm").on("submit", function (e) {
     e.preventDefault();
-    $("#contactNote").removeClass("hidden");
+    $("#contactNote").prop("hidden", false);
   });
 });

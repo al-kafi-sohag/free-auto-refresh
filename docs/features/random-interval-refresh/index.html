@@ -1,169 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#eef4ff">
 <title>Random Interval Auto Refresh – A New Wait Every Time</title>
 <meta name="description" content="Refresh a page at random intervals between a minimum and maximum you choose. Looks less robotic than a fixed timer. Free for Chrome and Firefox.">
 <meta name="keywords" content="random auto refresh, random interval refresh, refresh page at random intervals, randomized refresh">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://al-kafi-sohag.github.io/free-auto-refresh/features/random-interval-refresh/">
 <meta property="og:site_name" content="Free Auto Refresh">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Random Interval Auto Refresh – A New Wait Every Time">
 <meta property="og:description" content="Refresh a page at random intervals between a minimum and maximum you choose. Looks less robotic than a fixed timer. Free for Chrome and Firefox.">
-<meta property="og:type" content="website">
 <meta property="og:url" content="https://al-kafi-sohag.github.io/free-auto-refresh/features/random-interval-refresh/">
 <meta property="og:image" content="https://al-kafi-sohag.github.io/free-auto-refresh/assets/poster.png">
+<meta property="og:image:alt" content="Free Auto Refresh: auto refresh and page monitor browser extension">
+<meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Random Interval Auto Refresh – A New Wait Every Time">
+<meta name="twitter:description" content="Refresh a page at random intervals between a minimum and maximum you choose. Looks less robotic than a fixed timer. Free for Chrome and Firefox.">
+<meta name="twitter:image" content="https://al-kafi-sohag.github.io/free-auto-refresh/assets/poster.png">
 <meta name="google-site-verification" content="ww9t1NvE40Omq86n1bNGdVptryQJXYkv5f0-MjdqTqM">
 <meta name="msvalidate.01" content="3CB45458A679463A21F05BA747535729">
 <link rel="icon" href="../../assets/logo.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/site.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://al-kafi-sohag.github.io/free-auto-refresh/"},{"@type":"ListItem","position":2,"name":"Features","item":"https://al-kafi-sohag.github.io/free-auto-refresh/features/"},{"@type":"ListItem","position":3,"name":"Refresh at random intervals","item":"https://al-kafi-sohag.github.io/free-auto-refresh/features/random-interval-refresh/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is the wait chosen?","acceptedAnswer":{"@type":"Answer","text":"Evenly at random between your two values, fresh for every refresh."}},{"@type":"Question","name":"What if Min is larger than Max?","acceptedAnswer":{"@type":"Answer","text":"The two values are swapped for you."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://al-kafi-sohag.github.io/free-auto-refresh/"},{"@type":"ListItem","position":2,"name":"Features","item":"https://al-kafi-sohag.github.io/free-auto-refresh/features/"},{"@type":"ListItem","position":3,"name":"Random intervals","item":"https://al-kafi-sohag.github.io/free-auto-refresh/features/random-interval-refresh/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I turn on random intervals?","acceptedAnswer":{"@type":"Answer","text":"Type different values into Min and Max. That is all; there is no separate switch."}},{"@type":"Question","name":"Is random refresh a paid feature?","acceptedAnswer":{"@type":"Answer","text":"No. It is free here, although some refresh extensions charge for it."}},{"@type":"Question","name":"Can I see when the next refresh will happen?","acceptedAnswer":{"@type":"Answer","text":"Yes. The popup, the on-page counter and optionally the toolbar icon show the countdown for the current wait."}},{"@type":"Question","name":"Does a random interval avoid being blocked?","acceptedAnswer":{"@type":"Answer","text":"It reduces the obvious pattern, but it does not bypass rate limits or a site's rules."}},{"@type":"Question","name":"Can I use decimals?","acceptedAnswer":{"@type":"Answer","text":"Yes, in steps of half a second, with a minimum of one second."}},{"@type":"Question","name":"How is the wait chosen?","acceptedAnswer":{"@type":"Answer","text":"Evenly at random between your two values, fresh for every refresh."}},{"@type":"Question","name":"What if Min is larger than Max?","acceptedAnswer":{"@type":"Answer","text":"The two values are swapped for you."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"How to set up random intervals with Free Auto Refresh","step":[{"@type":"HowToStep","position":1,"text":"Open the popup on the page you want."},{"@type":"HowToStep","position":2,"text":"Type the shortest wait into Min and the longest into Max."},{"@type":"HowToStep","position":3,"text":"Press Start. The countdown shows the wait chosen for this round."}]}</script>
 </head>
-<body class="bg-page font-sans text-ink antialiased" data-ga="G-0DTP2D307V">
+<body data-ga="G-0DTP2D307V">
 
-<header class="sticky top-0 z-40 border-b border-line bg-page/90 backdrop-blur">
-  <div class="wrap flex h-16 items-center justify-between gap-4">
-    <a href="../../" class="flex items-center gap-2.5 font-display text-[17px] font-extrabold">
-      <img src="../../assets/logo.png" alt="" width="30" height="30">Free Auto Refresh
-    </a>
-    <nav id="nav" class="absolute left-0 top-16 hidden w-full flex-col gap-1 border-b border-line bg-page p-4 text-[15px] font-medium text-muted md:static md:flex md:w-auto md:flex-row md:gap-7 md:border-0 md:p-0" aria-label="Main">
-      <a href="../../features/" class="rounded px-2 py-2 hover:text-ink md:p-0 text-ink">Features</a>
-      <a href="../../use-cases/" class="rounded px-2 py-2 hover:text-ink md:p-0">Use cases</a>
-      <a href="../../chrome/" class="rounded px-2 py-2 hover:text-ink md:p-0">Chrome</a>
-      <a href="../../firefox/" class="rounded px-2 py-2 hover:text-ink md:p-0">Firefox</a>
-      <a href="../../faq/" class="rounded px-2 py-2 hover:text-ink md:p-0">FAQ</a>
-    </nav>
-    <div class="flex items-center gap-2">
-      <a href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Add to Chrome</a>
-      <button id="navToggle" type="button" class="btn btn-ghost btn-sm md:hidden" aria-controls="nav" aria-expanded="false">Menu</button>
-    </div>
+<header class="site-header">
+  <div class="page-width nav-shell">
+    <a class="brand" href="../../"><img src="../../assets/logo.png" alt="" width="31" height="31">Free Auto Refresh</a>
+    <nav class="desktop-nav" aria-label="Main"><a href="../../">Home</a><a href="../../features/" aria-current="page">Features</a><a href="../../use-cases/">Use cases</a><a href="../../guides/">Guides</a><a href="../../faq/">FAQ</a></nav>
+    <a class="nav-cta" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg aria-hidden="true" class="lucide lucide-arrow-up-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M7 7h10v10" /> <path d="M7 17 17 7" /> </svg></a>
+    <button class="mobile-nav-toggle" id="navToggle" type="button" aria-controls="mobileNav" aria-expanded="false" aria-label="Menu"><svg aria-hidden="true" class="lucide lucide-menu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M4 5h16" /> <path d="M4 12h16" /> <path d="M4 19h16" /> </svg></button>
   </div>
+  <nav class="mobile-nav-menu" id="mobileNav" aria-label="Mobile"><a href="../../">Home</a><a href="../../features/" aria-current="page">Features</a><a href="../../use-cases/">Use cases</a><a href="../../guides/">Guides</a><a href="../../faq/">FAQ</a><a href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome</a><a href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></nav>
 </header>
 
 <main>
 
-  <section class="wrap pt-10">
-    
-    <nav class="text-sm text-muted" aria-label="Breadcrumb">
-      <a href="../../" class="hover:text-ink">Home</a> <span aria-hidden="true">/</span> <a href="../../features/" class="hover:text-ink">Features</a>
-    </nav>
-    <div class="mt-6 grid items-center gap-10 lg:grid-cols-2">
-      <div>
-        <p class="kicker">Feature</p>
-        <h1 class="h1">Refresh at random intervals</h1>
-        <p class="lede">Give a minimum and a maximum, and every refresh picks a new wait somewhere in between. No two gaps are the same.</p>
-        <div class="mt-7 flex flex-wrap gap-3">
-          <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome</a>
-          <a class="btn btn-ghost" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a>
+  <section class="hero-section">
+    <div class="page-width hero-grid">
+      <div class="hero-copy">
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="../../">Home</a><span>/</span><a href="../../features/">Features</a><span>/</span><span>Random intervals</span></nav>
+        <span class="eyebrow">Feature 02</span>
+        <h1>Never the same <span>wait twice.</span></h1>
+        <p class="hero-description">Give a minimum and a maximum, and every refresh picks a new wait somewhere in between. No two gaps are the same.</p>
+        <div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg aria-hidden="true" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div>
+      </div>
+      <figure class="shot ">
+        <div class="shot-bar"><span class="shot-dots"><i></i><i></i><i></i></span><span class="shot-title">Random interval</span></div>
+        <img src="../../assets/placeholder.svg" alt="Random intervals: Free Auto Refresh browser extension illustration" width="960" height="720" loading="lazy">
+        <figcaption><svg aria-hidden="true" class="lucide lucide-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg>A new wait every time</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="page-width content-section" style="padding-top:48px">
+    <div class="detail-grid">
+      <div class="panel prose">
+        <h2>How random intervals works</h2>
+        <p>Give a minimum and a maximum, and every refresh picks a new wait somewhere in between. No two gaps are the same.</p>
+        <p>Use a range when you check a page for a long time, such as a stock page or a queue. It spreads your requests out and is kinder to the site than hitting it on the exact same second each time.</p>
+        <h3>Quick setup</h3>
+        <div class="steps-list">
+          <div class="step-item"><span class="step-number">01</span><div><p style="margin:0;padding-top:8px">Open the popup on the page you want.</p></div></div>
+          <div class="step-item"><span class="step-number">02</span><div><p style="margin:0;padding-top:8px">Type the shortest wait into Min and the longest into Max.</p></div></div>
+          <div class="step-item"><span class="step-number">03</span><div><p style="margin:0;padding-top:8px">Press Start. The countdown shows the wait chosen for this round.</p></div></div>
         </div>
       </div>
-      <img src="../../assets/placeholder.svg" alt="Refresh at random intervals" width="1200" height="750" loading="lazy" class="w-full rounded-2xl border border-line bg-white">
+      <aside class="panel side">
+        <span class="eyebrow">A good fit for</span>
+        <h2>Routine page checks</h2>
+        <p>Combine this with the other controls to match the page you are watching.</p>
+        <div class="side-links"><a href="../../features/page-monitor-keyword-alert/">Page change monitor <svg aria-hidden="true" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../features/on-page-countdown/">Live countdown <svg aria-hidden="true" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../use-cases/price-tracking/">Price changes <svg aria-hidden="true" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a></div>
+        <h2 style="margin-top:28px">Suggested settings</h2>
+        <table class="settings"><tbody><tr><th scope="row">Min</th><td>15</td></tr><tr><th scope="row">Max</th><td>40</td></tr><tr><th scope="row">Max refreshes</th><td>Optional cap, for example 200</td></tr></tbody></table>
+      </aside>
     </div>
   </section>
 
-  <section class="wrap mt-14">
-    <div class="grid gap-4 md:grid-cols-3">
-      <div class="card"><h2 class="font-display text-lg font-bold">A range, not a rhythm</h2><p class="mt-1.5 text-sm text-muted">Set 20 and 45 and one wait might be 23 seconds, the next 41. A fixed beat is easy for a site to spot; a range is not.</p></div>
-      <div class="card"><h2 class="font-display text-lg font-bold">Free, not locked away</h2><p class="mt-1.5 text-sm text-muted">Random intervals are a paid extra in some refresh tools. Here they are part of the basic timer.</p></div>
-      <div class="card"><h2 class="font-display text-lg font-bold">Still fully in control</h2><p class="mt-1.5 text-sm text-muted">Limits, page watching and smart pause all work the same with a random range.</p></div>
-    </div>
-  </section>
+  <section class="page-width content-section" style="padding-top:22px">
+    <div class="panel prose">
+      <span class="eyebrow">Practical guide</span>
+      <h2>What is a random auto refresh?</h2>
+      <p>Instead of reloading on a fixed beat, a random auto refresh picks a new wait for every cycle, somewhere between a minimum and a maximum you set. Enter 20 and 45 seconds and one refresh might come after 23 seconds, the next after 41.</p>
+      <p>The countdown always shows the wait chosen for the current round, so you still know exactly when the next reload is due.</p>
+      
+      
 
-  <section class="wrap mt-14 grid gap-10 lg:grid-cols-2">
-    <div>
-      <h2 class="h2">How to set it up</h2>
-      <ol class="steps">
-        <li>Open the popup on the page you want.</li>
-        <li>Type the shortest wait into Min and the longest into Max.</li>
-        <li>Press Start. The countdown shows the wait chosen for this round.</li>
-      </ol>
-    </div>
-    <div>
-      <h2 class="h2">Suggested settings</h2>
-      <table class="settings">
-        <tbody>
-          <tr><th scope="row">Min</th><td>15</td></tr>
-          <tr><th scope="row">Max</th><td>40</td></tr>
-          <tr><th scope="row">Max refreshes</th><td>Optional cap, for example 200</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
+      <h2>Why random beats a fixed timer</h2>
+      
+      <ul><li><strong>It looks like a person, not a machine.</strong> Requests that arrive on the exact same second are easy for a website to flag.</li><li><strong>It is gentler on the site.</strong> Spreading reloads out avoids piling onto a busy server at regular intervals.</li><li><strong>It suits long waits.</strong> For a restock or a queue you may watch for hours, a range such as 30 to 90 seconds is a sensible default.</li></ul>
+      
 
-  <section class="wrap mt-14 max-w-3xl">
-    <h2 class="h2">When random is the better choice</h2>
-    <p class="mt-3 text-[17px] leading-relaxed text-muted">Use a range when you check a page for a long time, such as a stock page or a queue. It spreads your requests out and is kinder to the site than hitting it on the exact same second each time.</p>
+      <h2>Good ranges to start with</h2>
+      
+      
+      <h3>Active watching</h3>
+      <p>15 to 40 seconds, with a <a href="../../features/page-monitor-keyword-alert/">watch rule</a> so it stops on a change.</p>
+      <h3>Background checking</h3>
+      <p>60 to 180 seconds, with a <a href="../../features/refresh-limits/">time limit</a>.</p>
+      <h3>Slow status pages</h3>
+      <p>5 to 10 minutes (300 to 600 seconds).</p>
+
+      <h2>A worked example: a 30 to 90 second range</h2>
+      <p>You are watching a product page that may restock at any time today. Type 30 into Min and 90 into Max and press Start. The first refresh happens immediately. The counter then shows the wait picked for this round, perhaps 0:52, then 1:14, then 0:37.</p>
+      <p>Over an hour that averages one request a minute, the same as a fixed 60-second timer, but without the regular rhythm.</p>
+      
+      
+
+      <h2>Fixed or random: which should you choose?</h2>
+      
+      
+      <h3>Choose fixed when</h3>
+      <p>the page is your own tool (a dashboard, a build page, a local site) or when you want a predictable display on a wall screen.</p>
+      <h3>Choose random when</h3>
+      <p>you are checking someone else's website for a long time, especially a shop, a booking page or a results page under load.</p>
+
+      <h2>Common mistakes</h2>
+      
+      <ul><li><strong>A range that is too narrow.</strong> 29 to 31 seconds is fixed in all but name. Give it room, such as 30 to 90.</li><li><strong>A minimum that is too low.</strong> With 1 to 120 seconds, some waits will be only a second or two.</li><li><strong>Assuming it makes you invisible.</strong> Sites still count requests. Random timing is politeness, not a disguise.</li></ul>
+      
+
+      <h2>Smart auto refresh: random timing plus a watch rule</h2>
+      <p>The most useful set-up for waiting on something is a random range together with a <a href="../../features/page-monitor-keyword-alert/">page change rule</a> and a <a href="../../features/refresh-limits/">time limit</a>. The tab checks at an easy pace, stops the moment the page changes, and gives up by itself if nothing happens.</p>
+      
+      
+
+      <h2>At a glance</h2>
+      
+      <ul><li><strong>A range, not a rhythm.</strong> Set 20 and 45 and one wait might be 23 seconds, the next 41. A fixed beat is easy for a site to spot; a range is not.</li><li><strong>Free, not locked away.</strong> Random intervals are a paid extra in some refresh tools. Here they are part of the basic timer.</li><li><strong>Still fully in control.</strong> Limits, page watching and smart pause all work the same with a random range.</li></ul>
+      
+    </div>
   </section>
   
-  <section class="wrap mt-14 max-w-3xl">
-    <h2 class="h2">Questions</h2>
-    <div class="mt-5 space-y-3">
-      <details class="faq"><summary>How is the wait chosen?</summary><p>Evenly at random between your two values, fresh for every refresh.</p></details>
-      <details class="faq"><summary>What if Min is larger than Max?</summary><p>The two values are swapped for you.</p></details>
+  <section class="page-width faq-section" id="faq">
+    <div>
+      <span class="eyebrow">Good to know</span>
+      <h2 class="h2">Questions, answered.</h2>
+      
     </div>
-  </section>
-
-  <section class="wrap mt-14">
-    <h2 class="h2">Related</h2>
-    <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      <a href="../../features/page-monitor-keyword-alert/" class="card block hover:border-blue"><h3 class="font-display text-lg font-bold">Page monitor with keyword alerts</h3><p class="mt-1.5 text-sm text-muted">Tell it what to look for.</p></a>
-      <a href="../../features/on-page-countdown/" class="card block hover:border-blue"><h3 class="font-display text-lg font-bold">A live countdown on the page</h3><p class="mt-1.5 text-sm text-muted">A small pill sits in the corner of the page with the refresh count, the time left, and pause and stop buttons.</p></a>
-      <a href="../../use-cases/price-tracking/" class="card block hover:border-blue"><h3 class="font-display text-lg font-bold">Get alerted when a price changes</h3><p class="mt-1.5 text-sm text-muted">Point it at the price on the page.</p></a>
+    <div class="faq-list">
+      <details class="faq-item" open><summary><h3>How do I turn on random intervals?</h3><svg aria-hidden="true" class="lucide lucide-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>Type different values into Min and Max. That is all; there is no separate switch.</p></details>
+      <details class="faq-item"><summary><h3>Is random refresh a paid feature?</h3><svg aria-hidden="true" class="lucide lucide-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>No. It is free here, although some refresh extensions charge for it.</p></details>
+      <details class="faq-item"><summary><h3>Can I see when the next refresh will happen?</h3><svg aria-hidden="true" class="lucide lucide-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>Yes. The popup, the on-page counter and optionally the toolbar icon show the countdown for the current wait.</p></details>
+      <details class="faq-item"><summary><h3>Does a random interval avoid being blocked?</h3><svg aria-hidden="true" class="lucide lucide-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>It reduces the obvious pattern, but it does not bypass rate limits or a site's rules.</p></details>
+      <details class="faq-item"><summary><h3>Can I use decimals?</h3><svg aria-hidden="true" class="lucide lucide-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>Yes, in steps of half a second, with a minimum of one second.</p></details>
+      <details class="faq-item"><summary><h3>How is the wait chosen?</h3><svg aria-hidden="true" class="lucide lucide-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>Evenly at random between your two values, fresh for every refresh.</p></details>
+      <details class="faq-item"><summary><h3>What if Min is larger than Max?</h3><svg aria-hidden="true" class="lucide lucide-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>The two values are swapped for you.</p></details>
     </div>
   </section>
   
-  <section class="wrap mt-16">
-    <div class="rounded-3xl bg-ink px-6 py-12 text-center text-white sm:px-12">
-      <h2 class="font-display text-3xl font-extrabold">Stop clicking reload</h2>
-      <p class="mx-auto mt-3 max-w-xl text-white/70">Free for Chrome and Firefox. No account, no ads, no tracking.</p>
-      <div class="mt-6 flex flex-wrap justify-center gap-3">
-        <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome</a>
-        <a class="btn btn-light" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a>
-      </div>
+  <section class="page-width">
+    <div class="cta-card">
+      <span class="eyebrow">Less checking. More doing.</span>
+      <h2>Try it on your next open tab.</h2>
+      <p>Free for Chrome and Firefox, with no account required.</p>
+      <div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg aria-hidden="true" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div>
+      <div class="assurance"><span><svg aria-hidden="true" class="lucide lucide-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg>Free forever</span><span><svg aria-hidden="true" class="lucide lucide-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg>Private by design</span><span><svg aria-hidden="true" class="lucide lucide-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg>Open source</span></div>
+    </div>
+  </section>
+  
+  <section class="page-width">
+    <div class="idea-card">
+      <div><span class="eyebrow">Your idea matters</span><h2>Not seeing the feature you need?</h2><p>Share the browser task you would like to make easier. Your idea helps guide what gets built next.</p></div>
+      <a class="button-primary" href="https://github.com/al-kafi-sohag/free-auto-refresh/issues" target="_blank" rel="noopener">Request a feature <svg aria-hidden="true" class="lucide lucide-arrow-up-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M7 7h10v10" /> <path d="M7 17 17 7" /> </svg></a>
     </div>
   </section>
 </main>
 
-<footer class="mt-20 border-t border-line bg-white">
-  <div class="wrap grid gap-8 py-12 text-sm sm:grid-cols-2 lg:grid-cols-4">
+<footer class="site-footer">
+  <div class="page-width footer-main">
     <div>
-      <a href="../../" class="flex items-center gap-2 font-display font-extrabold"><img src="../../assets/logo.png" alt="" width="26" height="26">Free Auto Refresh</a>
-      <p class="mt-3 text-muted">A free, private auto refresh and page monitor extension for Chrome and Firefox.</p>
+      <a class="brand" href="../../"><img src="../../assets/logo.png" alt="" width="31" height="31">Free Auto Refresh</a>
+      <p>A free, private auto refresh and page monitor extension for Chrome and Firefox.</p>
+      <p>Available in 7 languages.</p>
     </div>
-    <div>
-      <h2 class="foot-title">Features</h2>
-      <ul class="foot-list"><li><a href="../../features/auto-refresh-timer/">Auto refresh timer for any tab</a></li><li><a href="../../features/random-interval-refresh/">Refresh at random intervals</a></li><li><a href="../../features/page-monitor-keyword-alert/">Page monitor with keyword alerts</a></li><li><a href="../../features/on-page-countdown/">A live countdown on the page</a></li><li><a href="../../features/smart-pause/">Smart pause: it waits for you</a></li><li><a href="../../features/keep-scroll-position/">Keep your place after every refresh</a></li><li><a href="../../features/hard-reload-bypass-cache/">Hard reload on a timer</a></li><li><a href="../../features/refresh-limits/">Stop on its own, on your terms</a></li><li><a href="../../features/profiles-and-backup/">Profiles, export and import</a></li><li><a href="../../features/languages/">Speaks your language</a></li></ul>
+    <div class="footer-links">
+      <h2>Explore</h2>
+      <a href="../../features/">Features</a><a href="../../use-cases/">Use cases</a><a href="../../guides/">Guides</a><a href="../../faq/">FAQ</a>
     </div>
-    <div>
-      <h2 class="foot-title">Use cases</h2>
-      <ul class="foot-list"><li><a href="../../use-cases/restock-alerts/">Restock alerts for any product page</a></li><li><a href="../../use-cases/price-tracking/">Alerted when a price changes</a></li><li><a href="../../use-cases/ticket-sales/">Ticket drops without the manual reload</a></li><li><a href="../../use-cases/appointment-slots/">An appointment slot without constant checking</a></li><li><a href="../../use-cases/online-auctions/">An auction to the last second</a></li><li><a href="../../use-cases/exam-results/">First to know when results are published</a></li><li><a href="../../use-cases/order-and-application-status/">Told when your status changes</a></li><li><a href="../../use-cases/live-dashboards/">Dashboards that stay up to date</a></li><li><a href="../../use-cases/server-and-status-pages/">Watch builds, queues and status pages</a></li><li><a href="../../use-cases/web-development/">Zero-setup live reload</a></li><li><a href="../../use-cases/job-boards/">New job posts as they appear</a></li><li><a href="../../use-cases/freelance-marketplaces/">Freelance marketplaces: refresh with care</a></li><li><a href="../../use-cases/wordpress/">WordPress, without a plugin</a></li><li><a href="../../use-cases/sports-scores/">Live scores that update themselves</a></li><li><a href="../../use-cases/stocks-and-crypto/">Price pages current</a></li></ul>
+    <div class="footer-links">
+      <h2>Get the extension</h2>
+      <a href="../../chrome/">Chrome extension</a><a href="../../firefox/">Firefox add-on</a><a href="../../changelog/">Changelog</a>
     </div>
-    <div>
-      <h2 class="foot-title">Get it</h2>
-      <ul class="foot-list">
-        <li><a href="../../chrome/">Chrome extension</a></li>
-        <li><a href="../../firefox/">Firefox add-on</a></li>
-        <li><a href="../../faq/">FAQ</a></li>
-        <li><a href="../../changelog/">Changelog</a></li>
-        <li><a href="../../contact/">Contact</a></li>
-        <li><a href="../../privacy/">Privacy</a></li>
-        <li><a href="https://github.com/al-kafi-sohag/free-auto-refresh" target="_blank" rel="noopener">GitHub</a></li>
-      </ul>
+    <div class="footer-links">
+      <h2>About</h2>
+      <a href="https://github.com/al-kafi-sohag/free-auto-refresh" target="_blank" rel="noopener">GitHub</a><a href="../../privacy/">Privacy</a><a href="../../contact/">Contact</a>
     </div>
   </div>
-  <p class="border-t border-line py-5 text-center text-xs text-muted">Built by Al Kafi Sohag · MIT licensed · Not affiliated with Google or Mozilla</p>
+  <div class="footer-bottom"><div class="page-width"><span>© 2026 Al Kafi Sohag · MIT licensed</span><span>Not affiliated with Google or Mozilla</span></div></div>
 </footer>
 
-<div id="cookieBanner" class="fixed bottom-4 left-4 right-4 z-50 hidden rounded-2xl border border-line bg-white p-5 shadow-xl sm:left-auto sm:max-w-sm" role="dialog" aria-label="Cookie consent">
-  <p class="text-sm text-muted">This site uses Google Analytics to count visits, only if you accept. No ads. The extension itself has no analytics. <a class="font-semibold text-blue-deep" href="../../privacy/">Privacy</a></p>
-  <div class="mt-3 flex gap-2">
-    <button id="cookieAccept" type="button" class="btn btn-primary btn-sm">Accept</button>
-    <button id="cookieReject" type="button" class="btn btn-ghost btn-sm">Reject</button>
+<div class="cookie" id="cookieBanner" role="dialog" aria-label="Cookie consent">
+  This site uses Google Analytics to count visits, only if you accept. No ads. The extension itself has no analytics. <a href="../../privacy/"><strong>Privacy</strong></a>
+  <div class="install-links">
+    <button class="button-primary" id="cookieAccept" type="button">Accept</button>
+    <button class="button-secondary" id="cookieReject" type="button">Reject</button>
   </div>
 </div>
 

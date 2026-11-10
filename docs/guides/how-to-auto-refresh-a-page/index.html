@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#eef4ff">
+<title>How to Auto Refresh a Page in Chrome, Firefox and Edge</title>
+<meta name="description" content="Three ways to make a web page refresh automatically: a free extension, a one-line script without an extension, and browser-specific options.">
+<meta name="keywords" content="how to auto refresh a page, how to auto refresh a web page, how to refresh a page automatically, how to auto refresh chrome, chrome auto refresh without extension, refresh page automatically">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://al-kafi-sohag.github.io/free-auto-refresh/guides/how-to-auto-refresh-a-page/">
+<meta property="og:site_name" content="Free Auto Refresh">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Auto Refresh a Page in Chrome, Firefox and Edge">
+<meta property="og:description" content="Three ways to make a web page refresh automatically: a free extension, a one-line script without an extension, and browser-specific options.">
+<meta property="og:url" content="https://al-kafi-sohag.github.io/free-auto-refresh/guides/how-to-auto-refresh-a-page/">
+<meta property="og:image" content="https://al-kafi-sohag.github.io/free-auto-refresh/assets/poster.png">
+<meta property="og:image:alt" content="Free Auto Refresh: auto refresh and page monitor browser extension">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Auto Refresh a Page in Chrome, Firefox and Edge">
+<meta name="twitter:description" content="Three ways to make a web page refresh automatically: a free extension, a one-line script without an extension, and browser-specific options.">
+<meta name="twitter:image" content="https://al-kafi-sohag.github.io/free-auto-refresh/assets/poster.png">
+<meta name="google-site-verification" content="ww9t1NvE40Omq86n1bNGdVptryQJXYkv5f0-MjdqTqM">
+<meta name="msvalidate.01" content="3CB45458A679463A21F05BA747535729">
+<link rel="icon" href="../../assets/logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://al-kafi-sohag.github.io/free-auto-refresh/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://al-kafi-sohag.github.io/free-auto-refresh/guides/"},{"@type":"ListItem","position":3,"name":"How to auto refresh a page","item":"https://al-kafi-sohag.github.io/free-auto-refresh/guides/how-to-auto-refresh-a-page/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I make a page refresh every 5 seconds?","acceptedAnswer":{"@type":"Answer","text":"Install Free Auto Refresh, set both Min and Max to 5 and press Start. Use short intervals only briefly; many sites limit rapid requests."}},{"@type":"Question","name":"Can Chrome auto refresh a page without an extension?","acceptedAnswer":{"@type":"Answer","text":"Only once, with a console script. Chrome has no setting for repeated automatic refresh."}},{"@type":"Question","name":"Does auto refresh work in a background tab?","acceptedAnswer":{"@type":"Answer","text":"Yes. Browsers slow timers slightly in hidden tabs, so the wait may run about a second long."}},{"@type":"Question","name":"Will auto refresh log me out?","acceptedAnswer":{"@type":"Answer","text":"Usually the opposite: regular reloads keep many sessions alive. Some sites still sign you out after a fixed time."}},{"@type":"Question","name":"Is auto refreshing a page allowed?","acceptedAnswer":{"@type":"Answer","text":"On most sites, at sensible intervals, yes. Some marketplaces, ticket sites and booking portals forbid it, so check their terms."}},{"@type":"Question","name":"How do I refresh all tabs at once?","acceptedAnswer":{"@type":"Answer","text":"Free Auto Refresh works per tab. Start it in each tab you want refreshed."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"How to set up how to auto refresh a page with Free Auto Refresh","step":[{"@type":"HowToStep","position":1,"text":"Install the extension. Add Free Auto Refresh from the Chrome Web Store or Firefox Add-ons."},{"@type":"HowToStep","position":2,"text":"Open the page and click the icon. Each tab gets its own timer."},{"@type":"HowToStep","position":3,"text":"Pick an interval. Use a preset such as 30–60s, or type your own minimum and maximum seconds."},{"@type":"HowToStep","position":4,"text":"Press Start. The page reloads straight away and then on your schedule. Press Stop or Alt+Shift+R to end it."}]}</script>
+</head>
+<body data-ga="G-0DTP2D307V">
+
+<header class="site-header">
+  <div class="page-width nav-shell">
+    <a class="brand" href="../../"><img src="../../assets/logo.png" alt="" width="31" height="31">Free Auto Refresh</a>
+    <nav class="desktop-nav" aria-label="Main"><a href="../../">Home</a><a href="../../features/">Features</a><a href="../../use-cases/">Use cases</a><a href="../../guides/" aria-current="page">Guides</a><a href="../../faq/">FAQ</a></nav>
+    <a class="nav-cta" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg aria-hidden="true" class="lucide lucide-arrow-up-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M7 7h10v10" /> <path d="M7 17 17 7" /> </svg></a>
+    <button class="mobile-nav-toggle" id="navToggle" type="button" aria-controls="mobileNav" aria-expanded="false" aria-label="Menu"><svg aria-hidden="true" class="lucide lucide-menu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M4 5h16" /> <path d="M4 12h16" /> <path d="M4 19h16" /> </svg></button>
+  </div>
+  <nav class="mobile-nav-menu" id="mobileNav" aria-label="Mobile"><a href="../../">Home</a><a href="../../features/">Features</a><a href="../../use-cases/">Use cases</a><a href="../../guides/" aria-current="page">Guides</a><a href="../../faq/">FAQ</a><a href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome</a><a href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></nav>
+</header>
+
+<main>
+
+  <section class="hero-section">
+    <div class="page-width hero-grid">
+      <div class="hero-copy">
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="../../">Home</a><span>/</span><a href="../../guides/">Guides</a><span>/</span><span>How to auto refresh a page</span></nav>
+        <span class="eyebrow">Guide</span>
+        <h1>How to auto refresh <span>a web page.</span></h1>
+        <p class="hero-description">No major browser has an auto refresh button. Here are the ways to make a page reload itself, from the two-click method to doing it without an extension.</p>
+        <div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg aria-hidden="true" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div>
+      </div>
+      <figure class="shot ">
+        <div class="shot-bar"><span class="shot-dots"><i></i><i></i><i></i></span><span class="shot-title">Auto refresh guide</span></div>
+        <img src="../../assets/placeholder.svg" alt="How to auto refresh a page: Free Auto Refresh browser extension illustration" width="960" height="720" loading="lazy">
+        <figcaption><svg aria-hidden="true" class="lucide lucide-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg>Works in Chrome, Firefox and Edge</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="page-width content-section" style="padding-top:48px">
+    <div class="detail-grid">
+      <div class="panel prose">
+        <h2>The quickest way: an auto refresh extension</h2>
+        <p>Chrome, Firefox and Edge can all reload a tab on a schedule once you add an extension. With <strong>Free Auto Refresh</strong> it takes about ten seconds and works the same in every browser.</p>
+        <p>It also covers what the manual methods cannot: random intervals, stopping when the page changes, and not reloading while you are typing.</p>
+        <h3>Quick setup</h3>
+        <div class="steps-list">
+          <div class="step-item"><span class="step-number">01</span><div><h4 class="font-bold text-[15.5px] text-[#1b2940]">Install the extension</h4><p>Add Free Auto Refresh from the Chrome Web Store or Firefox Add-ons.</p></div></div>
+          <div class="step-item"><span class="step-number">02</span><div><h4 class="font-bold text-[15.5px] text-[#1b2940]">Open the page and click the icon</h4><p>Each tab gets its own timer.</p></div></div>
+          <div class="step-item"><span class="step-number">03</span><div><h4 class="font-bold text-[15.5px] text-[#1b2940]">Pick an interval</h4><p>Use a preset such as 30–60s, or type your own minimum and maximum seconds.</p></div></div>
+          <div class="step-item"><span class="step-number">04</span><div><h4 class="font-bold text-[15.5px] text-[#1b2940]">Press Start</h4><p>The page reloads straight away and then on your schedule. Press Stop or Alt+Shift+R to end it.</p></div></div>
+        </div>
+      </div>
+      <aside class="panel side">
+        <span class="eyebrow">Keep exploring</span>
+        <h2>Popular next steps</h2>
+        <p>The most used features and set-ups.</p>
+        <div class="side-links"><a href="../../features/auto-refresh-timer/">Auto refresh timer <svg aria-hidden="true" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../features/page-monitor-keyword-alert/">Page change monitor <svg aria-hidden="true" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../use-cases/restock-alerts/">Restock alerts <svg aria-hidden="true" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a></div>
+        
+      </aside>
+    </div>
+  </section>
+
+  <section class="page-width content-section" style="padding-top:22px">
+    <div class="panel prose">
+      <span class="eyebrow">Practical guide</span>
+      <h2>How to auto refresh Chrome without an extension</h2>
+      <p>If you cannot install extensions, you can refresh a page automatically with a short script. Open the page, press <strong>F12</strong>, choose the <strong>Console</strong> tab, paste this and press Enter:</p>
+      <p><strong>setTimeout(() =&gt; location.reload(), 30000)</strong></p>
+      <p>That reloads the page once after 30 seconds. Because a reload wipes the script, it will not repeat on its own, which is the main limit of this method. A repeating version needs the page loaded inside a frame, and many sites block that.</p>
+      
+      <h3>When the no-extension method is enough</h3>
+      <p>For a one-off reload after a known wait, or on a locked-down work computer. For anything that should keep going, an extension is simpler and more reliable.</p>
+
+      <h2>How to refresh a page automatically in each browser</h2>
+      
+      <ul><li><strong>Chrome:</strong> no built-in option. Use an <a href="../../chrome/">auto refresh Chrome extension</a>.</li><li><strong>Firefox:</strong> no built-in option either. Use the <a href="../../firefox/">Firefox add-on</a>.</li><li><strong>Edge, Brave and Opera:</strong> they accept Chrome extensions, so the Chrome version installs directly.</li><li><strong>Safari:</strong> no built-in option, and this extension is not available for Safari.</li></ul>
+      
+
+      <h2>Choosing a refresh interval</h2>
+      <p>Shorter is not better. Every reload is a request to the website, and very frequent ones can get you slowed down or blocked. As a rule: 5 to 10 seconds only for short bursts, 30 to 60 seconds for pages you are actively waiting on, and several minutes for dashboards and status pages.</p>
+      <p>A <a href="../../features/random-interval-refresh/">random interval</a> spreads the requests out and is easier on the site than a fixed beat.</p>
+      
+      
+
+      <h2>Refresh until something changes</h2>
+      <p>If you are refreshing in order to spot a change, let the page tell you. Set a <a href="../../features/page-monitor-keyword-alert/">page change rule</a> and the extension stops and sends a notification when your text appears, disappears, or the content changes.</p>
+      
+      
+    </div>
+  </section>
+  
+  <section class="page-width faq-section" id="faq">
+    <div>
+      <span class="eyebrow">Good to know</span>
+      <h2 class="h2">Questions, answered.</h2>
+      
+    </div>
+    <div class="faq-list">
+      <details class="faq-item" open><summary><h3>How do I make a page refresh every 5 seconds?</h3><svg aria-hidden="true" class="lucide lucide-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>Install Free Auto Refresh, set both Min and Max to 5 and press Start. Use short intervals only briefly; many sites limit rapid requests.</p></details>
+      <details class="faq-item"><summary><h3>Can Chrome auto refresh a page without an extension?</h3><svg aria-hidden="true" class="lucide lucide-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>Only once, with a console script. Chrome has no setting for repeated automatic refresh.</p></details>
+      <details class="faq-item"><summary><h3>Does auto refresh work in a background tab?</h3><svg aria-hidden="true" class="lucide lucide-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>Yes. Browsers slow timers slightly in hidden tabs, so the wait may run about a second long.</p></details>
+      <details class="faq-item"><summary><h3>Will auto refresh log me out?</h3><svg aria-hidden="true" class="lucide lucide-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>Usually the opposite: regular reloads keep many sessions alive. Some sites still sign you out after a fixed time.</p></details>
+      <details class="faq-item"><summary><h3>Is auto refreshing a page allowed?</h3><svg aria-hidden="true" class="lucide lucide-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>On most sites, at sensible intervals, yes. Some marketplaces, ticket sites and booking portals forbid it, so check their terms.</p></details>
+      <details class="faq-item"><summary><h3>How do I refresh all tabs at once?</h3><svg aria-hidden="true" class="lucide lucide-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>Free Auto Refresh works per tab. Start it in each tab you want refreshed.</p></details>
+    </div>
+  </section>
+  
+  <section class="page-width">
+    <div class="cta-card">
+      <span class="eyebrow">Less checking. More doing.</span>
+      <h2>Skip the manual reloads.</h2>
+      <p>Free Auto Refresh does it on a timer, for Chrome and Firefox.</p>
+      <div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg aria-hidden="true" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div>
+      <div class="assurance"><span><svg aria-hidden="true" class="lucide lucide-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg>Free forever</span><span><svg aria-hidden="true" class="lucide lucide-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg>Private by design</span><span><svg aria-hidden="true" class="lucide lucide-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg>Open source</span></div>
+    </div>
+  </section>
+  
+  <section class="page-width">
+    <div class="idea-card">
+      <div><span class="eyebrow">Your idea matters</span><h2>Not seeing the feature you need?</h2><p>Share the browser task you would like to make easier. Your idea helps guide what gets built next.</p></div>
+      <a class="button-primary" href="https://github.com/al-kafi-sohag/free-auto-refresh/issues" target="_blank" rel="noopener">Request a feature <svg aria-hidden="true" class="lucide lucide-arrow-up-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M7 7h10v10" /> <path d="M7 17 17 7" /> </svg></a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="page-width footer-main">
+    <div>
+      <a class="brand" href="../../"><img src="../../assets/logo.png" alt="" width="31" height="31">Free Auto Refresh</a>
+      <p>A free, private auto refresh and page monitor extension for Chrome and Firefox.</p>
+      <p>Available in 7 languages.</p>
+    </div>
+    <div class="footer-links">
+      <h2>Explore</h2>
+      <a href="../../features/">Features</a><a href="../../use-cases/">Use cases</a><a href="../../guides/">Guides</a><a href="../../faq/">FAQ</a>
+    </div>
+    <div class="footer-links">
+      <h2>Get the extension</h2>
+      <a href="../../chrome/">Chrome extension</a><a href="../../firefox/">Firefox add-on</a><a href="../../changelog/">Changelog</a>
+    </div>
+    <div class="footer-links">
+      <h2>About</h2>
+      <a href="https://github.com/al-kafi-sohag/free-auto-refresh" target="_blank" rel="noopener">GitHub</a><a href="../../privacy/">Privacy</a><a href="../../contact/">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom"><div class="page-width"><span>© 2026 Al Kafi Sohag · MIT licensed</span><span>Not affiliated with Google or Mozilla</span></div></div>
+</footer>
+
+<div class="cookie" id="cookieBanner" role="dialog" aria-label="Cookie consent">
+  This site uses Google Analytics to count visits, only if you accept. No ads. The extension itself has no analytics. <a href="../../privacy/"><strong>Privacy</strong></a>
+  <div class="install-links">
+    <button class="button-primary" id="cookieAccept" type="button">Accept</button>
+    <button class="button-secondary" id="cookieReject" type="button">Reject</button>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="../../assets/site.js"></script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 /** Tailwind config for the website in docs/ (the extension popup uses tailwind.config.js). */
 module.exports = {
-  content: ["./site/build.js", "./site/pages.js"],
+  content: ["./site/build.js", "./site/pages.js", "./site/content/*.js"],
   theme: {
     extend: {
       colors: {
