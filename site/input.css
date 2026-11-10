@@ -9,7 +9,6 @@
   html { scroll-behavior: smooth; scroll-padding-top: 88px; }
   body { background: #f1f5fc; color: var(--ink); font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased; }
   h1, h2, h3 { letter-spacing: -.035em; }
-  .lucide { width: 1em; height: 1em; flex: none; }
 }
 
 @layer components {
@@ -46,7 +45,7 @@
   .button-secondary:hover { border-color: #b9cbe5; background: #fff; }
   .trust-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 22px; color: #74829a; font-size: 13px; }
   .trust-row span { display: inline-flex; align-items: center; gap: 6px; }
-  .trust-row .lucide { color: #20a873; }
+  .trust-row .ic { color: #20a873; }
 
   /* picture inside a browser-style frame, with a page-specific title bar */
   .shot { width: min(100%,480px); margin-left: auto; padding: 12px; border: 1px solid #dce6f5; border-radius: 22px; background: rgba(255,255,255,.68); box-shadow: 0 28px 80px rgba(62,91,139,.14), 0 3px 8px rgba(36,66,114,.04); transform: rotate(1deg); }
@@ -59,7 +58,7 @@
   .shot-title { flex: 1; overflow: hidden; padding: 4px 10px; border: 1px solid #e8edf5; border-radius: 7px; background: #f8fafd; color: #8a97a9; font-size: 11px; white-space: nowrap; text-overflow: ellipsis; }
   .shot img { width: 100%; height: auto; border: 1px solid #e3eaf4; border-radius: 14px; background: #fff; }
   .shot figcaption { display: flex; align-items: center; justify-content: center; gap: 7px; padding: 12px 0 1px; color: #75839a; font-size: 12px; font-weight: 600; }
-  .shot figcaption .lucide { color: #1ca574; }
+  .shot figcaption .ic { color: #1ca574; }
 
   /* ---------- sections ---------- */
   .content-section { padding-top: 96px; }
@@ -115,8 +114,8 @@
   .faq-item { padding: 0 18px; border: 1px solid #e0e8f3; border-radius: 12px; background: rgba(255,255,255,.89); }
   .faq-item summary { display: flex; min-height: 58px; align-items: center; justify-content: space-between; gap: 16px; color: #25334b; cursor: pointer; list-style: none; font-size: 15.5px; font-weight: 700; }
   .faq-item summary::-webkit-details-marker { display: none; }
-  .faq-item summary .lucide { color: #6780a4; font-size: 18px; transition: transform .2s ease; }
-  .faq-item[open] summary .lucide { transform: rotate(45deg); }
+  .faq-item summary .ic { color: #6780a4; font-size: 18px; transition: transform .2s ease; }
+  .faq-item[open] summary .ic { transform: rotate(45deg); }
   .faq-item > p { margin: -2px 24px 17px 0; color: #66758d; font-size: 15px; line-height: 1.75; }
 
   /* ---------- call to action ---------- */
@@ -129,7 +128,7 @@
   .cta-card .button-secondary { border-color: #34425a; background: rgba(255,255,255,.08); color: #f3f6fb; }
   .assurance { display: flex; align-items: center; justify-content: center; gap: 22px; flex-wrap: wrap; margin-top: 24px; color: #aab6c8; font-size: 13px; }
   .assurance span { display: inline-flex; align-items: center; gap: 6px; }
-  .assurance .lucide { color: #7fd4ac; }
+  .assurance .ic { color: #7fd4ac; }
 
   .idea-card { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-top: 56px; padding: 34px; border: 1px solid #dce6f5; border-radius: 20px; background: linear-gradient(120deg, rgba(255,255,255,.9), #edf3ff); }
   .idea-card h2 { margin-top: 10px; font-size: 27px; font-weight: 800; }
@@ -186,3 +185,12 @@
     *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
   }
 }
+
+/* Outside any layer so Tailwind never strips them: these classes are added by the build script. */
+.ic { display: inline-block; width: 1em; height: 1em; flex: none; vertical-align: -.125em; }
+.prose h2 { margin-top: 38px; font-size: 24px; font-weight: 800; }
+.prose > h2:first-child, .prose > .eyebrow + h2 { margin-top: 12px; }
+.prose > .eyebrow { display: flex; }
+.faq-item summary h3 { font-size: inherit; font-weight: inherit; letter-spacing: 0; }
+.nav-cta, .button-primary, .button-secondary { white-space: nowrap; }
+.shot img { aspect-ratio: 4 / 3; object-fit: cover; }

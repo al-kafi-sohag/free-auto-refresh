@@ -15,7 +15,8 @@
     "run:firefox": "npm run build:css && npm run prep:firefox && web-ext run --source-dir=dist-firefox",
     "lint:firefox": "web-ext lint --source-dir=dist-firefox",
     "preview": "node dev/serve.js",
-    "build:site": "tailwindcss -c tailwind.site.config.js -i ./site/input.css -o ./docs/assets/site.css --minify && node site/build.js"
+    "build:site": "tailwindcss -c tailwind.site.config.js -i ./site/input.css -o ./docs/assets/site.css --minify && node site/build.js",
+    "build:art": "node site/make-art.js"
   },
   "devDependencies": {
     "lucide-static": "^1.71.0",

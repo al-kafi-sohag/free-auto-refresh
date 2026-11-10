@@ -36,7 +36,7 @@ function icon(name) {
     const file = path.resolve(__dirname, "..", "node_modules", "lucide-static", "icons", `${name}.svg`);
     iconCache[name] = fs.readFileSync(file, "utf8")
       .replace(/<!--[\s\S]*?-->/, "").replace(/\s+/g, " ").replace(/ width="24" height="24"/, "")
-      .replace("<svg", '<svg aria-hidden="true"').trim();
+      .replace(/ class="[^"]*"/, "").replace("<svg", '<svg class="ic" aria-hidden="true"').trim();
   }
 
   return iconCache[name];
@@ -64,8 +64,7 @@ const used = {}; // image key -> pages using it
 
 function shot(page, key, title, caption, alt, cls = "") {
   (used[key] ||= []).push(page.path || "home");
-  const file = `assets/img/${key}.png`;
-  const src = fs.existsSync(path.join(OUT, file)) ? file : "assets/placeholder.svg";
+  const src = ["svg", "png", "jpg"].map((ext) => `assets/img/${key}.${ext}`).find((f) => fs.existsSync(path.join(OUT, f))) || "assets/placeholder.svg";
   const [w, h] = IMAGES[key].size.split("x");
   return `<figure class="shot ${cls}">
         <div class="shot-bar"><span class="shot-dots"><i></i><i></i><i></i></span><span class="shot-title">${esc(title)}</span></div>
