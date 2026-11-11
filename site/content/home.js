@@ -71,7 +71,7 @@ const featuresHub = {
   eyebrow: "Built for your browser",
   h1: ["Small controls.", "A lot less checking."],
   lede: "Explore the tools that make Free Auto Refresh more than a timer: watch for page changes, protect your typing, keep your place, and control exactly when refreshing stops.",
-  img: "controls", shotTitle: "The right tool for every tab", caption: "Refresh controls are ready", alt: "Free Auto Refresh settings grouped by feature",
+  shotTitle: "The right tool for every tab", caption: "Refresh controls are ready", alt: "Free Auto Refresh settings grouped by feature",
   gridTitle: "Every feature, at a glance", gridText: "Choose a feature to see how it works and when it is useful.",
   sections: [
     { h: "Built for the way you check the web",
@@ -93,7 +93,7 @@ const useCasesHub = {
   eyebrow: "Let a tab keep watch",
   h1: ["What are you", "waiting for?"],
   lede: "From a restock to a dashboard update, set a page to refresh and get notified when the thing you care about changes. Pick a use case to see a simple set-up.",
-  img: "shopping", shotTitle: "Let the page do the checking", caption: "Watching for a useful update", alt: "Product page being watched for a restock by Free Auto Refresh",
+  shotTitle: "Let the page do the checking", caption: "Watching for a useful update", alt: "Browser windows being kept up to date by Free Auto Refresh",
   gridTitle: "A few good reasons to automate a tab", gridText: "These are examples, not limits. If a page changes when it refreshes, Free Auto Refresh can keep an eye on it.",
   sections: [
     { h: "A practical browser tool for pages that change",
@@ -121,7 +121,7 @@ const guidesHub = {
   eyebrow: "Short, practical guides",
   h1: ["Answers to the things", "people search for."],
   lede: "Clear instructions for refreshing pages automatically, forcing a hard reload, and choosing a refresh extension.",
-  img: "keyboard", shotTitle: "Guides", caption: "Shortcuts and step-by-step help", alt: "Keyboard shortcut keys and a refresh arrow, illustrating the refresh guides",
+  shotTitle: "Guides", caption: "Shortcuts and step-by-step help", alt: "Three numbered steps leading to the Free Auto Refresh Start button",
   gridTitle: "All guides", gridText: "Each one is written to be followed in a couple of minutes.",
   sections: [{ h: "Written to be useful with or without the extension", p: ["These guides explain the built-in browser options first, then show where an extension saves time. Use whichever fits."] }],
   faqs: hubFaq("guides").slice(0, 4),

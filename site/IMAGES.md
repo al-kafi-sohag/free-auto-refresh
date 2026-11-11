@@ -1,20 +1,49 @@
 # Website images
 
-12 pictures cover every page. Each is shown inside a browser-style frame with a page-specific title and caption, so one file serves several pages.
-Save each file at the path shown and run `npm run build:site`; until a file exists, the placeholder is used.
+One picture per page, cut from the generated collage sheets by `site/make-images.py` (the crop boxes are listed there).
+To redo them: `python site/make-images.py "<folder with the sheets>"`, then `npm run build:site`. A page whose file is missing shows the placeholder.
 
-| # | File | Size | Used on | Prompt |
-|---|---|---|---|---|
-| 1 | `docs/assets/img/popup.png` | 960x720 | 2 pages: features/languages/, home | Clean product illustration, soft light-blue background (#f1f5fc), white rounded cards with thin borders, brand blue #3978f6 with dark navy #0d1729 text shapes and small green accents, subtle shadow, lots of empty space, no real brand logos, no readable small text. The extension popup: a white card with a round blue refresh logo, three small stat tiles, a row of preset chips, two number fields and a wide dark Start button. |
-| 2 | `docs/assets/img/timer.png` | 960x720 | 3 pages: features/auto-refresh-timer/, features/random-interval-refresh/, guides/how-to-auto-refresh-a-page/ | Clean product illustration, soft light-blue background (#f1f5fc), white rounded cards with thin borders, brand blue #3978f6 with dark navy #0d1729 text shapes and small green accents, subtle shadow, lots of empty space, no real brand logos, no readable small text. A large circular countdown ring around a refresh arrow, beside a small browser tab; a short progress bar underneath. |
-| 3 | `docs/assets/img/monitor.png` | 960x720 | 2 pages: features/page-monitor-keyword-alert/, home | Clean product illustration, soft light-blue background (#f1f5fc), white rounded cards with thin borders, brand blue #3978f6 with dark navy #0d1729 text shapes and small green accents, subtle shadow, lots of empty space, no real brand logos, no readable small text. A web page mock with grey text lines, one line highlighted in green with a tick, and a small notification card overlapping the bottom-right corner. |
-| 4 | `docs/assets/img/counter.png` | 960x720 | 3 pages: features/on-page-countdown/, features/keep-scroll-position/, guides/how-to-stop-auto-refresh/ | Clean product illustration, soft light-blue background (#f1f5fc), white rounded cards with thin borders, brand blue #3978f6 with dark navy #0d1729 text shapes and small green accents, subtle shadow, lots of empty space, no real brand logos, no readable small text. A web page mock with a dark navy rounded pill in its lower corner showing a number, a countdown and pause/stop icons. |
-| 5 | `docs/assets/img/controls.png` | 960x720 | 5 pages: features/smart-pause/, features/refresh-limits/, features/profiles-and-backup/, features/, faq/ | Clean product illustration, soft light-blue background (#f1f5fc), white rounded cards with thin borders, brand blue #3978f6 with dark navy #0d1729 text shapes and small green accents, subtle shadow, lots of empty space, no real brand logos, no readable small text. A settings panel with grouped rows, each with a small label, a pin icon and a toggle switch; one group expanded. |
-| 6 | `docs/assets/img/shopping.png` | 960x720 | 5 pages: use-cases/restock-alerts/, use-cases/price-tracking/, use-cases/ticket-sales/, use-cases/online-auctions/, use-cases/ | Clean product illustration, soft light-blue background (#f1f5fc), white rounded cards with thin borders, brand blue #3978f6 with dark navy #0d1729 text shapes and small green accents, subtle shadow, lots of empty space, no real brand logos, no readable small text. A product card with a grey 'unavailable' tag turning into a green 'available' tag, a price label and a small bell. |
-| 7 | `docs/assets/img/calendar.png` | 960x720 | 5 pages: use-cases/appointment-slots/, use-cases/exam-results/, use-cases/order-and-application-status/, use-cases/job-boards/, use-cases/freelance-marketplaces/ | Clean product illustration, soft light-blue background (#f1f5fc), white rounded cards with thin borders, brand blue #3978f6 with dark navy #0d1729 text shapes and small green accents, subtle shadow, lots of empty space, no real brand logos, no readable small text. A month calendar grid of grey days with one day lit green, next to a status tracker with four steps. |
-| 8 | `docs/assets/img/dashboard.png` | 960x720 | 3 pages: use-cases/live-dashboards/, use-cases/sports-scores/, use-cases/stocks-and-crypto/ | Clean product illustration, soft light-blue background (#f1f5fc), white rounded cards with thin borders, brand blue #3978f6 with dark navy #0d1729 text shapes and small green accents, subtle shadow, lots of empty space, no real brand logos, no readable small text. A screen showing simple bar and line charts and a status light, with a small refresh ring in the corner. |
-| 9 | `docs/assets/img/devtools.png` | 960x720 | 3 pages: use-cases/server-and-status-pages/, use-cases/web-development/, use-cases/wordpress/ | Clean product illustration, soft light-blue background (#f1f5fc), white rounded cards with thin borders, brand blue #3978f6 with dark navy #0d1729 text shapes and small green accents, subtle shadow, lots of empty space, no real brand logos, no readable small text. A code editor window and a browser preview window side by side, joined by a curved refresh arrow. |
-| 10 | `docs/assets/img/browsers.png` | 960x720 | 2 pages: chrome/, firefox/ | Clean product illustration, soft light-blue background (#f1f5fc), white rounded cards with thin borders, brand blue #3978f6 with dark navy #0d1729 text shapes and small green accents, subtle shadow, lots of empty space, no real brand logos, no readable small text. A browser toolbar with a pinned blue refresh icon and a small popup card opening beneath it; generic round browser shapes, no real logos. |
-| 11 | `docs/assets/img/keyboard.png` | 960x720 | 3 pages: features/hard-reload-bypass-cache/, guides/how-to-hard-refresh/, guides/ | Clean product illustration, soft light-blue background (#f1f5fc), white rounded cards with thin borders, brand blue #3978f6 with dark navy #0d1729 text shapes and small green accents, subtle shadow, lots of empty space, no real brand logos, no readable small text. Three keyboard keys in a row and a refresh arrow breaking through a stack of file copies. |
-| 12 | `docs/assets/img/compare.png` | 960x720 | 2 pages: compare/easy-auto-refresh-alternative/, compare/auto-refresh-plus-alternative/ | Clean product illustration, soft light-blue background (#f1f5fc), white rounded cards with thin borders, brand blue #3978f6 with dark navy #0d1729 text shapes and small green accents, subtle shadow, lots of empty space, no real brand logos, no readable small text. Two feature checklists side by side, the right one fully ticked in blue. |
-| 13 | `docs/assets/poster.png` | 1200x630 | link previews on all pages | Social share card: the blue refresh logo, "Free Auto Refresh" and "Auto reload tabs. Get alerted when a page changes." on a soft light-blue background. |
+| File | Used on |
+|---|---|
+| `docs/assets/img/features/auto-refresh-timer.webp` | features/auto-refresh-timer/ |
+| `docs/assets/img/features/random-interval-refresh.webp` | features/random-interval-refresh/ |
+| `docs/assets/img/features/page-monitor-keyword-alert.webp` | features/page-monitor-keyword-alert/ |
+| `docs/assets/img/features/on-page-countdown.webp` | features/on-page-countdown/ |
+| `docs/assets/img/features/smart-pause.webp` | features/smart-pause/ |
+| `docs/assets/img/features/keep-scroll-position.webp` | features/keep-scroll-position/ |
+| `docs/assets/img/features/hard-reload-bypass-cache.webp` | features/hard-reload-bypass-cache/ |
+| `docs/assets/img/features/refresh-limits.webp` | features/refresh-limits/ |
+| `docs/assets/img/features/profiles-and-backup.webp` | features/profiles-and-backup/ |
+| `docs/assets/img/features/languages.webp` | features/languages/ |
+| `docs/assets/img/use-cases/restock-alerts.webp` | use-cases/restock-alerts/ |
+| `docs/assets/img/use-cases/price-tracking.webp` | use-cases/price-tracking/ |
+| `docs/assets/img/use-cases/ticket-sales.webp` | use-cases/ticket-sales/ |
+| `docs/assets/img/use-cases/appointment-slots.webp` | use-cases/appointment-slots/ |
+| `docs/assets/img/use-cases/online-auctions.webp` | use-cases/online-auctions/ |
+| `docs/assets/img/use-cases/exam-results.webp` | use-cases/exam-results/ |
+| `docs/assets/img/use-cases/order-and-application-status.webp` | use-cases/order-and-application-status/ |
+| `docs/assets/img/use-cases/live-dashboards.webp` | use-cases/live-dashboards/ |
+| `docs/assets/img/use-cases/server-and-status-pages.webp` | use-cases/server-and-status-pages/ |
+| `docs/assets/img/use-cases/web-development.webp` | use-cases/web-development/ |
+| `docs/assets/img/use-cases/job-boards.webp` | use-cases/job-boards/ |
+| `docs/assets/img/use-cases/freelance-marketplaces.webp` | use-cases/freelance-marketplaces/ |
+| `docs/assets/img/use-cases/wordpress.webp` | use-cases/wordpress/ |
+| `docs/assets/img/use-cases/sports-scores.webp` | use-cases/sports-scores/ |
+| `docs/assets/img/use-cases/stocks-and-crypto.webp` | use-cases/stocks-and-crypto/ |
+| `docs/assets/img/chrome.webp` | chrome/ |
+| `docs/assets/img/firefox.webp` | firefox/ |
+| `docs/assets/img/guides/how-to-auto-refresh-a-page.webp` | guides/how-to-auto-refresh-a-page/ |
+| `docs/assets/img/guides/how-to-hard-refresh.webp` | guides/how-to-hard-refresh/ |
+| `docs/assets/img/guides/how-to-stop-auto-refresh.webp` | guides/how-to-stop-auto-refresh/ |
+| `docs/assets/img/compare/easy-auto-refresh-alternative.webp` | compare/easy-auto-refresh-alternative/ |
+| `docs/assets/img/compare/auto-refresh-plus-alternative.webp` | compare/auto-refresh-plus-alternative/ |
+| `docs/assets/img/features/index.webp` | features/ |
+| `docs/assets/img/use-cases/index.webp` | use-cases/ |
+| `docs/assets/img/guides/index.webp` | guides/ |
+| `docs/assets/img/faq/index.webp` | faq/ |
+| `docs/assets/img/changelog.webp` | changelog/ |
+| `docs/assets/img/privacy.webp` | privacy/ |
+| `docs/assets/img/contact.webp` | contact/ |
+| `docs/assets/img/index.webp` | home |
+| `docs/assets/img/home-watch.webp` | home |
+| `docs/assets/poster.png` | link previews on all pages |

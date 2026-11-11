@@ -4,7 +4,7 @@
 const guides = [
   {
     slug: "how-to-auto-refresh-a-page",
-    nav: "How to auto refresh a page", icon: "refresh-cw", img: "timer", shotTitle: "Auto refresh guide", caption: "Works in Chrome, Firefox and Edge",
+    nav: "How to auto refresh a page", icon: "refresh-cw", shotTitle: "Auto refresh guide", caption: "Works in Chrome, Firefox and Edge",
     kw: ["how to auto refresh a page", "how to auto refresh a web page", "how to refresh a page automatically", "how to auto refresh chrome", "chrome auto refresh without extension", "refresh page automatically"],
     title: "How to Auto Refresh a Page in Chrome, Firefox and Edge",
     desc: "Three ways to make a web page refresh automatically: a free extension, a one-line script without an extension, and browser-specific options.",
@@ -49,7 +49,7 @@ const guides = [
   },
   {
     slug: "how-to-hard-refresh",
-    nav: "How to hard refresh", icon: "rotate-cw", img: "keyboard", shotTitle: "Hard refresh shortcuts", caption: "Windows, Mac, Chrome and Firefox",
+    nav: "How to hard refresh", icon: "rotate-cw", shotTitle: "Hard refresh shortcuts", caption: "Windows, Mac, Chrome and Firefox",
     kw: ["hard refresh", "hard refresh chrome", "chrome hard reload", "hard refresh on mac", "hard refresh macbook", "chrome force refresh", "empty cache and hard reload", "firefox hard refresh", "chrome ctrl f5"],
     title: "How to Hard Refresh: Chrome, Firefox, Mac & Windows Shortcuts",
     desc: "Hard refresh shortcuts for Chrome, Firefox and Edge on Windows and Mac, how Empty Cache and Hard Reload works, and how to hard reload on a timer.",
@@ -92,7 +92,7 @@ const guides = [
   },
   {
     slug: "how-to-stop-auto-refresh",
-    nav: "How to stop auto refresh", icon: "circle-stop", img: "counter", shotTitle: "Stop auto refresh", caption: "Find what is reloading the page",
+    nav: "How to stop auto refresh", icon: "circle-stop", shotTitle: "Stop auto refresh", caption: "Find what is reloading the page",
     kw: ["stop auto refresh", "stop refresh", "how to stop page from auto refreshing", "chrome keeps refreshing", "disable auto refresh"],
     title: "How to Stop a Page From Auto Refreshing (Chrome & Firefox)",
     desc: "Page keeps reloading by itself? How to stop auto refresh in Chrome and Firefox: extensions, tab discarding, the site's own refresh, and more.",
@@ -138,7 +138,7 @@ const guides = [
 const comparisons = [
   {
     slug: "easy-auto-refresh-alternative",
-    nav: "Easy Auto Refresh alternative", icon: "scale", img: "compare", shotTitle: "Side by side", caption: "What is free in each",
+    nav: "Easy Auto Refresh alternative", icon: "scale", shotTitle: "Side by side", caption: "What is free in each",
     kw: ["easy auto refresh", "easy auto refresh alternative", "easy auto refresh free", "easy auto refresh chrome", "auto easy refresh"],
     title: "Easy Auto Refresh Alternative – Free, Nothing Locked",
     desc: "Looking for an Easy Auto Refresh alternative? Compare features: random intervals, page watching and alerts are free in Free Auto Refresh.",
@@ -183,7 +183,7 @@ const comparisons = [
   },
   {
     slug: "auto-refresh-plus-alternative",
-    nav: "Auto Refresh Plus alternative", icon: "scale", img: "compare", shotTitle: "Side by side", caption: "Simple versus full-featured",
+    nav: "Auto Refresh Plus alternative", icon: "scale", shotTitle: "Side by side", caption: "Simple versus full-featured",
     kw: ["auto refresh plus", "auto refresh plus alternative", "auto refresh plus free", "auto refresh plus page monitor"],
     title: "Auto Refresh Plus Alternative – Simple, Free and Private",
     desc: "Looking for an Auto Refresh Plus alternative? Free Auto Refresh is a lighter, fully free option with page watching and no account. Honest comparison.",

@@ -3,7 +3,7 @@
 
 module.exports = {
   "auto-refresh-timer": {
-    nav: "Auto refresh timer", icon: "timer", img: "timer", shotTitle: "Auto refresh timer", caption: "Next refresh in 30 seconds",
+    nav: "Auto refresh timer", icon: "timer", shotTitle: "Auto refresh timer", caption: "Next refresh in 30 seconds",
     h1: ["Set a timer.", "Get on with your day."],
     sections: [
       { h: "Auto refresh a page, tab or site on your schedule",
@@ -29,7 +29,7 @@ module.exports = {
   },
 
   "random-interval-refresh": {
-    nav: "Random intervals", icon: "shuffle", img: "timer", shotTitle: "Random interval", caption: "A new wait every time",
+    nav: "Random intervals", icon: "shuffle", shotTitle: "Random interval", caption: "A new wait every time",
     h1: ["Never the same", "wait twice."],
     sections: [
       { h: "What is a random auto refresh?",
@@ -58,7 +58,7 @@ module.exports = {
   },
 
   "page-monitor-keyword-alert": {
-    nav: "Page change monitor", icon: "scan-eye", img: "monitor", shotTitle: "Page watch", caption: "Match found, refreshing stopped",
+    nav: "Page change monitor", icon: "scan-eye", shotTitle: "Page watch", caption: "Match found, refreshing stopped",
     h1: ["Stop refreshing", "when the page changes."],
     sections: [
       { h: "Website change detection, built into the refresh",
@@ -92,7 +92,7 @@ module.exports = {
   },
 
   "on-page-countdown": {
-    nav: "Live countdown", icon: "gauge", img: "counter", shotTitle: "On-page counter", caption: "12 refreshes, next in 8 seconds",
+    nav: "Live countdown", icon: "gauge", shotTitle: "On-page counter", caption: "12 refreshes, next in 8 seconds",
     h1: ["See every", "refresh coming."],
     sections: [
       { h: "A refresh counter and countdown on the page",
@@ -114,7 +114,7 @@ module.exports = {
   },
 
   "smart-pause": {
-    nav: "Pause while typing", icon: "keyboard", img: "controls", shotTitle: "Smart pause", caption: "Waiting, you are typing",
+    nav: "Pause while typing", icon: "keyboard", shotTitle: "Smart pause", caption: "Waiting, you are typing",
     h1: ["It refreshes.", "Never mid-sentence."],
     sections: [
       { h: "Auto refresh without losing what you typed",
@@ -143,7 +143,7 @@ module.exports = {
   },
 
   "keep-scroll-position": {
-    nav: "Restore scroll position", icon: "arrow-down-up", img: "counter", shotTitle: "Scroll restore", caption: "Back where you were",
+    nav: "Restore scroll position", icon: "arrow-down-up", shotTitle: "Scroll restore", caption: "Back where you were",
     h1: ["Reload the page.", "Keep your place."],
     sections: [
       { h: "Refresh a page and stay in the same place",
@@ -169,7 +169,7 @@ module.exports = {
   },
 
   "hard-reload-bypass-cache": {
-    nav: "Hard refresh", icon: "rotate-cw", img: "keyboard", shotTitle: "Hard reload", caption: "Cache bypassed on every refresh",
+    nav: "Hard refresh", icon: "rotate-cw", shotTitle: "Hard reload", caption: "Cache bypassed on every refresh",
     h1: ["A hard refresh.", "On repeat."],
     sections: [
       { h: "What a hard refresh is",
@@ -194,7 +194,7 @@ module.exports = {
   },
 
   "refresh-limits": {
-    nav: "Refresh limits", icon: "circle-stop", img: "controls", shotTitle: "Refresh limits", caption: "Stops after 60 minutes",
+    nav: "Refresh limits", icon: "circle-stop", shotTitle: "Refresh limits", caption: "Stops after 60 minutes",
     h1: ["It knows", "when to stop."],
     sections: [
       { h: "Auto refresh for a set time, then stop",
@@ -218,7 +218,7 @@ module.exports = {
   },
 
   "profiles-and-backup": {
-    nav: "Saved profiles", icon: "bookmark", img: "controls", shotTitle: "Profiles", caption: "Switch set-ups in one click",
+    nav: "Saved profiles", icon: "bookmark", shotTitle: "Profiles", caption: "Switch set-ups in one click",
     h1: ["Save a set-up once.", "Reuse it anywhere."],
     sections: [
       { h: "Different pages, different refresh settings",
@@ -239,7 +239,7 @@ module.exports = {
   },
 
   "languages": {
-    nav: "7 languages", icon: "languages", img: "popup", shotTitle: "Languages", caption: "Română, Русский, 日本語 and more",
+    nav: "7 languages", icon: "languages", shotTitle: "Languages", caption: "Română, Русский, 日本語 and more",
     h1: ["Auto refresh,", "in your language."],
     sections: [
       { h: "An auto refresh extension in seven languages",

@@ -5,7 +5,7 @@ const fair = "Use intervals that are reasonable for the site and only monitor pa
 
 module.exports = {
   "restock-alerts": {
-    nav: "Restock alerts", icon: "package-check", img: "shopping", shotTitle: "Restock alerts", caption: "Watching for a useful update",
+    nav: "Restock alerts", icon: "package-check", shotTitle: "Restock alerts", caption: "Watching for a useful update",
     h1: ["Keep an eye on", "a product restock."],
     sections: [
       { h: "A restock alert for any online shop",
@@ -27,7 +27,7 @@ module.exports = {
     ],
   },
   "price-tracking": {
-    nav: "Price changes", icon: "tag", img: "shopping", shotTitle: "Price watch", caption: "Alert on any price change",
+    nav: "Price changes", icon: "tag", shotTitle: "Price watch", caption: "Alert on any price change",
     h1: ["Know the moment", "a price changes."],
     sections: [
       { h: "A price drop alert without an account",
@@ -45,7 +45,7 @@ module.exports = {
     ],
   },
   "ticket-sales": {
-    nav: "Ticket drops", icon: "ticket", img: "shopping", shotTitle: "Ticket watch", caption: "Waiting for availability",
+    nav: "Ticket drops", icon: "ticket", shotTitle: "Ticket watch", caption: "Waiting for availability",
     h1: ["Catch a ticket drop", "without the reload button."],
     sections: [
       { h: "A ticket alert for returns and resale",
@@ -67,7 +67,7 @@ module.exports = {
     ],
   },
   "appointment-slots": {
-    nav: "Appointment availability", icon: "calendar-check", img: "calendar", shotTitle: "Slot watch", caption: "Checking for a free slot",
+    nav: "Appointment availability", icon: "calendar-check", shotTitle: "Slot watch", caption: "Checking for a free slot",
     h1: ["Find a slot", "without checking all day."],
     sections: [
       { h: "An appointment checker that runs in your browser",
@@ -85,7 +85,7 @@ module.exports = {
     ],
   },
   "online-auctions": {
-    nav: "Auctions and launches", icon: "gavel", img: "shopping", shotTitle: "Auction watch", caption: "Current bid kept fresh",
+    nav: "Auctions and launches", icon: "gavel", shotTitle: "Auction watch", caption: "Current bid kept fresh",
     h1: ["Follow the bidding", "to the last second."],
     sections: [
       { h: "Keep an auction page current",
@@ -102,7 +102,7 @@ module.exports = {
     ],
   },
   "exam-results": {
-    nav: "Results pages", icon: "graduation-cap", img: "calendar", shotTitle: "Results watch", caption: "Waiting for publication",
+    nav: "Results pages", icon: "graduation-cap", shotTitle: "Results watch", caption: "Waiting for publication",
     h1: ["Be told when", "results are out."],
     sections: [
       { h: "Stop reloading the results page by hand",
@@ -119,7 +119,7 @@ module.exports = {
     ],
   },
   "order-and-application-status": {
-    nav: "Status pages", icon: "clipboard-check", img: "calendar", shotTitle: "Status watch", caption: "Waiting for the next step",
+    nav: "Status pages", icon: "clipboard-check", shotTitle: "Status watch", caption: "Waiting for the next step",
     h1: ["Stop checking.", "Get told when it moves."],
     sections: [
       { h: "Order, delivery and application status alerts",
@@ -136,7 +136,7 @@ module.exports = {
     ],
   },
   "live-dashboards": {
-    nav: "Dashboards", icon: "layout-dashboard", img: "dashboard", shotTitle: "Dashboard refresh", caption: "Updated every 5 minutes",
+    nav: "Dashboards", icon: "layout-dashboard", shotTitle: "Dashboard refresh", caption: "Updated every 5 minutes",
     h1: ["Dashboards that", "stay up to date."],
     sections: [
       { h: "Auto refresh a dashboard on a wall screen",
@@ -153,7 +153,7 @@ module.exports = {
     ],
   },
   "server-and-status-pages": {
-    nav: "Builds and queues", icon: "server", img: "devtools", shotTitle: "Build watch", caption: "Waiting for Success",
+    nav: "Builds and queues", icon: "server", shotTitle: "Build watch", caption: "Waiting for Success",
     h1: ["Get told when", "the build finishes."],
     sections: [
       { h: "Watch a build, deploy or job page",
@@ -170,7 +170,7 @@ module.exports = {
     ],
   },
   "web-development": {
-    nav: "Web development", icon: "code", img: "devtools", shotTitle: "Live reload", caption: "Fresh every 3 seconds",
+    nav: "Web development", icon: "code", shotTitle: "Live reload", caption: "Fresh every 3 seconds",
     h1: ["Live reload,", "with nothing to set up."],
     sections: [
       { h: "Auto reload localhost without a build tool",
@@ -187,7 +187,7 @@ module.exports = {
     ],
   },
   "job-boards": {
-    nav: "Job boards", icon: "briefcase", img: "calendar", shotTitle: "Job watch", caption: "New listing spotted",
+    nav: "Job boards", icon: "briefcase", shotTitle: "Job watch", caption: "New listing spotted",
     h1: ["See new jobs", "as they are posted."],
     sections: [
       { h: "Be early without living on the page",
@@ -204,7 +204,7 @@ module.exports = {
     ],
   },
   "freelance-marketplaces": {
-    nav: "Freelance marketplaces", icon: "triangle-alert", img: "calendar", shotTitle: "Read this first", caption: "Check the platform's rules",
+    nav: "Freelance marketplaces", icon: "triangle-alert", shotTitle: "Read this first", caption: "Check the platform's rules",
     h1: ["Freelance marketplaces:", "refresh with care."],
     sections: [
       { h: "Why this page is a warning, not a recipe",
@@ -221,7 +221,7 @@ module.exports = {
     ],
   },
   "wordpress": {
-    nav: "WordPress", icon: "file-code", img: "devtools", shotTitle: "WordPress preview", caption: "No plugin required",
+    nav: "WordPress", icon: "file-code", shotTitle: "WordPress preview", caption: "No plugin required",
     h1: ["Auto refresh WordPress.", "No plugin needed."],
     sections: [
       { h: "Refresh a WordPress page from the browser",
@@ -242,7 +242,7 @@ module.exports = {
     ],
   },
   "sports-scores": {
-    nav: "Live scores", icon: "trophy", img: "dashboard", shotTitle: "Live scores", caption: "Updated every 30 seconds",
+    nav: "Live scores", icon: "trophy", shotTitle: "Live scores", caption: "Updated every 30 seconds",
     h1: ["Live scores that", "update themselves."],
     sections: [
       { h: "For score pages that do not refresh on their own",
@@ -259,7 +259,7 @@ module.exports = {
     ],
   },
   "stocks-and-crypto": {
-    nav: "Price pages", icon: "chart-line", img: "dashboard", shotTitle: "Quote refresh", caption: "Fresh every minute",
+    nav: "Price pages", icon: "chart-line", shotTitle: "Quote refresh", caption: "Fresh every minute",
     h1: ["Keep quote pages", "current."],
     sections: [
       { h: "For pages that only update on reload",
@@ -278,7 +278,7 @@ module.exports = {
 
   /* ---------- browsers ---------- */
   "chrome": {
-    nav: "Chrome extension", icon: "chrome", img: "browsers", shotTitle: "Chrome Web Store", caption: "Free, no account",
+    nav: "Chrome extension", icon: "chrome", shotTitle: "Chrome Web Store", caption: "Free, no account",
     h1: ["The free auto refresh", "Chrome extension."],
     sections: [
       { h: "Auto refresh Chrome on a timer",
@@ -297,7 +297,7 @@ module.exports = {
     ],
   },
   "firefox": {
-    nav: "Firefox add-on", icon: "globe", img: "browsers", shotTitle: "Firefox Add-ons", caption: "No data collected",
+    nav: "Firefox add-on", icon: "globe", shotTitle: "Firefox Add-ons", caption: "No data collected",
     h1: ["Auto refresh for Firefox,", "free and private."],
     sections: [
       { h: "A Firefox auto reload add-on",

@@ -42,33 +42,20 @@ function icon(name) {
   return iconCache[name];
 }
 
-/* ---------- images: a small shared set, reused across related pages ----------
-   Each page shows its picture inside a browser-style frame with its own title and caption,
-   so one file can serve several pages without looking repeated. */
-const STYLE = "Clean product illustration, soft light-blue background (#f1f5fc), white rounded cards with thin borders, brand blue #3978f6 with dark navy #0d1729 text shapes and small green accents, subtle shadow, lots of empty space, no real brand logos, no readable small text";
-const IMAGES = {
-  popup: { size: "960x720", prompt: `${STYLE}. The extension popup: a white card with a round blue refresh logo, three small stat tiles, a row of preset chips, two number fields and a wide dark Start button.` },
-  timer: { size: "960x720", prompt: `${STYLE}. A large circular countdown ring around a refresh arrow, beside a small browser tab; a short progress bar underneath.` },
-  monitor: { size: "960x720", prompt: `${STYLE}. A web page mock with grey text lines, one line highlighted in green with a tick, and a small notification card overlapping the bottom-right corner.` },
-  counter: { size: "960x720", prompt: `${STYLE}. A web page mock with a dark navy rounded pill in its lower corner showing a number, a countdown and pause/stop icons.` },
-  controls: { size: "960x720", prompt: `${STYLE}. A settings panel with grouped rows, each with a small label, a pin icon and a toggle switch; one group expanded.` },
-  shopping: { size: "960x720", prompt: `${STYLE}. A product card with a grey 'unavailable' tag turning into a green 'available' tag, a price label and a small bell.` },
-  calendar: { size: "960x720", prompt: `${STYLE}. A month calendar grid of grey days with one day lit green, next to a status tracker with four steps.` },
-  dashboard: { size: "960x720", prompt: `${STYLE}. A screen showing simple bar and line charts and a status light, with a small refresh ring in the corner.` },
-  devtools: { size: "960x720", prompt: `${STYLE}. A code editor window and a browser preview window side by side, joined by a curved refresh arrow.` },
-  browsers: { size: "960x720", prompt: `${STYLE}. A browser toolbar with a pinned blue refresh icon and a small popup card opening beneath it; generic round browser shapes, no real logos.` },
-  keyboard: { size: "960x720", prompt: `${STYLE}. Three keyboard keys in a row and a refresh arrow breaking through a stack of file copies.` },
-  compare: { size: "960x720", prompt: `${STYLE}. Two feature checklists side by side, the right one fully ticked in blue.` },
-};
-const used = {}; // image key -> pages using it
+/* ---------- images: one picture per page ----------
+   Cut from the generated sheets by site/make-images.py into docs/assets/img/, named after the
+   page path: /features/smart-pause/ uses img/features/smart-pause.webp, the home page img/index.webp
+   and the four hub pages img/<hub>/index.webp. Shown inside a browser-style frame with a title and caption. */
+const HUBS = ["features/", "use-cases/", "guides/", "faq/"];
+const pageImg = (page) => (!page.path ? "index" : HUBS.includes(page.path) ? `${page.path}index` : page.path.replace(/\/$/, ""));
+const used = {}; // image name -> pages using it
 
 function shot(page, key, title, caption, alt, cls = "") {
   (used[key] ||= []).push(page.path || "home");
-  const src = ["svg", "png", "jpg"].map((ext) => `assets/img/${key}.${ext}`).find((f) => fs.existsSync(path.join(OUT, f))) || "assets/placeholder.svg";
-  const [w, h] = IMAGES[key].size.split("x");
+  const src = fs.existsSync(path.join(OUT, "assets", "img", `${key}.webp`)) ? `assets/img/${key}.webp` : "assets/placeholder.svg";
   return `<figure class="shot ${cls}">
         <div class="shot-bar"><span class="shot-dots"><i></i><i></i><i></i></span><span class="shot-title">${esc(title)}</span></div>
-        <img src="${page.root}${src}" alt="${esc(alt)}" width="${w}" height="${h}"${page.path ? ' loading="lazy"' : ""}>
+        <img src="${page.root}${src}" alt="${esc(alt)}" width="800" height="600"${page.path ? ' loading="lazy"' : ""}>
         <figcaption>${icon("check")}${esc(caption)}</figcaption>
       </figure>`;
 }
@@ -262,7 +249,7 @@ const section = (page, s) => `
 /* ---------- detail page: features, use cases, browsers, guides, comparisons ---------- */
 function detail(page) {
   const steps = page.steps.map((s) => [s].flat());
-  return layout(page, `${hero(page, shot(page, page.img, page.shotTitle || page.nav, page.caption || "Runs in your browser", page.alt), `<div class="install-links">${installLinks(page.store === "firefox")}</div>`)}
+  return layout(page, `${hero(page, shot(page, pageImg(page), page.shotTitle || page.nav, page.caption || "Runs in your browser", page.alt), `<div class="install-links">${installLinks(page.store === "firefox")}</div>`)}
 
   <section class="page-width content-section" style="padding-top:48px">
     <div class="detail-grid">
@@ -350,7 +337,7 @@ for (const p of [...features, ...useCases, ...browsers, ...guidePages, ...compar
 function hub(cfg, list, dir, linkWord) {
   const p = { ...cfg, ...at(cfg.path), crumbs: [], priority: "0.9" };
   const items = list.map((x) => [`${dir}${x.slug}/`, null, x.nav, x.lede.split(". ")[0] + ".", linkWord(x)]);
-  add(p, layout(p, `${hero(p, shot(p, cfg.img, cfg.shotTitle, cfg.caption, cfg.alt))}
+  add(p, layout(p, `${hero(p, shot(p, pageImg(p), cfg.shotTitle, cfg.caption, cfg.alt))}
 
   <section class="page-width content-section" style="padding-top:64px">
     <div class="section-heading"><h2 class="h2">${esc(cfg.gridTitle)}</h2><p>${esc(cfg.gridText)}</p></div>
@@ -374,7 +361,7 @@ hub(home.guidesHub, [...guidePages, ...comparePages.map((c) => ({ ...c, slug: `.
   const groups = home.faqPage.groups;
   const all = groups.flatMap((g) => g.items);
   const p = { ...home.faqPage, ...at("faq/"), crumbs: [], faqs: all, priority: "0.8" };
-  add(p, layout(p, `${hero(p, shot(p, "controls", "Help centre", "Answers in plain words", `${NAME} settings panel, illustrating the help and FAQ page`))}
+  add(p, layout(p, `${hero(p, shot(p, pageImg(p), "Help centre", "Answers in plain words", `Frequently asked questions about ${NAME}`))}
   ${groups.map((g) => faq(p, g.items, esc(g.title), g.intro).replace(' id="faq"', "")).join("\n")}
   ${cta("Still curious? Try it.", "Free for Chrome and Firefox. Nothing to sign up for.")}
   ${idea("Question not answered?", "Ask on GitHub and it will be added here.", "Ask a question")}`));
@@ -384,17 +371,17 @@ hub(home.guidesHub, [...guidePages, ...comparePages.map((c) => ({ ...c, slug: `.
 function textPage(pathname, cfg, bodyHtml) {
   const p = { ...cfg, ...at(pathname), crumbs: [], priority: "0.4" };
   add(p, layout(p, `
-  <section class="hero-section"><div class="page-width hero-copy">${crumbs(p)}<span class="eyebrow">${esc(cfg.eyebrow)}</span><h1>${esc(cfg.h1)}</h1><p class="hero-description">${esc(cfg.lede)}</p></div></section>
+  ${hero(p, shot(p, pageImg(p), cfg.h1, cfg.caption, cfg.alt))}
   <section class="page-width content-section" style="padding-top:48px"><div class="panel prose" style="max-width:820px">${bodyHtml(p)}</div></section>`));
 }
 
-textPage("changelog/", { h1: "Changelog", eyebrow: "Releases", title: `Changelog – ${NAME}`, desc: `What changed in each version of the ${NAME} extension.`, lede: "Every release, newest first." },
+textPage("changelog/", { h1: "Changelog", eyebrow: "Releases", title: `Changelog – ${NAME}`, desc: `What changed in each version of the ${NAME} extension.`, lede: "Every release, newest first.", caption: "Every version, newest first", alt: `The ${NAME} extension card in a browser window` },
   (p) => home.changelog.map(([v, items]) => section(p, { h: `Version ${v}`, list: items })).join("\n"));
 
-textPage("privacy/", { h1: "Privacy", eyebrow: "No data collected", title: `Privacy – ${NAME}`, desc: `${NAME} collects no data and makes no network requests. What the extension and this website do with information.`, lede: "The short version: the extension collects nothing and sends nothing." },
+textPage("privacy/", { h1: "Privacy", eyebrow: "No data collected", title: `Privacy – ${NAME}`, desc: `${NAME} collects no data and makes no network requests. What the extension and this website do with information.`, lede: "The short version: the extension collects nothing and sends nothing.", caption: "Nothing leaves your browser", alt: `${NAME} backup and profile settings beside a shield with a tick` },
   (p) => home.privacy.map((s) => section(p, s)).join("\n") + `<p>The full policy is in <a href="${GITHUB}/blob/main/PRIVACY.md" target="_blank" rel="noopener">PRIVACY.md</a> on GitHub.</p>`);
 
-textPage("contact/", { h1: "Contact", eyebrow: "Get in touch", title: `Contact – ${NAME}`, desc: `Report a bug, suggest a feature or ask a question about ${NAME}.`, lede: "Found a bug or have an idea? The fastest route is a GitHub issue." },
+textPage("contact/", { h1: "Contact", eyebrow: "Get in touch", title: `Contact – ${NAME}`, desc: `Report a bug, suggest a feature or ask a question about ${NAME}.`, lede: "Found a bug or have an idea? The fastest route is a GitHub issue.", caption: "Questions and ideas welcome", alt: "An envelope beside a short message form with a send button" },
   () => `<h2>Send a message</h2>
       <!-- TODO: connect this form to a backend or form service. It does not send anything yet. -->
       <form id="contactForm" novalidate style="display:grid;gap:16px;margin-top:18px">
@@ -412,7 +399,7 @@ textPage("contact/", { h1: "Contact", eyebrow: "Get in touch", title: `Contact �
       { "@context": "https://schema.org", "@type": "WebSite", name: NAME, url: `${SITE_URL}/` },
       { "@context": "https://schema.org", "@type": "Organization", name: NAME, url: `${SITE_URL}/`, logo: `${SITE_URL}/assets/logo.png`, sameAs: [GITHUB] }] };
   const h = home.home;
-  add(p, layout(p, `${hero(p, shot(p, "popup", "Free Auto Refresh", "Simple controls, right where you need them", `${NAME} popup showing a refresh counter, interval presets and a Start button`),
+  add(p, layout(p, `${hero(p, shot(p, pageImg(p), "Free Auto Refresh", "Simple controls, right where you need them", `${NAME} popup showing a refresh counter, interval presets and a Start button`),
     `<div class="install-links">${installLinks()}</div>
         <div class="trust-row"><span>${icon("check")}0 trackers</span><span>${icon("check")}0 network requests</span><span>${icon("check")}100% free</span><span>${icon("check")}Open source</span></div>`)}
 
@@ -435,7 +422,7 @@ textPage("contact/", { h1: "Contact", eyebrow: "Get in touch", title: `Contact �
 
   <section class="page-width content-section">
     <div class="split even">
-      ${shot(p, "monitor", "Page watch", "Stops and tells you on a match", "Web page being watched for changes, with a match notification from Free Auto Refresh", "left")}
+      ${shot(p, "home-watch", "Page watch", "Stops and tells you on a match", "The Watch the page setting in Free Auto Refresh, next to a page marked as matched", "left")}
       <div class="prose"><span class="eyebrow">Page watching</span><h2 class="h2">${esc(h.watchTitle)}</h2>${h.watchText.map((t) => `<p>${rich(t, p.root)}</p>`).join("")}
         <table class="settings"><tbody>${h.watchRules.map(([k, v]) => `<tr><th scope="row">${esc(k)}</th><td>${esc(v)}</td></tr>`).join("")}</tbody></table>
       </div>
@@ -466,13 +453,12 @@ fs.writeFileSync(path.join(OUT, "assets", "placeholder.svg"), `<svg xmlns="http:
 
 fs.writeFileSync(path.join(__dirname, "IMAGES.md"), `# Website images
 
-${Object.keys(IMAGES).length} pictures cover every page. Each is shown inside a browser-style frame with a page-specific title and caption, so one file serves several pages.
-Save each file at the path shown and run \`npm run build:site\`; until a file exists, the placeholder is used.
+One picture per page, cut from the generated collage sheets by \`site/make-images.py\` (the crop boxes are listed there).
+To redo them: \`python site/make-images.py "<folder with the sheets>"\`, then \`npm run build:site\`. A page whose file is missing shows the placeholder.
 
-| # | File | Size | Used on | Prompt |
-|---|---|---|---|---|
-${Object.entries(IMAGES).map(([k, im], i) => `| ${i + 1} | \`docs/assets/img/${k}.png\` | ${im.size} | ${(used[k] || []).length} pages: ${(used[k] || []).join(", ") || "—"} | ${im.prompt} |`).join("\n")}
-| ${Object.keys(IMAGES).length + 1} | \`docs/assets/poster.png\` | 1200x630 | link previews on all pages | Social share card: the blue refresh logo, "Free Auto Refresh" and "Auto reload tabs. Get alerted when a page changes." on a soft light-blue background. |
+| File | Used on |
+|---|---|
+${Object.entries(used).map(([k, where]) => `| \`docs/assets/img/${k}.webp\` | ${where.join(", ")} |`).join("\n")}
+| \`docs/assets/poster.png\` | link previews on all pages |
 `);
-
-console.log(`Built ${pages.length} pages, sitemap.xml, robots.txt and site/IMAGES.md (${Object.keys(IMAGES).length + 1} images)`);
+console.log(`Built ${pages.length} pages, sitemap.xml, robots.txt and site/IMAGES.md (${Object.keys(used).length} pictures)`);
