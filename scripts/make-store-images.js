@@ -1,5 +1,5 @@
 // Renders the Chrome Web Store images into store-images/ as 24-bit PNGs (no alpha):
-//   screenshot-1..5.png  1280x800     promo-small.png  440x280     promo-marquee.png  1400x560
+//   screenshot-1..7.png  1280x800     promo-small.png  440x280     promo-marquee.png  1400x560
 // Each image is a page (dev/store.html?shot=...) captured by headless Chrome.
 // Needs the preview server:  npm run preview      then:  node scripts/make-store-images.js
 const { spawnSync } = require("child_process");
@@ -11,7 +11,7 @@ const zlib = require("zlib");
 const CHROME = process.env.CHROME_PATH || "C:/Program Files/Google/Chrome/Application/chrome.exe";
 const OUT = path.resolve("store-images");
 const SHOTS = [
-  ...[1, 2, 3, 4, 5].map((n) => ({ shot: n, file: `screenshot-${n}.png`, w: 1280, h: 800 })),
+  ...[1, 2, 3, 4, 5, 6, 7].map((n) => ({ shot: n, file: `screenshot-${n}.png`, w: 1280, h: 800 })),
   { shot: "small", file: "promo-small.png", w: 440, h: 280 },
   { shot: "marquee", file: "promo-marquee.png", w: 1400, h: 560 },
 ];
