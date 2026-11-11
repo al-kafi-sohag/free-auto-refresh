@@ -10,7 +10,7 @@ module.exports = {
         p: ["An auto refresh timer reloads the current tab at the interval you choose and keeps going until you pause it, stop it, or it reaches a limit. Use a short interval for pages that update often and a longer one when you only need an occasional check.",
           "Free Auto Refresh gives each tab its own timer. You can auto reload a news page every minute, a dashboard every five, and leave every other tab alone."] },
       { h: "Refresh a page every 5 seconds, 30 seconds or 5 minutes",
-        p: ["The presets cover the common cases: 5–10 seconds, 15–30, 30–60, 1–2 minutes and 5 minutes. For anything else, type the seconds yourself. Setting the minimum and maximum to the same number gives a fixed interval; different numbers give a [random interval](features/random-interval-refresh/)."],
+        p: ["The presets cover the common cases: 5–10 seconds, 15–30, 30–60, 1–2 minutes and 5 minutes. For anything else, type the seconds yourself, or click Edit next to the presets to replace them with your own times. Setting the minimum and maximum to the same number gives a fixed interval; different numbers give a [random interval](features/random-interval-refresh/)."],
         sub: [
           ["Which interval should I use?", "Match it to how fast the page really changes. Auctions and build pages: 5 to 10 seconds, briefly. Stock and ticket pages: 30 to 60 seconds. Dashboards and status pages: 2 to 5 minutes."],
           ["Why not just use the shortest?", "Each refresh is a full request to the website. Very fast reloading wastes bandwidth and can get you rate-limited or temporarily blocked."],

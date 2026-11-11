@@ -149,7 +149,8 @@ const faqPage = {
       ["What is the shortest interval?", "One second. Very short intervals can get you rate-limited by some sites, so use them briefly."],
       ["Can I refresh at random intervals?", "Yes. Set different minimum and maximum values; each refresh picks a new wait in between."],
       ["Does it keep running when I switch tabs?", "Yes. It keeps refreshing in the background until you stop it, a limit is reached, or a watch rule matches."],
-      ["Does it resume after I restart the browser?", "Not yet. Open the page and press Start again, or use Alt+Shift+R."],
+      ["Does it resume after I restart the browser?", "Yes, if you ask it to. Open Advanced settings, Start automatically, and switch on Remember this page before you press Start. That page then starts refreshing by itself whenever it is opened again, including after a browser restart, until you press Stop. A tab the browser restores without loading it starts once you switch to it."],
+      ["Can I change the quick presets?", "Yes. Click Edit next to Quick presets in the popup, or open All settings. You can change the times, add presets, remove them, or go back to the defaults."],
       ["How do I stop it?", "Press Stop in the popup, use the stop button on the on-page counter, or press Alt+Shift+R. See [how to stop auto refresh](guides/how-to-stop-auto-refresh/)."],
       ["Can it do a hard refresh every time?", "Yes. Turn on Hard reload to bypass the cache on every refresh. See [how to hard refresh](guides/how-to-hard-refresh/)."],
     ] },
@@ -176,12 +177,13 @@ const faqPage = {
 };
 
 const changelog = [
+  ["1.2.0", ["Remember this page: a page you started can start refreshing by itself when it is opened again, also after a browser restart", "Quick presets you can edit: change the times, add your own, or remove the ones you never use", "A list of remembered pages on the settings page"]],
   ["1.1.0", ["Simpler popup, with advanced settings you can pin", "7 languages and a plain-language explanation on every setting", "Waits for the page to load before checking it", "Keep scroll position, pause on click or scroll, toolbar countdown, keep the tab awake", "Profiles, export and import, and a full settings page"]],
   ["1.0.0", ["First release: refresh timer, random intervals, page watching, smart pause, limits, on-page counter and notifications"]],
 ];
 
 const privacy = [
-  { h: "The extension", p: ["It reads the visible text of a page only in the tab where you turned on page watching, and only inside your browser. It never records what you type. Settings, profiles and your language choice are stored locally. Nothing is sent to the developer or anyone else."] },
+  { h: "The extension", p: ["It reads the visible text of a page only in the tab where you turned on page watching, and only inside your browser. It never records what you type. Settings, profiles, presets and your language choice are stored locally. If you switch on Remember this page, the address of that page is stored locally too, so it can start again later; pressing Stop removes it. Nothing is sent to the developer or anyone else."] },
   { h: "Permissions", list: ["**Storage** saves your settings.", "**Notifications** shows an alert when a watch rule matches.", "**Website access** lets the timer and counter run on the page you choose."] },
   { h: "This website", p: ["It loads Google Analytics to count visits, and only after you click Accept on the cookie banner. Your choice is remembered in your browser."] },
 ];

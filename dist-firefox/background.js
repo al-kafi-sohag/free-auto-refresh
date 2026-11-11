@@ -10,20 +10,54 @@ if (typeof importScripts === "function") {
 
 const S = globalThis.ARSettings;
 const I = globalThis.ARI18n;
-const KEY = "tabs"; // { [tabId]: state }
+const KEY = "tabs"; // session: { [tabId]: state }
+const HELD = "held"; // session: { [tabId]: page } the page the user stopped in that tab
+const ANY_PAGE = "*"; // ...or this, when it was stopped before the page said where it is
+const PAGES = "pages"; // local: { [page]: { cfg, at } } remembered pages, see settings.js
 
-/* ---------- serialized state access (avoids read/modify/write races) ---------- */
+/* ---------- serialized storage access (avoids read/modify/write races) ---------- */
+// Everything the background keeps is read and changed inside transact(). Calls queue up,
+// so each one sees the result of the one before, and a step such as "stop this tab and
+// forget its page" can't be interleaved with a page load asking whether to start.
+// Never call transact() or withState() from inside another one's callback.
 let queue = Promise.resolve();
-function withState(fn, write = true) {
+
+// fn gets { tabs, held, pages() } and changes them in place; whatever changed is saved.
+// pages() loads the remembered pages on first use.
+function transact(fn) {
   const run = queue.then(async () => {
-    const data = (await chrome.storage.session.get(KEY))[KEY] || {};
-    const out = await fn(data);
-    if (write) await chrome.storage.session.set({ [KEY]: data });
+    const stored = await chrome.storage.session.get([KEY, HELD]);
+    const db = { tabs: stored[KEY] || {}, held: stored[HELD] || {} };
+    const before = { tabs: JSON.stringify(db.tabs), held: JSON.stringify(db.held), pages: null };
+    let pages = null;
+    db.pages = async () => {
+      if (!pages) {
+        pages = S.cleanPages((await chrome.storage.local.get(PAGES))[PAGES]);
+        before.pages = JSON.stringify(pages);
+      }
+
+      return pages;
+    };
+
+    const out = await fn(db);
+
+    const changed = {};
+    if (JSON.stringify(db.tabs) !== before.tabs) changed[KEY] = db.tabs;
+    if (JSON.stringify(db.held) !== before.held) changed[HELD] = db.held;
+    if (Object.keys(changed).length) await chrome.storage.session.set(changed);
+    if (pages && JSON.stringify(pages) !== before.pages) {
+      await chrome.storage.local.set({ [PAGES]: S.cleanPages(pages) });
+    }
+
     return out;
   });
   queue = run.catch(() => {});
   return run;
 }
+
+// The per-tab states only: fn(tabs). The second argument is kept for older callers; changes
+// are saved whenever there are any.
+const withState = (fn, _write) => transact((db) => fn(db.tabs));
 
 const syncTab = (tabId) =>
   chrome.tabs.sendMessage(tabId, { type: "sync" }).catch(() => {});
@@ -73,15 +107,84 @@ async function applyBadge(tabId, st) {
   }
 }
 
+/* ---------- remembered pages ---------- */
+// With "Remember this page" on, the page a tab is refreshing is saved together with its
+// settings. When that page is opened again (a restored tab after a browser restart, a
+// bookmark, a link), refreshing starts by itself. Pressing Stop forgets the page.
+//
+// The page's address comes from its own content script (sender.url), so this needs no
+// "tabs" permission.
+
+// Is another tab refreshing this page with "remember" on? Then it stays remembered.
+const usedElsewhere = (db, tabId, page) =>
+  Object.entries(db.tabs).some(([id, s]) => Number(id) !== tabId && s.running && s.cfg?.remember && s.page === page);
+
+// Called on every page load of a tab. Returns the tab's state (null if it has none) and,
+// while it is refreshing, keeps the remembered page in step with where the tab is now:
+// people navigate, sites redirect.
+function trackPage(tabId, page) {
+  return transact(async (db) => {
+    const s = db.tabs[tabId] || null;
+    if (!s?.running || s.page === page) return s;
+    const old = s.page || null;
+    s.page = page;
+
+    const pages = await db.pages();
+    if (!s.cfg?.remember) {
+      // Started here without "remember": an older note about this page no longer applies
+      if (!usedElsewhere(db, tabId, page)) delete pages[page];
+      return s;
+    }
+
+    if (old) {
+      if (!(old in pages)) return s; // forgotten from the settings page meanwhile: leave it so
+      if (!usedElsewhere(db, tabId, old)) delete pages[old];
+    }
+
+    pages[page] = { cfg: s.cfg, at: Date.now() };
+    return s;
+  });
+}
+
+// A page in a tab without a refresh has just loaded. Starts one if the page is remembered,
+// and returns the tab's state.
+async function resumePage(tabId, page) {
+  const rule = S.cleanPages((await chrome.storage.local.get(PAGES))[PAGES])[page];
+  if (!rule) return null;
+
+  // The page has only just loaded, so it waits one interval instead of refreshing at once
+  const st = await newState({ ...rule.cfg, remember: true });
+  st.page = page;
+  st.scheduledAt = st.startedAt;
+
+  const current = await transact(async (db) => {
+    if (db.tabs[tabId]) return db.tabs[tabId];
+    // Checked again here, where nothing can come in between: the user may just have
+    // pressed Stop, which forgets the page and holds this tab
+    if (db.held[tabId] === page || db.held[tabId] === ANY_PAGE || !(page in (await db.pages()))) return null;
+    db.tabs[tabId] = st;
+    return st;
+  });
+
+  if (current === st) {
+    applyBadge(tabId, st);
+    if (st.cfg.keepAlive) setDiscardable(tabId, false);
+  }
+
+  // No "sync" message: the page's content script is the one asking, and gets this as its answer
+  return current;
+}
+
 /* ---------- start / stop ---------- */
-async function startTab(tabId, cfg = {}) {
+// The state a tab starts a run with
+async function newState(cfg) {
   const c = S.normalize(cfg);
   if (c.max < c.min) [c.min, c.max] = [c.max, c.min];
   const { min, max, durationMin } = c;
   await I.init(); // pick up the user's current language
   const now = Date.now();
 
-  const st = {
+  return {
     running: true,
     paused: false,
     finished: null,
@@ -103,9 +206,15 @@ async function startTab(tabId, cfg = {}) {
     notify: c.notify,
     watch: { mode: c.watchMode, text: c.watchText, baseline: null },
   };
+}
 
-  await withState((d) => {
-    d[tabId] = st;
+async function startTab(tabId, cfg = {}) {
+  const st = await newState(cfg);
+  const c = st.cfg;
+
+  await transact((db) => {
+    delete db.held[tabId];
+    db.tabs[tabId] = st;
   });
   applyBadge(tabId, st);
   if (c.keepAlive) setDiscardable(tabId, false);
@@ -132,9 +241,15 @@ async function startTab(tabId, cfg = {}) {
 }
 
 async function stopTab(tabId) {
-  const prev = await withState((d) => {
-    const s = d[tabId] || null;
-    delete d[tabId];
+  const prev = await transact(async (db) => {
+    const s = db.tabs[tabId] || null;
+    if (!s) return null;
+    delete db.tabs[tabId];
+
+    // Stop forgets the page. Dismissing a refresh that ended on its own (a limit, a match)
+    // keeps it for next time. Either way it doesn't start again in this tab by itself.
+    db.held[tabId] = s.page || ANY_PAGE;
+    if (s.page && s.running && !usedElsewhere(db, tabId, s.page)) delete (await db.pages())[s.page];
     return s;
   });
   if (prev?.cfg?.keepAlive) setDiscardable(tabId, true);
@@ -185,12 +300,18 @@ chrome.notifications.onClicked.addListener(async (id) => {
 });
 
 /* ---------- message router ---------- */
-async function handle(msg, tabId) {
+async function handle(msg, tabId, sender) {
   if (tabId == null) return null;
 
   switch (msg.type) {
     case "getState": {
-      const st = await withState((d) => d[tabId] || null, false);
+      // A page's content script asks this each time the page loads (the popup asks with
+      // msg.tabId instead). That is the moment to note where the tab is, or to start a
+      // remembered page.
+      const page = sender?.tab && msg.tabId == null ? S.pageKey(sender.url || sender.tab.url || "") : "";
+      let st;
+      if (page) st = (await trackPage(tabId, page)) || (await resumePage(tabId, page));
+      else st = await withState((d) => d[tabId] || null);
       applyBadge(tabId, st);
       return st;
     }
@@ -281,7 +402,7 @@ async function handle(msg, tabId) {
 
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   const tabId = msg.tabId ?? sender.tab?.id;
-  handle(msg, tabId).then(sendResponse, (err) => {
+  handle(msg, tabId, sender).then(sendResponse, (err) => {
     console.error(err);
     sendResponse(null);
   });
@@ -298,9 +419,12 @@ chrome.runtime.onInstalled.addListener(async ({ reason }) => {
 });
 
 /* ---------- housekeeping ---------- */
+// Closing a tab ends its refresh but keeps its page remembered: closing the browser looks
+// the same from here, and the page should start again when it comes back.
 chrome.tabs.onRemoved.addListener((tabId) => {
-  withState((d) => {
-    delete d[tabId];
+  transact((db) => {
+    delete db.tabs[tabId];
+    delete db.held[tabId];
   });
 });
 

@@ -305,7 +305,7 @@ function build(list, dir, crumb, defaults) {
 
 const app = (os) => ({
   "@context": "https://schema.org", "@type": "SoftwareApplication", name: NAME, applicationCategory: "BrowserApplication",
-  operatingSystem: os, softwareVersion: "1.1.0", offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  operatingSystem: os, softwareVersion: "1.2.0", offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
   description: "Free auto refresh and page monitor browser extension with website change alerts.",
   url: `${SITE_URL}/`, downloadUrl: STORE.chrome, author: { "@type": "Person", name: "Al Kafi Sohag" },
 });

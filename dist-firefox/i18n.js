@@ -43,6 +43,7 @@
       "btn.resume": "Resume",
 
       "presets.label": "Quick presets",
+      "presets.edit": "Edit",
       "interval.hint": "Same value = fixed interval. Different values = a new random wait every time.",
 
       "adv.open": "Advanced settings",
@@ -73,6 +74,7 @@
 
       "notice.notReady": "Auto refresh can't run on this page. Browser pages (chrome://, about:) and the extension store are off limits to extensions.",
 
+      "g.startup": "Start automatically",
       "g.limits": "Limits",
       "g.watch": "Watch the page",
       "g.alerts": "Alerts",
@@ -84,6 +86,10 @@
       "s.min.info": "The shortest wait between two refreshes, in seconds.",
       "s.max.label": "Max (sec)",
       "s.max.info": "The longest wait between two refreshes, in seconds. Set it to the same value as Min for a fixed interval.",
+
+      "s.remember.label": "Remember this page",
+      "s.remember.desc": "Start by itself when the page is opened again",
+      "s.remember.info": "When you press Start, the page is remembered together with these settings. The next time that page is opened, also after you restart the browser, auto refresh starts by itself. Press Stop to forget the page.",
 
       "s.durationMin.label": "Stop after (min)",
       "s.durationMin.placeholder": "0 = never",
@@ -152,6 +158,16 @@
       "opt.subtitle": "Stored only in this browser. No account, nothing sent anywhere.",
       "opt.settings.title": "Settings",
       "opt.settings.hint": "Used the next time you press Start. A tab that is already refreshing keeps the settings it started with. Pinned settings appear on the popup's main view.",
+      "opt.presets.title": "Quick presets",
+      "opt.presets.hint": "The shortcut buttons at the top of the popup. Times are in seconds. Use the same Min and Max for a fixed interval.",
+      "opt.presets.add": "Add preset",
+      "opt.presets.reset": "Reset to defaults",
+      "opt.presets.remove": "Remove",
+      "opt.presets.none": "No presets. Add one, or reset to the defaults.",
+      "opt.pages.title": "Remembered pages",
+      "opt.pages.hint": "Pages you started with \"Remember this page\" turned on. Auto refresh starts by itself when one of them is opened. Pressing Stop on the page also forgets it.",
+      "opt.pages.none": "No remembered pages.",
+      "opt.pages.forget": "Forget",
       "opt.profiles.title": "Profiles",
       "opt.profiles.hint": "Save the settings above under a name, then switch between profiles from the popup.",
       "opt.profiles.placeholder": "Profile name, e.g. Ticket watch",
@@ -164,7 +180,7 @@
       "opt.profiles.confirmDelete": "Delete the profile \"{name}\"?",
       "opt.profiles.confirmReplace": "Replace the existing profile \"{name}\"?",
       "opt.backup.title": "Backup",
-      "opt.backup.hint": "Export your settings, pins and profiles to a file, or import them on another browser.",
+      "opt.backup.hint": "Export your settings, pins, presets and profiles to a file, or import them on another browser.",
       "opt.backup.export": "Export to file",
       "opt.backup.import": "Import from file",
       "opt.backup.errJson": "That file isn't valid JSON.",
@@ -178,6 +194,8 @@
       "flash.profileDeleted": "Profile deleted",
       "flash.exported": "Exported",
       "flash.imported": "Imported",
+      "flash.presetsReset": "Presets reset",
+      "flash.forgotten": "Page forgotten",
 
       "b.refreshes": "refreshes",
       "b.nextRefresh": "next refresh",
