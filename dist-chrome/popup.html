@@ -66,14 +66,13 @@
 
       <div id="core" class="space-y-3.5 transition-opacity">
         <div>
-          <div class="label" data-i18n="presets.label">Quick presets</div>
-          <div class="flex flex-wrap gap-1.5">
-            <button type="button" class="chip" data-min="5" data-max="10">5–10s</button>
-            <button type="button" class="chip" data-min="15" data-max="30">15–30s</button>
-            <button type="button" class="chip" data-min="30" data-max="60">30–60s</button>
-            <button type="button" class="chip" data-min="60" data-max="120">1–2 min</button>
-            <button type="button" class="chip" data-min="300" data-max="300">5 min</button>
+          <div class="label-row">
+            <div class="label" data-i18n="presets.label">Quick presets</div>
+            <!-- Opens the settings page, where the presets can be changed -->
+            <button id="editPresets" type="button" class="text-[11px] text-zinc-500 underline underline-offset-2 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200" data-i18n="presets.edit">Edit</button>
           </div>
+          <!-- Filled by popup.js from the saved presets -->
+          <div id="presets" class="flex flex-wrap gap-1.5"></div>
         </div>
 
         <div>

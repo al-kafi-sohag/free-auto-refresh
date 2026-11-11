@@ -143,7 +143,7 @@ module.exports = {
         p: ["Many reporting and BI dashboards only update when the page reloads. On a wall screen or second monitor, that means stale numbers until someone walks over. A fixed five-minute auto refresh keeps them current all day."] },
       { h: "Set up for an unattended screen",
         list: ["**Hide the on-page counter** for a clean display.", "**Keep the tab awake** so the browser does not unload it.", "**Turn on Hard reload** if figures look cached.", "**Use a fixed interval**; there is no need for random timing on your own tools."] },
-      { h: "Good to know", p: ["Refreshing does not restart by itself after the browser is reopened. Press Start, or Alt+Shift+R, when the screen comes back on."] },
+      { h: "Good to know", p: ["Switch on Remember this page (Advanced settings, Start automatically) before you press Start, and the dashboard starts refreshing by itself when the browser is reopened. Without it, press Start, or Alt+Shift+R, when the screen comes back on."] },
     ],
     faqs: [
       ["How do I refresh a dashboard every 5 minutes?", "Set both Min and Max to 300 seconds and press Start."],

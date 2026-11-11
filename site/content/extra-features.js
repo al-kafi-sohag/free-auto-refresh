@@ -144,7 +144,7 @@ module.exports = {
       list: [
         "**Saved in a profile:** every setting, including the watch text.",
         "**Saved separately:** which settings are pinned, and your language.",
-        "**Not saved:** which tabs were running. Refreshing does not resume after a browser restart.",
+        "**Remembered pages:** with Remember this page switched on (Advanced settings, Start automatically), the page you start on is kept with its settings and starts again by itself when it is reopened, also after a browser restart. Press Stop to forget it.",
       ] },
     { h: "Moving to a new computer",
       p: ["On the old machine, open All settings and choose Export to file. On the new one, install the extension, open All settings and choose Import from file. Settings and pins are replaced; profiles are merged."] },

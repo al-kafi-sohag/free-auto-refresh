@@ -1,7 +1,7 @@
 // Development only: loads dist-chrome/ into a real, throwaway Chrome (headless, temporary
 // profile) and checks that the extension actually starts and refreshes a page.
 // Needs the preview server for a page to refresh:  npm run preview
-//   node dev/smoke-chrome.js
+//   node dev/smoke-chrome.js          (PORT=4174 if the preview server is not on 4173)
 //
 // Branded Chrome no longer accepts --load-extension, so this talks to Chrome over the
 // DevTools Protocol pipe and loads the folder with Extensions.loadUnpacked.
@@ -13,7 +13,7 @@ const assert = require("assert");
 
 const CHROME = process.env.CHROME_PATH || "C:/Program Files/Google/Chrome/Application/chrome.exe";
 const EXT_DIR = path.resolve(__dirname, "..", "dist-chrome");
-const TEST_PAGE = "http://localhost:4173/dev/page.html";
+const TEST_PAGE = `http://localhost:${process.env.PORT || 4173}/dev/page.html`;
 const profile = fs.mkdtempSync(path.join(os.tmpdir(), "far-smoke-"));
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -133,9 +133,10 @@ async function main() {
     }, "the extension's service worker");
     const sw = await cdp.attach(swTarget.targetId);
 
+    await waitFor(() => sw.evaluate(`typeof ARSettings === "object" && typeof startTab === "function"`), "the service worker's scripts");
     const loaded = await sw.evaluate(`({ settings: ARSettings.SETTINGS.length, langs: ARI18n.LANGS.length, version: chrome.runtime.getManifest().version })`);
-    assert.strictEqual(loaded.version, "1.1.0");
-    assert.ok(loaded.settings >= 18 && loaded.langs === 7);
+    assert.strictEqual(loaded.version, require("../package.json").version);
+    assert.ok(loaded.settings >= 19 && loaded.langs === 7);
     const pinned = await waitFor(async () => (await sw.evaluate(`chrome.storage.local.get("pinned")`)).pinned, "pins to be set on install");
     assert.deepStrictEqual(pinned, [], "a fresh install starts with the simple view");
     console.log("service worker ok:", JSON.stringify(loaded));
@@ -146,13 +147,15 @@ async function main() {
     };
 
     /* settings page and popup render without errors */
+    // What the popup's "Edit" link leaves for the settings page: open at the presets
+    await sw.evaluate(`chrome.storage.session.set({ optionsFocus: { id: "presetsSection", at: Date.now() + 60000 } })`);
     for (const [file, check, ok] of [
       ["options.html",
-        `({ controls: document.querySelectorAll("main [data-key]").length, back: !!document.getElementById("back"), langs: document.getElementById("lang").options.length })`,
-        (r) => r.controls >= 18 && r.back && r.langs === 8],
+        `({ controls: document.querySelectorAll("main [data-key]").length, back: !!document.getElementById("back"), langs: document.getElementById("lang").options.length, presets: document.querySelectorAll("#presetList input").length / 2, focused: Math.abs(document.getElementById("presetsSection").getBoundingClientRect().top) < 5 })`,
+        (r) => r.controls >= 19 && r.back && r.langs === 8 && r.presets === 5 && r.focused],
       ["popup.html",
-        `({ controls: document.querySelectorAll("#coreFields [data-key]").length, start: document.getElementById("toggle").textContent, logo: document.querySelector("header img").naturalWidth })`,
-        (r) => r.controls === 2 && r.start === "Start" && r.logo === 48],
+        `({ controls: document.querySelectorAll("#coreFields [data-key]").length, start: document.getElementById("toggle").textContent, logo: document.querySelector("header img").naturalWidth, presets: [...document.querySelectorAll("#presets .chip")].map((c) => c.textContent).join() })`,
+        (r) => r.controls === 2 && r.start === "Start" && r.logo === 48 && r.presets === "5–10s,15–30s,30–60s,1–2 min,5 min"],
     ]) {
       const { targetId, page } = await openPage(`chrome-extension://${extId}/${file}`);
       const result = await waitFor(async () => {
@@ -175,7 +178,7 @@ async function main() {
 
     await page.evaluate(`window.scrollTo(0, 600)`);
     const loadedAt = await page.evaluate(`document.getElementById("at").textContent`);
-    const started = await sw.evaluate(`startTab(${tabId}, { min: 2, max: 2, toolbarBadge: "countdown", keepScroll: true })`);
+    const started = await sw.evaluate(`startTab(${tabId}, { min: 2, max: 2, toolbarBadge: "countdown", keepScroll: true, remember: true })`);
     assert.strictEqual(started.running, true);
 
     for (let i = 0; i < 8; i++) {
@@ -186,7 +189,8 @@ async function main() {
     }
     const st = await sw.evaluate(`withState((d) => d[${tabId}] || null, false)`);
     const tab = await sw.evaluate(`chrome.tabs.get(${tabId})`);
-    const badgeText = await sw.evaluate(`chrome.action.getBadgeText({ tabId: ${tabId} })`);
+    // Chrome clears a tab's badge while the page reloads, so ask again if it is caught empty
+    const badgeText = await waitFor(() => sw.evaluate(`chrome.action.getBadgeText({ tabId: ${tabId} })`), "the toolbar badge", 5000).catch(() => "");
     const onPage = await page.evaluate(`({ badge: !!document.querySelector("auto-refresh-badge"), scrollY: Math.round(window.scrollY), reloaded: document.getElementById("at").textContent !== ${JSON.stringify(loadedAt)} })`);
     const inner = await page.evaluate(`({ dead, hasTimer: !!timer, hidden: document.hidden, count: st && st.refreshCount, msLeft: nextAt - Date.now() })`, "content").catch((e) => "content script: " + e.message);
     console.log("content script:", JSON.stringify(inner), "| page errors:", JSON.stringify(page.errors()), "| worker errors:", JSON.stringify(sw.errors()));
@@ -200,8 +204,30 @@ async function main() {
     assert.ok(/^(\d+|…)$/.test(badgeText), "the toolbar badge should show a countdown");
     assert.ok(Math.abs(onPage.scrollY - 600) < 60, "scroll position should be restored");
 
+    /* "Remember this page": the page is noted while it runs, and Stop forgets it */
+    const rememberedPages = () => sw.evaluate(`chrome.storage.local.get("pages").then((r) => Object.keys(r.pages || {}))`);
+    assert.strictEqual(st.page, TEST_PAGE, "the background should learn the page's address from its content script");
+    assert.deepStrictEqual(await rememberedPages(), [TEST_PAGE]);
+
     await sw.evaluate(`stopTab(${tabId})`);
     assert.strictEqual((await sw.evaluate(`chrome.tabs.get(${tabId})`)).autoDiscardable, true, "the tab may sleep again after stopping");
+    assert.deepStrictEqual(await rememberedPages(), [], "Stop forgets the page");
+
+    /* a remembered page starts by itself when it is opened, as after a browser restart */
+    const again = TEST_PAGE + "?again=1";
+    await sw.evaluate(`chrome.storage.local.set({ pages: { ${JSON.stringify(again)}: { cfg: { min: 2, max: 2, remember: true }, at: Date.now() } } })`);
+    const known = await tabIds();
+    const { page: page2 } = await openPage(again + "#section");
+    const tab2 = await waitFor(async () => (await tabIds()).find((id) => !known.includes(id)), "the second tab");
+    const resumed = await waitFor(() => sw.evaluate(`withState((d) => d[${tab2}] || null, false)`), "the remembered page to start by itself");
+    assert.ok(resumed.running && resumed.page === again && resumed.refreshCount === 0, "it starts without an extra refresh");
+    const firstLoad = await page2.evaluate(`document.getElementById("at").textContent`);
+    await waitFor(() => sw.evaluate(`withState((d) => d[${tab2}].refreshCount >= 2, false)`), "the remembered page to keep refreshing", 40000);
+    assert.notStrictEqual(await page2.evaluate(`document.getElementById("at").textContent`), firstLoad);
+    await waitFor(() => page2.evaluate(`!!document.querySelector("auto-refresh-badge")`), "the on-page badge on a resumed page");
+    console.log("remembered page ok:", JSON.stringify({ startedBy: "opening the page", urlVisibleToTabsApi: !!(await sw.evaluate(`chrome.tabs.get(${tab2})`)).url }));
+    await sw.evaluate(`stopTab(${tab2})`);
+    assert.deepStrictEqual(await rememberedPages(), []);
     assert.deepStrictEqual(sw.errors(), [], "the service worker logged errors");
 
     console.log("real Chrome smoke test passed");

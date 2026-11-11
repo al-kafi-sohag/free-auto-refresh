@@ -55,6 +55,9 @@ require(path.join(root, "background.js"));
 const S = globalThis.ARSettings;
 const send = (msg) => new Promise((resolve) => L.msg(msg, { tab: { id: 7 } }, resolve));
 const tick = (ms = 20) => new Promise((r) => setTimeout(r, ms));
+// A message from the content script of a page: the browser tells the background its address
+const from = (tabId, url, msg) => new Promise((resolve) => L.msg(msg, { tab: { id: tabId }, url }, resolve));
+const pageLoad = (tabId, url) => from(tabId, url, { type: "getState" });
 
 (async () => {
   /* install / update */
@@ -159,6 +162,117 @@ const tick = (ms = 20) => new Promise((r) => setTimeout(r, ms));
   assert.strictEqual(st.min, 30);
   await L.cmd("toggle-refresh");
   assert.strictEqual(await send({ type: "getState" }), null);
+
+  /* quick presets */
+  assert.deepStrictEqual(S.cleanPresets(undefined).map(S.presetLabel), ["5–10s", "15–30s", "30–60s", "1–2 min", "5 min"],
+    "nothing saved gives the presets every version has had");
+  assert.deepStrictEqual(S.cleanPresets([]), [], "an emptied list stays empty");
+  assert.deepStrictEqual(
+    S.cleanPresets([{ min: 90, max: 45 }, { min: "", max: 20 }, { min: 0.2, max: 0.2 }, {}, null, { min: "x" }, { min: 3600, max: 7200 }]),
+    [{ min: 45, max: 90 }, { min: 20, max: 20 }, { min: 1, max: 1 }, { min: 3600, max: 7200 }]);
+  assert.strictEqual(S.cleanPresets(Array(20).fill({ min: 5, max: 5 })).length, S.MAX_PRESETS);
+  assert.deepStrictEqual(
+    [{ min: 45, max: 90 }, { min: 2.5, max: 2.5 }, { min: 3600, max: 7200 }, { min: 60, max: 3600 }].map(S.presetLabel),
+    ["45–90s", "2.5s", "1–2 h", "1–60 min"]);
+
+  /* remembered pages */
+  const A = "https://example.com/board?id=1";
+  const B = "https://example.com/other";
+  assert.strictEqual(S.pageKey(A + "#top"), A, "the #fragment is not part of the page");
+  assert.strictEqual(S.pageKey("chrome://extensions"), "");
+  assert.strictEqual(S.pageKey("not a url"), "");
+  const remembered = () => Object.keys(local.d.pages || {});
+
+  // off (the default): nothing is remembered, nothing starts by itself
+  await send({ type: "start", cfg: { min: 10, max: 10 } });
+  await pageLoad(7, A);
+  assert.deepStrictEqual(remembered(), []);
+  await send({ type: "stop" });
+  assert.strictEqual(await pageLoad(7, A), null);
+
+  // on: the page is remembered once its content script reports in, with its settings
+  await send({ type: "start", cfg: { min: 10, max: 20, remember: true } });
+  assert.deepStrictEqual(remembered(), [], "not before the page says where it is");
+  st = await pageLoad(7, A + "#top");
+  assert.strictEqual(st.page, A);
+  assert.deepStrictEqual(remembered(), [A]);
+  assert.strictEqual(local.d.pages[A].cfg.max, 20);
+  assert.strictEqual(await send({ type: "getState", tabId: 7 }).then((s) => s.page), A, "the popup's question changes nothing");
+
+  // the remembered page follows the tab when it goes somewhere else
+  await pageLoad(7, B);
+  assert.deepStrictEqual(remembered(), [B]);
+  await pageLoad(7, A);
+
+  // closing the tab (or the browser) keeps the page; opening it again starts by itself
+  L.removed(7);
+  await tick();
+  assert.deepStrictEqual(remembered(), [A]);
+  session.d.tabs = {}; // a browser restart: per-tab state is gone
+  delete session.d.held;
+  calls.reload.length = 0;
+  calls.sync = 0;
+  assert.strictEqual(await pageLoad(8, B), null, "other pages don't start");
+  st = await pageLoad(8, A);
+  assert.ok(st.running && st.cfg.remember, "a remembered page starts when it is opened");
+  assert.strictEqual(st.min, 10);
+  assert.strictEqual(st.max, 20);
+  assert.strictEqual(st.refreshCount, 0);
+  assert.ok(st.scheduledAt, "it waits one interval instead of refreshing the page it just loaded");
+  assert.strictEqual(calls.reload.length + calls.sync, 0, "the page that asked is neither reloaded nor pinged");
+  assert.strictEqual(badge.text, "0");
+  st = await pageLoad(8, A);
+  assert.strictEqual(st.startedAt, (await send({ type: "getState", tabId: 8 })).startedAt, "later loads carry on with the same run");
+
+  // the same page in a second tab: stopping one keeps it remembered for the other
+  st = await pageLoad(9, A);
+  assert.ok(st.running);
+  await from(8, A, { type: "stop" });
+  assert.deepStrictEqual(remembered(), [A]);
+  assert.strictEqual(await pageLoad(8, A), null, "a tab the user stopped stays stopped");
+  // Stop on the last one forgets the page
+  await from(9, A, { type: "stop" });
+  assert.deepStrictEqual(remembered(), []);
+  assert.strictEqual(await pageLoad(10, A), null);
+
+  // a refresh that ended on its own stays remembered, but doesn't restart in the same tab
+  await from(10, A, { type: "start", cfg: { min: 5, max: 5, remember: true, keepAlive: false } });
+  await pageLoad(10, A);
+  await from(10, A, { type: "finish", reason: "count" });
+  assert.strictEqual((await pageLoad(10, A)).finished.reason, "count");
+  await from(10, A, { type: "stop" }); // the badge's Dismiss button
+  assert.deepStrictEqual(remembered(), [A]);
+  assert.strictEqual(await pageLoad(10, A), null);
+  assert.ok((await pageLoad(11, A)).running, "it does start in a new tab");
+
+  // forgotten on the settings page while running: it is not remembered again
+  local.d.pages = {};
+  await pageLoad(11, B);
+  assert.deepStrictEqual(remembered(), []);
+  await from(11, B, { type: "stop" });
+
+  // pressing Start with "remember" off on a remembered page forgets it
+  local.d.pages = { [A]: { cfg: { min: 5, max: 5, remember: true }, at: 1 } };
+  session.d.held = {};
+  await from(12, A, { type: "start", cfg: { min: 5, max: 5 } });
+  await pageLoad(12, A);
+  assert.deepStrictEqual(remembered(), []);
+  await from(12, A, { type: "stop" });
+
+  // Stop pressed while the page is reloading: the page that loads next must not start again
+  await from(13, A, { type: "start", cfg: { min: 5, max: 5, remember: true } });
+  await pageLoad(13, A);
+  assert.deepStrictEqual(remembered(), [A]);
+  const [, afterStop] = await Promise.all([from(13, A, { type: "stop" }), pageLoad(13, A)]);
+  assert.strictEqual(afterStop, null);
+  assert.deepStrictEqual(remembered(), []);
+
+  // ...also when it was stopped before the page had reported where it is
+  local.d.pages = { [A]: { cfg: { min: 5, max: 5, remember: true }, at: 1 } };
+  await from(14, A, { type: "start", cfg: { min: 5, max: 5, remember: true } });
+  await from(14, A, { type: "stop" });
+  assert.strictEqual(await pageLoad(14, A), null);
+  local.d.pages = {};
 
   console.log("background ok");
 })().catch((e) => {

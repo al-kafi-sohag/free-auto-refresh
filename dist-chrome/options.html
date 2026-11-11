@@ -41,6 +41,26 @@
       <div id="groups" class="mt-3"></div>
     </section>
 
+    <!-- Quick presets: the shortcut buttons at the top of the popup -->
+    <section id="presetsSection" class="panel p-4">
+      <h2 class="section-title" data-i18n="opt.presets.title">Quick presets</h2>
+      <p class="hint mb-3" data-i18n="opt.presets.hint">The shortcut buttons at the top of the popup. Times are in seconds. Use the same Min and Max for a fixed interval.</p>
+      <ul id="presetList" class="space-y-2"></ul>
+      <p id="noPresets" class="hint" data-i18n="opt.presets.none">No presets. Add one, or reset to the defaults.</p>
+      <div class="mt-3 flex flex-wrap gap-2">
+        <button id="addPreset" type="button" class="btn btn-ghost btn-sm" data-i18n="opt.presets.add">Add preset</button>
+        <button id="resetPresets" type="button" class="btn btn-ghost btn-sm" data-i18n="opt.presets.reset">Reset to defaults</button>
+      </div>
+    </section>
+
+    <!-- Remembered pages: start refreshing by themselves when opened -->
+    <section id="pagesSection" class="panel p-4">
+      <h2 class="section-title" data-i18n="opt.pages.title">Remembered pages</h2>
+      <p class="hint mb-3" data-i18n="opt.pages.hint">Pages you started with "Remember this page" turned on. Auto refresh starts by itself when one of them is opened. Pressing Stop on the page also forgets it.</p>
+      <ul id="pageList" class="divide-y divide-zinc-100 dark:divide-zinc-800"></ul>
+      <p id="noPages" class="hint" data-i18n="opt.pages.none">No remembered pages.</p>
+    </section>
+
     <!-- Profiles -->
     <section class="panel p-4">
       <h2 class="section-title" data-i18n="opt.profiles.title">Profiles</h2>
@@ -57,7 +77,7 @@
     <!-- Backup -->
     <section class="panel p-4">
       <h2 class="section-title" data-i18n="opt.backup.title">Backup</h2>
-      <p class="hint mb-3" data-i18n="opt.backup.hint">Export your settings, pins and profiles to a file, or import them on another browser.</p>
+      <p class="hint mb-3" data-i18n="opt.backup.hint">Export your settings, pins, presets and profiles to a file, or import them on another browser.</p>
       <div class="flex flex-wrap gap-2">
         <button id="exportBtn" type="button" class="btn btn-ghost" data-i18n="opt.backup.export">Export to file</button>
         <button id="importBtn" type="button" class="btn btn-ghost" data-i18n="opt.backup.import">Import from file</button>

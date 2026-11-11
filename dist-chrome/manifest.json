@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Free Auto Refresh",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Free auto refresh for any tab, with fixed or random intervals, a live on-page counter, and page watching. Built by Al Kafi Sohag.",
   "minimum_chrome_version": "111",
   "author": "Al Kafi Sohag (https://www.linkedin.com/in/al-kafi-sohag/)",

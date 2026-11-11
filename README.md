@@ -13,7 +13,9 @@ A Manifest V3 browser extension (Chrome and Firefox) that reloads a tab at a fix
 - **Hard reload**: optional cache bypass
 - **Keep scroll position**: returns to the same place on the page after each refresh
 - **Keep the tab awake**: asks the browser not to put the tab to sleep while it is refreshing
-- **Pause / resume**, quick presets, and a keyboard shortcut (`Alt+Shift+R`, changeable in your browser's shortcut settings)
+- **Remember this page**: optionally, a page you started begins refreshing by itself when it is opened again, including after a browser restart, until you press Stop
+- **Quick presets you can edit**: change the times, add your own, remove the ones you don't use
+- **Pause / resume** and a keyboard shortcut (`Alt+Shift+R`, changeable in your browser's shortcut settings)
 - **Desktop notification** and tab-title flash when a watch matches
 - **Simple or advanced**: the popup shows only the essentials; everything else lives under Advanced settings, and any setting can be pinned to the main view
 - **Profiles and backup**: save named sets of settings, switch between them from the popup, and export or import everything as a file
@@ -111,7 +113,7 @@ Tips:
 | `ui.js` | Renders settings controls from that list, including the pin buttons |
 | `popup.html` / `popup.js` | Popup: live stats, main view, Advanced settings (Tailwind) |
 | `options.html` / `options.js` | Full settings page: all settings, profiles, export and import |
-| `background.js` | Service worker: per-tab state, toolbar badge, notifications, shortcut |
+| `background.js` | Service worker: per-tab state, remembered pages, toolbar badge, notifications, shortcut |
 | `content.js` | Runs in the page: timer, page watching, on-page badge |
 | `src/input.css`, `tailwind.config.js` | Tailwind source and config; build output is `popup.css` |
 | `scripts/build.js` | Stages clean `dist-chrome/` and `dist-firefox/` folders for `web-ext` |
@@ -131,6 +133,10 @@ To add a language, copy a file in `locales/`, translate the values, and add it t
 
 Add one entry to `SETTINGS` in `settings.js`, and its label and explanation to `i18n.js` and each file in `locales/` (`node dev/check-i18n.js` reports anything missing). It then shows up under its group in Advanced settings and on the settings page, can be pinned, is saved, and is included in profiles and exports. The background passes the full settings object to the tab as `state.cfg`. Settings saved by older versions stay valid: any key they lack falls back to its default.
 
+### Remembered pages
+
+With **Remember this page** on (Advanced settings, Start automatically; off by default), the background saves the address of the page a tab is refreshing, with its settings, in `storage.local` as `pages`. The address comes from the page's own content script (`sender.url`), so no `tabs` permission is needed. Each time a page loads, its content script asks the background for its state; if the tab has none and the address is remembered, a run starts and waits one interval before the first refresh. Stop forgets the page; closing the tab or the browser does not. The settings page lists remembered pages and can forget them.
+
 ## Permissions
 
 - `storage`: saves your settings and per-tab state
@@ -143,6 +149,8 @@ Add one entry to `SETTINGS` in `settings.js`, and its label and explanation to `
 - "Keep the tab awake" is a request to the browser. It can still put the tab to sleep when memory is critically low.
 - Background tabs may have timers delayed by about a second.
 - Watching checks the page once it has loaded plus the extra wait you set (one second by default). Content that appears later than that is missed; raise the extra wait for such pages.
+- A remembered page starts when it loads. A tab the browser restores without loading it (Firefox does this for background tabs) starts once you switch to it.
+- Remembered pages match the exact address (ignoring the `#fragment`). A page whose address changes between visits is not recognised.
 - Firefox build requires Firefox 140+ (desktop) due to `data_collection_permissions` support.
 
 ## Roadmap
@@ -154,7 +162,7 @@ Add one entry to `SETTINGS` in `settings.js`, and its label and explanation to `
 - [x] Languages and per-setting help
 - [x] Wait for load, keep scroll position, click and scroll pause, toolbar countdown, keep tab awake
 - [ ] Sound alert on match
-- [ ] Per-site rules (auto-start) and resume after browser restart
+- [x] Remember a page and resume after a browser restart, editable quick presets
 - [ ] Local history page
 
 ## License

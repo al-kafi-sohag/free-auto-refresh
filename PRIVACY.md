@@ -1,6 +1,6 @@
 # Free Auto Refresh Privacy Policy
 
-**Last updated: November 10, 2026**
+**Last updated: November 12, 2026**
 
 Free Auto Refresh is a browser extension for Chrome and Firefox designed to automatically refresh webpages and monitor webpage content according to user-configured settings.
 
@@ -11,6 +11,8 @@ The extension may locally process webpage content from the tab where the user ha
 The extension may also detect whether the user is actively typing in a form field so that Smart Pause can prevent an automatic refresh from interrupting the user's input. The extension does not record, store, or transmit the text entered by the user.
 
 The extension stores refresh settings and per-tab extension state using the browser's extension storage.
+
+If the user turns on the optional **Remember this page** setting, the extension also stores the address of the page being refreshed, together with its refresh settings, in the browser's local extension storage. This is used only to start refreshing that page again when it is reopened. The address is removed when the user presses Stop on that page or removes it on the settings page. It is never transmitted anywhere.
 
 ## How We Use Data
 

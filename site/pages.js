@@ -296,7 +296,7 @@ const useCases = [
     points: [["Set and forget", "A fixed interval keeps a wall screen current all day."], ["No clutter", "Hide the on-page counter for a clean display."], ["Stays awake", "The tab is kept from sleeping, which matters on a screen nobody touches."]],
     steps: ["Open the dashboard in its own tab or window.", "Set Min and Max to 300.", "Turn off On-page badge and leave Keep the tab awake on."],
     settings: [["Min / Max", "300 seconds"], ["On-page badge", "Off"], ["Keep the tab awake", "On"], ["Hard reload", "On if numbers look cached"]],
-    body: [["After a browser restart", "Refreshing does not resume by itself yet. Open the dashboard and press Start, or use Alt+Shift+R."]],
+    body: [["After a browser restart", "Switch on Remember this page under Advanced settings, Start automatically, before you press Start. The dashboard then starts refreshing by itself whenever it is opened again, until you press Stop."]],
     faqs: [["Can I refresh several dashboards?", "Yes. Start it in each tab; every tab has its own timer."]],
     art: "a wall-mounted screen showing charts with a subtle reload ring in the corner",
   },

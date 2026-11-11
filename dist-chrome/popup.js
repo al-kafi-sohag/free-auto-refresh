@@ -25,6 +25,7 @@ let state = null;
 let cfg = S.defaults(); // settings shown in the form
 let pinned = [];        // advanced settings shown on the main view
 let profiles = {};
+let presets = [];       // quick preset buttons: [{ min, max }]
 const openGroups = new Set(); // advanced groups currently expanded
 
 /* ---------- helpers ---------- */
@@ -73,6 +74,27 @@ function buildProfiles() {
   select.replaceChildren(new Option(I.t("profile.current"), ""), ...names.map((n) => new Option(n, n)));
   select.value = names.includes(current) ? current : "";
   $("profileRow").classList.toggle("hidden", names.length === 0);
+}
+
+// The preset buttons are the user's own list, edited on the settings page
+function buildPresets() {
+  const chips = presets.map((preset) => {
+    const chip = document.createElement("button");
+    chip.type = "button";
+    chip.className = "chip";
+    chip.textContent = S.presetLabel(preset);
+    chip.addEventListener("click", () => {
+      cfg.min = preset.min;
+      cfg.max = preset.max;
+      S.saveDefaults(cfg);
+      $("profile").value = "";
+      buildForm();
+    });
+    return chip;
+  });
+
+  $("presets").replaceChildren(...chips);
+  $("presets").classList.toggle("hidden", chips.length === 0);
 }
 
 function buildForm() {
@@ -200,14 +222,10 @@ async function checkContent() {
 }
 
 /* ---------- events ---------- */
-document.querySelectorAll("[data-min]").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    cfg.min = Number(btn.dataset.min);
-    cfg.max = Number(btn.dataset.max);
-    S.saveDefaults(cfg);
-    $("profile").value = "";
-    buildForm();
-  });
+$("editPresets").addEventListener("click", async () => {
+  // Tells the settings page which section to show; it ignores a note older than a few seconds
+  await chrome.storage.session.set({ optionsFocus: { id: "presetsSection", at: Date.now() } }).catch(() => {});
+  chrome.runtime.openOptionsPage();
 });
 
 $("profile").addEventListener("change", () => {
@@ -287,7 +305,7 @@ async function load() {
   tabId = tab?.id ?? null;
 
   await I.init();
-  ({ cfg, pinned, profiles } = await S.loadPrefs());
+  ({ cfg, pinned, profiles, presets } = await S.loadPrefs());
 
   if (tabId != null) {
     state = await chrome.runtime.sendMessage({ type: "getState", tabId });
@@ -303,6 +321,7 @@ async function load() {
 
   translate();
 
+  buildPresets();
   buildForm();
   render();
   checkContent();
