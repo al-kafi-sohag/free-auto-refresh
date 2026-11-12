@@ -1,7 +1,8 @@
-# Builds the website from site/pages.js into static HTML and publishes it to GitHub Pages.
-# Runs on every push to main. The published pages are plain HTML: pages.js is only read
-# here, at build time, and is never loaded by a visitor's browser.
-name: Deploy website
+# The website now lives at https://freeautorefresh.com (Cloudflare builds it from this
+# repository; see wrangler.jsonc). GitHub Pages only keeps the old address working: this
+# publishes one small redirect page per page of the site, pointing at the new address.
+# Runs on every push to main, so new pages get a redirect too.
+name: Redirect old website
 
 on:
   push:
@@ -25,12 +26,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
-      - run: npm ci
-      - run: npm run build:site
+      - run: node site/make-redirects.js
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: docs
+          path: _old-site
 
   deploy:
     needs: build
