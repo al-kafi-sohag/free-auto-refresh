@@ -19,7 +19,6 @@ const stub = (url) => `<!DOCTYPE html>
 <title>Free Auto Refresh has moved</title>
 <link rel="canonical" href="${url}">
 <meta http-equiv="refresh" content="0; url=${url}">
-<meta name="robots" content="noindex, follow">
 <script>location.replace(${JSON.stringify(url)} + location.search + location.hash);</script>
 </head>
 <body>
