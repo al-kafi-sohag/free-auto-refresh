@@ -22,6 +22,7 @@ const GITHUB = "https://github.com/al-kafi-sohag/free-auto-refresh";
 // Invite link of the Telegram group for users (https://t.me/...). Leave empty to hide it on the contact page.
 const TELEGRAM_GROUP = "";
 const GA_ID = "G-0DTP2D307V";
+const CLARITY_ID = "zcmctmdktt"; // Microsoft Clarity project; loaded by assets/site.js after the visitor accepts
 const OUT = path.resolve(__dirname, "..", "docs");
 const TODAY = new Date().toISOString().slice(0, 10);
 
@@ -127,7 +128,7 @@ ${page.kw ? `<meta name="keywords" content="${esc(page.kw.join(", "))}">\n` : ""
 <link rel="stylesheet" href="${r}assets/site.css">
 ${schema.map((s) => `<script type="application/ld+json">${JSON.stringify(s)}</script>`).join("\n")}
 </head>
-<body data-ga="${GA_ID}">
+<body data-ga="${GA_ID}" data-clarity="${CLARITY_ID}">
 
 <header class="site-header">
   <div class="page-width nav-shell">
@@ -167,7 +168,7 @@ ${body}
 </footer>
 
 <div class="cookie" id="cookieBanner" role="dialog" aria-label="Cookie consent">
-  This site uses Google Analytics to count visits, only if you accept. No ads. The extension itself has no analytics. <a href="${r}privacy/"><strong>Privacy</strong></a>
+  This site uses Google Analytics and Microsoft Clarity to see how it is used, only if you accept. No ads. The extension itself has no analytics. <a href="${r}privacy/"><strong>Privacy</strong></a>
   <div class="install-links">
     <button class="button-primary" id="cookieAccept" type="button">Accept</button>
     <button class="button-secondary" id="cookieReject" type="button">Reject</button>

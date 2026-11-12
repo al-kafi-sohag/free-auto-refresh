@@ -7,9 +7,10 @@ $(function () {
     $(this).attr("aria-expanded", String(open));
   });
 
-  /* ---------- cookie consent: Google Analytics loads only after Accept ---------- */
+  /* ---------- cookie consent: Google Analytics and Microsoft Clarity load only after Accept ---------- */
   var KEY = "cookie-consent";
   var gaId = $("body").data("ga");
+  var clarityId = $("body").data("clarity");
 
   function getChoice() {
     try { return localStorage.getItem(KEY); } catch (e) { return null; }
@@ -20,13 +21,26 @@ $(function () {
   }
 
   function loadAnalytics() {
-    if (!gaId || window.analyticsLoaded) return;
+    if (window.analyticsLoaded) return;
     window.analyticsLoaded = true;
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = function () { window.dataLayer.push(arguments); };
-    $.getScript("https://www.googletagmanager.com/gtag/js?id=" + gaId);
-    window.gtag("js", new Date());
-    window.gtag("config", gaId);
+
+    if (gaId) {
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      $.getScript("https://www.googletagmanager.com/gtag/js?id=" + gaId);
+      window.gtag("js", new Date());
+      window.gtag("config", gaId);
+    }
+
+    if (clarityId) {
+      /* Microsoft Clarity's own tag, started here instead of in <head> so it waits for Accept */
+      window.clarity = window.clarity || function () { (window.clarity.q = window.clarity.q || []).push(arguments); };
+      var tag = document.createElement("script");
+      tag.async = true;
+      tag.src = "https://www.clarity.ms/tag/" + clarityId;
+      document.head.appendChild(tag);
+      window.clarity("consentv2", { ad_Storage: "denied", analytics_Storage: "granted" });
+    }
   }
 
   if (getChoice() === "accepted") loadAnalytics();
