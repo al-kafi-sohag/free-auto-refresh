@@ -49,7 +49,7 @@ and rebuild; it is not editable in the dashboard.
 
 **Category:** Workflow and planning is fine. "Tools" also fits and has the direct competitors.
 
-**Homepage URL:** `https://al-kafi-sohag.github.io/free-auto-refresh/`
+**Homepage URL:** `https://freeautorefresh.com/`
 
 **Support URL:** `https://github.com/al-kafi-sohag/free-auto-refresh/issues` (or keep the form
 you use now; an issues page shows users that questions get answered).
@@ -110,7 +110,7 @@ No data is collected and nothing is sent anywhere. Settings stay in your browser
 
 It does not work on browser pages (chrome://), the extension store or the built-in PDF viewer; browsers do not allow extensions there.
 
-Website and guides: https://al-kafi-sohag.github.io/free-auto-refresh/
+Website and guides: https://freeautorefresh.com/
 Source code: https://github.com/al-kafi-sohag/free-auto-refresh
 ```
 
@@ -135,35 +135,62 @@ with the text below, which is the same content written for Firefox.
 tags from its own list, which I could not see from outside your account. When editing, pick
 the ones closest to refreshing, tabs, monitoring, shopping and web development.
 
-**Homepage:** `https://al-kafi-sohag.github.io/free-auto-refresh/` (already set).
+**Homepage:** `https://freeautorefresh.com/` (change it from the github.io address).
 
 **Website / support site:** the Google Form is fine; the GitHub issues page is an alternative.
 
-**Release notes for 1.2.0:**
+**Release notes** (Firefox goes from 1.0.0 straight to 1.2.0, so these cover 1.1.0 too):
 
 ```
-New in 1.2.0
+This update brings Firefox from 1.0.0 to 1.2.0.
 
+New in 1.2.0
 • Remember this page: switch it on under Advanced settings > Start automatically, and auto refresh starts again by itself when that page is reopened, also after a browser restart. Press Stop to forget the page.
 • Quick presets you can edit: click Edit next to the presets to change the times, add your own or remove the ones you don't use.
 • The settings page lists your remembered pages and lets you forget them.
-• Presets are included in export and import.
 
-Thanks to Dodsy-91 for asking for both.
+New since 1.0.0 (version 1.1.0)
+• Simpler popup: the essentials on the main view, everything else under Advanced settings. Pin any setting to keep it on the main view.
+• 7 languages: English, Romanian, Russian, Chinese (Simplified), Japanese, Bengali and Thai, with a plain-language explanation next to every setting.
+• Page watching now waits for the page to finish loading, plus an adjustable extra wait, before it checks.
+• Keep scroll position after each refresh.
+• Pause when you click or scroll, with a choice to restart the countdown or stop.
+• The toolbar icon can show a countdown to the next refresh.
+• Keep the tab awake while it is refreshing.
+• Profiles: save named sets of settings and switch between them.
+• A full settings page, with export and import.
+
+Thanks to Dodsy-91 for asking for remembered pages and editable presets.
 ```
 
 **Notes to reviewer:**
 
 ```
-No new permissions in this version.
+This submission updates the add-on from 1.0.0 to 1.2.0 (1.1.0 was not submitted here). Permissions are unchanged since 1.0.0: storage, notifications, and a content script on all URLs. No remote code, no network requests, no data collection.
 
-New in 1.2.0:
-1. "Remember this page" (off by default; Advanced settings > Start automatically). When on, the address of the page being refreshed and its settings are saved in storage.local. The address comes from the content script's sender.url. When that page loads again, the background starts the refresh for that tab. Stop removes the saved address. Nothing is sent anywhere.
-2. Editable quick presets, stored in storage.local.
+What changed since 1.0.0
 
-To test "Remember this page": open any web page, open the popup, Advanced settings > Start automatically > turn on "Remember this page", go back and press Start. Close the tab and open the same address again: refreshing starts by itself after one interval. Press Stop: opening the page again no longer starts it. Remembered pages are listed on the settings page.
+Structure
+- New shared scripts loaded by the background, the popup and the settings page: settings.js (the list of settings), i18n.js and locales/*.js (translations), ui.js (renders the settings controls).
+- New settings page: options.html / options.js (options_ui, opens in a tab).
+- The background lists the shared scripts in background.scripts.
 
-Build: the only generated file is popup.css (Tailwind CSS, minified). All JavaScript is hand-written and not minified or bundled.
+Features (1.1.0)
+- Popup redesign with Advanced settings and pinning; 7 languages, switched at runtime and stored in storage.local.
+- Page watching waits for the load event plus a delay; keep scroll position; pause on click or scroll; toolbar countdown; "keep the tab awake" (tabs.update autoDiscardable, which needs no extra permission).
+- Profiles, export to a JSON file and import from one, all local.
+
+Features (1.2.0)
+- "Remember this page" (off by default; Advanced settings > Start automatically). When on, the address of the page being refreshed and its settings are saved in storage.local. The address comes from the content script's sender.url. When that page loads again, the background starts the refresh for that tab. Stop removes the saved address. Nothing is sent anywhere.
+- Editable quick presets, stored in storage.local.
+
+How to test
+1. Basic refresh: open any web page, open the popup, pick a preset, press Start. The page reloads and shows a counter.
+2. Page watching: in Advanced settings > Watch the page choose "Stop when text appears", enter a word that is on the page, press Start. It stops and shows a notification.
+3. Remember this page: Advanced settings > Start automatically > turn on "Remember this page", go back and press Start. Close the tab and open the same address again: refreshing starts by itself after one interval. Press Stop: opening the page again no longer starts it. Remembered pages are listed on the settings page (gear icon).
+
+Build
+The only generated file is popup.css (Tailwind CSS, minified). All JavaScript is hand-written and not minified or bundled.
 Source: https://github.com/al-kafi-sohag/free-auto-refresh
   npm ci
   npm run build:firefox

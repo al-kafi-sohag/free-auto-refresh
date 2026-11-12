@@ -7,19 +7,19 @@
 <title>Contact – Free Auto Refresh</title>
 <meta name="description" content="Report a bug, suggest a feature or ask a question about Free Auto Refresh.">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<link rel="canonical" href="https://al-kafi-sohag.github.io/free-auto-refresh/contact/">
+<link rel="canonical" href="https://freeautorefresh.com/contact/">
 <meta property="og:site_name" content="Free Auto Refresh">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Contact – Free Auto Refresh">
 <meta property="og:description" content="Report a bug, suggest a feature or ask a question about Free Auto Refresh.">
-<meta property="og:url" content="https://al-kafi-sohag.github.io/free-auto-refresh/contact/">
-<meta property="og:image" content="https://al-kafi-sohag.github.io/free-auto-refresh/assets/poster.png">
+<meta property="og:url" content="https://freeautorefresh.com/contact/">
+<meta property="og:image" content="https://freeautorefresh.com/assets/poster.png">
 <meta property="og:image:alt" content="Free Auto Refresh: auto refresh and page monitor browser extension">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Contact – Free Auto Refresh">
 <meta name="twitter:description" content="Report a bug, suggest a feature or ask a question about Free Auto Refresh.">
-<meta name="twitter:image" content="https://al-kafi-sohag.github.io/free-auto-refresh/assets/poster.png">
+<meta name="twitter:image" content="https://freeautorefresh.com/assets/poster.png">
 <meta name="google-site-verification" content="ww9t1NvE40Omq86n1bNGdVptryQJXYkv5f0-MjdqTqM">
 <meta name="msvalidate.01" content="3CB45458A679463A21F05BA747535729">
 <link rel="icon" href="../assets/logo.png" type="image/png">
@@ -27,7 +27,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/site.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://al-kafi-sohag.github.io/free-auto-refresh/"},{"@type":"ListItem","position":2,"name":"Contact","item":"https://al-kafi-sohag.github.io/free-auto-refresh/contact/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://freeautorefresh.com/"},{"@type":"ListItem","position":2,"name":"Contact","item":"https://freeautorefresh.com/contact/"}]}</script>
 </head>
 <body data-ga="G-0DTP2D307V">
 
@@ -50,7 +50,7 @@
         <nav class="crumbs" aria-label="Breadcrumb"><a href="../">Home</a><span>/</span><span>Contact</span></nav>
         <span class="eyebrow">Get in touch</span>
         <h1>Contact</h1>
-        <p class="hero-description">Found a bug or have an idea? The fastest route is a GitHub issue.</p>
+        <p class="hero-description">Found a bug or have an idea? Send a message here, or open a GitHub issue.</p>
         
       </div>
       <figure class="shot ">
@@ -61,13 +61,15 @@
     </div>
   </section>
   <section class="page-width content-section" style="padding-top:48px"><div class="panel prose" style="max-width:820px"><h2>Send a message</h2>
-      <!-- TODO: connect this form to a backend or form service. It does not send anything yet. -->
+      <p>Your message goes straight to the developer. Add your email if you would like a reply.</p>
+      <!-- Sent by assets/site.js to /api/contact (functions/api/contact.js), which forwards it to Telegram -->
       <form id="contactForm" novalidate style="display:grid;gap:16px;margin-top:18px">
+        <div hidden aria-hidden="true"><label for="cWeb">Leave this empty</label><input id="cWeb" name="website" tabindex="-1" autocomplete="off"></div>
         <div class="field"><label for="cName">Name</label><input id="cName" name="name" autocomplete="name"></div>
-        <div class="field"><label for="cEmail">Email</label><input id="cEmail" name="email" type="email" autocomplete="email" placeholder="name@example.com"></div>
-        <div class="field"><label for="cMsg">Message</label><textarea id="cMsg" name="message" rows="5"></textarea></div>
+        <div class="field"><label for="cEmail">Email (optional)</label><input id="cEmail" name="email" type="email" autocomplete="email" placeholder="name@example.com"></div>
+        <div class="field"><label for="cMsg">Message</label><textarea id="cMsg" name="message" rows="5" maxlength="3000" required></textarea></div>
         <div><button class="button-primary" type="submit">Send message</button></div>
-        <p id="contactNote" hidden role="status">The contact form is not connected yet. Please <a href="https://github.com/al-kafi-sohag/free-auto-refresh/issues">open a GitHub issue</a> instead.</p>
+        <p id="contactNote" hidden role="status" data-sent="Thank you. Your message has been sent." data-empty="Please write a message first." data-failed="The message could not be sent. Please open a GitHub issue instead: https://github.com/al-kafi-sohag/free-auto-refresh/issues"></p>
       </form></div></section>
 </main>
 

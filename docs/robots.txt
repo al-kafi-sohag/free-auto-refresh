@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://al-kafi-sohag.github.io/free-auto-refresh/sitemap.xml
+Sitemap: https://freeautorefresh.com/sitemap.xml

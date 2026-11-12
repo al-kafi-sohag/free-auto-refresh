@@ -12,13 +12,15 @@ const { guides, comparisons } = require("./content/guides");
 const home = require("./content/home");
 
 /* ---------- config: change SITE_URL when you move to your own domain, then rebuild ---------- */
-const SITE_URL = "https://al-kafi-sohag.github.io/free-auto-refresh"; // no trailing slash
+const SITE_URL = "https://freeautorefresh.com"; // no trailing slash
 const NAME = "Free Auto Refresh";
 const STORE = {
   chrome: "https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp",
   firefox: "https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/",
 };
 const GITHUB = "https://github.com/al-kafi-sohag/free-auto-refresh";
+// Invite link of the Telegram group for users (https://t.me/...). Leave empty to hide it on the contact page.
+const TELEGRAM_GROUP = "";
 const GA_ID = "G-0DTP2D307V";
 const OUT = path.resolve(__dirname, "..", "docs");
 const TODAY = new Date().toISOString().slice(0, 10);
@@ -381,15 +383,20 @@ textPage("changelog/", { h1: "Changelog", eyebrow: "Releases", title: `Changelog
 textPage("privacy/", { h1: "Privacy", eyebrow: "No data collected", title: `Privacy – ${NAME}`, desc: `${NAME} collects no data and makes no network requests. What the extension and this website do with information.`, lede: "The short version: the extension collects nothing and sends nothing.", caption: "Nothing leaves your browser", alt: `${NAME} backup and profile settings beside a shield with a tick` },
   (p) => home.privacy.map((s) => section(p, s)).join("\n") + `<p>The full policy is in <a href="${GITHUB}/blob/main/PRIVACY.md" target="_blank" rel="noopener">PRIVACY.md</a> on GitHub.</p>`);
 
-textPage("contact/", { h1: "Contact", eyebrow: "Get in touch", title: `Contact – ${NAME}`, desc: `Report a bug, suggest a feature or ask a question about ${NAME}.`, lede: "Found a bug or have an idea? The fastest route is a GitHub issue.", caption: "Questions and ideas welcome", alt: "An envelope beside a short message form with a send button" },
-  () => `<h2>Send a message</h2>
-      <!-- TODO: connect this form to a backend or form service. It does not send anything yet. -->
+textPage("contact/", { h1: "Contact", eyebrow: "Get in touch", title: `Contact – ${NAME}`, desc: `Report a bug, suggest a feature or ask a question about ${NAME}.`, lede: "Found a bug or have an idea? Send a message here, or open a GitHub issue.", caption: "Questions and ideas welcome", alt: "An envelope beside a short message form with a send button" },
+  () => `${TELEGRAM_GROUP ? `<h2>Join the Telegram group</h2>
+      <p>Ask questions, share how you use it and hear about new versions first.</p>
+      <p><a class="button-secondary" href="${TELEGRAM_GROUP}" target="_blank" rel="noopener">Open the Telegram group</a></p>
+      ` : ""}<h2>Send a message</h2>
+      <p>Your message goes straight to the developer. Add your email if you would like a reply.</p>
+      <!-- Sent by assets/site.js to /api/contact (functions/api/contact.js), which forwards it to Telegram -->
       <form id="contactForm" novalidate style="display:grid;gap:16px;margin-top:18px">
+        <div hidden aria-hidden="true"><label for="cWeb">Leave this empty</label><input id="cWeb" name="website" tabindex="-1" autocomplete="off"></div>
         <div class="field"><label for="cName">Name</label><input id="cName" name="name" autocomplete="name"></div>
-        <div class="field"><label for="cEmail">Email</label><input id="cEmail" name="email" type="email" autocomplete="email" placeholder="name@example.com"></div>
-        <div class="field"><label for="cMsg">Message</label><textarea id="cMsg" name="message" rows="5"></textarea></div>
+        <div class="field"><label for="cEmail">Email (optional)</label><input id="cEmail" name="email" type="email" autocomplete="email" placeholder="name@example.com"></div>
+        <div class="field"><label for="cMsg">Message</label><textarea id="cMsg" name="message" rows="5" maxlength="3000" required></textarea></div>
         <div><button class="button-primary" type="submit">Send message</button></div>
-        <p id="contactNote" hidden role="status">The contact form is not connected yet. Please <a href="${GITHUB}/issues">open a GitHub issue</a> instead.</p>
+        <p id="contactNote" hidden role="status" data-sent="Thank you. Your message has been sent." data-empty="Please write a message first." data-failed="The message could not be sent. Please open a GitHub issue instead: ${GITHUB}/issues"></p>
       </form>`);
 
 /* home */

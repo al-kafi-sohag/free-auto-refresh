@@ -46,6 +46,8 @@ Website access is used to run the extension's refresh timer, on-page controls, a
 
 The project's landing page is separate from the extension. It loads Google Analytics to count visits, and only after the visitor clicks **Accept** on the cookie banner. The choice is remembered in the browser's local storage. The extension itself contains no analytics.
 
+The website's contact form sends the message, and the name and email address if the visitor provides them, to the developer through Telegram so that it can be read and answered. The website does not store it.
+
 ## Changes to This Privacy Policy
 
 This privacy policy may be updated if the extension's functionality or data practices change. Any updated version will be published at this location.
