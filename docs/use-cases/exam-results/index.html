@@ -31,8 +31,19 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://freeautorefresh.com/"},{"@type":"ListItem","position":2,"name":"Use cases","item":"https://freeautorefresh.com/use-cases/"},{"@type":"ListItem","position":3,"name":"Results pages","item":"https://freeautorefresh.com/use-cases/exam-results/"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What if the page has no fixed message?","acceptedAnswer":{"@type":"Answer","text":"Use Stop when content changes, ideally with a selector for the results area."}},{"@type":"Question","name":"Will it help if the site is down?","acceptedAnswer":{"@type":"Answer","text":"It keeps retrying for you, but it cannot make the site respond."}},{"@type":"Question","name":"Can it work behind a student login?","acceptedAnswer":{"@type":"Answer","text":"Yes, in your signed-in tab."}},{"@type":"Question","name":"Does it work for admissions and lottery results?","acceptedAnswer":{"@type":"Answer","text":"Yes. Any page whose text changes when a result is published."}},{"@type":"Question","name":"The site is overloaded. Will this help?","acceptedAnswer":{"@type":"Answer","text":"It retries for you, but it cannot make an overloaded site respond faster. Longer intervals help everyone."}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"How to set up results pages with Free Auto Refresh","step":[{"@type":"HowToStep","position":1,"text":"Open the results page and sign in if needed."},{"@type":"HowToStep","position":2,"text":"Choose Stop when text disappears and paste the 'not published' message."},{"@type":"HowToStep","position":3,"text":"Set Min 60 and Max 120, then press Start."}]}</script>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "zcmctmdktt");
+    (function(ok){
+        try{ok=localStorage.getItem("cookie-consent")==="accepted"}catch(e){}
+        clarity("consentv2",{ad_Storage:"denied",analytics_Storage:ok?"granted":"denied"});
+    })(false);
+</script>
 </head>
-<body data-ga="G-0DTP2D307V" data-clarity="zcmctmdktt">
+<body data-ga="G-0DTP2D307V">
 
 <header class="site-header">
   <div class="page-width nav-shell">
@@ -185,7 +196,7 @@
 </footer>
 
 <div class="cookie" id="cookieBanner" role="dialog" aria-label="Cookie consent">
-  This site uses Google Analytics and Microsoft Clarity to see how it is used, only if you accept. No ads. The extension itself has no analytics. <a href="../../privacy/"><strong>Privacy</strong></a>
+  This site uses Microsoft Clarity to see how its pages are used. Cookies and Google Analytics are used only if you accept. No ads. The extension itself has no analytics. <a href="../../privacy/"><strong>Privacy</strong></a>
   <div class="install-links">
     <button class="button-primary" id="cookieAccept" type="button">Accept</button>
     <button class="button-secondary" id="cookieReject" type="button">Reject</button>

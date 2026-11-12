@@ -44,7 +44,7 @@ Website access is used to run the extension's refresh timer, on-page controls, a
 
 ## Project Website
 
-The project's landing page is separate from the extension. It loads Google Analytics to count visits and Microsoft Clarity to see how the pages are used (clicks, scrolling and mouse movement), and only after the visitor clicks **Accept** on the cookie banner. The choice is remembered in the browser's local storage. The extension itself contains no analytics.
+The project's landing page is separate from the extension. It uses Microsoft Clarity on every visit to see how the pages are used (clicks, scrolling and mouse movement). Clarity sets cookies only after the visitor clicks **Accept** on the cookie banner. Google Analytics, which counts visits, also loads only after **Accept**. The choice is remembered in the browser's local storage. The extension itself contains no analytics.
 
 The website's contact form sends the message, and the name and email address if the visitor provides them, to the developer through Telegram so that it can be read and answered. The website does not store it.
 

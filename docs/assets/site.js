@@ -7,10 +7,9 @@ $(function () {
     $(this).attr("aria-expanded", String(open));
   });
 
-  /* ---------- cookie consent: Google Analytics and Microsoft Clarity load only after Accept ---------- */
+  /* ---------- cookie consent: Google Analytics and Microsoft Clarity's cookies wait for Accept ---------- */
   var KEY = "cookie-consent";
   var gaId = $("body").data("ga");
-  var clarityId = $("body").data("clarity");
 
   function getChoice() {
     try { return localStorage.getItem(KEY); } catch (e) { return null; }
@@ -32,15 +31,8 @@ $(function () {
       window.gtag("config", gaId);
     }
 
-    if (clarityId) {
-      /* Microsoft Clarity's own tag, started here instead of in <head> so it waits for Accept */
-      window.clarity = window.clarity || function () { (window.clarity.q = window.clarity.q || []).push(arguments); };
-      var tag = document.createElement("script");
-      tag.async = true;
-      tag.src = "https://www.clarity.ms/tag/" + clarityId;
-      document.head.appendChild(tag);
-      window.clarity("consentv2", { ad_Storage: "denied", analytics_Storage: "granted" });
-    }
+    /* Microsoft Clarity is already running from <head> without cookies; Accept lets it use them */
+    if (window.clarity) window.clarity("consentv2", { ad_Storage: "denied", analytics_Storage: "granted" });
   }
 
   if (getChoice() === "accepted") loadAnalytics();
