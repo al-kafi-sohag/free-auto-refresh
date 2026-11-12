@@ -1,0 +1,15 @@
+// Cloudflare Worker that hosts the website: the static pages in docs/ plus the contact form
+// endpoint. Cloudflare builds and deploys this on every push to main.
+//
+// Secrets (set in the Cloudflare dashboard, never here): TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
+{
+  "name": "free-auto-refresh",
+  "main": "worker/index.js",
+  "compatibility_date": "2025-09-01",
+  "assets": {
+    "directory": "./docs",
+    "binding": "ASSETS",
+    // Only /api/* reaches the Worker's code; every other address is served straight from docs/
+    "run_worker_first": ["/api/*"]
+  }
+}
