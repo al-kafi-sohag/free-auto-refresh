@@ -49,6 +49,10 @@ $(function () {
     $("#cookieBanner").removeClass("show");
   });
 
+  /* ---------- feedback page: ?type=feature (etc.) preselects what it is about ---------- */
+  var wanted = new URLSearchParams(location.search).get("type");
+  if (wanted) $("#cKind").val(wanted);
+
   /* ---------- contact form: sent to /api/contact, which forwards it to the developer ---------- */
   $("#contactForm").on("submit", function (e) {
     e.preventDefault();
@@ -57,7 +61,8 @@ $(function () {
     var button = $(form).find("button[type=submit]");
     var say = function (key) { note.text(note.data(key)).prop("hidden", false); };
     var data = {
-      name: form.name.value, email: form.email.value, message: form.message.value, website: form.website.value
+      name: form.name.value, email: form.email.value, message: form.message.value, website: form.website.value,
+      topic: form.dataset.topic, detail: form.detail ? form.detail.value : ""
     };
 
     if ($.trim(data.message).length < 5) return say("empty");

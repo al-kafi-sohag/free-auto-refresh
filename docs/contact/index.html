@@ -61,7 +61,7 @@
         <nav class="crumbs" aria-label="Breadcrumb"><a href="../">Home</a><span>/</span><span>Contact</span></nav>
         <span class="eyebrow">Get in touch</span>
         <h1>Contact</h1>
-        <p class="hero-description">Found a bug or have an idea? Send a message here, or open a GitHub issue.</p>
+        <p class="hero-description">Questions or anything else? Send a message here. For a bug, use <a href="../report-issue/">Report an issue</a>; for ideas, use <a href="../feedback/">Feedback</a>.</p>
         
       </div>
       <figure class="shot ">
@@ -75,13 +75,13 @@
       <p>Your message goes straight to the developer. Add your email if you would like a reply.</p>
       <p>Prefer to chat? <a href="https://t.me/free_auto_refresh" target="_blank" rel="noopener">Join the Free Auto Refresh public group on Telegram</a>.</p>
       <!-- Sent by assets/site.js to /api/contact (functions/api/contact.js), which forwards it to Telegram -->
-      <form id="contactForm" novalidate style="display:grid;gap:16px;margin-top:18px">
+      <form id="contactForm" data-topic="contact" novalidate style="display:grid;gap:16px;margin-top:18px">
         <div hidden aria-hidden="true"><label for="cWeb">Leave this empty</label><input id="cWeb" name="website" tabindex="-1" autocomplete="off"></div>
         <div class="field"><label for="cName">Name</label><input id="cName" name="name" autocomplete="name"></div>
         <div class="field"><label for="cEmail">Email (optional)</label><input id="cEmail" name="email" type="email" autocomplete="email" placeholder="name@example.com"></div>
         <div class="field"><label for="cMsg">Message</label><textarea id="cMsg" name="message" rows="5" maxlength="3000" required></textarea></div>
         <div><button class="button-primary" type="submit">Send message</button></div>
-        <p id="contactNote" hidden role="status" data-sent="Thank you. Your message has been sent." data-empty="Please write a message first." data-failed="The message could not be sent. Please open a GitHub issue instead: https://github.com/al-kafi-sohag/free-auto-refresh/issues"></p>
+        <p id="contactNote" hidden role="status" data-sent="Thank you. Your message has been sent." data-empty="Please write a message first." data-failed="The message could not be sent. Please try again later, or write to us in the Telegram group: https://t.me/free_auto_refresh"></p>
       </form></div></section>
 </main>
 

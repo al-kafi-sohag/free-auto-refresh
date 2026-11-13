@@ -8,7 +8,11 @@
 //
 // Nothing is stored here: the message goes to Telegram and is then forgotten.
 
-const LIMITS = { name: 80, email: 120, message: 3000 };
+const LIMITS = { name: 80, email: 120, message: 3000, detail: 120 };
+
+// What each form on the site is called in the Telegram message. "detail" is the feedback type or the browser.
+const TOPICS = { contact: "Message", feedback: "Feedback", issue: "Issue report" };
+const KINDS = { feature: "Feature request", usecase: "Use case idea", guide: "Guide idea", question: "Question", other: "General feedback" };
 
 const json = (status, body) =>
   new Response(JSON.stringify(body), { status, headers: { "Content-Type": "application/json", "Cache-Control": "no-store" } });
@@ -35,15 +39,18 @@ export async function onRequestPost({ request, env }) {
   const name = clean(data.name, LIMITS.name);
   const email = clean(data.email, LIMITS.email);
   const message = clean(data.message, LIMITS.message);
+  const topic = TOPICS[data.topic] ? data.topic : "contact";
+  const detail = clean(data.detail, LIMITS.detail);
   if (message.length < 5) return json(400, { ok: false, error: "message" });
   if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json(400, { ok: false, error: "email" });
 
   // Plain text (no parse_mode), so nothing a visitor types is treated as formatting or a link
   const text = [
-    "New message from freeautorefresh.com",
+    `${topic === "feedback" ? KINDS[detail] || "Feedback" : TOPICS[topic]} from freeautorefresh.com`,
     "",
     `Name: ${name || "(not given)"}`,
     `Email: ${email || "(not given)"}`,
+    ...(topic === "issue" ? [`Browser: ${detail || "(not given)"}`] : []),
     "",
     message,
   ].join("\n");
