@@ -5,6 +5,7 @@
 {
   "name": "free-auto-refresh",
   "main": "worker/index.js",
+  "observability": { "enabled": true },
   "compatibility_date": "2025-09-01",
   "assets": {
     "directory": "./docs",

@@ -52,7 +52,10 @@ export async function onRequestPost({ request, env }) {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ chat_id: env.TELEGRAM_CHAT_ID, text, disable_web_page_preview: true }),
-  }).then((r) => r.ok, () => false);
+  }).then(async (r) => {
+    if (!r.ok) console.error("telegram", r.status, await r.text()); // shows in Workers Logs only, never to the visitor
+    return r.ok;
+  }, (e) => (console.error("telegram fetch failed", String(e)), false));
 
   return sent ? json(200, { ok: true }) : json(502, { ok: false, error: "send-failed" });
 }
