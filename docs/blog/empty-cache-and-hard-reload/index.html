@@ -29,6 +29,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/site.css">
 <link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/blog.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://freeautorefresh.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://freeautorefresh.com/blog/"},{"@type":"ListItem","position":3,"name":"Hard Refresh vs Normal vs Empty Cache and Hard Reload","item":"https://freeautorefresh.com/blog/empty-cache-and-hard-reload/"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Hard Refresh vs Normal vs Empty Cache and Hard Reload","description":"Three kinds of reload in Chrome: normal, hard and Empty Cache and Hard Reload. What each one does and when a stubborn page needs the third.","datePublished":"2026-11-18","dateModified":"2026-11-18","mainEntityOfPage":"https://freeautorefresh.com/blog/empty-cache-and-hard-reload/","image":"https://freeautorefresh.com/assets/poster.png","author":{"@type":"Person","name":"Al Kafi Sohag"},"publisher":{"@type":"Organization","name":"Free Auto Refresh","logo":{"@type":"ImageObject","url":"https://freeautorefresh.com/assets/logo.png"}}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why is Empty Cache and Hard Reload missing?","acceptedAnswer":{"@type":"Answer","text":"It only shows when Chrome's DevTools is open. Press F12 first, then right-click the reload button."}},{"@type":"Question","name":"Is a hard refresh the same as clearing the cache?","acceptedAnswer":{"@type":"Answer","text":"Not quite. A hard refresh bypasses the cache for one page load. Clearing the cache deletes saved files for the whole browser."}},{"@type":"Question","name":"Does a hard refresh work in Firefox?","acceptedAnswer":{"@type":"Answer","text":"Yes. Ctrl + F5 or Ctrl + Shift + R (Command + Shift + R on a Mac) does the same job."}}]}</script>
@@ -65,46 +66,44 @@
 
 <main>
 
-  <section class="hero-section">
-    <div class="page-width hero-grid">
-      <div class="hero-copy">
-        <nav class="crumbs" aria-label="Breadcrumb"><a href="../../">Home</a><span>/</span><a href="../../blog/">Blog</a><span>/</span><span>Shortcuts</span></nav>
-        <span class="eyebrow">Shortcuts</span>
-        <h1>Normal, hard, or <span>empty cache and hard reload?</span></h1>
-        <p class="hero-description">Chrome offers three ways to reload a page, and they are not the same. Here is what each one asks the browser to do, and which to pick.</p>
-        <div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div>
-      </div>
-      <figure class="shot ">
-        <div class="shot-bar"><span class="shot-dots"><i></i><i></i><i></i></span><span class="shot-title">Shortcuts</span></div>
-        <img src="../../assets/img/features/hard-reload-bypass-cache.webp" alt="Reload options illustration" width="800" height="600" loading="lazy">
-        <figcaption>Three reloads, three results</figcaption>
-      </figure>
-    </div>
+  <section class="page-width bl-head">
+    <nav class="crumbs" aria-label="Breadcrumb" style="justify-content:center"><a href="../../">Home</a><span>/</span><a href="../../blog/">Blog</a><span>/</span><span>Shortcuts</span></nav>
+    <span class="bl-badge" style="margin-top:18px">Shortcuts</span>
+    <h1>Normal, hard, or <span>empty cache and hard reload?</span></h1>
+    <p class="hero-description">Chrome offers three ways to reload a page, and they are not the same. Here is what each one asks the browser to do, and which to pick.</p>
+    <div class="bl-meta"><span>Al Kafi Sohag</span><i></i><span>Nov 18, 2026</span><i></i><span>2 min read</span></div>
+    <div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div>
+    <figure class="bl-banner"><img src="../../assets/img/features/hard-reload-bypass-cache.webp" alt="Reload options illustration" width="800" height="600"><figcaption>Three reloads, three results</figcaption></figure>
   </section>
 
-  <section class="page-width content-section" style="padding-top:48px">
-    <div class="detail-grid">
-      <article class="panel prose">
-        <h2>Normal refresh</h2>
+  <section class="page-width bl-layout">
+    <article class="bl-content">
+        <h2 id="normal-refresh">Normal refresh</h2>
         <p>Press <strong>F5</strong> or <strong>Ctrl + R</strong> (Command + R on a Mac). The browser asks the site if its files changed, and reuses saved copies when the answer is no. It is fast, and sometimes shows stale content.</p>
-        <h2>Hard refresh</h2>
+        <h2 id="hard-refresh">Hard refresh</h2>
         <p>Press <strong>Ctrl + F5</strong> or <strong>Ctrl + Shift + R</strong> (Command + Shift + R on a Mac). The browser skips its saved copies for that page and downloads everything again. Use this when a page looks old or a fix you just made is not showing.</p>
-        <h2>Empty Cache and Hard Reload</h2>
+        <aside class="bl-inline-cta"><h3>Skip the manual reloads</h3><p>Free Auto Refresh reloads a tab on a timer and can alert you when a page changes. Free, private, no account.</p><div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div></aside>
+        <h2 id="empty-cache-and-hard-reload">Empty Cache and Hard Reload</h2>
         <p>This option only appears in Chrome when <strong>DevTools is open</strong>. Press F12, then right-click (or click and hold) the reload button next to the address bar and choose <strong>Empty Cache and Hard Reload</strong>.</p>
 <p>It clears the cached files for the page and then reloads. It goes one step further than a hard refresh, because it also drops copies that a hard refresh can leave behind.</p>
-        <h2>Which one should you use?</h2>
+        <h2 id="which-one-should-you-use">Which one should you use?</h2>
         <ul><li><strong>Page looks fine:</strong> normal refresh.</li><li><strong>Page looks outdated:</strong> hard refresh.</li><li><strong>Still wrong after a hard refresh:</strong> Empty Cache and Hard Reload.</li><li><strong>Still wrong after that:</strong> the problem is probably on the website's side, not in your browser.</li></ul>
-        <h2>Does any of this delete my data?</h2>
+        <h2 id="does-any-of-this-delete-my-data">Does any of this delete my data?</h2>
         <p>No. None of the three options removes passwords, cookies or history. Only the page's cached files are affected.</p>
-        <h2>Reloading while you work on a site</h2>
+        <h2 id="reloading-while-you-work-on-a-site">Reloading while you work on a site</h2>
         <p>Web developers hit this constantly. <a href="../../features/hard-reload-bypass-cache/">Free Auto Refresh has a hard reload option</a> so every timed reload skips the cache, and <a href="../../features/keep-scroll-position/">it can keep your scroll position</a> between reloads.</p>
-      </article>
-      <aside class="panel side">
-        <span class="eyebrow">Keep exploring</span>
-        <h2>Related pages</h2>
-        <p>More on this topic.</p>
-        <div class="side-links"><a href="../../guides/how-to-hard-refresh/">How to hard refresh <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../blog/hard-refresh-on-mac/">Hard refresh on Mac <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../features/hard-reload-bypass-cache/">Hard reload that bypasses cache <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a></div>
-      </aside>
+    </article>
+    <aside class="bl-side">
+      <div class="bl-box bl-toc-box"><h2>On this page</h2><nav class="bl-toc" aria-label="On this page"><a href="#normal-refresh">Normal refresh</a><a href="#hard-refresh">Hard refresh</a><a href="#empty-cache-and-hard-reload">Empty Cache and Hard Reload</a><a href="#which-one-should-you-use">Which one should you use?</a><a href="#does-any-of-this-delete-my-data">Does any of this delete my data?</a><a href="#reloading-while-you-work-on-a-site">Reloading while you work on a site</a></nav></div>
+      <div class="bl-box bl-install"><h2>Free for Chrome and Firefox</h2><p>Auto refresh and page alerts in one small extension. No account.</p><div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div></div>
+      <div class="bl-box"><h2>Related</h2><div class="bl-rel"><a href="../../guides/how-to-hard-refresh/"><span>How to hard refresh</span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../blog/hard-refresh-on-mac/"><span>Hard refresh on Mac</span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../features/hard-reload-bypass-cache/"><span>Hard reload that bypasses cache</span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a></div></div>
+    </aside>
+  </section>
+
+  <section class="page-width" style="margin-top:8px">
+    <div class="bl-pn" style="max-width:700px;margin-inline:auto">
+      <a href="../../blog/hard-refresh-on-mac/"><small>&larr; Previous</small><strong>Hard Refresh on Mac: Chrome, Safari &amp; Firefox Shortcuts</strong></a>
+      <a class="next" href="../../blog/chrome-ctrl-f5-force-reload/"><small>Next &rarr;</small><strong>Chrome Ctrl+F5 and Force Reload: What Each One Does</strong></a>
     </div>
   </section>
 
@@ -131,11 +130,11 @@
   </section>
 
   <section class="page-width content-section" style="padding-top:32px">
-    <div class="section-heading"><h2 class="h2">More from the blog</h2></div>
-    <div class="card-grid">
-      <a class="info-card" href="../../blog/chrome-ctrl-f5-force-reload/"><span class="card-icon num">03</span><span class="eyebrow">Shortcuts</span><h3>Chrome Ctrl+F5 and Force Reload: What Each One Does</h3><p>Ctrl+F5, Ctrl+Shift+R, Shift+click and F5: which force reload shortcut Chrome uses, what changes between them and when to use each.</p><span class="text-link">Read the post <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
-      <a class="info-card" href="../../blog/hard-refresh-windows-linux/"><span class="card-icon num">04</span><span class="eyebrow">Shortcuts</span><h3>Hard Refresh on Windows and Linux: Every Browser</h3><p>The hard refresh shortcut for Chrome, Firefox, Edge, Brave and Opera on Windows and Linux, plus what to do on Android, iPhone and Chromebook.</p><span class="text-link">Read the post <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
-      <a class="info-card" href="../../blog/browser-keeps-refreshing-by-itself/"><span class="card-icon num">05</span><span class="eyebrow">Troubleshooting</span><h3>Why Does My Browser Keep Refreshing by Itself? 8 Causes</h3><p>Page or tab reloading on its own? Eight real causes in Chrome and Firefox, from extensions and Memory Saver to a stuck F5 key, and how to fix each.</p><span class="text-link">Read the post <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
+    <div class="bl-more-heading"><h2 class="h2">More from the blog</h2><a class="bl-arrow" href="../../blog/">All posts <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a></div>
+    <div class="bl-grid">
+      <a class="bl-card" href="../../blog/hard-refresh-windows-linux/"><div class="bl-card-img"><img src="../../assets/img/guides/how-to-hard-refresh.webp" alt="Hard refresh on Windows" width="800" height="600" loading="lazy"></div><div class="bl-card-body"><span class="bl-badge">Shortcuts</span><h3>Hard Refresh on Windows and Linux: Every Browser</h3><p>The hard refresh shortcut for Chrome, Firefox, Edge, Brave and Opera on Windows and Linux, plus what to do on Android, iPhone and Chromebook.</p><div class="bl-meta"><span>2 min read</span><i></i><span>Nov 18, 2026</span></div></div></a>
+      <a class="bl-card" href="../../blog/browser-keeps-refreshing-by-itself/"><div class="bl-card-img"><img src="../../assets/img/guides/how-to-stop-auto-refresh.webp" alt="Tab reloading unexpectedly" width="800" height="600" loading="lazy"></div><div class="bl-card-body"><span class="bl-badge">Troubleshooting</span><h3>Why Does My Browser Keep Refreshing by Itself? 8 Causes</h3><p>Page or tab reloading on its own? Eight real causes in Chrome and Firefox, from extensions and Memory Saver to a stuck F5 key, and how to fix each.</p><div class="bl-meta"><span>2 min read</span><i></i><span>Nov 18, 2026</span></div></div></a>
+      <a class="bl-card" href="../../blog/stop-website-from-refreshing-itself/"><div class="bl-card-img"><img src="../../assets/img/guides/how-to-stop-auto-refresh.webp" alt="Blocking an automatic page refresh" width="800" height="600" loading="lazy"></div><div class="bl-card-body"><span class="bl-badge">Troubleshooting</span><h3>How to Stop a Website From Refreshing Itself in Chrome</h3><p>How websites refresh themselves (meta refresh and scripts), what you can block in Firefox and Chrome, and workarounds that do work.</p><div class="bl-meta"><span>2 min read</span><i></i><span>Nov 18, 2026</span></div></div></a>
     </div>
   </section>
 </main>
@@ -173,5 +172,6 @@
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="../../assets/site.js"></script>
+<script src="../../assets/blog.js"></script>
 </body>
 </html>

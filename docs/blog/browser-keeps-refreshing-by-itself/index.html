@@ -29,6 +29,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/site.css">
 <link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/blog.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://freeautorefresh.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://freeautorefresh.com/blog/"},{"@type":"ListItem","position":3,"name":"Why Does My Browser Keep Refreshing by Itself? 8 Causes","item":"https://freeautorefresh.com/blog/browser-keeps-refreshing-by-itself/"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Why Does My Browser Keep Refreshing by Itself? 8 Causes","description":"Page or tab reloading on its own? Eight real causes in Chrome and Firefox, from extensions and Memory Saver to a stuck F5 key, and how to fix each.","datePublished":"2026-11-18","dateModified":"2026-11-18","mainEntityOfPage":"https://freeautorefresh.com/blog/browser-keeps-refreshing-by-itself/","image":"https://freeautorefresh.com/assets/poster.png","author":{"@type":"Person","name":"Al Kafi Sohag"},"publisher":{"@type":"Organization","name":"Free Auto Refresh","logo":{"@type":"ImageObject","url":"https://freeautorefresh.com/assets/logo.png"}}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I stop a website from refreshing itself?","acceptedAnswer":{"@type":"Answer","text":"Firefox can block it with accessibility.blockautorefresh in about:config. Chrome has no built-in switch. See our full guide on stopping auto refresh."}},{"@type":"Question","name":"Why does my tab refresh when I switch back to it?","acceptedAnswer":{"@type":"Answer","text":"That is usually Memory Saver or tab sleeping. Turn it off in the browser's performance settings."}},{"@type":"Question","name":"Could it be a virus?","acceptedAnswer":{"@type":"Answer","text":"Rarely. If it also redirects you to strange sites, scan for malware and remove unknown extensions."}}]}</script>
@@ -65,49 +66,47 @@
 
 <main>
 
-  <section class="hero-section">
-    <div class="page-width hero-grid">
-      <div class="hero-copy">
-        <nav class="crumbs" aria-label="Breadcrumb"><a href="../../">Home</a><span>/</span><a href="../../blog/">Blog</a><span>/</span><span>Troubleshooting</span></nav>
-        <span class="eyebrow">Troubleshooting</span>
-        <h1>Why your browser keeps <span>refreshing by itself.</span></h1>
-        <p class="hero-description">A page that reloads on its own is annoying, and it nearly always has a boring cause. Work down this list, easiest checks first.</p>
-        <div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div>
-      </div>
-      <figure class="shot ">
-        <div class="shot-bar"><span class="shot-dots"><i></i><i></i><i></i></span><span class="shot-title">Troubleshooting</span></div>
-        <img src="../../assets/img/guides/how-to-stop-auto-refresh.webp" alt="Tab reloading unexpectedly" width="800" height="600" loading="lazy">
-        <figcaption>Find what is reloading the page</figcaption>
-      </figure>
-    </div>
+  <section class="page-width bl-head">
+    <nav class="crumbs" aria-label="Breadcrumb" style="justify-content:center"><a href="../../">Home</a><span>/</span><a href="../../blog/">Blog</a><span>/</span><span>Troubleshooting</span></nav>
+    <span class="bl-badge" style="margin-top:18px">Troubleshooting</span>
+    <h1>Why your browser keeps <span>refreshing by itself.</span></h1>
+    <p class="hero-description">A page that reloads on its own is annoying, and it nearly always has a boring cause. Work down this list, easiest checks first.</p>
+    <div class="bl-meta"><span>Al Kafi Sohag</span><i></i><span>Nov 18, 2026</span><i></i><span>2 min read</span></div>
+    <div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div>
+    <figure class="bl-banner"><img src="../../assets/img/guides/how-to-stop-auto-refresh.webp" alt="Tab reloading unexpectedly" width="800" height="600"><figcaption>Find what is reloading the page</figcaption></figure>
   </section>
 
-  <section class="page-width content-section" style="padding-top:48px">
-    <div class="detail-grid">
-      <article class="panel prose">
-        <h2>1. An extension is doing it</h2>
+  <section class="page-width bl-layout">
+    <article class="bl-content">
+        <h2 id="1-an-extension-is-doing-it">1. An extension is doing it</h2>
         <p>Refresh, monitor, ad blocker and shopping extensions can all reload pages. Open a <strong>private window</strong>, where extensions are off by default. If the reloading stops, switch extensions off one at a time to find it.</p>
-        <h2>2. Chrome unloaded the tab</h2>
+        <h2 id="2-chrome-unloaded-the-tab">2. Chrome unloaded the tab</h2>
         <p>Chrome's <strong>Memory Saver</strong> puts unused tabs to sleep and reloads them when you come back. It looks like the page refreshed itself. Turn it off in <strong>Settings, Performance</strong>, or add the site to the always-active list.</p>
-        <h2>3. The website refreshes on purpose</h2>
+        <aside class="bl-inline-cta"><h3>Skip the manual reloads</h3><p>Free Auto Refresh reloads a tab on a timer and can alert you when a page changes. Free, private, no account.</p><div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div></aside>
+        <h2 id="3-the-website-refreshes-on-purpose">3. The website refreshes on purpose</h2>
         <p>News, scores, dashboards and webmail often reload using a refresh tag or a script. This is by design. Look for a pause or "live updates" switch on the page.</p>
-        <h2>4. The tab crashed and recovered</h2>
+        <h2 id="4-the-tab-crashed-and-recovered">4. The tab crashed and recovered</h2>
         <p>If you briefly see an "Aw, Snap" or error page before the content comes back, the tab ran out of memory. Close other tabs, and check for a heavy page or extension.</p>
-        <h2>5. A stuck F5 key</h2>
+        <h2 id="5-a-stuck-f5-key">5. A stuck F5 key</h2>
         <p>It sounds silly, but a sticky or held F5 or Ctrl key reloads the page repeatedly. Try the on-screen keyboard, or unplug and replug an external keyboard.</p>
-        <h2>6. A login or Wi-Fi redirect</h2>
+        <h2 id="6-a-login-or-wi-fi-redirect">6. A login or Wi-Fi redirect</h2>
         <p>Hotel or café Wi-Fi often redirects you to a sign-in page, which looks like a refresh. Open a plain http address to trigger the sign-in page and complete it.</p>
-        <h2>7. Adware or a hijacked browser</h2>
+        <h2 id="7-adware-or-a-hijacked-browser">7. Adware or a hijacked browser</h2>
         <p>If pages reload and redirect to unknown sites, check your extensions and search settings, and run a malware scan. Remove anything you do not recognise.</p>
-        <h2>8. A refresh you started and forgot</h2>
+        <h2 id="8-a-refresh-you-started-and-forgot">8. A refresh you started and forgot</h2>
         <p>If you used an auto refresh tool earlier, it may still be running. Click its icon and press Stop. With Free Auto Refresh you can also press <strong>Alt + Shift + R</strong>, or <a href="../../features/refresh-limits/">set a limit</a> so it stops by itself next time.</p>
-      </article>
-      <aside class="panel side">
-        <span class="eyebrow">Keep exploring</span>
-        <h2>Related pages</h2>
-        <p>More on this topic.</p>
-        <div class="side-links"><a href="../../guides/how-to-stop-auto-refresh/">How to stop auto refresh <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../blog/stop-website-from-refreshing-itself/">Stop a website refreshing itself <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../features/refresh-limits/">Refresh limits <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a></div>
-      </aside>
+    </article>
+    <aside class="bl-side">
+      <div class="bl-box bl-toc-box"><h2>On this page</h2><nav class="bl-toc" aria-label="On this page"><a href="#1-an-extension-is-doing-it">1. An extension is doing it</a><a href="#2-chrome-unloaded-the-tab">2. Chrome unloaded the tab</a><a href="#3-the-website-refreshes-on-purpose">3. The website refreshes on purpose</a><a href="#4-the-tab-crashed-and-recovered">4. The tab crashed and recovered</a><a href="#5-a-stuck-f5-key">5. A stuck F5 key</a><a href="#6-a-login-or-wi-fi-redirect">6. A login or Wi-Fi redirect</a><a href="#7-adware-or-a-hijacked-browser">7. Adware or a hijacked browser</a><a href="#8-a-refresh-you-started-and-forgot">8. A refresh you started and forgot</a></nav></div>
+      <div class="bl-box bl-install"><h2>Free for Chrome and Firefox</h2><p>Auto refresh and page alerts in one small extension. No account.</p><div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div></div>
+      <div class="bl-box"><h2>Related</h2><div class="bl-rel"><a href="../../guides/how-to-stop-auto-refresh/"><span>How to stop auto refresh</span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../blog/stop-website-from-refreshing-itself/"><span>Stop a website refreshing itself</span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../features/refresh-limits/"><span>Refresh limits</span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a></div></div>
+    </aside>
+  </section>
+
+  <section class="page-width" style="margin-top:8px">
+    <div class="bl-pn" style="max-width:700px;margin-inline:auto">
+      <a href="../../blog/hard-refresh-windows-linux/"><small>&larr; Previous</small><strong>Hard Refresh on Windows and Linux: Every Browser</strong></a>
+      <a class="next" href="../../blog/stop-website-from-refreshing-itself/"><small>Next &rarr;</small><strong>How to Stop a Website From Refreshing Itself in Chrome</strong></a>
     </div>
   </section>
 
@@ -134,11 +133,11 @@
   </section>
 
   <section class="page-width content-section" style="padding-top:32px">
-    <div class="section-heading"><h2 class="h2">More from the blog</h2></div>
-    <div class="card-grid">
-      <a class="info-card" href="../../blog/stop-website-from-refreshing-itself/"><span class="card-icon num">06</span><span class="eyebrow">Troubleshooting</span><h3>How to Stop a Website From Refreshing Itself in Chrome</h3><p>How websites refresh themselves (meta refresh and scripts), what you can block in Firefox and Chrome, and workarounds that do work.</p><span class="text-link">Read the post <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
-      <a class="info-card" href="../../blog/auto-refresh-firefox/"><span class="card-icon num">07</span><span class="eyebrow">Browsers</span><h3>Auto Refresh in Firefox: Add-on and No-Add-on Methods</h3><p>Firefox has no auto reload button. Here is how to refresh a tab on a timer with an add-on, what you can do without one, and how to stop it again.</p><span class="text-link">Read the post <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
-      <a class="info-card" href="../../blog/auto-refresh-edge/"><span class="card-icon num">08</span><span class="eyebrow">Browsers</span><h3>Auto Refresh in Microsoft Edge: Free Extension Setup</h3><p>Edge has no auto reload feature. Install a refresh extension from the Chrome Web Store, set a timer and keep a tab reloading. Steps and tips.</p><span class="text-link">Read the post <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
+    <div class="bl-more-heading"><h2 class="h2">More from the blog</h2><a class="bl-arrow" href="../../blog/">All posts <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a></div>
+    <div class="bl-grid">
+      <a class="bl-card" href="../../blog/auto-refresh-firefox/"><div class="bl-card-img"><img src="../../assets/img/firefox.webp" alt="Free Auto Refresh for Firefox" width="800" height="600" loading="lazy"></div><div class="bl-card-body"><span class="bl-badge">Browsers</span><h3>Auto Refresh in Firefox: Add-on and No-Add-on Methods</h3><p>Firefox has no auto reload button. Here is how to refresh a tab on a timer with an add-on, what you can do without one, and how to stop it again.</p><div class="bl-meta"><span>2 min read</span><i></i><span>Nov 18, 2026</span></div></div></a>
+      <a class="bl-card" href="../../blog/auto-refresh-edge/"><div class="bl-card-img"><img src="../../assets/img/chrome.webp" alt="Free Auto Refresh in Edge" width="800" height="600" loading="lazy"></div><div class="bl-card-body"><span class="bl-badge">Browsers</span><h3>Auto Refresh in Microsoft Edge: Free Extension Setup</h3><p>Edge has no auto reload feature. Install a refresh extension from the Chrome Web Store, set a timer and keep a tab reloading. Steps and tips.</p><div class="bl-meta"><span>2 min read</span><i></i><span>Nov 18, 2026</span></div></div></a>
+      <a class="bl-card" href="../../blog/auto-refresh-brave/"><div class="bl-card-img"><img src="../../assets/img/chrome.webp" alt="Free Auto Refresh in Brave" width="800" height="600" loading="lazy"></div><div class="bl-card-body"><span class="bl-badge">Browsers</span><h3>Auto Refresh in Brave: Install and Set a Timer</h3><p>Brave runs Chrome extensions, so a free auto refresh extension works. Install it, set a timer and keep Brave's tab sleeping from interfering.</p><div class="bl-meta"><span>2 min read</span><i></i><span>Nov 18, 2026</span></div></div></a>
     </div>
   </section>
 </main>
@@ -176,5 +175,6 @@
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="../../assets/site.js"></script>
+<script src="../../assets/blog.js"></script>
 </body>
 </html>

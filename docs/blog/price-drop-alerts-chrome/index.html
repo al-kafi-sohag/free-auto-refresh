@@ -29,6 +29,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/site.css">
 <link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/blog.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://freeautorefresh.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://freeautorefresh.com/blog/"},{"@type":"ListItem","position":3,"name":"Price Drop Alerts in Chrome: A Simple Free Method","item":"https://freeautorefresh.com/blog/price-drop-alerts-chrome/"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Price Drop Alerts in Chrome: A Simple Free Method","description":"Watch one product page and get alerted when its price changes. How to point a free Chrome extension at the price element, and what it cannot do.","datePublished":"2026-11-18","dateModified":"2026-11-18","mainEntityOfPage":"https://freeautorefresh.com/blog/price-drop-alerts-chrome/","image":"https://freeautorefresh.com/assets/poster.png","author":{"@type":"Person","name":"Al Kafi Sohag"},"publisher":{"@type":"Organization","name":"Free Auto Refresh","logo":{"@type":"ImageObject","url":"https://freeautorefresh.com/assets/logo.png"}}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does it show price history?","acceptedAnswer":{"@type":"Answer","text":"No. It tells you when the price changes, not how it moved over time."}},{"@type":"Question","name":"How do I find the CSS selector?","acceptedAnswer":{"@type":"Answer","text":"Right-click the price, choose Inspect, and copy the element's id or class."}},{"@type":"Question","name":"Can I watch several products?","acceptedAnswer":{"@type":"Answer","text":"Yes, one tab each. Each tab has its own timer and watch rule."}}]}</script>
@@ -65,43 +66,41 @@
 
 <main>
 
-  <section class="hero-section">
-    <div class="page-width hero-grid">
-      <div class="hero-copy">
-        <nav class="crumbs" aria-label="Breadcrumb"><a href="../../">Home</a><span>/</span><a href="../../blog/">Blog</a><span>/</span><span>Use cases</span></nav>
-        <span class="eyebrow">Use cases</span>
-        <h1>Price drop alerts <span>in Chrome.</span></h1>
-        <p class="hero-description">You do not always need a full price tracker. For one product you care about, watching the price on the page itself is enough.</p>
-        <div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div>
-      </div>
-      <figure class="shot ">
-        <div class="shot-bar"><span class="shot-dots"><i></i><i></i><i></i></span><span class="shot-title">Use cases</span></div>
-        <img src="../../assets/img/use-cases/price-tracking.webp" alt="Watching a price for changes" width="800" height="600" loading="lazy">
-        <figcaption>Watch just the price</figcaption>
-      </figure>
-    </div>
+  <section class="page-width bl-head">
+    <nav class="crumbs" aria-label="Breadcrumb" style="justify-content:center"><a href="../../">Home</a><span>/</span><a href="../../blog/">Blog</a><span>/</span><span>Use cases</span></nav>
+    <span class="bl-badge" style="margin-top:18px">Use cases</span>
+    <h1>Price drop alerts <span>in Chrome.</span></h1>
+    <p class="hero-description">You do not always need a full price tracker. For one product you care about, watching the price on the page itself is enough.</p>
+    <div class="bl-meta"><span>Al Kafi Sohag</span><i></i><span>Nov 18, 2026</span><i></i><span>2 min read</span></div>
+    <div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div>
+    <figure class="bl-banner"><img src="../../assets/img/use-cases/price-tracking.webp" alt="Watching a price for changes" width="800" height="600"><figcaption>Watch just the price</figcaption></figure>
   </section>
 
-  <section class="page-width content-section" style="padding-top:48px">
-    <div class="detail-grid">
-      <article class="panel prose">
-        <h2>How it works</h2>
+  <section class="page-width bl-layout">
+    <article class="bl-content">
+        <h2 id="how-it-works">How it works</h2>
         <p>The extension reloads the product page and compares one part of it, the price, with the last check. If it changes, refreshing stops and you get a notification.</p>
-        <h2>Set it up in four steps</h2>
+        <h2 id="set-it-up-in-four-steps">Set it up in four steps</h2>
         <ol><li>Open the product page and the Free Auto Refresh popup.</li><li>Go to <strong>Advanced settings, Watch the page</strong> and choose <strong>Stop when content changes</strong>.</li><li>In the selector field, enter the CSS selector of the price element, for example <code>#price</code> or <code>.price</code>. Right-click the price, choose <strong>Inspect</strong>, and read the element's id or class.</li><li>Pick an interval of a few minutes and press <strong>Start</strong>.</li></ol>
-        <h2>Why limit it to the price element</h2>
+        <aside class="bl-inline-cta"><h3>Skip the manual reloads</h3><p>Free Auto Refresh reloads a tab on a timer and can alert you when a page changes. Free, private, no account.</p><div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div></aside>
+        <h2 id="why-limit-it-to-the-price-element">Why limit it to the price element</h2>
         <p>Watching a single element avoids false alarms from banners, countdown clocks and recommended items. Only the price can trigger the alert.</p>
-        <h2>Know the limits</h2>
+        <h2 id="know-the-limits">Know the limits</h2>
         <ul><li>It alerts you to a <strong>change</strong>, up or down. It does not draw a price history chart.</li><li>The browser must stay open on that tab.</li><li>It does not apply coupons or buy for you.</li></ul>
-        <h2>When you need a real tracker</h2>
+        <h2 id="when-you-need-a-real-tracker">When you need a real tracker</h2>
         <p>For price history over months, or many products at once, a dedicated tracker is the better tool. For one watch, this is faster. More in the <a href="../../use-cases/price-tracking/">price tracking guide</a>.</p>
-      </article>
-      <aside class="panel side">
-        <span class="eyebrow">Keep exploring</span>
-        <h2>Related pages</h2>
-        <p>More on this topic.</p>
-        <div class="side-links"><a href="../../use-cases/price-tracking/">Price tracking use case <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../features/page-monitor-keyword-alert/">Page monitor <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../blog/back-in-stock-alerts-free/">Back-in-stock alerts <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a></div>
-      </aside>
+    </article>
+    <aside class="bl-side">
+      <div class="bl-box bl-toc-box"><h2>On this page</h2><nav class="bl-toc" aria-label="On this page"><a href="#how-it-works">How it works</a><a href="#set-it-up-in-four-steps">Set it up in four steps</a><a href="#why-limit-it-to-the-price-element">Why limit it to the price element</a><a href="#know-the-limits">Know the limits</a><a href="#when-you-need-a-real-tracker">When you need a real tracker</a></nav></div>
+      <div class="bl-box bl-install"><h2>Free for Chrome and Firefox</h2><p>Auto refresh and page alerts in one small extension. No account.</p><div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div></div>
+      <div class="bl-box"><h2>Related</h2><div class="bl-rel"><a href="../../use-cases/price-tracking/"><span>Price tracking use case</span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../features/page-monitor-keyword-alert/"><span>Page monitor</span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../blog/back-in-stock-alerts-free/"><span>Back-in-stock alerts</span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a></div></div>
+    </aside>
+  </section>
+
+  <section class="page-width" style="margin-top:8px">
+    <div class="bl-pn" style="max-width:700px;margin-inline:auto">
+      <a href="../../blog/back-in-stock-alerts-free/"><small>&larr; Previous</small><strong>Back-in-Stock Alerts Without Paying for a Tracker</strong></a>
+      <a class="next" href="../../blog/appointment-slot-checker/"><small>Next &rarr;</small><strong>Appointment Slot Checker: Catch Cancellations Calmly</strong></a>
     </div>
   </section>
 
@@ -128,11 +127,11 @@
   </section>
 
   <section class="page-width content-section" style="padding-top:32px">
-    <div class="section-heading"><h2 class="h2">More from the blog</h2></div>
-    <div class="card-grid">
-      <a class="info-card" href="../../blog/appointment-slot-checker/"><span class="card-icon num">17</span><span class="eyebrow">Use cases</span><h3>Appointment Slot Checker: Catch Cancellations Calmly</h3><p>How to be told when an appointment slot opens up on a booking page, using a free browser extension, and how to do it politely.</p><span class="text-link">Read the post <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
-      <a class="info-card" href="../../blog/ticket-alerts-sale-opens/"><span class="card-icon num">18</span><span class="eyebrow">Use cases</span><h3>Ticket Alerts: Know When a Sale Opens or Tickets Return</h3><p>Get notified when tickets go on sale or come back after a sell-out, without refreshing a waiting room and losing your place.</p><span class="text-link">Read the post <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
-      <a class="info-card" href="../../blog/auto-refresh-wordpress-while-editing/"><span class="card-icon num">19</span><span class="eyebrow">Developers</span><h3>Auto Refresh WordPress While You Edit and Preview</h3><p>Keep a WordPress front-end tab reloading while you work in another, so you see edits quickly. Settings for scroll position, cache and smart pause.</p><span class="text-link">Read the post <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
+    <div class="bl-more-heading"><h2 class="h2">More from the blog</h2><a class="bl-arrow" href="../../blog/">All posts <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a></div>
+    <div class="bl-grid">
+      <a class="bl-card" href="../../blog/ticket-alerts-sale-opens/"><div class="bl-card-img"><img src="../../assets/img/use-cases/ticket-sales.webp" alt="Ticket sale page being watched" width="800" height="600" loading="lazy"></div><div class="bl-card-body"><span class="bl-badge">Use cases</span><h3>Ticket Alerts: Know When a Sale Opens or Tickets Return</h3><p>Get notified when tickets go on sale or come back after a sell-out, without refreshing a waiting room and losing your place.</p><div class="bl-meta"><span>2 min read</span><i></i><span>Nov 18, 2026</span></div></div></a>
+      <a class="bl-card" href="../../blog/auto-refresh-wordpress-while-editing/"><div class="bl-card-img"><img src="../../assets/img/use-cases/wordpress.webp" alt="Previewing a WordPress edit" width="800" height="600" loading="lazy"></div><div class="bl-card-body"><span class="bl-badge">Developers</span><h3>Auto Refresh WordPress While You Edit and Preview</h3><p>Keep a WordPress front-end tab reloading while you work in another, so you see edits quickly. Settings for scroll position, cache and smart pause.</p><div class="bl-meta"><span>2 min read</span><i></i><span>Nov 18, 2026</span></div></div></a>
+      <a class="bl-card" href="../../blog/auto-refresh-rate-limits-avoid-blocks/"><div class="bl-card-img"><img src="../../assets/img/features/refresh-limits.webp" alt="Keeping refresh rates reasonable" width="800" height="600" loading="lazy"></div><div class="bl-card-body"><span class="bl-badge">How-to</span><h3>Auto Refresh and Rate Limits: Refresh Without Blocks</h3><p>Why websites slow or block fast refreshing, and how to refresh politely with longer intervals, random ranges, limits and pauses.</p><div class="bl-meta"><span>2 min read</span><i></i><span>Nov 18, 2026</span></div></div></a>
     </div>
   </section>
 </main>
@@ -170,5 +169,6 @@
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="../../assets/site.js"></script>
+<script src="../../assets/blog.js"></script>
 </body>
 </html>

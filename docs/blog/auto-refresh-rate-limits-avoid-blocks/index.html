@@ -29,6 +29,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/site.css">
 <link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/blog.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://freeautorefresh.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://freeautorefresh.com/blog/"},{"@type":"ListItem","position":3,"name":"Auto Refresh and Rate Limits: Refresh Without Blocks","item":"https://freeautorefresh.com/blog/auto-refresh-rate-limits-avoid-blocks/"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Auto Refresh and Rate Limits: Refresh Without Blocks","description":"Why websites slow or block fast refreshing, and how to refresh politely with longer intervals, random ranges, limits and pauses.","datePublished":"2026-11-18","dateModified":"2026-11-18","mainEntityOfPage":"https://freeautorefresh.com/blog/auto-refresh-rate-limits-avoid-blocks/","image":"https://freeautorefresh.com/assets/poster.png","author":{"@type":"Person","name":"Al Kafi Sohag"},"publisher":{"@type":"Organization","name":"Free Auto Refresh","logo":{"@type":"ImageObject","url":"https://freeautorefresh.com/assets/logo.png"}}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does 'Too many requests' mean?","acceptedAnswer":{"@type":"Answer","text":"You reloaded faster than the site allows. Wait a few minutes and use a longer interval."}},{"@type":"Question","name":"Will a random interval stop it?","acceptedAnswer":{"@type":"Answer","text":"It is gentler on the site, but the best fix is a longer interval and a stop limit."}},{"@type":"Question","name":"How long should I keep a refresh running?","acceptedAnswer":{"@type":"Answer","text":"As short as the job needs. Use a time limit so it ends by itself."}}]}</script>
@@ -65,45 +66,43 @@
 
 <main>
 
-  <section class="hero-section">
-    <div class="page-width hero-grid">
-      <div class="hero-copy">
-        <nav class="crumbs" aria-label="Breadcrumb"><a href="../../">Home</a><span>/</span><a href="../../blog/">Blog</a><span>/</span><span>How-to</span></nav>
-        <span class="eyebrow">How-to</span>
-        <h1>Refresh politely, <span>avoid the blocks.</span></h1>
-        <p class="hero-description">If a site shows 'Too many requests' or slows you down, it is protecting itself from fast, repeated loads. These habits keep your refreshing well inside what most sites tolerate.</p>
-        <div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div>
-      </div>
-      <figure class="shot ">
-        <div class="shot-bar"><span class="shot-dots"><i></i><i></i><i></i></span><span class="shot-title">How-to</span></div>
-        <img src="../../assets/img/features/refresh-limits.webp" alt="Keeping refresh rates reasonable" width="800" height="600" loading="lazy">
-        <figcaption>Gentle, limited, paused</figcaption>
-      </figure>
-    </div>
+  <section class="page-width bl-head">
+    <nav class="crumbs" aria-label="Breadcrumb" style="justify-content:center"><a href="../../">Home</a><span>/</span><a href="../../blog/">Blog</a><span>/</span><span>How-to</span></nav>
+    <span class="bl-badge" style="margin-top:18px">How-to</span>
+    <h1>Refresh politely, <span>avoid the blocks.</span></h1>
+    <p class="hero-description">If a site shows 'Too many requests' or slows you down, it is protecting itself from fast, repeated loads. These habits keep your refreshing well inside what most sites tolerate.</p>
+    <div class="bl-meta"><span>Al Kafi Sohag</span><i></i><span>Nov 18, 2026</span><i></i><span>2 min read</span></div>
+    <div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div>
+    <figure class="bl-banner"><img src="../../assets/img/features/refresh-limits.webp" alt="Keeping refresh rates reasonable" width="800" height="600"><figcaption>Gentle, limited, paused</figcaption></figure>
   </section>
 
-  <section class="page-width content-section" style="padding-top:48px">
-    <div class="detail-grid">
-      <article class="panel prose">
-        <h2>What a rate limit is</h2>
+  <section class="page-width bl-layout">
+    <article class="bl-content">
+        <h2 id="what-a-rate-limit-is">What a rate limit is</h2>
         <p>A site counts how many requests come from you in a short time. Go over its limit and it may show an error (often <strong>429 Too many requests</strong>), slow down, or temporarily block you. Limits differ per site.</p>
-        <h2>1. Use a longer interval</h2>
+        <h2 id="1-use-a-longer-interval">1. Use a longer interval</h2>
         <p>The single biggest fix. Moving from 5 seconds to 30 usually removes the problem and rarely makes you miss a change. See our guide to the <a href="../../blog/best-refresh-interval/">best refresh interval</a>.</p>
-        <h2>2. Use a random range</h2>
+        <aside class="bl-inline-cta"><h3>Skip the manual reloads</h3><p>Free Auto Refresh reloads a tab on a timer and can alert you when a page changes. Free, private, no account.</p><div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div></aside>
+        <h2 id="2-use-a-random-range">2. Use a random range</h2>
         <p>A <a href="../../features/random-interval-refresh/">min and max</a> such as 30 to 60 seconds spreads requests out, instead of hitting the site on an even beat.</p>
-        <h2>3. Set a limit</h2>
+        <h2 id="3-set-a-limit">3. Set a limit</h2>
         <p>With <a href="../../features/refresh-limits/">refresh limits</a>, stop after a time or a count. A refresh that ends after 30 minutes is far less likely to trouble anyone than one left running overnight.</p>
-        <h2>4. Pause while you work</h2>
+        <h2 id="4-pause-while-you-work">4. Pause while you work</h2>
         <p><a href="../../features/smart-pause/">Smart pause</a> holds the timer while you type, so you are not reloading and typing at once.</p>
-        <h2>5. Respect the site's terms</h2>
+        <h2 id="5-respect-the-site-s-terms">5. Respect the site's terms</h2>
         <p>Some sites forbid automated refreshing altogether. If a site's rules say no, do not refresh it. This is advice about being considerate, not a way around protections.</p>
-      </article>
-      <aside class="panel side">
-        <span class="eyebrow">Keep exploring</span>
-        <h2>Related pages</h2>
-        <p>More on this topic.</p>
-        <div class="side-links"><a href="../../features/refresh-limits/">Refresh limits <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../blog/best-refresh-interval/">Best refresh interval <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../features/smart-pause/">Smart pause <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a></div>
-      </aside>
+    </article>
+    <aside class="bl-side">
+      <div class="bl-box bl-toc-box"><h2>On this page</h2><nav class="bl-toc" aria-label="On this page"><a href="#what-a-rate-limit-is">What a rate limit is</a><a href="#1-use-a-longer-interval">1. Use a longer interval</a><a href="#2-use-a-random-range">2. Use a random range</a><a href="#3-set-a-limit">3. Set a limit</a><a href="#4-pause-while-you-work">4. Pause while you work</a><a href="#5-respect-the-site-s-terms">5. Respect the site's terms</a></nav></div>
+      <div class="bl-box bl-install"><h2>Free for Chrome and Firefox</h2><p>Auto refresh and page alerts in one small extension. No account.</p><div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div></div>
+      <div class="bl-box"><h2>Related</h2><div class="bl-rel"><a href="../../features/refresh-limits/"><span>Refresh limits</span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../blog/best-refresh-interval/"><span>Best refresh interval</span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../features/smart-pause/"><span>Smart pause</span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a></div></div>
+    </aside>
+  </section>
+
+  <section class="page-width" style="margin-top:8px">
+    <div class="bl-pn" style="max-width:700px;margin-inline:auto">
+      <a href="../../blog/auto-refresh-wordpress-while-editing/"><small>&larr; Previous</small><strong>Auto Refresh WordPress While You Edit and Preview</strong></a>
+      <a class="next" href="../../blog/hard-refresh-on-mac/"><small>Next &rarr;</small><strong>Hard Refresh on Mac: Chrome, Safari &amp; Firefox Shortcuts</strong></a>
     </div>
   </section>
 
@@ -130,11 +129,11 @@
   </section>
 
   <section class="page-width content-section" style="padding-top:32px">
-    <div class="section-heading"><h2 class="h2">More from the blog</h2></div>
-    <div class="card-grid">
-      <a class="info-card" href="../../blog/hard-refresh-on-mac/"><span class="card-icon num">01</span><span class="eyebrow">Shortcuts</span><h3>Hard Refresh on Mac: Chrome, Safari &amp; Firefox Shortcuts</h3><p>The exact hard refresh shortcut for Chrome, Firefox, Edge and Safari on a Mac, plus what to do on a MacBook with no Ctrl or F5 key.</p><span class="text-link">Read the post <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
-      <a class="info-card" href="../../blog/empty-cache-and-hard-reload/"><span class="card-icon num">02</span><span class="eyebrow">Shortcuts</span><h3>Hard Refresh vs Normal vs Empty Cache and Hard Reload</h3><p>Three kinds of reload in Chrome: normal, hard and Empty Cache and Hard Reload. What each one does and when a stubborn page needs the third.</p><span class="text-link">Read the post <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
-      <a class="info-card" href="../../blog/chrome-ctrl-f5-force-reload/"><span class="card-icon num">03</span><span class="eyebrow">Shortcuts</span><h3>Chrome Ctrl+F5 and Force Reload: What Each One Does</h3><p>Ctrl+F5, Ctrl+Shift+R, Shift+click and F5: which force reload shortcut Chrome uses, what changes between them and when to use each.</p><span class="text-link">Read the post <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
+    <div class="bl-more-heading"><h2 class="h2">More from the blog</h2><a class="bl-arrow" href="../../blog/">All posts <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a></div>
+    <div class="bl-grid">
+      <a class="bl-card" href="../../blog/empty-cache-and-hard-reload/"><div class="bl-card-img"><img src="../../assets/img/features/hard-reload-bypass-cache.webp" alt="Reload options illustration" width="800" height="600" loading="lazy"></div><div class="bl-card-body"><span class="bl-badge">Shortcuts</span><h3>Hard Refresh vs Normal vs Empty Cache and Hard Reload</h3><p>Three kinds of reload in Chrome: normal, hard and Empty Cache and Hard Reload. What each one does and when a stubborn page needs the third.</p><div class="bl-meta"><span>2 min read</span><i></i><span>Nov 18, 2026</span></div></div></a>
+      <a class="bl-card" href="../../blog/chrome-ctrl-f5-force-reload/"><div class="bl-card-img"><img src="../../assets/img/guides/how-to-hard-refresh.webp" alt="Keyboard reload shortcuts" width="800" height="600" loading="lazy"></div><div class="bl-card-body"><span class="bl-badge">Shortcuts</span><h3>Chrome Ctrl+F5 and Force Reload: What Each One Does</h3><p>Ctrl+F5, Ctrl+Shift+R, Shift+click and F5: which force reload shortcut Chrome uses, what changes between them and when to use each.</p><div class="bl-meta"><span>2 min read</span><i></i><span>Nov 18, 2026</span></div></div></a>
+      <a class="bl-card" href="../../blog/hard-refresh-windows-linux/"><div class="bl-card-img"><img src="../../assets/img/guides/how-to-hard-refresh.webp" alt="Hard refresh on Windows" width="800" height="600" loading="lazy"></div><div class="bl-card-body"><span class="bl-badge">Shortcuts</span><h3>Hard Refresh on Windows and Linux: Every Browser</h3><p>The hard refresh shortcut for Chrome, Firefox, Edge, Brave and Opera on Windows and Linux, plus what to do on Android, iPhone and Chromebook.</p><div class="bl-meta"><span>2 min read</span><i></i><span>Nov 18, 2026</span></div></div></a>
     </div>
   </section>
 </main>
@@ -172,5 +171,6 @@
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="../../assets/site.js"></script>
+<script src="../../assets/blog.js"></script>
 </body>
 </html>

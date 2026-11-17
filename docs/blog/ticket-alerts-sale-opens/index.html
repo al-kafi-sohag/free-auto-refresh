@@ -29,6 +29,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/site.css">
 <link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/blog.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://freeautorefresh.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://freeautorefresh.com/blog/"},{"@type":"ListItem","position":3,"name":"Ticket Alerts: Know When a Sale Opens or Tickets Return","item":"https://freeautorefresh.com/blog/ticket-alerts-sale-opens/"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Ticket Alerts: Know When a Sale Opens or Tickets Return","description":"Get notified when tickets go on sale or come back after a sell-out, without refreshing a waiting room and losing your place.","datePublished":"2026-11-18","dateModified":"2026-11-18","mainEntityOfPage":"https://freeautorefresh.com/blog/ticket-alerts-sale-opens/","image":"https://freeautorefresh.com/assets/poster.png","author":{"@type":"Person","name":"Al Kafi Sohag"},"publisher":{"@type":"Organization","name":"Free Auto Refresh","logo":{"@type":"ImageObject","url":"https://freeautorefresh.com/assets/logo.png"}}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Should I refresh a ticket queue?","acceptedAnswer":{"@type":"Answer","text":"No. Many queues warn that it can lose your place. Stop the timer once you are inside."}},{"@type":"Question","name":"Does it buy tickets for me?","acceptedAnswer":{"@type":"Answer","text":"No. It alerts you. You buy."}},{"@type":"Question","name":"How often should it check?","acceptedAnswer":{"@type":"Answer","text":"Thirty seconds to two minutes, depending on how soon the sale opens."}}]}</script>
@@ -65,43 +66,41 @@
 
 <main>
 
-  <section class="hero-section">
-    <div class="page-width hero-grid">
-      <div class="hero-copy">
-        <nav class="crumbs" aria-label="Breadcrumb"><a href="../../">Home</a><span>/</span><a href="../../blog/">Blog</a><span>/</span><span>Use cases</span></nav>
-        <span class="eyebrow">Use cases</span>
-        <h1>Ticket alerts for <span>sale openings and returns.</span></h1>
-        <p class="hero-description">There are two moments worth catching: the sale opening, and returned tickets after a sell-out. Each needs a different approach, and one thing you should never do.</p>
-        <div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div>
-      </div>
-      <figure class="shot ">
-        <div class="shot-bar"><span class="shot-dots"><i></i><i></i><i></i></span><span class="shot-title">Use cases</span></div>
-        <img src="../../assets/img/use-cases/ticket-sales.webp" alt="Ticket sale page being watched" width="800" height="600" loading="lazy">
-        <figcaption>Watch the page, not the queue</figcaption>
-      </figure>
-    </div>
+  <section class="page-width bl-head">
+    <nav class="crumbs" aria-label="Breadcrumb" style="justify-content:center"><a href="../../">Home</a><span>/</span><a href="../../blog/">Blog</a><span>/</span><span>Use cases</span></nav>
+    <span class="bl-badge" style="margin-top:18px">Use cases</span>
+    <h1>Ticket alerts for <span>sale openings and returns.</span></h1>
+    <p class="hero-description">There are two moments worth catching: the sale opening, and returned tickets after a sell-out. Each needs a different approach, and one thing you should never do.</p>
+    <div class="bl-meta"><span>Al Kafi Sohag</span><i></i><span>Nov 18, 2026</span><i></i><span>2 min read</span></div>
+    <div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div>
+    <figure class="bl-banner"><img src="../../assets/img/use-cases/ticket-sales.webp" alt="Ticket sale page being watched" width="800" height="600"><figcaption>Watch the page, not the queue</figcaption></figure>
   </section>
 
-  <section class="page-width content-section" style="padding-top:48px">
-    <div class="detail-grid">
-      <article class="panel prose">
-        <h2>Moment 1: waiting for a sale to start</h2>
+  <section class="page-width bl-layout">
+    <article class="bl-content">
+        <h2 id="moment-1-waiting-for-a-sale-to-start">Moment 1: waiting for a sale to start</h2>
         <p>Watch the event page for the text that changes when the sale opens, such as <strong>"On sale now"</strong>, <strong>"Buy tickets"</strong> or the disappearance of <strong>"Coming soon"</strong>. Use <a href="../../features/page-monitor-keyword-alert/">Stop when text appears or disappears</a>, with a 30 to 60 second interval and notifications on.</p>
-        <h2>Moment 2: returned tickets</h2>
+        <h2 id="moment-2-returned-tickets">Moment 2: returned tickets</h2>
         <p>After a sell-out, tickets are sometimes released when holds expire. Watch for <strong>"Sold out"</strong> to disappear or for a purchase button to appear, at a gentle 1 to 2 minute interval.</p>
-        <h2>Never refresh inside a waiting room</h2>
+        <aside class="bl-inline-cta"><h3>Skip the manual reloads</h3><p>Free Auto Refresh reloads a tab on a timer and can alert you when a page changes. Free, private, no account.</p><div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div></aside>
+        <h2 id="never-refresh-inside-a-waiting-room">Never refresh inside a waiting room</h2>
         <p>Many ticketing queues warn that reloading the page can lose your place. Once you are in a waiting room, <strong>stop the timer</strong>. Use refreshing only on the event page before the queue, not inside it.</p>
-        <h2>Prepare before the alert</h2>
+        <h2 id="prepare-before-the-alert">Prepare before the alert</h2>
         <ul><li>Sign in and save your payment details in advance.</li><li>Keep the tab open, and keep the computer awake.</li><li>Press <strong>Alt + Shift + R</strong> to stop the timer quickly.</li></ul>
-        <h2>What it does not do</h2>
+        <h2 id="what-it-does-not-do">What it does not do</h2>
         <p>It does not join queues, solve checks or buy for you. Follow the seller's terms. Our <a href="../../use-cases/ticket-sales/">ticket sales guide</a> has the exact settings.</p>
-      </article>
-      <aside class="panel side">
-        <span class="eyebrow">Keep exploring</span>
-        <h2>Related pages</h2>
-        <p>More on this topic.</p>
-        <div class="side-links"><a href="../../use-cases/ticket-sales/">Ticket sales use case <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../features/page-monitor-keyword-alert/">Page monitor <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../blog/back-in-stock-alerts-free/">Back-in-stock alerts <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a></div>
-      </aside>
+    </article>
+    <aside class="bl-side">
+      <div class="bl-box bl-toc-box"><h2>On this page</h2><nav class="bl-toc" aria-label="On this page"><a href="#moment-1-waiting-for-a-sale-to-start">Moment 1: waiting for a sale to start</a><a href="#moment-2-returned-tickets">Moment 2: returned tickets</a><a href="#never-refresh-inside-a-waiting-room">Never refresh inside a waiting room</a><a href="#prepare-before-the-alert">Prepare before the alert</a><a href="#what-it-does-not-do">What it does not do</a></nav></div>
+      <div class="bl-box bl-install"><h2>Free for Chrome and Firefox</h2><p>Auto refresh and page alerts in one small extension. No account.</p><div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div></div>
+      <div class="bl-box"><h2>Related</h2><div class="bl-rel"><a href="../../use-cases/ticket-sales/"><span>Ticket sales use case</span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../features/page-monitor-keyword-alert/"><span>Page monitor</span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../blog/back-in-stock-alerts-free/"><span>Back-in-stock alerts</span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a></div></div>
+    </aside>
+  </section>
+
+  <section class="page-width" style="margin-top:8px">
+    <div class="bl-pn" style="max-width:700px;margin-inline:auto">
+      <a href="../../blog/appointment-slot-checker/"><small>&larr; Previous</small><strong>Appointment Slot Checker: Catch Cancellations Calmly</strong></a>
+      <a class="next" href="../../blog/auto-refresh-wordpress-while-editing/"><small>Next &rarr;</small><strong>Auto Refresh WordPress While You Edit and Preview</strong></a>
     </div>
   </section>
 
@@ -128,11 +127,11 @@
   </section>
 
   <section class="page-width content-section" style="padding-top:32px">
-    <div class="section-heading"><h2 class="h2">More from the blog</h2></div>
-    <div class="card-grid">
-      <a class="info-card" href="../../blog/auto-refresh-wordpress-while-editing/"><span class="card-icon num">19</span><span class="eyebrow">Developers</span><h3>Auto Refresh WordPress While You Edit and Preview</h3><p>Keep a WordPress front-end tab reloading while you work in another, so you see edits quickly. Settings for scroll position, cache and smart pause.</p><span class="text-link">Read the post <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
-      <a class="info-card" href="../../blog/auto-refresh-rate-limits-avoid-blocks/"><span class="card-icon num">20</span><span class="eyebrow">How-to</span><h3>Auto Refresh and Rate Limits: Refresh Without Blocks</h3><p>Why websites slow or block fast refreshing, and how to refresh politely with longer intervals, random ranges, limits and pauses.</p><span class="text-link">Read the post <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
-      <a class="info-card" href="../../blog/hard-refresh-on-mac/"><span class="card-icon num">01</span><span class="eyebrow">Shortcuts</span><h3>Hard Refresh on Mac: Chrome, Safari &amp; Firefox Shortcuts</h3><p>The exact hard refresh shortcut for Chrome, Firefox, Edge and Safari on a Mac, plus what to do on a MacBook with no Ctrl or F5 key.</p><span class="text-link">Read the post <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
+    <div class="bl-more-heading"><h2 class="h2">More from the blog</h2><a class="bl-arrow" href="../../blog/">All posts <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a></div>
+    <div class="bl-grid">
+      <a class="bl-card" href="../../blog/auto-refresh-rate-limits-avoid-blocks/"><div class="bl-card-img"><img src="../../assets/img/features/refresh-limits.webp" alt="Keeping refresh rates reasonable" width="800" height="600" loading="lazy"></div><div class="bl-card-body"><span class="bl-badge">How-to</span><h3>Auto Refresh and Rate Limits: Refresh Without Blocks</h3><p>Why websites slow or block fast refreshing, and how to refresh politely with longer intervals, random ranges, limits and pauses.</p><div class="bl-meta"><span>2 min read</span><i></i><span>Nov 18, 2026</span></div></div></a>
+      <a class="bl-card" href="../../blog/hard-refresh-on-mac/"><div class="bl-card-img"><img src="../../assets/img/guides/how-to-hard-refresh.webp" alt="Hard refresh shortcut illustration" width="800" height="600" loading="lazy"></div><div class="bl-card-body"><span class="bl-badge">Shortcuts</span><h3>Hard Refresh on Mac: Chrome, Safari &amp; Firefox Shortcuts</h3><p>The exact hard refresh shortcut for Chrome, Firefox, Edge and Safari on a Mac, plus what to do on a MacBook with no Ctrl or F5 key.</p><div class="bl-meta"><span>2 min read</span><i></i><span>Nov 18, 2026</span></div></div></a>
+      <a class="bl-card" href="../../blog/empty-cache-and-hard-reload/"><div class="bl-card-img"><img src="../../assets/img/features/hard-reload-bypass-cache.webp" alt="Reload options illustration" width="800" height="600" loading="lazy"></div><div class="bl-card-body"><span class="bl-badge">Shortcuts</span><h3>Hard Refresh vs Normal vs Empty Cache and Hard Reload</h3><p>Three kinds of reload in Chrome: normal, hard and Empty Cache and Hard Reload. What each one does and when a stubborn page needs the third.</p><div class="bl-meta"><span>2 min read</span><i></i><span>Nov 18, 2026</span></div></div></a>
     </div>
   </section>
 </main>
@@ -170,5 +169,6 @@
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="../../assets/site.js"></script>
+<script src="../../assets/blog.js"></script>
 </body>
 </html>

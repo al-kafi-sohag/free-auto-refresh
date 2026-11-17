@@ -29,6 +29,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/site.css">
 <link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/blog.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://freeautorefresh.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://freeautorefresh.com/blog/"},{"@type":"ListItem","position":3,"name":"Best Auto Refresh Interval: 5 Seconds to 5 Minutes","item":"https://freeautorefresh.com/blog/best-refresh-interval/"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Best Auto Refresh Interval: 5 Seconds to 5 Minutes","description":"How often should a page auto refresh? A practical guide to 5 seconds, 30 seconds, 1 minute and 5 minutes, and how to avoid hammering a website.","datePublished":"2026-11-18","dateModified":"2026-11-18","mainEntityOfPage":"https://freeautorefresh.com/blog/best-refresh-interval/","image":"https://freeautorefresh.com/assets/poster.png","author":{"@type":"Person","name":"Al Kafi Sohag"},"publisher":{"@type":"Organization","name":"Free Auto Refresh","logo":{"@type":"ImageObject","url":"https://freeautorefresh.com/assets/logo.png"}}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can I refresh every second?","acceptedAnswer":{"@type":"Answer","text":"Yes, one second is the minimum. Use it only briefly, because many sites dislike it."}},{"@type":"Question","name":"What interval should I use for a stock or price page?","acceptedAnswer":{"@type":"Answer","text":"One to two minutes is plenty for most pages, and kinder to the site."}},{"@type":"Question","name":"Does the interval change per tab?","acceptedAnswer":{"@type":"Answer","text":"Yes. Each tab keeps its own timer."}}]}</script>
@@ -65,43 +66,41 @@
 
 <main>
 
-  <section class="hero-section">
-    <div class="page-width hero-grid">
-      <div class="hero-copy">
-        <nav class="crumbs" aria-label="Breadcrumb"><a href="../../">Home</a><span>/</span><a href="../../blog/">Blog</a><span>/</span><span>How-to</span></nav>
-        <span class="eyebrow">How-to</span>
-        <h1>The best refresh interval <span>for the job.</span></h1>
-        <p class="hero-description">There is no single right interval. It depends on how fast the page changes and how much the website tolerates. Here is a simple way to choose.</p>
-        <div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div>
-      </div>
-      <figure class="shot ">
-        <div class="shot-bar"><span class="shot-dots"><i></i><i></i><i></i></span><span class="shot-title">How-to</span></div>
-        <img src="../../assets/img/features/auto-refresh-timer.webp" alt="Choosing a refresh interval" width="800" height="600" loading="lazy">
-        <figcaption>Match the interval to the page</figcaption>
-      </figure>
-    </div>
+  <section class="page-width bl-head">
+    <nav class="crumbs" aria-label="Breadcrumb" style="justify-content:center"><a href="../../">Home</a><span>/</span><a href="../../blog/">Blog</a><span>/</span><span>How-to</span></nav>
+    <span class="bl-badge" style="margin-top:18px">How-to</span>
+    <h1>The best refresh interval <span>for the job.</span></h1>
+    <p class="hero-description">There is no single right interval. It depends on how fast the page changes and how much the website tolerates. Here is a simple way to choose.</p>
+    <div class="bl-meta"><span>Al Kafi Sohag</span><i></i><span>Nov 18, 2026</span><i></i><span>2 min read</span></div>
+    <div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div>
+    <figure class="bl-banner"><img src="../../assets/img/features/auto-refresh-timer.webp" alt="Choosing a refresh interval" width="800" height="600"><figcaption>Match the interval to the page</figcaption></figure>
   </section>
 
-  <section class="page-width content-section" style="padding-top:48px">
-    <div class="detail-grid">
-      <article class="panel prose">
-        <h2>Start from how fast the page changes</h2>
+  <section class="page-width bl-layout">
+    <article class="bl-content">
+        <h2 id="start-from-how-fast-the-page-changes">Start from how fast the page changes</h2>
         <ul><li><strong>Every 5 seconds:</strong> live scores, an auction in its last minutes, a deploy or build you are watching.</li><li><strong>Every 30 seconds:</strong> a queue, a status page, an order that is about to ship.</li><li><strong>Every 1 to 2 minutes:</strong> stock and price pages, ticket sales, restock checks.</li><li><strong>Every 5 minutes or more:</strong> job boards, results pages, forms that rarely change.</li></ul>
-        <h2>Why shorter is not always better</h2>
+        <h2 id="why-shorter-is-not-always-better">Why shorter is not always better</h2>
         <p>Very short intervals add load to the website. Some sites respond by slowing you down or showing an error. A longer interval catches nearly every change anyway, because most pages do not change second by second.</p>
-        <h2>Use a range instead of a fixed beat</h2>
+        <aside class="bl-inline-cta"><h3>Skip the manual reloads</h3><p>Free Auto Refresh reloads a tab on a timer and can alert you when a page changes. Free, private, no account.</p><div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div></aside>
+        <h2 id="use-a-range-instead-of-a-fixed-beat">Use a range instead of a fixed beat</h2>
         <p>With <a href="../../features/random-interval-refresh/">random intervals</a> you set a minimum and a maximum, for example 30 and 60 seconds, and each wait is different. It spreads your requests out and is gentler on the site.</p>
-        <h2>Set it in Free Auto Refresh</h2>
+        <h2 id="set-it-in-free-auto-refresh">Set it in Free Auto Refresh</h2>
         <p>Open the popup, tap a preset from 5 seconds to 5 minutes or type your own value in seconds. One second is the minimum. For a fixed interval, put the same number in Min and Max.</p>
-        <h2>Add a stop so it never runs forever</h2>
+        <h2 id="add-a-stop-so-it-never-runs-forever">Add a stop so it never runs forever</h2>
         <p>Use <a href="../../features/refresh-limits/">refresh limits</a> to stop after a time or a number of refreshes, and turn on the <a href="../../features/on-page-countdown/">on-page countdown</a> so you can see the next reload coming.</p>
-      </article>
-      <aside class="panel side">
-        <span class="eyebrow">Keep exploring</span>
-        <h2>Related pages</h2>
-        <p>More on this topic.</p>
-        <div class="side-links"><a href="../../features/auto-refresh-timer/">Auto refresh timer <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../features/random-interval-refresh/">Random interval refresh <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../blog/auto-refresh-rate-limits-avoid-blocks/">Avoid getting blocked <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a></div>
-      </aside>
+    </article>
+    <aside class="bl-side">
+      <div class="bl-box bl-toc-box"><h2>On this page</h2><nav class="bl-toc" aria-label="On this page"><a href="#start-from-how-fast-the-page-changes">Start from how fast the page changes</a><a href="#why-shorter-is-not-always-better">Why shorter is not always better</a><a href="#use-a-range-instead-of-a-fixed-beat">Use a range instead of a fixed beat</a><a href="#set-it-in-free-auto-refresh">Set it in Free Auto Refresh</a><a href="#add-a-stop-so-it-never-runs-forever">Add a stop so it never runs forever</a></nav></div>
+      <div class="bl-box bl-install"><h2>Free for Chrome and Firefox</h2><p>Auto refresh and page alerts in one small extension. No account.</p><div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div></div>
+      <div class="bl-box"><h2>Related</h2><div class="bl-rel"><a href="../../features/auto-refresh-timer/"><span>Auto refresh timer</span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../features/random-interval-refresh/"><span>Random interval refresh</span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../blog/auto-refresh-rate-limits-avoid-blocks/"><span>Avoid getting blocked</span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a></div></div>
+    </aside>
+  </section>
+
+  <section class="page-width" style="margin-top:8px">
+    <div class="bl-pn" style="max-width:700px;margin-inline:auto">
+      <a href="../../blog/auto-refresh-opera-gx/"><small>&larr; Previous</small><strong>Auto Refresh in Opera and Opera GX: Step by Step</strong></a>
+      <a class="next" href="../../blog/auto-refresh-chrome-without-extension/"><small>Next &rarr;</small><strong>Auto Refresh Chrome Without an Extension: What Works</strong></a>
     </div>
   </section>
 
@@ -128,11 +127,11 @@
   </section>
 
   <section class="page-width content-section" style="padding-top:32px">
-    <div class="section-heading"><h2 class="h2">More from the blog</h2></div>
-    <div class="card-grid">
-      <a class="info-card" href="../../blog/auto-refresh-chrome-without-extension/"><span class="card-icon num">12</span><span class="eyebrow">How-to</span><h3>Auto Refresh Chrome Without an Extension: What Works</h3><p>Can Chrome auto refresh a tab without an extension? The honest answer, three workarounds and why most of them only reload once.</p><span class="text-link">Read the post <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
-      <a class="info-card" href="../../blog/best-auto-refresh-extensions-chrome/"><span class="card-icon num">13</span><span class="eyebrow">Roundups</span><h3>Best Auto Refresh Extensions for Chrome: What to Compare</h3><p>How to pick an auto refresh extension for Chrome: the features, permissions and privacy checks that matter, and where each popular option fits.</p><span class="text-link">Read the post <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
-      <a class="info-card" href="../../blog/website-change-detection-free/"><span class="card-icon num">14</span><span class="eyebrow">Monitoring</span><h3>Website Change Detection: Free Ways to Get Notified</h3><p>Five free ways to know when a web page changes, from RSS and site alerts to a browser extension, with the honest limits of each.</p><span class="text-link">Read the post <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
+    <div class="bl-more-heading"><h2 class="h2">More from the blog</h2><a class="bl-arrow" href="../../blog/">All posts <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a></div>
+    <div class="bl-grid">
+      <a class="bl-card" href="../../blog/best-auto-refresh-extensions-chrome/"><div class="bl-card-img"><img src="../../assets/img/features/index.webp" alt="Comparing refresh extensions" width="800" height="600" loading="lazy"></div><div class="bl-card-body"><span class="bl-badge">Roundups</span><h3>Best Auto Refresh Extensions for Chrome: What to Compare</h3><p>How to pick an auto refresh extension for Chrome: the features, permissions and privacy checks that matter, and where each popular option fits.</p><div class="bl-meta"><span>2 min read</span><i></i><span>Nov 18, 2026</span></div></div></a>
+      <a class="bl-card" href="../../blog/website-change-detection-free/"><div class="bl-card-img"><img src="../../assets/img/features/page-monitor-keyword-alert.webp" alt="Watching a page for changes" width="800" height="600" loading="lazy"></div><div class="bl-card-body"><span class="bl-badge">Monitoring</span><h3>Website Change Detection: Free Ways to Get Notified</h3><p>Five free ways to know when a web page changes, from RSS and site alerts to a browser extension, with the honest limits of each.</p><div class="bl-meta"><span>2 min read</span><i></i><span>Nov 18, 2026</span></div></div></a>
+      <a class="bl-card" href="../../blog/back-in-stock-alerts-free/"><div class="bl-card-img"><img src="../../assets/img/use-cases/restock-alerts.webp" alt="Product restock alert" width="800" height="600" loading="lazy"></div><div class="bl-card-body"><span class="bl-badge">Use cases</span><h3>Back-in-Stock Alerts Without Paying for a Tracker</h3><p>How to find out when a sold-out product is available again: use the shop's own alert first, then watch the page for in-stock text with a free tool.</p><div class="bl-meta"><span>2 min read</span><i></i><span>Nov 18, 2026</span></div></div></a>
     </div>
   </section>
 </main>
@@ -170,5 +169,6 @@
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="../../assets/site.js"></script>
+<script src="../../assets/blog.js"></script>
 </body>
 </html>

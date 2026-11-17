@@ -29,6 +29,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/site.css">
 <link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/blog.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://freeautorefresh.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://freeautorefresh.com/blog/"},{"@type":"ListItem","position":3,"name":"Auto Refresh WordPress While You Edit and Preview","item":"https://freeautorefresh.com/blog/auto-refresh-wordpress-while-editing/"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Auto Refresh WordPress While You Edit and Preview","description":"Keep a WordPress front-end tab reloading while you work in another, so you see edits quickly. Settings for scroll position, cache and smart pause.","datePublished":"2026-11-18","dateModified":"2026-11-18","mainEntityOfPage":"https://freeautorefresh.com/blog/auto-refresh-wordpress-while-editing/","image":"https://freeautorefresh.com/assets/poster.png","author":{"@type":"Person","name":"Al Kafi Sohag"},"publisher":{"@type":"Organization","name":"Free Auto Refresh","logo":{"@type":"ImageObject","url":"https://freeautorefresh.com/assets/logo.png"}}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Will it refresh the editor and lose my work?","acceptedAnswer":{"@type":"Answer","text":"Only if you start it there. Put the timer on the front-end tab, not the editor."}},{"@type":"Question","name":"Why do I still see the old page?","acceptedAnswer":{"@type":"Answer","text":"A caching plugin or CDN. Turn on hard reload and purge the plugin's cache."}},{"@type":"Question","name":"Does it work with page builders?","acceptedAnswer":{"@type":"Answer","text":"Yes, for the front-end preview tab. Page builders often have their own live preview too."}}]}</script>
@@ -65,43 +66,41 @@
 
 <main>
 
-  <section class="hero-section">
-    <div class="page-width hero-grid">
-      <div class="hero-copy">
-        <nav class="crumbs" aria-label="Breadcrumb"><a href="../../">Home</a><span>/</span><a href="../../blog/">Blog</a><span>/</span><span>Developers</span></nav>
-        <span class="eyebrow">Developers</span>
-        <h1>Auto refresh WordPress <span>while you edit.</span></h1>
-        <p class="hero-description">Switching tabs and pressing F5 after every change is slow. Let one tab reload on its own while you edit in another, and see the result as soon as you save.</p>
-        <div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div>
-      </div>
-      <figure class="shot ">
-        <div class="shot-bar"><span class="shot-dots"><i></i><i></i><i></i></span><span class="shot-title">Developers</span></div>
-        <img src="../../assets/img/use-cases/wordpress.webp" alt="Previewing a WordPress edit" width="800" height="600" loading="lazy">
-        <figcaption>Edit in one tab, preview in another</figcaption>
-      </figure>
-    </div>
+  <section class="page-width bl-head">
+    <nav class="crumbs" aria-label="Breadcrumb" style="justify-content:center"><a href="../../">Home</a><span>/</span><a href="../../blog/">Blog</a><span>/</span><span>Developers</span></nav>
+    <span class="bl-badge" style="margin-top:18px">Developers</span>
+    <h1>Auto refresh WordPress <span>while you edit.</span></h1>
+    <p class="hero-description">Switching tabs and pressing F5 after every change is slow. Let one tab reload on its own while you edit in another, and see the result as soon as you save.</p>
+    <div class="bl-meta"><span>Al Kafi Sohag</span><i></i><span>Nov 18, 2026</span><i></i><span>2 min read</span></div>
+    <div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div>
+    <figure class="bl-banner"><img src="../../assets/img/use-cases/wordpress.webp" alt="Previewing a WordPress edit" width="800" height="600"><figcaption>Edit in one tab, preview in another</figcaption></figure>
   </section>
 
-  <section class="page-width content-section" style="padding-top:48px">
-    <div class="detail-grid">
-      <article class="panel prose">
-        <h2>The setup</h2>
+  <section class="page-width bl-layout">
+    <article class="bl-content">
+        <h2 id="the-setup">The setup</h2>
         <ol><li>Open your site's front end in one tab, and the editor or Customizer in a second tab.</li><li>In the front-end tab, open Free Auto Refresh and set an interval of 10 to 30 seconds.</li><li>Press <strong>Start</strong>. The tab reloads on its own. Save your changes in the editor and glance at it.</li></ol>
-        <h2>Keep your place on a long page</h2>
+        <h2 id="keep-your-place-on-a-long-page">Keep your place on a long page</h2>
         <p>Turn on <a href="../../features/keep-scroll-position/">Keep scroll position</a> so each reload returns to the same spot, instead of jumping to the top.</p>
-        <h2>Bypass the cache</h2>
+        <aside class="bl-inline-cta"><h3>Skip the manual reloads</h3><p>Free Auto Refresh reloads a tab on a timer and can alert you when a page changes. Free, private, no account.</p><div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div></aside>
+        <h2 id="bypass-the-cache">Bypass the cache</h2>
         <p>Caching plugins and CDNs can show an old copy of the page. Turn on the <a href="../../features/hard-reload-bypass-cache/">hard reload</a> option so the browser skips its own cache. If you still see old content, purge the plugin's cache from the WordPress admin bar.</p>
-        <h2>Do not refresh the editor</h2>
+        <h2 id="do-not-refresh-the-editor">Do not refresh the editor</h2>
         <p>Never put the timer on the editor tab. A reload can lose unsaved work. If you must watch an admin screen, enable <a href="../../features/smart-pause/">Smart pause</a>, which holds off while you are typing.</p>
-        <h2>Stop it when you finish</h2>
+        <h2 id="stop-it-when-you-finish">Stop it when you finish</h2>
         <p>Press Stop, or use a limit such as 30 minutes so it never runs overnight. See the <a href="../../use-cases/wordpress/">WordPress use case</a> for more.</p>
-      </article>
-      <aside class="panel side">
-        <span class="eyebrow">Keep exploring</span>
-        <h2>Related pages</h2>
-        <p>More on this topic.</p>
-        <div class="side-links"><a href="../../use-cases/wordpress/">WordPress use case <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../features/keep-scroll-position/">Keep scroll position <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../features/smart-pause/">Smart pause <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a></div>
-      </aside>
+    </article>
+    <aside class="bl-side">
+      <div class="bl-box bl-toc-box"><h2>On this page</h2><nav class="bl-toc" aria-label="On this page"><a href="#the-setup">The setup</a><a href="#keep-your-place-on-a-long-page">Keep your place on a long page</a><a href="#bypass-the-cache">Bypass the cache</a><a href="#do-not-refresh-the-editor">Do not refresh the editor</a><a href="#stop-it-when-you-finish">Stop it when you finish</a></nav></div>
+      <div class="bl-box bl-install"><h2>Free for Chrome and Firefox</h2><p>Auto refresh and page alerts in one small extension. No account.</p><div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div></div>
+      <div class="bl-box"><h2>Related</h2><div class="bl-rel"><a href="../../use-cases/wordpress/"><span>WordPress use case</span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../features/keep-scroll-position/"><span>Keep scroll position</span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../features/smart-pause/"><span>Smart pause</span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a></div></div>
+    </aside>
+  </section>
+
+  <section class="page-width" style="margin-top:8px">
+    <div class="bl-pn" style="max-width:700px;margin-inline:auto">
+      <a href="../../blog/ticket-alerts-sale-opens/"><small>&larr; Previous</small><strong>Ticket Alerts: Know When a Sale Opens or Tickets Return</strong></a>
+      <a class="next" href="../../blog/auto-refresh-rate-limits-avoid-blocks/"><small>Next &rarr;</small><strong>Auto Refresh and Rate Limits: Refresh Without Blocks</strong></a>
     </div>
   </section>
 
@@ -128,11 +127,11 @@
   </section>
 
   <section class="page-width content-section" style="padding-top:32px">
-    <div class="section-heading"><h2 class="h2">More from the blog</h2></div>
-    <div class="card-grid">
-      <a class="info-card" href="../../blog/auto-refresh-rate-limits-avoid-blocks/"><span class="card-icon num">20</span><span class="eyebrow">How-to</span><h3>Auto Refresh and Rate Limits: Refresh Without Blocks</h3><p>Why websites slow or block fast refreshing, and how to refresh politely with longer intervals, random ranges, limits and pauses.</p><span class="text-link">Read the post <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
-      <a class="info-card" href="../../blog/hard-refresh-on-mac/"><span class="card-icon num">01</span><span class="eyebrow">Shortcuts</span><h3>Hard Refresh on Mac: Chrome, Safari &amp; Firefox Shortcuts</h3><p>The exact hard refresh shortcut for Chrome, Firefox, Edge and Safari on a Mac, plus what to do on a MacBook with no Ctrl or F5 key.</p><span class="text-link">Read the post <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
-      <a class="info-card" href="../../blog/empty-cache-and-hard-reload/"><span class="card-icon num">02</span><span class="eyebrow">Shortcuts</span><h3>Hard Refresh vs Normal vs Empty Cache and Hard Reload</h3><p>Three kinds of reload in Chrome: normal, hard and Empty Cache and Hard Reload. What each one does and when a stubborn page needs the third.</p><span class="text-link">Read the post <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
+    <div class="bl-more-heading"><h2 class="h2">More from the blog</h2><a class="bl-arrow" href="../../blog/">All posts <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a></div>
+    <div class="bl-grid">
+      <a class="bl-card" href="../../blog/hard-refresh-on-mac/"><div class="bl-card-img"><img src="../../assets/img/guides/how-to-hard-refresh.webp" alt="Hard refresh shortcut illustration" width="800" height="600" loading="lazy"></div><div class="bl-card-body"><span class="bl-badge">Shortcuts</span><h3>Hard Refresh on Mac: Chrome, Safari &amp; Firefox Shortcuts</h3><p>The exact hard refresh shortcut for Chrome, Firefox, Edge and Safari on a Mac, plus what to do on a MacBook with no Ctrl or F5 key.</p><div class="bl-meta"><span>2 min read</span><i></i><span>Nov 18, 2026</span></div></div></a>
+      <a class="bl-card" href="../../blog/empty-cache-and-hard-reload/"><div class="bl-card-img"><img src="../../assets/img/features/hard-reload-bypass-cache.webp" alt="Reload options illustration" width="800" height="600" loading="lazy"></div><div class="bl-card-body"><span class="bl-badge">Shortcuts</span><h3>Hard Refresh vs Normal vs Empty Cache and Hard Reload</h3><p>Three kinds of reload in Chrome: normal, hard and Empty Cache and Hard Reload. What each one does and when a stubborn page needs the third.</p><div class="bl-meta"><span>2 min read</span><i></i><span>Nov 18, 2026</span></div></div></a>
+      <a class="bl-card" href="../../blog/chrome-ctrl-f5-force-reload/"><div class="bl-card-img"><img src="../../assets/img/guides/how-to-hard-refresh.webp" alt="Keyboard reload shortcuts" width="800" height="600" loading="lazy"></div><div class="bl-card-body"><span class="bl-badge">Shortcuts</span><h3>Chrome Ctrl+F5 and Force Reload: What Each One Does</h3><p>Ctrl+F5, Ctrl+Shift+R, Shift+click and F5: which force reload shortcut Chrome uses, what changes between them and when to use each.</p><div class="bl-meta"><span>2 min read</span><i></i><span>Nov 18, 2026</span></div></div></a>
     </div>
   </section>
 </main>
@@ -170,5 +169,6 @@
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="../../assets/site.js"></script>
+<script src="../../assets/blog.js"></script>
 </body>
 </html>

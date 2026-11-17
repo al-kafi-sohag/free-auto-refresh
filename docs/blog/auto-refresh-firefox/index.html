@@ -29,6 +29,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/site.css">
 <link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/blog.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://freeautorefresh.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://freeautorefresh.com/blog/"},{"@type":"ListItem","position":3,"name":"Auto Refresh in Firefox: Add-on and No-Add-on Methods","item":"https://freeautorefresh.com/blog/auto-refresh-firefox/"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Auto Refresh in Firefox: Add-on and No-Add-on Methods","description":"Firefox has no auto reload button. Here is how to refresh a tab on a timer with an add-on, what you can do without one, and how to stop it again.","datePublished":"2026-11-18","dateModified":"2026-11-18","mainEntityOfPage":"https://freeautorefresh.com/blog/auto-refresh-firefox/","image":"https://freeautorefresh.com/assets/poster.png","author":{"@type":"Person","name":"Al Kafi Sohag"},"publisher":{"@type":"Organization","name":"Free Auto Refresh","logo":{"@type":"ImageObject","url":"https://freeautorefresh.com/assets/logo.png"}}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does Firefox have a built-in auto refresh?","acceptedAnswer":{"@type":"Answer","text":"No. You need an add-on to reload a tab on a timer."}},{"@type":"Question","name":"Is Free Auto Refresh free on Firefox?","acceptedAnswer":{"@type":"Answer","text":"Yes. It is free, with no account and no paid tier."}},{"@type":"Question","name":"Can I refresh more than one tab?","acceptedAnswer":{"@type":"Answer","text":"Yes. Each tab has its own timer, so one fast tab never affects the others."}}]}</script>
@@ -65,42 +66,40 @@
 
 <main>
 
-  <section class="hero-section">
-    <div class="page-width hero-grid">
-      <div class="hero-copy">
-        <nav class="crumbs" aria-label="Breadcrumb"><a href="../../">Home</a><span>/</span><a href="../../blog/">Blog</a><span>/</span><span>Browsers</span></nav>
-        <span class="eyebrow">Browsers</span>
-        <h1>Auto refresh in <span>Firefox.</span></h1>
-        <p class="hero-description">Firefox does not include a way to reload a tab on a timer. An add-on is the practical answer, and here are the few things you can do without one.</p>
-        <div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div>
-      </div>
-      <figure class="shot ">
-        <div class="shot-bar"><span class="shot-dots"><i></i><i></i><i></i></span><span class="shot-title">Browsers</span></div>
-        <img src="../../assets/img/firefox.webp" alt="Free Auto Refresh for Firefox" width="800" height="600" loading="lazy">
-        <figcaption>Timer reload for Firefox</figcaption>
-      </figure>
-    </div>
+  <section class="page-width bl-head">
+    <nav class="crumbs" aria-label="Breadcrumb" style="justify-content:center"><a href="../../">Home</a><span>/</span><a href="../../blog/">Blog</a><span>/</span><span>Browsers</span></nav>
+    <span class="bl-badge" style="margin-top:18px">Browsers</span>
+    <h1>Auto refresh in <span>Firefox.</span></h1>
+    <p class="hero-description">Firefox does not include a way to reload a tab on a timer. An add-on is the practical answer, and here are the few things you can do without one.</p>
+    <div class="bl-meta"><span>Al Kafi Sohag</span><i></i><span>Nov 18, 2026</span><i></i><span>2 min read</span></div>
+    <div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div>
+    <figure class="bl-banner"><img src="../../assets/img/firefox.webp" alt="Free Auto Refresh for Firefox" width="800" height="600"><figcaption>Timer reload for Firefox</figcaption></figure>
   </section>
 
-  <section class="page-width content-section" style="padding-top:48px">
-    <div class="detail-grid">
-      <article class="panel prose">
-        <h2>Method 1: use an add-on</h2>
+  <section class="page-width bl-layout">
+    <article class="bl-content">
+        <h2 id="method-1-use-an-add-on">Method 1: use an add-on</h2>
         <ol><li>Open the <a href="../../firefox/">Free Auto Refresh page for Firefox</a> and click <strong>Add to Firefox</strong>.</li><li>Open the page you want to reload.</li><li>Click the toolbar icon, choose an interval, and press <strong>Start</strong>.</li></ol>
 <p>Each tab keeps its own timer, and <strong>Alt + Shift + R</strong> starts or stops it.</p>
-        <h2>Method 2: no add-on, manual only</h2>
+        <h2 id="method-2-no-add-on-manual-only">Method 2: no add-on, manual only</h2>
         <p>Without an add-on you can only reload by hand: <strong>F5</strong> for a normal reload, or <strong>Ctrl + Shift + R</strong> to bypass the cache. Firefox has no hidden setting to repeat it for you.</p>
-        <h2>What the add-on adds</h2>
+        <aside class="bl-inline-cta"><h3>Skip the manual reloads</h3><p>Free Auto Refresh reloads a tab on a timer and can alert you when a page changes. Free, private, no account.</p><div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div></aside>
+        <h2 id="what-the-add-on-adds">What the add-on adds</h2>
         <ul><li><a href="../../features/random-interval-refresh/">Random intervals</a> instead of a fixed beat.</li><li><a href="../../features/page-monitor-keyword-alert/">Page monitor</a>: stop and notify when text appears or the content changes.</li><li><a href="../../features/refresh-limits/">Limits</a>: stop after a time or a number of refreshes.</li></ul>
-        <h2>Stopping unwanted refreshes in Firefox</h2>
+        <h2 id="stopping-unwanted-refreshes-in-firefox">Stopping unwanted refreshes in Firefox</h2>
         <p>Firefox can block pages that refresh themselves. In <strong>about:config</strong>, set <strong>accessibility.blockautorefresh</strong> to true. This is separate from any add-on.</p>
-      </article>
-      <aside class="panel side">
-        <span class="eyebrow">Keep exploring</span>
-        <h2>Related pages</h2>
-        <p>More on this topic.</p>
-        <div class="side-links"><a href="../../firefox/">Firefox add-on page <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../features/auto-refresh-timer/">Auto refresh timer <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../guides/how-to-auto-refresh-a-page/">How to auto refresh a page <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a></div>
-      </aside>
+    </article>
+    <aside class="bl-side">
+      <div class="bl-box bl-toc-box"><h2>On this page</h2><nav class="bl-toc" aria-label="On this page"><a href="#method-1-use-an-add-on">Method 1: use an add-on</a><a href="#method-2-no-add-on-manual-only">Method 2: no add-on, manual only</a><a href="#what-the-add-on-adds">What the add-on adds</a><a href="#stopping-unwanted-refreshes-in-firefox">Stopping unwanted refreshes in Firefox</a></nav></div>
+      <div class="bl-box bl-install"><h2>Free for Chrome and Firefox</h2><p>Auto refresh and page alerts in one small extension. No account.</p><div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div></div>
+      <div class="bl-box"><h2>Related</h2><div class="bl-rel"><a href="../../firefox/"><span>Firefox add-on page</span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../features/auto-refresh-timer/"><span>Auto refresh timer</span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../guides/how-to-auto-refresh-a-page/"><span>How to auto refresh a page</span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a></div></div>
+    </aside>
+  </section>
+
+  <section class="page-width" style="margin-top:8px">
+    <div class="bl-pn" style="max-width:700px;margin-inline:auto">
+      <a href="../../blog/stop-website-from-refreshing-itself/"><small>&larr; Previous</small><strong>How to Stop a Website From Refreshing Itself in Chrome</strong></a>
+      <a class="next" href="../../blog/auto-refresh-edge/"><small>Next &rarr;</small><strong>Auto Refresh in Microsoft Edge: Free Extension Setup</strong></a>
     </div>
   </section>
 
@@ -127,11 +126,11 @@
   </section>
 
   <section class="page-width content-section" style="padding-top:32px">
-    <div class="section-heading"><h2 class="h2">More from the blog</h2></div>
-    <div class="card-grid">
-      <a class="info-card" href="../../blog/auto-refresh-edge/"><span class="card-icon num">08</span><span class="eyebrow">Browsers</span><h3>Auto Refresh in Microsoft Edge: Free Extension Setup</h3><p>Edge has no auto reload feature. Install a refresh extension from the Chrome Web Store, set a timer and keep a tab reloading. Steps and tips.</p><span class="text-link">Read the post <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
-      <a class="info-card" href="../../blog/auto-refresh-brave/"><span class="card-icon num">09</span><span class="eyebrow">Browsers</span><h3>Auto Refresh in Brave: Install and Set a Timer</h3><p>Brave runs Chrome extensions, so a free auto refresh extension works. Install it, set a timer and keep Brave's tab sleeping from interfering.</p><span class="text-link">Read the post <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
-      <a class="info-card" href="../../blog/auto-refresh-opera-gx/"><span class="card-icon num">10</span><span class="eyebrow">Browsers</span><h3>Auto Refresh in Opera and Opera GX: Step by Step</h3><p>Opera and Opera GX can run Chrome extensions with one helper add-on. Here is how to install a free auto refresh extension and set a timer.</p><span class="text-link">Read the post <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
+    <div class="bl-more-heading"><h2 class="h2">More from the blog</h2><a class="bl-arrow" href="../../blog/">All posts <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a></div>
+    <div class="bl-grid">
+      <a class="bl-card" href="../../blog/auto-refresh-brave/"><div class="bl-card-img"><img src="../../assets/img/chrome.webp" alt="Free Auto Refresh in Brave" width="800" height="600" loading="lazy"></div><div class="bl-card-body"><span class="bl-badge">Browsers</span><h3>Auto Refresh in Brave: Install and Set a Timer</h3><p>Brave runs Chrome extensions, so a free auto refresh extension works. Install it, set a timer and keep Brave's tab sleeping from interfering.</p><div class="bl-meta"><span>2 min read</span><i></i><span>Nov 18, 2026</span></div></div></a>
+      <a class="bl-card" href="../../blog/auto-refresh-opera-gx/"><div class="bl-card-img"><img src="../../assets/img/chrome.webp" alt="Free Auto Refresh in Opera" width="800" height="600" loading="lazy"></div><div class="bl-card-body"><span class="bl-badge">Browsers</span><h3>Auto Refresh in Opera and Opera GX: Step by Step</h3><p>Opera and Opera GX can run Chrome extensions with one helper add-on. Here is how to install a free auto refresh extension and set a timer.</p><div class="bl-meta"><span>2 min read</span><i></i><span>Nov 18, 2026</span></div></div></a>
+      <a class="bl-card" href="../../blog/best-refresh-interval/"><div class="bl-card-img"><img src="../../assets/img/features/auto-refresh-timer.webp" alt="Choosing a refresh interval" width="800" height="600" loading="lazy"></div><div class="bl-card-body"><span class="bl-badge">How-to</span><h3>Best Auto Refresh Interval: 5 Seconds to 5 Minutes</h3><p>How often should a page auto refresh? A practical guide to 5 seconds, 30 seconds, 1 minute and 5 minutes, and how to avoid hammering a website.</p><div class="bl-meta"><span>2 min read</span><i></i><span>Nov 18, 2026</span></div></div></a>
     </div>
   </section>
 </main>
@@ -169,5 +168,6 @@
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="../../assets/site.js"></script>
+<script src="../../assets/blog.js"></script>
 </body>
 </html>
