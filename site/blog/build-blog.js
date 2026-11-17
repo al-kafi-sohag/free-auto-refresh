@@ -97,7 +97,7 @@ const meta = (p) => `<div class="bl-meta"><span>Al Kafi Sohag</span><i></i><span
 
 function card(p, up) {
   const text = (p.title + " " + p.desc + " " + p.kw.join(" ") + " " + p.cat).toLowerCase();
-  return `<a class="bl-card" href="${up}blog/${p.slug}/" data-cat="${esc(p.cat)}" data-text="${esc(text)}"><div class="bl-card-img"><img src="${up}assets/img/${p.img}" alt="${esc(p.imgAlt)}" width="800" height="600" loading="lazy"></div><div class="bl-card-body"><span class="bl-badge">${esc(p.cat)}</span><h3>${esc(p.title)}</h3><p>${esc(p.desc)}</p><div class="bl-meta"><span>${readMin(p)} min read</span><i></i><span>${DATE_LABEL}</span></div></div></a>`;
+  return `<a class="bl-card" href="${up}blog/${p.slug}/" data-cat="${esc(p.cat)}" data-text="${esc(text)}"><div class="bl-card-img"><img src="${up}assets/img/blog/${p.slug}.webp" alt="${esc(p.imgAlt)}" width="1200" height="751" loading="lazy"></div><div class="bl-card-body"><span class="bl-badge">${esc(p.cat)}</span><h3>${esc(p.title)}</h3><p>${esc(p.desc)}</p><div class="bl-meta"><span>${readMin(p)} min read</span><i></i><span>${DATE_LABEL}</span></div></div></a>`;
 }
 
 function buildPost(p, idx) {
@@ -134,7 +134,7 @@ function buildPost(p, idx) {
     <p class="hero-description">${esc(p.lede)}</p>
     ${meta(p)}
     ${installLinks}
-    <figure class="bl-banner"><img src="../../assets/img/${p.img}" alt="${esc(p.imgAlt)}" width="800" height="600"><figcaption>${esc(p.cap)}</figcaption></figure>
+    <figure class="bl-banner"><img src="../../assets/img/blog/${p.slug}.webp" alt="${esc(p.imgAlt)}" width="1200" height="751"><figcaption>${esc(p.cap)}</figcaption></figure>
   </section>
 
   <section class="page-width bl-layout">
@@ -190,7 +190,7 @@ function buildIndex() {
     .concat(cats.map((c) => `<button class="bl-chip" type="button" data-cat="${esc(c)}" aria-pressed="false">${esc(c)}<small>${posts.filter((p) => p.cat === c).length}</small></button>`)).join("");
   const f = posts.find((p) => p.slug === FEATURED);
   const featured = `<a class="bl-featured" id="blFeatured" href="../blog/${f.slug}/">
-      <div class="bl-featured-img"><img src="../assets/img/${f.img}" alt="${esc(f.imgAlt)}" width="800" height="600"></div>
+      <div class="bl-featured-img"><img src="../assets/img/blog/${f.slug}.webp" alt="${esc(f.imgAlt)}" width="1200" height="751"></div>
       <div class="bl-featured-body"><span class="bl-badge">Featured · ${esc(f.cat)}</span><h2>${esc(f.title)}</h2><p>${esc(f.desc)}</p>${meta(f)}<span class="bl-arrow">Read the post ${arrow}</span></div>
     </a>`;
   const main = `
