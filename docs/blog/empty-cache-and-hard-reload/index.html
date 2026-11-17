@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#eef4ff">
+<title>Hard Refresh vs Normal vs Empty Cache and Hard Reload</title>
+<meta name="description" content="Three kinds of reload in Chrome: normal, hard and Empty Cache and Hard Reload. What each one does and when a stubborn page needs the third.">
+<meta name="keywords" content="empty cache and hard reload chrome, hard refresh vs normal refresh, hard reload chrome, chrome hard reload">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://freeautorefresh.com/blog/empty-cache-and-hard-reload/">
+<meta property="og:site_name" content="Free Auto Refresh">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hard Refresh vs Normal vs Empty Cache and Hard Reload">
+<meta property="og:description" content="Three kinds of reload in Chrome: normal, hard and Empty Cache and Hard Reload. What each one does and when a stubborn page needs the third.">
+<meta property="og:url" content="https://freeautorefresh.com/blog/empty-cache-and-hard-reload/">
+<meta property="og:image" content="https://freeautorefresh.com/assets/poster.png">
+<meta property="og:image:alt" content="Free Auto Refresh: auto refresh and page monitor browser extension">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hard Refresh vs Normal vs Empty Cache and Hard Reload">
+<meta name="twitter:description" content="Three kinds of reload in Chrome: normal, hard and Empty Cache and Hard Reload. What each one does and when a stubborn page needs the third.">
+<meta name="twitter:image" content="https://freeautorefresh.com/assets/poster.png">
+<meta name="google-site-verification" content="ww9t1NvE40Omq86n1bNGdVptryQJXYkv5f0-MjdqTqM">
+<meta name="msvalidate.01" content="3CB45458A679463A21F05BA747535729">
+<link rel="icon" href="../../assets/logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://freeautorefresh.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://freeautorefresh.com/blog/"},{"@type":"ListItem","position":3,"name":"Hard Refresh vs Normal vs Empty Cache and Hard Reload","item":"https://freeautorefresh.com/blog/empty-cache-and-hard-reload/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Hard Refresh vs Normal vs Empty Cache and Hard Reload","description":"Three kinds of reload in Chrome: normal, hard and Empty Cache and Hard Reload. What each one does and when a stubborn page needs the third.","datePublished":"2026-11-18","dateModified":"2026-11-18","mainEntityOfPage":"https://freeautorefresh.com/blog/empty-cache-and-hard-reload/","image":"https://freeautorefresh.com/assets/poster.png","author":{"@type":"Person","name":"Al Kafi Sohag"},"publisher":{"@type":"Organization","name":"Free Auto Refresh","logo":{"@type":"ImageObject","url":"https://freeautorefresh.com/assets/logo.png"}}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why is Empty Cache and Hard Reload missing?","acceptedAnswer":{"@type":"Answer","text":"It only shows when Chrome's DevTools is open. Press F12 first, then right-click the reload button."}},{"@type":"Question","name":"Is a hard refresh the same as clearing the cache?","acceptedAnswer":{"@type":"Answer","text":"Not quite. A hard refresh bypasses the cache for one page load. Clearing the cache deletes saved files for the whole browser."}},{"@type":"Question","name":"Does a hard refresh work in Firefox?","acceptedAnswer":{"@type":"Answer","text":"Yes. Ctrl + F5 or Ctrl + Shift + R (Command + Shift + R on a Mac) does the same job."}}]}</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TDRSSHNG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+<script src="https://analytics.ahrefs.com/analytics.js" data-key="0e39LuQQV0pCGlmMG0aqvA" async></script>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "zcmctmdktt");
+    (function(ok){
+        try{ok=localStorage.getItem("cookie-consent")==="accepted"}catch(e){}
+        clarity("consentv2",{ad_Storage:"denied",analytics_Storage:ok?"granted":"denied"});
+    })(false);
+</script>
+</head>
+<body data-ga="G-0DTP2D307V">
+
+<header class="site-header">
+  <div class="page-width nav-shell">
+    <a class="brand" href="../../"><img src="../../assets/logo.png" alt="Free Auto Refresh logo" width="31" height="31">Free Auto Refresh</a>
+    <nav class="desktop-nav" aria-label="Main"><a href="../../">Home</a><a href="../../features/">Features</a><a href="../../use-cases/">Use cases</a><a href="../../guides/">Guides</a><a href="../../blog/" aria-current="page">Blog</a><a href="../../faq/">FAQ</a></nav>
+    <a class="nav-cta" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M7 7h10v10" /> <path d="M7 17 17 7" /> </svg></a>
+    <button class="mobile-nav-toggle" id="navToggle" type="button" aria-controls="mobileNav" aria-expanded="false" aria-label="Menu"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M4 5h16" /> <path d="M4 12h16" /> <path d="M4 19h16" /> </svg></button>
+  </div>
+  <nav class="mobile-nav-menu" id="mobileNav" aria-label="Mobile"><a href="../../">Home</a><a href="../../features/">Features</a><a href="../../use-cases/">Use cases</a><a href="../../guides/">Guides</a><a href="../../blog/" aria-current="page">Blog</a><a href="../../faq/">FAQ</a><a href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome</a><a href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></nav>
+</header>
+
+<main>
+
+  <section class="hero-section">
+    <div class="page-width hero-grid">
+      <div class="hero-copy">
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="../../">Home</a><span>/</span><a href="../../blog/">Blog</a><span>/</span><span>Shortcuts</span></nav>
+        <span class="eyebrow">Shortcuts</span>
+        <h1>Normal, hard, or <span>empty cache and hard reload?</span></h1>
+        <p class="hero-description">Chrome offers three ways to reload a page, and they are not the same. Here is what each one asks the browser to do, and which to pick.</p>
+        <div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div>
+      </div>
+      <figure class="shot ">
+        <div class="shot-bar"><span class="shot-dots"><i></i><i></i><i></i></span><span class="shot-title">Shortcuts</span></div>
+        <img src="../../assets/img/features/hard-reload-bypass-cache.webp" alt="Reload options illustration" width="800" height="600" loading="lazy">
+        <figcaption>Three reloads, three results</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="page-width content-section" style="padding-top:48px">
+    <div class="detail-grid">
+      <article class="panel prose">
+        <h2>Normal refresh</h2>
+        <p>Press <strong>F5</strong> or <strong>Ctrl + R</strong> (Command + R on a Mac). The browser asks the site if its files changed, and reuses saved copies when the answer is no. It is fast, and sometimes shows stale content.</p>
+        <h2>Hard refresh</h2>
+        <p>Press <strong>Ctrl + F5</strong> or <strong>Ctrl + Shift + R</strong> (Command + Shift + R on a Mac). The browser skips its saved copies for that page and downloads everything again. Use this when a page looks old or a fix you just made is not showing.</p>
+        <h2>Empty Cache and Hard Reload</h2>
+        <p>This option only appears in Chrome when <strong>DevTools is open</strong>. Press F12, then right-click (or click and hold) the reload button next to the address bar and choose <strong>Empty Cache and Hard Reload</strong>.</p>
+<p>It clears the cached files for the page and then reloads. It goes one step further than a hard refresh, because it also drops copies that a hard refresh can leave behind.</p>
+        <h2>Which one should you use?</h2>
+        <ul><li><strong>Page looks fine:</strong> normal refresh.</li><li><strong>Page looks outdated:</strong> hard refresh.</li><li><strong>Still wrong after a hard refresh:</strong> Empty Cache and Hard Reload.</li><li><strong>Still wrong after that:</strong> the problem is probably on the website's side, not in your browser.</li></ul>
+        <h2>Does any of this delete my data?</h2>
+        <p>No. None of the three options removes passwords, cookies or history. Only the page's cached files are affected.</p>
+        <h2>Reloading while you work on a site</h2>
+        <p>Web developers hit this constantly. <a href="../../features/hard-reload-bypass-cache/">Free Auto Refresh has a hard reload option</a> so every timed reload skips the cache, and <a href="../../features/keep-scroll-position/">it can keep your scroll position</a> between reloads.</p>
+      </article>
+      <aside class="panel side">
+        <span class="eyebrow">Keep exploring</span>
+        <h2>Related pages</h2>
+        <p>More on this topic.</p>
+        <div class="side-links"><a href="../../guides/how-to-hard-refresh/">How to hard refresh <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../blog/hard-refresh-on-mac/">Hard refresh on Mac <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../features/hard-reload-bypass-cache/">Hard reload that bypasses cache <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a></div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="page-width faq-section" id="faq">
+    <div>
+      <span class="eyebrow">Good to know</span>
+      <h2 class="h2">Questions, answered.</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item" open><summary><h3>Why is Empty Cache and Hard Reload missing?</h3><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>It only shows when Chrome's DevTools is open. Press F12 first, then right-click the reload button.</p></details>
+      <details class="faq-item"><summary><h3>Is a hard refresh the same as clearing the cache?</h3><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>Not quite. A hard refresh bypasses the cache for one page load. Clearing the cache deletes saved files for the whole browser.</p></details>
+      <details class="faq-item"><summary><h3>Does a hard refresh work in Firefox?</h3><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>Yes. Ctrl + F5 or Ctrl + Shift + R (Command + Shift + R on a Mac) does the same job.</p></details>
+    </div>
+  </section>
+
+  <section class="page-width">
+    <div class="cta-card">
+      <span class="eyebrow">Less checking. More doing.</span>
+      <h2>Skip the manual reloads.</h2>
+      <p>Free Auto Refresh does it on a timer, for Chrome and Firefox.</p>
+      <div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div>
+      <div class="assurance"><span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg>Free forever</span><span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg>Private by design</span><span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg>Open source</span></div>
+    </div>
+  </section>
+
+  <section class="page-width content-section" style="padding-top:32px">
+    <div class="section-heading"><h2 class="h2">More from the blog</h2></div>
+    <div class="card-grid">
+      <a class="info-card" href="../../blog/chrome-ctrl-f5-force-reload/"><span class="card-icon num">03</span><span class="eyebrow">Shortcuts</span><h3>Chrome Ctrl+F5 and Force Reload: What Each One Does</h3><p>Ctrl+F5, Ctrl+Shift+R, Shift+click and F5: which force reload shortcut Chrome uses, what changes between them and when to use each.</p><span class="text-link">Read the post <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
+      <a class="info-card" href="../../blog/hard-refresh-windows-linux/"><span class="card-icon num">04</span><span class="eyebrow">Shortcuts</span><h3>Hard Refresh on Windows and Linux: Every Browser</h3><p>The hard refresh shortcut for Chrome, Firefox, Edge, Brave and Opera on Windows and Linux, plus what to do on Android, iPhone and Chromebook.</p><span class="text-link">Read the post <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
+      <a class="info-card" href="../../blog/browser-keeps-refreshing-by-itself/"><span class="card-icon num">05</span><span class="eyebrow">Troubleshooting</span><h3>Why Does My Browser Keep Refreshing by Itself? 8 Causes</h3><p>Page or tab reloading on its own? Eight real causes in Chrome and Firefox, from extensions and Memory Saver to a stuck F5 key, and how to fix each.</p><span class="text-link">Read the post <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="page-width footer-main">
+    <div>
+      <a class="brand" href="../../"><img src="../../assets/logo.png" alt="Free Auto Refresh logo" width="31" height="31">Free Auto Refresh</a>
+      <p>A free, private auto refresh and page monitor extension for Chrome and Firefox.</p>
+      <p>Available in 7 languages.</p>
+    </div>
+    <div class="footer-links">
+      <h2>Explore</h2>
+      <a href="../../features/">Features</a><a href="../../use-cases/">Use cases</a><a href="../../guides/">Guides</a><a href="../../blog/">Blog</a><a href="../../faq/">FAQ</a>
+    </div>
+    <div class="footer-links">
+      <h2>Get the extension</h2>
+      <a href="../../chrome/">Chrome extension</a><a href="../../firefox/">Firefox add-on</a><a href="../../changelog/">Changelog</a>
+    </div>
+    <div class="footer-links">
+      <h2>About</h2>
+      <a href="https://github.com/al-kafi-sohag/free-auto-refresh" target="_blank" rel="noopener">GitHub</a><a href="../../privacy/">Privacy</a><a href="../../contact/">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom"><div class="page-width"><span>© 2026 Al Kafi Sohag · MIT licensed</span><span>Not affiliated with Google or Mozilla</span></div></div>
+</footer>
+
+<div class="cookie" id="cookieBanner" role="dialog" aria-label="Cookie consent">
+  This site uses Google Analytics, Ahrefs Web Analytics and Microsoft Clarity to see how its pages are used. Clarity sets cookies only if you accept. No ads. The extension itself has no analytics. <a href="../../privacy/"><strong>Privacy</strong></a>
+  <div class="install-links">
+    <button class="button-primary" id="cookieAccept" type="button">Accept</button>
+    <button class="button-secondary" id="cookieReject" type="button">Reject</button>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="../../assets/site.js"></script>
+</body>
+</html>
