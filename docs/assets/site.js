@@ -40,9 +40,9 @@ $(function () {
     $("#cookieBanner").removeClass("show");
   });
 
-  /* ---------- analytics events, pushed to the Google Tag Manager data layer ---------- */
+  /* ---------- analytics events, sent to Google Analytics through the Google tag in <head> ---------- */
   window.dataLayer = window.dataLayer || [];
-  function track(name, params) { window.dataLayer.push($.extend({ event: name }, params)); }
+  function track(name, params) { if (window.gtag) window.gtag("event", name, params || {}); }
 
   /* store links: add UTM tags so the Chrome Web Store / Add-ons reports show which website page sent the visitor */
   var STORES = { "chromewebstore.google.com": "chrome", "addons.mozilla.org": "firefox" };
