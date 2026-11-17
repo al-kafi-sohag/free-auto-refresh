@@ -135,6 +135,7 @@ ${schema.map((s) => `<script type="application/ld+json">${JSON.stringify(s)}</sc
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 </script>
+<script src="https://analytics.ahrefs.com/analytics.js" data-key="0e39LuQQV0pCGlmMG0aqvA" async></script>
 <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
