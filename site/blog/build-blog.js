@@ -10,7 +10,7 @@ const path = require("path");
 const DOCS = path.resolve(__dirname, "..", "..", "docs");
 const SITE = "https://freeautorefresh.com";
 const DATE = "2026-11-18";
-const posts = [...require("./posts-a"), ...require("./posts-b")];
+const posts = [...require("./posts-a"), ...require("./posts-b"), ...require("./posts-c")];
 
 const shell = fs.readFileSync(path.join(DOCS, "guides", "how-to-stop-auto-refresh", "index.html"), "utf8").replace(/\r\n/g, "\n");
 const between = (s, a, b, inclusiveEnd = true) => {
@@ -93,11 +93,11 @@ const DATE_LABEL = "Nov 18, 2026";
 const FEATURED = "auto-refresh-chrome-without-extension";
 const slugify = (s) => s.toLowerCase().replace(/&amp;/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const readMin = (p) => Math.max(2, Math.round(plain(p.sections.map((s) => s[1]).join(" ")).split(" ").length / 190));
-const meta = (p) => `<div class="bl-meta"><span>Al Kafi Sohag</span><i></i><span>${DATE_LABEL}</span><i></i><span>${readMin(p)} min read</span></div>`;
+const meta = (p) => `<div class="bl-meta"><span>Al Kafi Sohag</span><i></i><span>${p.dateLabel || DATE_LABEL}</span><i></i><span>${readMin(p)} min read</span></div>`;
 
 function card(p, up) {
   const text = (p.title + " " + p.desc + " " + p.kw.join(" ") + " " + p.cat).toLowerCase();
-  return `<a class="bl-card" href="${up}blog/${p.slug}/" data-cat="${esc(p.cat)}" data-text="${esc(text)}"><div class="bl-card-img"><img src="${up}assets/img/blog/${p.slug}.webp" alt="${esc(p.imgAlt)}" width="1200" height="751" loading="lazy"></div><div class="bl-card-body"><span class="bl-badge">${esc(p.cat)}</span><h3>${esc(p.title)}</h3><p>${esc(p.desc)}</p><div class="bl-meta"><span>${readMin(p)} min read</span><i></i><span>${DATE_LABEL}</span></div></div></a>`;
+  return `<a class="bl-card" href="${up}blog/${p.slug}/" data-cat="${esc(p.cat)}" data-text="${esc(text)}"><div class="bl-card-img"><img src="${up}assets/img/blog/${p.slug}.webp" alt="${esc(p.imgAlt)}" width="1200" height="751" loading="lazy"></div><div class="bl-card-body"><span class="bl-badge">${esc(p.cat)}</span><h3>${esc(p.title)}</h3><p>${esc(p.desc)}</p><div class="bl-meta"><span>${readMin(p)} min read</span><i></i><span>${p.dateLabel || DATE_LABEL}</span></div></div></a>`;
 }
 
 function buildPost(p, idx) {
@@ -117,7 +117,7 @@ function buildPost(p, idx) {
     crumb([["Home", SITE + "/"], ["Blog", SITE + "/blog/"], [p.title, url]]),
     {
       "@context": "https://schema.org", "@type": "BlogPosting", headline: p.title, description: p.desc,
-      datePublished: DATE, dateModified: DATE, mainEntityOfPage: url, image: SITE + "/assets/poster.png",
+      datePublished: p.date || DATE, dateModified: p.date || DATE, mainEntityOfPage: url, image: SITE + "/assets/poster.png",
       author: { "@type": "Person", name: "Al Kafi Sohag" },
       publisher: { "@type": "Organization", name: "Free Auto Refresh", logo: { "@type": "ImageObject", url: SITE + "/assets/logo.png" } },
     },
@@ -183,7 +183,7 @@ function buildIndex() {
   const ld = [
     crumb([["Home", SITE + "/"], ["Blog", url]]),
     { "@context": "https://schema.org", "@type": "Blog", name: "Free Auto Refresh blog", url,
-      blogPost: posts.map((p) => ({ "@type": "BlogPosting", headline: p.title, url: `${SITE}/blog/${p.slug}/`, datePublished: DATE })) },
+      blogPost: posts.map((p) => ({ "@type": "BlogPosting", headline: p.title, url: `${SITE}/blog/${p.slug}/`, datePublished: p.date || DATE })) },
   ];
   const cats = [...new Set(posts.map((p) => p.cat))];
   const chips = [`<button class="bl-chip" type="button" data-cat="all" aria-pressed="true">All<small>${posts.length}</small></button>`]
