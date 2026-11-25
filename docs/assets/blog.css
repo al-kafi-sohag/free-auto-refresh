@@ -122,3 +122,4 @@
 .bl-content .install-links a{text-decoration:none;font-weight:700}
 .bl-content .button-primary{color:#fff}
 .bl-content .button-secondary{color:var(--ink)}
+.bl-content pre{margin:14px 0;padding:14px 16px;border-radius:12px;background:#f0f4fb;overflow-x:auto}.bl-content pre code{padding:0;background:none;word-break:normal;white-space:pre}

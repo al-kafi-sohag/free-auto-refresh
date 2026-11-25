@@ -10,7 +10,7 @@ const path = require("path");
 const DOCS = path.resolve(__dirname, "..", "..", "docs");
 const SITE = "https://freeautorefresh.com";
 const DATE = "2026-11-18";
-const posts = [...require("./posts-a"), ...require("./posts-b"), ...require("./posts-c")];
+const posts = [...require("./posts-a"), ...require("./posts-b"), ...require("./posts-c"), ...require("./posts-d")];
 
 const shell = fs.readFileSync(path.join(DOCS, "guides", "how-to-stop-auto-refresh", "index.html"), "utf8").replace(/\r\n/g, "\n");
 const between = (s, a, b, inclusiveEnd = true) => {
@@ -235,7 +235,7 @@ posts.forEach((p, i) => {
 const smPath = path.join(DOCS, "sitemap.xml");
 let sm = fs.readFileSync(smPath, "utf8").replace(/\r\n/g, "\n").split("\n").filter((l) => !l.includes("/blog/")).join("\n");
 const entries = [`  <url><loc>${SITE}/blog/</loc><lastmod>${DATE}</lastmod><priority>0.8</priority></url>`]
-  .concat(posts.map((p) => `  <url><loc>${SITE}/blog/${p.slug}/</loc><lastmod>${DATE}</lastmod><priority>0.7</priority></url>`)).join("\n");
+  .concat(posts.map((p) => `  <url><loc>${SITE}/blog/${p.slug}/</loc><lastmod>${p.date || DATE}</lastmod><priority>0.7</priority></url>`)).join("\n");
 sm = sm.replace("</urlset>", entries + "\n</urlset>");
 fs.writeFileSync(smPath, sm);
 

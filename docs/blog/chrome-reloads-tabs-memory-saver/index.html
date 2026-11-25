@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#eef4ff">
+<title>Why Chrome Reloads Your Tabs When You Switch Back (Memory Saver)</title>
+<meta name="description" content="If a tab reloads on its own after you leave it, it is probably Chrome's Memory Saver, not auto refresh. Here is how to tell and how to stop it.">
+<meta name="keywords" content="chrome tab reloads when I switch back, chrome memory saver reload tab, why does chrome refresh tabs, chrome tab discarding, chrome keeps reloading tabs">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://freeautorefresh.com/blog/chrome-reloads-tabs-memory-saver/">
+<meta property="og:site_name" content="Free Auto Refresh">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Why Chrome Reloads Your Tabs When You Switch Back (Memory Saver)">
+<meta property="og:description" content="If a tab reloads on its own after you leave it, it is probably Chrome's Memory Saver, not auto refresh. Here is how to tell and how to stop it.">
+<meta property="og:url" content="https://freeautorefresh.com/blog/chrome-reloads-tabs-memory-saver/">
+<meta property="og:image" content="https://freeautorefresh.com/assets/poster.png">
+<meta property="og:image:alt" content="Free Auto Refresh: auto refresh and page monitor browser extension">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Why Chrome Reloads Your Tabs When You Switch Back (Memory Saver)">
+<meta name="twitter:description" content="If a tab reloads on its own after you leave it, it is probably Chrome's Memory Saver, not auto refresh. Here is how to tell and how to stop it.">
+<meta name="twitter:image" content="https://freeautorefresh.com/assets/poster.png">
+<meta name="google-site-verification" content="ww9t1NvE40Omq86n1bNGdVptryQJXYkv5f0-MjdqTqM">
+<meta name="msvalidate.01" content="3CB45458A679463A21F05BA747535729">
+<link rel="icon" href="../../assets/logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/blog.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://freeautorefresh.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://freeautorefresh.com/blog/"},{"@type":"ListItem","position":3,"name":"Why Chrome Reloads Your Tabs When You Switch Back (Memory Saver)","item":"https://freeautorefresh.com/blog/chrome-reloads-tabs-memory-saver/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Why Chrome Reloads Your Tabs When You Switch Back (Memory Saver)","description":"If a tab reloads on its own after you leave it, it is probably Chrome's Memory Saver, not auto refresh. Here is how to tell and how to stop it.","datePublished":"2026-11-26","dateModified":"2026-11-26","mainEntityOfPage":"https://freeautorefresh.com/blog/chrome-reloads-tabs-memory-saver/","image":"https://freeautorefresh.com/assets/poster.png","author":{"@type":"Person","name":"Al Kafi Sohag"},"publisher":{"@type":"Organization","name":"Free Auto Refresh","logo":{"@type":"ImageObject","url":"https://freeautorefresh.com/assets/logo.png"}}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is Memory Saver the same as auto refresh?","acceptedAnswer":{"@type":"Answer","text":"No. Memory Saver reloads a sleeping tab when you return to it. Auto refresh reloads on a timer."}},{"@type":"Question","name":"Will turning it off use more memory?","acceptedAnswer":{"@type":"Answer","text":"It can, especially with many tabs open. The exceptions list lets you protect only the tabs that matter."}},{"@type":"Question","name":"Can an extension cause tabs to reload?","acceptedAnswer":{"@type":"Answer","text":"Yes, an extension with a timer will, but only on tabs where you started it."}}]}</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TDRSSHNG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+<script src="https://analytics.ahrefs.com/analytics.js" data-key="0e39LuQQV0pCGlmMG0aqvA" async></script>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "zcmctmdktt");
+    (function(ok){
+        try{ok=localStorage.getItem("cookie-consent")==="accepted"}catch(e){}
+        clarity("consentv2",{ad_Storage:"denied",analytics_Storage:ok?"granted":"denied"});
+    })(false);
+</script>
+</head>
+<body data-ga="G-0DTP2D307V">
+
+<header class="site-header">
+  <div class="page-width nav-shell">
+    <a class="brand" href="../../"><img src="../../assets/logo.png" alt="Free Auto Refresh logo" width="31" height="31">Free Auto Refresh</a>
+    <nav class="desktop-nav" aria-label="Main"><a href="../../">Home</a><a href="../../features/">Features</a><a href="../../use-cases/">Use cases</a><a href="../../guides/">Guides</a><a href="../../blog/" aria-current="page">Blog</a><a href="../../faq/">FAQ</a></nav>
+    <a class="nav-cta" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M7 7h10v10" /> <path d="M7 17 17 7" /> </svg></a>
+    <button class="mobile-nav-toggle" id="navToggle" type="button" aria-controls="mobileNav" aria-expanded="false" aria-label="Menu"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M4 5h16" /> <path d="M4 12h16" /> <path d="M4 19h16" /> </svg></button>
+  </div>
+  <nav class="mobile-nav-menu" id="mobileNav" aria-label="Mobile"><a href="../../">Home</a><a href="../../features/">Features</a><a href="../../use-cases/">Use cases</a><a href="../../guides/">Guides</a><a href="../../blog/" aria-current="page">Blog</a><a href="../../faq/">FAQ</a><a href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome</a><a href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></nav>
+</header>
+
+<main>
+
+  <section class="page-width bl-head">
+    <nav class="crumbs" aria-label="Breadcrumb" style="justify-content:center"><a href="../../">Home</a><span>/</span><a href="../../blog/">Blog</a><span>/</span><span>Troubleshooting</span></nav>
+    <span class="bl-badge" style="margin-top:18px">Troubleshooting</span>
+    <h1>Why Chrome reloads <span>tabs you left.</span></h1>
+    <p class="hero-description">You come back to a tab and it reloads, and whatever you were doing is gone. Before you blame a website or an extension, check this setting.</p>
+    <div class="bl-meta"><span>Al Kafi Sohag</span><i></i><span>Nov 26, 2026</span><i></i><span>2 min read</span></div>
+    <div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div>
+    <figure class="bl-banner"><img src="../../assets/img/blog/chrome-reloads-tabs-memory-saver.webp" alt="A tab that reloaded by itself" width="1200" height="751"><figcaption>Sleeping tabs reload when you return</figcaption></figure>
+  </section>
+
+  <section class="page-width bl-layout">
+    <article class="bl-content">
+        <h2 id="what-memory-saver-does">What Memory Saver does</h2>
+        <p>To free up memory, Chrome can put tabs you have not used for a while to sleep. When you click one, Chrome has to load it again from the start. To you it looks like the page refreshed by itself, and a half-filled form or a video position can be lost.</p>
+        <h2 id="how-to-tell-it-from-auto-refresh">How to tell it from auto refresh</h2>
+        <ul><li>It happens when you <strong>return</strong> to a tab, not on a fixed schedule.</li><li>It happens on tabs you left idle for a long time, usually in the background.</li><li>There is no countdown, and nothing in the page is asking to reload.</li></ul><p>A page that reloads while you are looking at it is something else. See <a href="../../blog/browser-keeps-refreshing-by-itself/">why a browser keeps refreshing by itself</a>.</p>
+        <aside class="bl-inline-cta"><h3>Skip the manual reloads</h3><p>Free Auto Refresh reloads a tab on a timer and can alert you when a page changes. Free, private, no account.</p><div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div></aside>
+        <h2 id="how-to-turn-memory-saver-off">How to turn Memory Saver off</h2>
+        <ol><li>Open <strong>chrome://settings/performance</strong> in a new tab.</li><li>Turn off <strong>Memory Saver</strong>, or leave it on and add the sites you do not want put to sleep under the exceptions list.</li></ol><p>Menu names can change between Chrome versions, so look for the Performance section if you do not see them.</p>
+        <h2 id="keep-the-tabs-you-are-watching-awake">Keep the tabs you are watching awake</h2>
+        <p>If you are watching a page with a timer, keep that tab out of Memory Saver using the exceptions list. That way the tab keeps reloading on schedule and stays ready when you switch to it. <a href="../../features/keep-scroll-position/">Keep scroll position</a> also saves your place on long pages.</p>
+    </article>
+    <aside class="bl-side">
+      <div class="bl-box bl-toc-box"><h2>On this page</h2><nav class="bl-toc" aria-label="On this page"><a href="#what-memory-saver-does">What Memory Saver does</a><a href="#how-to-tell-it-from-auto-refresh">How to tell it from auto refresh</a><a href="#how-to-turn-memory-saver-off">How to turn Memory Saver off</a><a href="#keep-the-tabs-you-are-watching-awake">Keep the tabs you are watching awake</a></nav></div>
+      <div class="bl-box bl-install"><h2>Free for Chrome and Firefox</h2><p>Auto refresh and page alerts in one small extension. No account.</p><div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div></div>
+      <div class="bl-box"><h2>Related</h2><div class="bl-rel"><a href="../../blog/stop-website-from-refreshing-itself/"><span>Stop a site from refreshing itself</span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../guides/how-to-stop-auto-refresh/"><span>How to stop auto refresh</span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../features/keep-scroll-position/"><span>Keep scroll position</span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a></div></div>
+    </aside>
+  </section>
+
+  <section class="page-width" style="margin-top:8px">
+    <div class="bl-pn" style="max-width:700px;margin-inline:auto">
+      <a href="../../blog/html-meta-refresh-auto-reload-page/"><small>&larr; Previous</small><strong>Auto Refresh a Web Page with HTML (Meta Refresh and JavaScript)</strong></a>
+      <a class="next" href="../../blog/auto-refresh-multiple-tabs/"><small>Next &rarr;</small><strong>How to Auto Refresh Multiple Tabs at Different Speeds</strong></a>
+    </div>
+  </section>
+
+  <section class="page-width faq-section" id="faq">
+    <div>
+      <span class="eyebrow">Good to know</span>
+      <h2 class="h2">Questions, answered.</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item" open><summary><h3>Is Memory Saver the same as auto refresh?</h3><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>No. Memory Saver reloads a sleeping tab when you return to it. Auto refresh reloads on a timer.</p></details>
+      <details class="faq-item"><summary><h3>Will turning it off use more memory?</h3><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>It can, especially with many tabs open. The exceptions list lets you protect only the tabs that matter.</p></details>
+      <details class="faq-item"><summary><h3>Can an extension cause tabs to reload?</h3><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>Yes, an extension with a timer will, but only on tabs where you started it.</p></details>
+    </div>
+  </section>
+
+  <section class="page-width">
+    <div class="cta-card">
+      <span class="eyebrow">Less checking. More doing.</span>
+      <h2>Skip the manual reloads.</h2>
+      <p>Free Auto Refresh does it on a timer, for Chrome and Firefox.</p>
+      <div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div>
+      <div class="assurance"><span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg>Free forever</span><span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg>Private by design</span><span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg>Open source</span></div>
+    </div>
+  </section>
+
+  <section class="page-width content-section" style="padding-top:32px">
+    <div class="bl-more-heading"><h2 class="h2">More from the blog</h2><a class="bl-arrow" href="../../blog/">All posts <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a></div>
+    <div class="bl-grid">
+      <a class="bl-card" href="../../blog/auto-refresh-stock-crypto-price-pages/"><div class="bl-card-img"><img src="../../assets/img/blog/auto-refresh-stock-crypto-price-pages.webp" alt="A price page reloading on a timer" width="1200" height="751" loading="lazy"></div><div class="bl-card-body"><span class="bl-badge">Use cases</span><h3>Auto Refresh Stock and Crypto Price Pages the Safe Way</h3><p>Keep a watchlist or quote page current by reloading it on a timer, be told when a figure changes, and know when this is the wrong tool.</p><div class="bl-meta"><span>2 min read</span><i></i><span>Nov 26, 2026</span></div></div></a>
+      <a class="bl-card" href="../../blog/freelance-marketplace-new-project-alerts/"><div class="bl-card-img"><img src="../../assets/img/blog/freelance-marketplace-new-project-alerts.webp" alt="Watching a freelance project feed" width="1200" height="751" loading="lazy"></div><div class="bl-card-body"><span class="bl-badge">Use cases</span><h3>Catch New Freelance Projects Early on Marketplaces and Job Feeds</h3><p>Be told when a new project or request appears on a freelance marketplace, so you can write a thoughtful proposal while it is still fresh.</p><div class="bl-meta"><span>2 min read</span><i></i><span>Nov 26, 2026</span></div></div></a>
+      <a class="bl-card" href="../../blog/auto-refresh-keyboard-shortcut-chrome/"><div class="bl-card-img"><img src="../../assets/img/blog/auto-refresh-keyboard-shortcut-chrome.webp" alt="The auto refresh timer on a tab" width="1200" height="751" loading="lazy"></div><div class="bl-card-body"><span class="bl-badge">Shortcuts</span><h3>Start and Stop Auto Refresh with a Keyboard Shortcut in Chrome</h3><p>Use Alt + Shift + R to start or stop auto refresh on the current tab, and change the shortcut in Chrome or Firefox if it clashes with something else.</p><div class="bl-meta"><span>2 min read</span><i></i><span>Nov 26, 2026</span></div></div></a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="page-width footer-main">
+    <div>
+      <a class="brand" href="../../"><img src="../../assets/logo.png" alt="Free Auto Refresh logo" width="31" height="31">Free Auto Refresh</a>
+      <p>A free, private auto refresh and page monitor extension for Chrome and Firefox.</p>
+      <p>Available in 7 languages.</p>
+    </div>
+    <div class="footer-links">
+      <h2>Explore</h2>
+      <a href="../../features/">Features</a><a href="../../use-cases/">Use cases</a><a href="../../guides/">Guides</a><a href="../../blog/">Blog</a><a href="../../faq/">FAQ</a>
+    </div>
+    <div class="footer-links">
+      <h2>Get the extension</h2>
+      <a href="../../chrome/">Chrome extension</a><a href="../../firefox/">Firefox add-on</a><a href="../../changelog/">Changelog</a>
+    </div>
+    <div class="footer-links">
+      <h2>About</h2>
+      <a href="https://github.com/al-kafi-sohag/free-auto-refresh" target="_blank" rel="noopener">GitHub</a><a href="../../privacy/">Privacy</a><a href="../../contact/">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom"><div class="page-width"><span>© 2026 Al Kafi Sohag · MIT licensed</span><span>Not affiliated with Google or Mozilla</span></div></div>
+</footer>
+
+<div class="cookie" id="cookieBanner" role="dialog" aria-label="Cookie consent">
+  This site uses Google Analytics, Ahrefs Web Analytics and Microsoft Clarity to see how its pages are used. Clarity sets cookies only if you accept. No ads. The extension itself has no analytics. <a href="../../privacy/"><strong>Privacy</strong></a>
+  <div class="install-links">
+    <button class="button-primary" id="cookieAccept" type="button">Accept</button>
+    <button class="button-secondary" id="cookieReject" type="button">Reject</button>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="../../assets/site.js"></script>
+<script src="../../assets/blog.js"></script>
+</body>
+</html>
