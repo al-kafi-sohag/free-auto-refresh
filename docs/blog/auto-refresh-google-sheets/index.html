@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#eef4ff">
+<title>Auto Refresh Google Sheets: What Updates and What Does Not</title>
+<meta name="description" content="Google Sheets saves and shows edits live. Here is how recalculation and import functions update, how to schedule updates, and when a reload helps.">
+<meta name="keywords" content="auto refresh google sheets, how to set auto refresh in google sheets, google sheets auto refresh script, how do you refresh google sheets, google sheets update every minute">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://freeautorefresh.com/blog/auto-refresh-google-sheets/">
+<meta property="og:site_name" content="Free Auto Refresh">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Auto Refresh Google Sheets: What Updates and What Does Not">
+<meta property="og:description" content="Google Sheets saves and shows edits live. Here is how recalculation and import functions update, how to schedule updates, and when a reload helps.">
+<meta property="og:url" content="https://freeautorefresh.com/blog/auto-refresh-google-sheets/">
+<meta property="og:image" content="https://freeautorefresh.com/assets/poster.png">
+<meta property="og:image:alt" content="Free Auto Refresh: auto refresh and page monitor browser extension">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Auto Refresh Google Sheets: What Updates and What Does Not">
+<meta name="twitter:description" content="Google Sheets saves and shows edits live. Here is how recalculation and import functions update, how to schedule updates, and when a reload helps.">
+<meta name="twitter:image" content="https://freeautorefresh.com/assets/poster.png">
+<meta name="google-site-verification" content="ww9t1NvE40Omq86n1bNGdVptryQJXYkv5f0-MjdqTqM">
+<meta name="msvalidate.01" content="3CB45458A679463A21F05BA747535729">
+<link rel="icon" href="../../assets/logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/blog.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://freeautorefresh.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://freeautorefresh.com/blog/"},{"@type":"ListItem","position":3,"name":"Auto Refresh Google Sheets: What Updates and What Does Not","item":"https://freeautorefresh.com/blog/auto-refresh-google-sheets/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Auto Refresh Google Sheets: What Updates and What Does Not","description":"Google Sheets saves and shows edits live. Here is how recalculation and import functions update, how to schedule updates, and when a reload helps.","datePublished":"2026-11-27","dateModified":"2026-11-27","mainEntityOfPage":"https://freeautorefresh.com/blog/auto-refresh-google-sheets/","image":"https://freeautorefresh.com/assets/poster.png","author":{"@type":"Person","name":"Al Kafi Sohag"},"publisher":{"@type":"Organization","name":"Free Auto Refresh","logo":{"@type":"ImageObject","url":"https://freeautorefresh.com/assets/logo.png"}}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can Sheets update every second?","acceptedAnswer":{"@type":"Answer","text":"The built-in recalculation options are far slower than that, and import functions have their own schedule."}},{"@type":"Question","name":"Does auto refresh reload imported data?","acceptedAnswer":{"@type":"Answer","text":"Not necessarily. Imported data follows Google's caching and update rules."}},{"@type":"Question","name":"Will a script run when my computer is off?","acceptedAnswer":{"@type":"Answer","text":"A time-driven Apps Script trigger runs on Google's servers, so it does not need your computer."}}]}</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TDRSSHNG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+<script src="https://analytics.ahrefs.com/analytics.js" data-key="0e39LuQQV0pCGlmMG0aqvA" async></script>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "zcmctmdktt");
+    (function(ok){
+        try{ok=localStorage.getItem("cookie-consent")==="accepted"}catch(e){}
+        clarity("consentv2",{ad_Storage:"denied",analytics_Storage:ok?"granted":"denied"});
+    })(false);
+</script>
+</head>
+<body data-ga="G-0DTP2D307V">
+
+<header class="site-header">
+  <div class="page-width nav-shell">
+    <a class="brand" href="../../"><img src="../../assets/logo.png" alt="Free Auto Refresh logo" width="31" height="31">Free Auto Refresh</a>
+    <nav class="desktop-nav" aria-label="Main"><a href="../../">Home</a><a href="../../features/">Features</a><a href="../../use-cases/">Use cases</a><a href="../../guides/">Guides</a><a href="../../blog/" aria-current="page">Blog</a><a href="../../faq/">FAQ</a></nav>
+    <a class="nav-cta" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M7 7h10v10" /> <path d="M7 17 17 7" /> </svg></a>
+    <button class="mobile-nav-toggle" id="navToggle" type="button" aria-controls="mobileNav" aria-expanded="false" aria-label="Menu"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M4 5h16" /> <path d="M4 12h16" /> <path d="M4 19h16" /> </svg></button>
+  </div>
+  <nav class="mobile-nav-menu" id="mobileNav" aria-label="Mobile"><a href="../../">Home</a><a href="../../features/">Features</a><a href="../../use-cases/">Use cases</a><a href="../../guides/">Guides</a><a href="../../blog/" aria-current="page">Blog</a><a href="../../faq/">FAQ</a><a href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome</a><a href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></nav>
+</header>
+
+<main>
+
+  <section class="page-width bl-head">
+    <nav class="crumbs" aria-label="Breadcrumb" style="justify-content:center"><a href="../../">Home</a><span>/</span><a href="../../blog/">Blog</a><span>/</span><span>How-to</span></nav>
+    <span class="bl-badge" style="margin-top:18px">How-to</span>
+    <h1>Does Google Sheets <span>need auto refresh?</span></h1>
+    <p class="hero-description">Often it does not. First work out what you are waiting for: someone's edit, a formula, or data from outside the sheet.</p>
+    <div class="bl-meta"><span>Al Kafi Sohag</span><i></i><span>Nov 27, 2026</span><i></i><span>2 min read</span></div>
+    <div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div>
+    <figure class="bl-banner"><img src="../../assets/img/blog/auto-refresh-google-sheets.webp" alt="A spreadsheet with changing numbers" width="1200" height="751"><figcaption>Know what you are waiting for</figcaption></figure>
+  </section>
+
+  <section class="page-width bl-layout">
+    <article class="bl-content">
+        <h2 id="edits-from-other-people">Edits from other people</h2>
+        <p>When your connection is working, changes made by collaborators appear in the open sheet on their own. If yours seems stuck, check the offline indicator and then reload once.</p>
+        <h2 id="time-based-formulas">Time-based formulas</h2>
+        <p>For functions such as <code>NOW()</code> and <code>RAND()</code>, open <strong>File &gt; Settings &gt; Calculation</strong>. Set recalculation to <strong>On change and every minute</strong> or <strong>every hour</strong> if you need them to update without edits.</p>
+        <aside class="bl-inline-cta"><h3>Skip the manual reloads</h3><p>Free Auto Refresh reloads a tab on a timer and can alert you when a page changes. Free, private, no account.</p><div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div></aside>
+        <h2 id="imported-and-finance-data">Imported and finance data</h2>
+        <p>Functions such as <code>IMPORTRANGE</code>, <code>IMPORTHTML</code> and <code>GOOGLEFINANCE</code> update on Google's own schedule. They are not instant, and finance data can be delayed. Reloading the tab does not promise newer results.</p>
+        <h2 id="scheduled-updates-with-apps-script">Scheduled updates with Apps Script</h2>
+        <p>To run a task on a schedule even when the sheet is closed, open <strong>Extensions &gt; Apps Script</strong>, write a function that does the update, and add a <strong>time-driven trigger</strong>. Google applies daily quotas, so keep the schedule modest and only authorise scripts you trust.</p>
+        <h2 id="when-reloading-the-tab-makes-sense">When reloading the tab makes sense</h2>
+        <p>A reload can help on a published, view-only version of a sheet shown on a screen, which may not update itself promptly. Published pages can lag behind the original, so test it. Use <a href="../../features/auto-refresh-timer/">auto refresh</a> with an interval of a few minutes. Avoid timers on a sheet you are editing, because they can interrupt your typing.</p>
+    </article>
+    <aside class="bl-side">
+      <div class="bl-box bl-toc-box"><h2>On this page</h2><nav class="bl-toc" aria-label="On this page"><a href="#edits-from-other-people">Edits from other people</a><a href="#time-based-formulas">Time-based formulas</a><a href="#imported-and-finance-data">Imported and finance data</a><a href="#scheduled-updates-with-apps-script">Scheduled updates with Apps Script</a><a href="#when-reloading-the-tab-makes-sense">When reloading the tab makes sense</a></nav></div>
+      <div class="bl-box bl-install"><h2>Free for Chrome and Firefox</h2><p>Auto refresh and page alerts in one small extension. No account.</p><div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div></div>
+      <div class="bl-box"><h2>Related</h2><div class="bl-rel"><a href="../../blog/auto-refresh-excel-data/"><span>Auto refresh Excel</span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../blog/refresh-page-without-losing-form-input/"><span>Refresh without losing input</span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../blog/auto-refresh-stock-crypto-price-pages/"><span>Stock and crypto pages</span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a></div></div>
+    </aside>
+  </section>
+
+  <section class="page-width" style="margin-top:8px">
+    <div class="bl-pn" style="max-width:700px;margin-inline:auto">
+      <a href="../../blog/auto-refresh-power-bi-dashboard/"><small>&larr; Previous</small><strong>How to Auto Refresh a Power BI Report or Dashboard</strong></a>
+      <a class="next" href="../../blog/hard-refresh-on-mac/"><small>Next &rarr;</small><strong>Hard Refresh on Mac: Chrome, Safari &amp; Firefox Shortcuts</strong></a>
+    </div>
+  </section>
+
+  <section class="page-width faq-section" id="faq">
+    <div>
+      <span class="eyebrow">Good to know</span>
+      <h2 class="h2">Questions, answered.</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item" open><summary><h3>Can Sheets update every second?</h3><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>The built-in recalculation options are far slower than that, and import functions have their own schedule.</p></details>
+      <details class="faq-item"><summary><h3>Does auto refresh reload imported data?</h3><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>Not necessarily. Imported data follows Google's caching and update rules.</p></details>
+      <details class="faq-item"><summary><h3>Will a script run when my computer is off?</h3><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>A time-driven Apps Script trigger runs on Google's servers, so it does not need your computer.</p></details>
+    </div>
+  </section>
+
+  <section class="page-width">
+    <div class="cta-card">
+      <span class="eyebrow">Less checking. More doing.</span>
+      <h2>Skip the manual reloads.</h2>
+      <p>Free Auto Refresh does it on a timer, for Chrome and Firefox.</p>
+      <div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div>
+      <div class="assurance"><span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg>Free forever</span><span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg>Private by design</span><span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg>Open source</span></div>
+    </div>
+  </section>
+
+  <section class="page-width content-section" style="padding-top:32px">
+    <div class="bl-more-heading"><h2 class="h2">More from the blog</h2><a class="bl-arrow" href="../../blog/">All posts <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a></div>
+    <div class="bl-grid">
+      <a class="bl-card" href="../../blog/empty-cache-and-hard-reload/"><div class="bl-card-img"><img src="../../assets/img/blog/empty-cache-and-hard-reload.webp" alt="Reload options illustration" width="1200" height="751" loading="lazy"></div><div class="bl-card-body"><span class="bl-badge">Shortcuts</span><h3>Hard Refresh vs Normal vs Empty Cache and Hard Reload</h3><p>Three kinds of reload in Chrome: normal, hard and Empty Cache and Hard Reload. What each one does and when a stubborn page needs the third.</p><div class="bl-meta"><span>2 min read</span><i></i><span>Nov 18, 2026</span></div></div></a>
+      <a class="bl-card" href="../../blog/chrome-ctrl-f5-force-reload/"><div class="bl-card-img"><img src="../../assets/img/blog/chrome-ctrl-f5-force-reload.webp" alt="Keyboard reload shortcuts" width="1200" height="751" loading="lazy"></div><div class="bl-card-body"><span class="bl-badge">Shortcuts</span><h3>Chrome Ctrl+F5 and Force Reload: What Each One Does</h3><p>Ctrl+F5, Ctrl+Shift+R, Shift+click and F5: which force reload shortcut Chrome uses, what changes between them and when to use each.</p><div class="bl-meta"><span>2 min read</span><i></i><span>Nov 18, 2026</span></div></div></a>
+      <a class="bl-card" href="../../blog/hard-refresh-windows-linux/"><div class="bl-card-img"><img src="../../assets/img/blog/hard-refresh-windows-linux.webp" alt="Hard refresh on Windows" width="1200" height="751" loading="lazy"></div><div class="bl-card-body"><span class="bl-badge">Shortcuts</span><h3>Hard Refresh on Windows and Linux: Every Browser</h3><p>The hard refresh shortcut for Chrome, Firefox, Edge, Brave and Opera on Windows and Linux, plus what to do on Android, iPhone and Chromebook.</p><div class="bl-meta"><span>2 min read</span><i></i><span>Nov 18, 2026</span></div></div></a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="page-width footer-main">
+    <div>
+      <a class="brand" href="../../"><img src="../../assets/logo.png" alt="Free Auto Refresh logo" width="31" height="31">Free Auto Refresh</a>
+      <p>A free, private auto refresh and page monitor extension for Chrome and Firefox.</p>
+      <p>Available in 7 languages.</p>
+    </div>
+    <div class="footer-links">
+      <h2>Explore</h2>
+      <a href="../../features/">Features</a><a href="../../use-cases/">Use cases</a><a href="../../guides/">Guides</a><a href="../../blog/">Blog</a><a href="../../faq/">FAQ</a>
+    </div>
+    <div class="footer-links">
+      <h2>Get the extension</h2>
+      <a href="../../chrome/">Chrome extension</a><a href="../../firefox/">Firefox add-on</a><a href="../../changelog/">Changelog</a>
+    </div>
+    <div class="footer-links">
+      <h2>About</h2>
+      <a href="https://github.com/al-kafi-sohag/free-auto-refresh" target="_blank" rel="noopener">GitHub</a><a href="../../privacy/">Privacy</a><a href="../../contact/">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom"><div class="page-width"><span>© 2026 Al Kafi Sohag · MIT licensed</span><span>Not affiliated with Google or Mozilla</span></div></div>
+</footer>
+
+<div class="cookie" id="cookieBanner" role="dialog" aria-label="Cookie consent">
+  This site uses Google Analytics, Ahrefs Web Analytics and Microsoft Clarity to see how its pages are used. Clarity sets cookies only if you accept. No ads. The extension itself has no analytics. <a href="../../privacy/"><strong>Privacy</strong></a>
+  <div class="install-links">
+    <button class="button-primary" id="cookieAccept" type="button">Accept</button>
+    <button class="button-secondary" id="cookieReject" type="button">Reject</button>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="../../assets/site.js"></script>
+<script src="../../assets/blog.js"></script>
+</body>
+</html>

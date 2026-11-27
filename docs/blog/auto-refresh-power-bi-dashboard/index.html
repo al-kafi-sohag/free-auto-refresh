@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#eef4ff">
+<title>How to Auto Refresh a Power BI Report or Dashboard</title>
+<meta name="description" content="Understand data refresh versus page reload in Power BI, when automatic page refresh applies, and how to keep a report on a wall screen current.">
+<meta name="keywords" content="auto refresh power bi report, auto refresh power bi dashboard, power bi automatic page refresh, how to auto refresh power bi desktop report, power bi wall display refresh">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://freeautorefresh.com/blog/auto-refresh-power-bi-dashboard/">
+<meta property="og:site_name" content="Free Auto Refresh">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Auto Refresh a Power BI Report or Dashboard">
+<meta property="og:description" content="Understand data refresh versus page reload in Power BI, when automatic page refresh applies, and how to keep a report on a wall screen current.">
+<meta property="og:url" content="https://freeautorefresh.com/blog/auto-refresh-power-bi-dashboard/">
+<meta property="og:image" content="https://freeautorefresh.com/assets/poster.png">
+<meta property="og:image:alt" content="Free Auto Refresh: auto refresh and page monitor browser extension">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Auto Refresh a Power BI Report or Dashboard">
+<meta name="twitter:description" content="Understand data refresh versus page reload in Power BI, when automatic page refresh applies, and how to keep a report on a wall screen current.">
+<meta name="twitter:image" content="https://freeautorefresh.com/assets/poster.png">
+<meta name="google-site-verification" content="ww9t1NvE40Omq86n1bNGdVptryQJXYkv5f0-MjdqTqM">
+<meta name="msvalidate.01" content="3CB45458A679463A21F05BA747535729">
+<link rel="icon" href="../../assets/logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/blog.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://freeautorefresh.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://freeautorefresh.com/blog/"},{"@type":"ListItem","position":3,"name":"How to Auto Refresh a Power BI Report or Dashboard","item":"https://freeautorefresh.com/blog/auto-refresh-power-bi-dashboard/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"How to Auto Refresh a Power BI Report or Dashboard","description":"Understand data refresh versus page reload in Power BI, when automatic page refresh applies, and how to keep a report on a wall screen current.","datePublished":"2026-11-27","dateModified":"2026-11-27","mainEntityOfPage":"https://freeautorefresh.com/blog/auto-refresh-power-bi-dashboard/","image":"https://freeautorefresh.com/assets/poster.png","author":{"@type":"Person","name":"Al Kafi Sohag"},"publisher":{"@type":"Organization","name":"Free Auto Refresh","logo":{"@type":"ImageObject","url":"https://freeautorefresh.com/assets/logo.png"}}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Will reloading the page update my data?","acceptedAnswer":{"@type":"Answer","text":"Only if newer data is already available to the report. It does not run a scheduled data refresh."}},{"@type":"Question","name":"Why can't I find automatic page refresh?","acceptedAnswer":{"@type":"Answer","text":"It depends on your data connection, and your administrator or capacity settings can restrict it."}},{"@type":"Question","name":"Can a browser extension refresh Power BI Desktop?","acceptedAnswer":{"@type":"Answer","text":"No. An extension works only inside the browser, not in the desktop application."}}]}</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TDRSSHNG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+<script src="https://analytics.ahrefs.com/analytics.js" data-key="0e39LuQQV0pCGlmMG0aqvA" async></script>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "zcmctmdktt");
+    (function(ok){
+        try{ok=localStorage.getItem("cookie-consent")==="accepted"}catch(e){}
+        clarity("consentv2",{ad_Storage:"denied",analytics_Storage:ok?"granted":"denied"});
+    })(false);
+</script>
+</head>
+<body data-ga="G-0DTP2D307V">
+
+<header class="site-header">
+  <div class="page-width nav-shell">
+    <a class="brand" href="../../"><img src="../../assets/logo.png" alt="Free Auto Refresh logo" width="31" height="31">Free Auto Refresh</a>
+    <nav class="desktop-nav" aria-label="Main"><a href="../../">Home</a><a href="../../features/">Features</a><a href="../../use-cases/">Use cases</a><a href="../../guides/">Guides</a><a href="../../blog/" aria-current="page">Blog</a><a href="../../faq/">FAQ</a></nav>
+    <a class="nav-cta" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M7 7h10v10" /> <path d="M7 17 17 7" /> </svg></a>
+    <button class="mobile-nav-toggle" id="navToggle" type="button" aria-controls="mobileNav" aria-expanded="false" aria-label="Menu"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M4 5h16" /> <path d="M4 12h16" /> <path d="M4 19h16" /> </svg></button>
+  </div>
+  <nav class="mobile-nav-menu" id="mobileNav" aria-label="Mobile"><a href="../../">Home</a><a href="../../features/">Features</a><a href="../../use-cases/">Use cases</a><a href="../../guides/">Guides</a><a href="../../blog/" aria-current="page">Blog</a><a href="../../faq/">FAQ</a><a href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome</a><a href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></nav>
+</header>
+
+<main>
+
+  <section class="page-width bl-head">
+    <nav class="crumbs" aria-label="Breadcrumb" style="justify-content:center"><a href="../../">Home</a><span>/</span><a href="../../blog/">Blog</a><span>/</span><span>How-to</span></nav>
+    <span class="bl-badge" style="margin-top:18px">How-to</span>
+    <h1>Keep a Power BI <span>screen current.</span></h1>
+    <p class="hero-description">The key idea: reloading the browser can only show data Power BI already has. Getting new data is a separate step.</p>
+    <div class="bl-meta"><span>Al Kafi Sohag</span><i></i><span>Nov 27, 2026</span><i></i><span>2 min read</span></div>
+    <div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div>
+    <figure class="bl-banner"><img src="../../assets/img/blog/auto-refresh-power-bi-dashboard.webp" alt="A dashboard on a large screen" width="1200" height="751"><figcaption>New data first, new view second</figcaption></figure>
+  </section>
+
+  <section class="page-width bl-layout">
+    <article class="bl-content">
+        <h2 id="two-different-kinds-of-refresh">Two different kinds of refresh</h2>
+        <ul><li><strong>Data refresh</strong> brings new data from the source into your model.</li><li><strong>Visual or page refresh</strong> updates what is shown on screen.</li></ul><p>If the model has not been updated, no amount of reloading will show newer numbers.</p>
+        <h2 id="scheduled-refresh-for-imported-data">Scheduled refresh for imported data</h2>
+        <p>For imported data, publish the report and set up <strong>scheduled refresh</strong> in the semantic model's settings in the Power BI service. How often you can run it depends on your licence and capacity, and some sources need a gateway. Check Microsoft's current limits.</p>
+        <aside class="bl-inline-cta"><h3>Skip the manual reloads</h3><p>Free Auto Refresh reloads a tab on a timer and can alert you when a page changes. Free, private, no account.</p><div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div></aside>
+        <h2 id="automatic-page-refresh">Automatic page refresh</h2>
+        <p>Power BI has an <strong>automatic page refresh</strong> feature for supported live connections such as DirectQuery. You turn it on in the page's formatting settings. The shortest interval you may use can be limited by your administrator and capacity, and it is not available for every kind of data.</p>
+        <h2 id="reload-the-browser-on-a-wall-display">Reload the browser on a wall display</h2>
+        <p>If a screen needs an occasional full reload, for example to pick up the latest published view, a browser timer can do it. Open the report, switch it to full screen, and set <a href="../../features/auto-refresh-timer/">Free Auto Refresh</a> to an interval such as 15 or 30 minutes. A reload may reset filters, page choice or full-screen mode, so test it once while you are there. It does not trigger a data refresh.</p>
+        <h2 id="before-you-leave-it-running">Before you leave it running</h2>
+        <p>Set the computer not to sleep, <a href="../../blog/keep-browser-tab-active/">keep the tab active</a>, and expect the sign-in to expire at some point. Follow your organisation's security rules for unattended screens and use an account meant for that purpose.</p>
+    </article>
+    <aside class="bl-side">
+      <div class="bl-box bl-toc-box"><h2>On this page</h2><nav class="bl-toc" aria-label="On this page"><a href="#two-different-kinds-of-refresh">Two different kinds of refresh</a><a href="#scheduled-refresh-for-imported-data">Scheduled refresh for imported data</a><a href="#automatic-page-refresh">Automatic page refresh</a><a href="#reload-the-browser-on-a-wall-display">Reload the browser on a wall display</a><a href="#before-you-leave-it-running">Before you leave it running</a></nav></div>
+      <div class="bl-box bl-install"><h2>Free for Chrome and Firefox</h2><p>Auto refresh and page alerts in one small extension. No account.</p><div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div></div>
+      <div class="bl-box"><h2>Related</h2><div class="bl-rel"><a href="../../blog/auto-refresh-dashboards-wall-display/"><span>Dashboards and wall displays</span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../blog/auto-refresh-excel-data/"><span>Auto refresh Excel</span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a href="../../use-cases/live-dashboards/"><span>Live dashboards use case</span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a></div></div>
+    </aside>
+  </section>
+
+  <section class="page-width" style="margin-top:8px">
+    <div class="bl-pn" style="max-width:700px;margin-inline:auto">
+      <a href="../../blog/auto-refresh-excel-data/"><small>&larr; Previous</small><strong>How to Auto Refresh Data in Excel (Queries and Pivot Tables)</strong></a>
+      <a class="next" href="../../blog/auto-refresh-google-sheets/"><small>Next &rarr;</small><strong>Auto Refresh Google Sheets: What Updates and What Does Not</strong></a>
+    </div>
+  </section>
+
+  <section class="page-width faq-section" id="faq">
+    <div>
+      <span class="eyebrow">Good to know</span>
+      <h2 class="h2">Questions, answered.</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item" open><summary><h3>Will reloading the page update my data?</h3><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>Only if newer data is already available to the report. It does not run a scheduled data refresh.</p></details>
+      <details class="faq-item"><summary><h3>Why can't I find automatic page refresh?</h3><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>It depends on your data connection, and your administrator or capacity settings can restrict it.</p></details>
+      <details class="faq-item"><summary><h3>Can a browser extension refresh Power BI Desktop?</h3><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg></summary><p>No. An extension works only inside the browser, not in the desktop application.</p></details>
+    </div>
+  </section>
+
+  <section class="page-width">
+    <div class="cta-card">
+      <span class="eyebrow">Less checking. More doing.</span>
+      <h2>Skip the manual reloads.</h2>
+      <p>Free Auto Refresh does it on a timer, for Chrome and Firefox.</p>
+      <div class="install-links"><a class="button-primary" href="https://chromewebstore.google.com/detail/kppnomplbmbngkolabchhbfkhkmdemdp" target="_blank" rel="noopener">Add to Chrome <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a><a class="button-secondary" href="https://addons.mozilla.org/en-US/firefox/addon/free-auto-refresh-extension/" target="_blank" rel="noopener">Add to Firefox</a></div>
+      <div class="assurance"><span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg>Free forever</span><span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg>Private by design</span><span><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg>Open source</span></div>
+    </div>
+  </section>
+
+  <section class="page-width content-section" style="padding-top:32px">
+    <div class="bl-more-heading"><h2 class="h2">More from the blog</h2><a class="bl-arrow" href="../../blog/">All posts <svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a></div>
+    <div class="bl-grid">
+      <a class="bl-card" href="../../blog/hard-refresh-on-mac/"><div class="bl-card-img"><img src="../../assets/img/blog/hard-refresh-on-mac.webp" alt="Hard refresh shortcut illustration" width="1200" height="751" loading="lazy"></div><div class="bl-card-body"><span class="bl-badge">Shortcuts</span><h3>Hard Refresh on Mac: Chrome, Safari &amp; Firefox Shortcuts</h3><p>The exact hard refresh shortcut for Chrome, Firefox, Edge and Safari on a Mac, plus what to do on a MacBook with no Ctrl or F5 key.</p><div class="bl-meta"><span>2 min read</span><i></i><span>Nov 18, 2026</span></div></div></a>
+      <a class="bl-card" href="../../blog/empty-cache-and-hard-reload/"><div class="bl-card-img"><img src="../../assets/img/blog/empty-cache-and-hard-reload.webp" alt="Reload options illustration" width="1200" height="751" loading="lazy"></div><div class="bl-card-body"><span class="bl-badge">Shortcuts</span><h3>Hard Refresh vs Normal vs Empty Cache and Hard Reload</h3><p>Three kinds of reload in Chrome: normal, hard and Empty Cache and Hard Reload. What each one does and when a stubborn page needs the third.</p><div class="bl-meta"><span>2 min read</span><i></i><span>Nov 18, 2026</span></div></div></a>
+      <a class="bl-card" href="../../blog/chrome-ctrl-f5-force-reload/"><div class="bl-card-img"><img src="../../assets/img/blog/chrome-ctrl-f5-force-reload.webp" alt="Keyboard reload shortcuts" width="1200" height="751" loading="lazy"></div><div class="bl-card-body"><span class="bl-badge">Shortcuts</span><h3>Chrome Ctrl+F5 and Force Reload: What Each One Does</h3><p>Ctrl+F5, Ctrl+Shift+R, Shift+click and F5: which force reload shortcut Chrome uses, what changes between them and when to use each.</p><div class="bl-meta"><span>2 min read</span><i></i><span>Nov 18, 2026</span></div></div></a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="page-width footer-main">
+    <div>
+      <a class="brand" href="../../"><img src="../../assets/logo.png" alt="Free Auto Refresh logo" width="31" height="31">Free Auto Refresh</a>
+      <p>A free, private auto refresh and page monitor extension for Chrome and Firefox.</p>
+      <p>Available in 7 languages.</p>
+    </div>
+    <div class="footer-links">
+      <h2>Explore</h2>
+      <a href="../../features/">Features</a><a href="../../use-cases/">Use cases</a><a href="../../guides/">Guides</a><a href="../../blog/">Blog</a><a href="../../faq/">FAQ</a>
+    </div>
+    <div class="footer-links">
+      <h2>Get the extension</h2>
+      <a href="../../chrome/">Chrome extension</a><a href="../../firefox/">Firefox add-on</a><a href="../../changelog/">Changelog</a>
+    </div>
+    <div class="footer-links">
+      <h2>About</h2>
+      <a href="https://github.com/al-kafi-sohag/free-auto-refresh" target="_blank" rel="noopener">GitHub</a><a href="../../privacy/">Privacy</a><a href="../../contact/">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom"><div class="page-width"><span>© 2026 Al Kafi Sohag · MIT licensed</span><span>Not affiliated with Google or Mozilla</span></div></div>
+</footer>
+
+<div class="cookie" id="cookieBanner" role="dialog" aria-label="Cookie consent">
+  This site uses Google Analytics, Ahrefs Web Analytics and Microsoft Clarity to see how its pages are used. Clarity sets cookies only if you accept. No ads. The extension itself has no analytics. <a href="../../privacy/"><strong>Privacy</strong></a>
+  <div class="install-links">
+    <button class="button-primary" id="cookieAccept" type="button">Accept</button>
+    <button class="button-secondary" id="cookieReject" type="button">Reject</button>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="../../assets/site.js"></script>
+<script src="../../assets/blog.js"></script>
+</body>
+</html>

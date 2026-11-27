@@ -126,3 +126,21 @@ Usable for honest "alternative to" comparison pages. Never in titles in a way th
 - **Not returned:** auto refresh dashboard, auto refresh localhost, auto refresh wordpress, live reload extension, visa appointment checker.
   Either no volume or cut off by the 100-row view. Exporting each plan as CSV would settle it.
 - Each paste showed only the first 100 rows (of 521, 670, 230, 412, 527 and 263).
+
+## Research for blog posts 41-60 (27 Nov 2026)
+
+**Search Console** (data 11-24 Nov, web): 22 clicks, 5.8k impressions, CTR 0.4%, average position 29.1, 630 queries.
+Indexed 69 pages; not indexed 15 (8 redirect, 3 alternate canonical, 4 discovered but not indexed).
+- Top page by impressions with weak CTR: `/blog/browser-keeps-refreshing-by-itself/` (1,181 impressions, position 8.0, 0.2% CTR).
+- `/blog/website-change-detection-free/`: 1,301 impressions at position 73. The "notify me when a page changes" cluster
+  has the most distinct queries but ranks on page 7 to 9.
+- `/firefox/` earns the most clicks (6, position 9.2).
+
+**GA4** (30 Oct - 26 Nov, data starts 18 Nov): 73 sessions; Direct 41, Organic Search 26, AI Assistant 5.
+
+**Free Ahrefs keyword generator** (US): volumes shown only as >100 or <100.
+- >100 and Easy: clear cache for one site / specific website (many variants), how to reload all tabs in chrome,
+  confirm form resubmission. >100, difficulty not shown: gmail keeps refreshing.
+- <100: instagram / outlook / facebook keeps refreshing, website last updated, auto refresh excel.
+
+Other topics in posts-e.js come from Google search suggestions (no volume data).
